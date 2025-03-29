@@ -1,0 +1,25 @@
+/* Transiciones suaves */
+.section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Botones interactivos */
+.course-button {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(110, 69, 226, 0.3);
+}
