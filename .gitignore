@@ -1,0 +1,11 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+.sass-cache/
+
+# Jekyll
+_site/
+.jekyll-cache/
