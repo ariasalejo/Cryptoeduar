@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma educativa sobre criptomonedas y blockchain">
+    <title>Cripto.Eduar | Aprende sobre Bitcoin, Ethereum y más</title>
+    
+    <!-- PWA Config -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#6e45e2">
+    
+    <!-- Preload crítico -->
+    <link rel="preload" href="assets/css/main.css" as="style">
+    <link rel="preload" href="assets/js/app/auth.js" as="script">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    
+    <!-- Favicon (generado en https://realfavicongenerator.net/) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logos/favicon-16x16.png">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/images/logos/logo.svg" alt="Cripto.Eduar" width="150">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="dashboard/">Dashboard</a></li>
+                    <li><button id="theme-toggle" aria-label="Cambiar tema">🌓</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                Domina el mundo <span class="gradient-text">cripto</span> en 2024
+            </h1>
+            <p class="hero-subtitle">
+                Accede a datos en tiempo real, gráficos interactivos y cursos prácticos.
+            </p>
+            <div class="hero-cta">
+                <a href="dashboard/" class="cta-button">Comenzar ahora</a>
+                <a href="#video-tour" class="cta-button secondary">Ver video tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Nuestros recursos</h2>
+            <div class="grid">
+                <article class="card">
+                    <img src="assets/images/icons/api.svg" alt="API Icon" width="40">
+                    <h3>Datos en Tiempo Real</h3>
+                    <p>Precios, capitalización de mercado y más via CoinGecko API.</p>
+                </article>
+                <article class="card">
+                    <img src="assets/images/icons/chart.svg" alt="Chart Icon" width="40">
+                    <h3>Gráficos Interactivos</h3>
+                    <p>Visualiza tendencias con Chart.js y TradingView.</p>
+                </article>
+                <article class="card">
+                    <img src="assets/images/icons/learn.svg" alt="Learn Icon" width="40">
+                    <h3>Aprende Haciendo</h3>
+                    <p>Simulador de trading con datos históricos.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Cripto.Eduar. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://twitter.com/criptoeduar" aria-label="Twitter">
+                    <img src="assets/images/social/twitter.svg" alt="Twitter" width="24">
+                </a>
+                <a href="https://github.com/criptoeduar" aria-label="GitHub">
+                    <img src="assets/images/social/github.svg" alt="GitHub" width="24">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+<script type="module" src="assets/js/app/auth.js"></script>
+        // Importar módulos
+        import { initTheme } from './assets/js/app/auth.js';
+        
+        // Iniciar tema oscuro/claro
+        initTheme();
+        
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registrado:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Error registrando SW:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
