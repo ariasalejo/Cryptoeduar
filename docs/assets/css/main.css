@@ -112,3 +112,75 @@ body {
         font-size: 2rem;
     }
 }
+/* ======= Sección Mercado ======= */
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.market-card {
+    background: var(--color-light);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.market-card:hover {
+    transform: translateY(-5px);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: var(--color-accent);
+}
+
+/* ======= Comunidad ======= */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.community-card {
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 15px;
+}
+
+.community-card i {
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.btn-community {
+    background: var(--color-accent);
+    color: white !important;
+    margin-top: 1rem;
+}
+
+/* ======= Footer ======= */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: var(--color-accent);
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
