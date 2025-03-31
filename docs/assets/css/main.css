@@ -309,3 +309,50 @@ body {
            font-size: 2rem;
        }
    }
+/* ===== Estilos del Header ===== */
+.header {
+    background: #2d3436;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    width: 180px; /* Coincide con el width del HTML */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.site-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .brand {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo-img {
+        width: 140px;
+    }
+    
+    .site-title {
+        font-size: 1.4rem;
+    }
+}
