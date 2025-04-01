@@ -1,101 +1,224 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 🔥 Estilos del Banner */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding-bottom: 40px;
+}
+
+/* Banner */
 .banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    padding: 20px;
-    border: 3px solid gold;
+  text-align: center;
+  background: linear-gradient(135deg, #6C63FF, #007BFF);
+  color: white;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .banner h1 {
-    color: gold;
-    font-size: 2rem;
-    margin-left: 15px;
-    text-transform: uppercase;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.banner img {
-    width: 100px; /* Ajusta según el tamaño que desees */
-    height: auto;
+.banner p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-/* 🏠 Estilos Generales */
-body {
-    background-color: #121212;
-    color: white;
-    text-align: center;
+.author {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 10px;
 }
 
-/* 📌 Navegación */
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-    padding: 15px;
-    background-color: #222;
+/* Secciones generales */
+section {
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  text-align: center;
 }
 
-nav a {
-    color: gold;
-    text-decoration: none;
-    font-size: 1.2rem;
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #6C63FF;
 }
 
-nav a:hover {
-    text-decoration: underline;
+section p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-/* 📈 Gráfico */
-#grafico {
-    margin-top: 30px;
+/* Características */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-canvas {
-    max-width: 90%;
-    margin: auto;
+.feature {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 🏦 Simulador de Inversión */
-#simulador {
-    margin-top: 30px;
-    padding: 20px;
-    background: #222;
-    border-radius: 10px;
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-#simulador input, button {
-    margin-top: 10px;
-    padding: 8px;
-    font-size: 1rem;
-    width: 200px;
+.feature h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #6C63FF;
 }
 
-#simulador button {
-    background-color: gold;
-    color: black;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+.feature p {
+  font-size: 0.9rem;
+  color: #666;
 }
 
-#simulador button:hover {
-    background-color: #ffcc00;
+/* Simulador de Comercio */
+#priceChart {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  height: 300px;
 }
 
-/* 🔽 Footer */
+#startSimulation {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#startSimulation:hover {
+  background-color: #4A47A3;
+}
+
+/* Hoja de Ruta Visual */
+.mermaid {
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Zona de Pruebas Web3 */
+#connectWallet {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#connectWallet:hover {
+  background-color: #0056b3;
+}
+
+#walletStatus {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Quizzes */
+#quiz-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#quiz-container button {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#quiz-container button:hover {
+  background-color: #4A47A3;
+}
+
+#quiz-result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Footer */
 footer {
-    margin-top: 40px;
-    padding: 10px;
-    background-color: black;
-    color: white;
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: white;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.badges img {
+  margin: 0 10px;
+  height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 2rem;
+  }
+
+  .banner p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  .features {
+    flex-direction: column;
+  }
 }

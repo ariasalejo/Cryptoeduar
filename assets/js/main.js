@@ -1,51 +1,87 @@
-// 🎨 Modo oscuro/claro
-document.getElementById("toggleMode").addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
+// main.js
+
+// Inicializar Mermaid.js para diagramas de hoja de ruta
+document.addEventListener("DOMContentLoaded", () => {
+  mermaid.initialize({ startOnLoad: true });
 });
 
-// 📈 Obtener precio de Bitcoin en tiempo real
-async function obtenerPrecioBitcoin() {
-    try {
-        let respuesta = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
-        let datos = await respuesta.json();
-        return datos.bitcoin.usd;
-    } catch (error) {
-        console.error("Error obteniendo precio de Bitcoin:", error);
-        return 36000; // Valor por defecto si hay error
+// Función para cargar contenido dinámico (si es necesario)
+function loadDynamicContent() {
+  console.log("Cargando contenido dinámico...");
+  // Aquí puedes agregar lógica para cargar datos desde APIs o archivos externos.
+}
+
+// Función para manejar errores generales
+function handleError(error) {
+  console.error("Ocurrió un error:", error);
+  alert("Ocurrió un error inesperado. Por favor, inténtalo de nuevo.");
+}
+
+// Ejemplo de función para validar formularios
+function validateForm(form) {
+  const inputs = form.querySelectorAll("input, textarea");
+  let isValid = true;
+
+  inputs.forEach((input) => {
+    if (!input.value.trim()) {
+      isValid = false;
+      input.style.borderColor = "red";
+    } else {
+      input.style.borderColor = "";
     }
+  });
+
+  return isValid;
 }
 
-// 📈 Gráfico interactivo del mercado cripto con datos actualizados
-async function actualizarGrafico() {
-    let precioActual = await obtenerPrecioBitcoin();
-    
-    const ctx = document.getElementById("cryptoChart").getContext("2d");
-    const cryptoChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"],
-            datasets: [{
-                label: "Bitcoin Precio",
-                data: [precioActual - 500, precioActual - 250, precioActual, precioActual + 250, precioActual + 500],
-                borderColor: "rgba(255, 206, 86, 1)",
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+// Ejemplo de función para mostrar notificaciones
+function showNotification(message, type = "info") {
+  const notification = document.createElement("div");
+  notification.textContent = message;
+  notification.style.padding = "10px";
+  notification.style.margin = "10px auto";
+  notification.style.borderRadius = "5px";
+  notification.style.textAlign = "center";
+  notification.style.maxWidth = "400px";
+
+  if (type === "success") {
+    notification.style.backgroundColor = "#d4edda";
+    notification.style.color = "#155724";
+  } else if (type === "error") {
+    notification.style.backgroundColor = "#f8d7da";
+    notification.style.color = "#721c24";
+  } else {
+    notification.style.backgroundColor = "#cce5ff";
+    notification.style.color = "#004085";
+  }
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
 }
 
-// 🏦 Simulador de inversión con precio actualizado
-async function calcularGanancia() {
-    let cantidad = parseFloat(document.getElementById("cantidad").value);
-    let precioCompra = parseFloat(document.getElementById("precio").value);
-    let precioActual = await obtenerPrecioBitcoin(); // Precio en tiempo real
+// Ejemplo de función para manejar el scroll suave
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
 
-    let ganancia = (precioActual - precioCompra) * cantidad;
-    document.getElementById("resultado").innerText = `Ganancia/Pérdida estimada: $${ganancia.toFixed(2)}`;
-}
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 20,
+        behavior: "smooth",
+      });
+    }
+  });
+});
 
-// 🔄 Cargar gráfico con datos actualizados al iniciar
-window.onload = actualizarGrafico;
+// Cargar contenido dinámico al iniciar
+loadDynamicContent();
+
+// Manejar errores globales
+window.onerror = function (message, source, lineno, colno, error) {
+  handleError(error || message);
+};
