@@ -1,103 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CriptoEduAr: Tu guía educativa en el mundo Web3. Aprende sobre blockchain, Bitcoin, Ethereum, NFTs, DeFi y más.">
-  <meta name="keywords" content="criptomonedas, blockchain, bitcoin, ethereum, defi, nft, web3">
-  <meta name="author" content="Tu Nombre">
-  <title>CriptoEduAr - Diagramas con Mermaid.js</title>
-  <!-- Estilos CSS -->
-  <link rel="stylesheet" href="css/main.css">
-  <!-- Scripts Externos -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>
-    // Inicializar Mermaid.js
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'forest', // Temas disponibles: 'default', 'forest', 'dark', 'neutral'
-      flowchart: {
-        curve: 'basis' // Tipo de curva para los diagramas
-      }
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriptoEduAr - Aprende sobre Criptomonedas</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js"></script>
 </head>
 <body>
-  <!-- Banner Principal -->
-  <header class="banner">
-    <div class="banner-content">
-      <img src="assets/images/banner.png" alt="Banner CriptoEduAr" class="banner-image">
-      <h1>CriptoEduAr</h1>
-      <p>Tu Guía en el Mundo Cripto 🌟</p>
-      <p class="author">Por [Tu Nombre]</p>
-    </div>
-  </header>
 
-  <!-- Sección de Diagramas con Mermaid.js -->
-  <section id="mermaid-charts">
-    <h2>Diagramas Interactivos con Mermaid.js</h2>
-    <p>Aquí tienes algunos ejemplos de diagramas que puedes crear con Mermaid.js:</p>
+    <!-- 🏆 Banner con logo optimizado -->
+    <header>
+        <div class="banner">
+            <img src="assets/images/banner.png" alt="CriptoEduAr">
+            <h1>CriptoEduAr: Desentraña los Secretos del Universo Cripto 🚀</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="mercado.html">Mercado</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Hoja de Ruta -->
-    <h3>Hoja de Ruta Educativa</h3>
-    <div class="mermaid">
-      graph TD;
-        Fase1[Q1: Base Educativa] --> Fase2[Q2: Simulador DeFi];
-        Fase2 --> Fase3[Q3: Certificados NFT];
-        Fase3 --> Fase4[Q4: DAO Educativa];
+    <!-- 🎯 Botón de modo oscuro/claro -->
+    <div class="toggle-container">
+        <button id="toggleMode">Modo Oscuro/Claro</button>
     </div>
 
-    <!-- Flujo de Procesos -->
-    <h3>Flujo de Procesos Blockchain</h3>
-    <div class="mermaid">
-      graph LR;
-        A[Usuario] --> B[Envía Transacción];
-        B --> C[Mineros Validan];
-        C --> D[Bloque Añadido];
-        D --> E[Red Actualizada];
-    </div>
+    <!-- 🔮 Sección educativa -->
+    <main>
+        <section id="temas">
+            <h2>🔮 ¿Qué es CriptoEduAr?</h2>
+            <p>Más que una plataforma educativa, es tu nave espacial al mundo Web3.</p>
+            <div class="grid-temas">
+                <div class="tema">🧱 <strong>Blockchain</strong> - zk-SNARKs y más</div>
+                <div class="tema">₿ <strong>Bitcoin</strong> - Revolución descentralizada</div>
+                <div class="tema">Ξ <strong>Ethereum</strong> - Contratos inteligentes</div>
+                <div class="tema">🖼️ <strong>NFT</strong> - Más allá del arte digital</div>
+                <div class="tema">🏦 <strong>DeFi</strong> - El sistema financiero del mañana</div>
+            </div>
+        </section>
 
-    <!-- Diagrama de Secuencia -->
-    <h3>Diagrama de Secuencia: Compra de Criptomonedas</h3>
-    <div class="mermaid">
-      sequenceDiagram
-        participant Usuario
-        participant Exchange
-        participant Blockchain
-        Usuario->>Exchange: Solicita compra de BTC
-        Exchange->>Blockchain: Verifica transacción
-        Blockchain-->>Exchange: Confirma transacción
-        Exchange-->>Usuario: Entrega BTC
-    </div>
+        <!-- 📈 Gráfico interactivo del mercado -->
+        <section id="grafico">
+            <h2>📈 Tendencias del Mercado</h2>
+            <canvas id="cryptoChart"></canvas>
+        </section>
 
-    <!-- Diagrama de Clases -->
-    <h3>Diagrama de Clases: Contrato Inteligente</h3>
-    <div class="mermaid">
-      classDiagram
-        class SmartContract {
-          +string address
-          +uint balance
-          +function transfer(address, uint)
-          +function balanceOf(address) uint
-        }
-        class Wallet {
-          +string owner
-          +uint balance
-          +function send(address, uint)
-        }
-        SmartContract -- Wallet : interactúa con
-    </div>
-  </section>
+        <!-- 🏦 Simulador de inversión -->
+        <section id="simulador">
+            <h2>Simulador de Inversión</h2>
+            <label for="cantidad">Cantidad de BTC:</label>
+            <input type="number" id="cantidad" placeholder="Ingrese cantidad">
+            <label for="precio">Precio de compra:</label>
+            <input type="number" id="precio" placeholder="Ingrese precio en USD">
+            <button id="calcular">Calcular</button>
+            <p id="resultado">Ganancia/Pérdida estimada: -</p>
+        </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2024 CriptoEduAr | Licencia MIT</p>
-    <p><a href="https://github.com/tu-usuario/CriptoEduAr">Ver en GitHub</a></p>
-    <!-- Insignias Personalizadas -->
-    <div class="badges">
-      <img src="https://img.shields.io/badge/Usuarios%20Activos-1K-blue" alt="Usuarios Activos">
-      <img src="https://img.shields.io/badge/Última%20Actualización-2024-brightgreen" alt="Última Actualización">
-    </div>
-  </footer>
+        <!-- 🎯 Hoja de Ruta 2024 -->
+        <section>
+            <h2>🎯 Hoja de Ruta 2024</h2>
+            <div class="mermaid">
+                graph TD;
+                Fase1(Base educativa) --> Fase2(Simulador DeFi);
+                Fase2 --> Fase3(Certificados NFT);
+                Fase3 --> Fase4(DAO Educativa);
+            </div>
+        </section>
+    </main>
+
+    <!-- 📜 Insignias y comunidad -->
+    <section class="insignias">
+        <h2>🌍 Comunidad Web3</h2>
+        <p>Únete a nuestra constelación en Discord, Telegram y Twitter.</p>
+        <img src="https://img.shields.io/github/last-commit/ariasalejo/CryptoEduAr?style=for-the-badge">
+        <img src="https://img.shields.io/github/stars/ariasalejo/CryptoEduAr?style=for-the-badge">
+    </section>
+
+    <!-- 📌 Pie de página -->
+    <footer>
+        <p>© 2025 CriptoEduAr - Educación Financiera en Blockchain</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+
 </body>
 </html>
