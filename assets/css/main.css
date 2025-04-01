@@ -222,3 +222,10 @@ footer a:hover {
     flex-direction: column;
   }
 }
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #111;
+  color: #FFD700;
+  font-size: 14px;
+}
