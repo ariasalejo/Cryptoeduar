@@ -85,3 +85,31 @@ loadDynamicContent();
 window.onerror = function (message, source, lineno, colno, error) {
   handleError(error || message);
 };
+async function obtenerNoticiasCripto() {
+    try {
+        let respuesta = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=ES");
+        let datos = await respuesta.json();
+        return datos.Data.slice(0, 5); // Mostramos solo 5 noticias recientes
+    } catch (error) {
+        console.error("Error obteniendo noticias:", error);
+        return [];
+    }
+}
+
+async function mostrarNoticias() {
+    let noticias = await obtenerNoticiasCripto();
+    let contenedor = document.getElementById("noticias");
+
+    contenedor.innerHTML = noticias.map(noticia => `
+        <div class="noticia">
+            <h3>${noticia.title}</h3>
+            <p>${noticia.body.substring(0, 100)}...</p>
+            <a href="${noticia.url}" target="_blank">Leer más</a>
+        </div>
+    `).join("");
+}
+
+mostrarNoticias();
+function mostrarDetalles(id) {
+    document.getElementById(id).classList.toggle("visible");
+}
