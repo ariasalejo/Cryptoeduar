@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriptoEduAr - Educación Blockchain</title>
+    <meta name="description" content="Plataforma educativa líder en tecnología blockchain y criptomonedas">
+    
+    <!-- ========== CONFIGURACIÓN PWA ========== -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- ========== ESTILOS ========== -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- ========== FUENTES & ICONOS ========== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <nav class="container">
+            <!-- LOGO PRINCIPAL -->
+            <div class="brand">
+                <img src="assets/images/logo.png" 
+                     alt="Logo CriptoEduAr" 
+                     class="logo-img"
+                     width="150"
+                     height="40">
+                <h1 class="site-title">CriptoEduAr</h1>
+            </div>
+
+            <!-- MENÚ DE NAVEGACIÓN -->
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="Cursos.html" class="nav-link">Cursos</a></li>
+                <li><a href="Mercado.html" class="nav-link">Mercado</a></li>
+                <li><a href="#comunidad" class="nav-link">Comunidad</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========== SECCIÓN HERO ========== -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Domina el universo blockchain</h2>
+                <p class="hero-subtitle">Aprende con cursos prácticos y datos en tiempo real</p>
+                <div class="cta-buttons">
+                    <a href="Cursos.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Comenzar ahora
+                    </a>
+                    <a href="#video" class="btn btn-outline">
+                        <i class="fas fa-play-circle"></i> Ver video explicativo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CURSOS DESTACADOS ========== -->
+    <section class="courses" id="cursos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Cursos Destacados</h2>
+            <div class="course-grid" id="courses-container">
+                <!-- Cursos cargados dinámicamente desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DATOS DE MERCADO ========== -->
+    <section class="market" id="mercado">
+        <div class="container">
+            <h2 class="section-title">Datos del Mercado en Tiempo Real</h2>
+            <div class="market-grid">
+                <div class="market-card bitcoin">
+                    <h3><i class="fab fa-bitcoin"></i> Bitcoin</h3>
+                    <p class="price" id="btc-price">Cargando...</p>
+                    <div class="chart" id="btc-chart"></div>
+                </div>
+                <div class="market-card ethereum">
+                    <h3><i class="fab fa-ethereum"></i> Ethereum</h3>
+                    <p class="price" id="eth-price">Cargando...</p>
+                    <div class="chart" id="eth-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMUNIDAD ========== -->
+    <section class="community" id="comunidad">
+        <div class="container">
+            <h2 class="section-title">Únete a la Comunidad</h2>
+            <div class="community-grid">
+                <div class="community-card discord">
+                    <i class="fab fa-discord"></i>
+                    <h3>Discord</h3>
+                    <p>Participa en debates y resuelve dudas</p>
+                    <a href="#" class="btn btn-community">
+                        <i class="fas fa-comments"></i> Unirse
+                    </a>
+                </div>
+                
+                <div class="community-card telegram">
+                    <i class="fab fa-telegram"></i>
+                    <h3>Telegram</h3>
+                    <p>Noticias y actualizaciones diarias</p>
+                    <a href="#" class="btn btn-community">
+                        <i class="fas fa-bell"></i> Unirse
+                    </a>
+                </div>
+                
+                <div class="community-card forum">
+                    <i class="fas fa-users"></i>
+                    <h3>Foro Educativo</h3>
+                    <p>Comparte tus proyectos y aprende</p>
+                    <a href="#" class="btn btn-community">
+                        <i class="fas fa-share-alt"></i> Participar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section about">
+                    <h4>CriptoEduAr</h4>
+                    <p>Educación blockchain accesible para todos</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section resources">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="glosario.html"><i class="fas fa-book"></i> Glosario</a></li>
+                        <li><a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a></li>
+                        <li><a href="descargas.html"><i class="fas fa-download"></i> Descargas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacidad.html"><i class="fas fa-shield-alt"></i> Privacidad</a></li>
+                        <li><a href="terminos.html"><i class="fas fa-file-contract"></i> Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 CriptoEduAr. Todos los derechos reservados</p>
+                <p>Creado con <i class="fas fa-heart"></i> para la comunidad crypto</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="assets/js/bundle.js"></script>
+    <!-- Configuración del Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de dependencias
+node_modules/
+
+# Archivos de entorno (sensibles)
+.env
+.env.local
+
+# Archivos generados por el IDE
+.idea/
+.vscode/
+
+# Logs y caché
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Carpetas de compilación
+dist/
+build/
+
+# Archivos temporales
+*.tmp
+*.bak

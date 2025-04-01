@@ -1,27 +1,31 @@
-# Archivos del sistema
+### ----- Archivos del Sistema ----- ###
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Carpetas de dependencias
+### ----- Entornos y Dependencias ----- ###
 node_modules/
-
-# Archivos de entorno (sensibles)
 .env
 .env.local
+*.env.*
 
-# Archivos generados por el IDE
-.idea/
-.vscode/
-
-# Logs y caché
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Carpetas de compilación
+### ----- Build y Automatización ----- ###
 dist/
 build/
+.cache/
+.tmp/
 
-# Archivos temporales
-*.tmp
-*.bak
+### ----- Editor/IDE ----- ###
+.vscode/
+.idea/
+*.sublime-workspace
+
+### ----- Logs y Temporales ----- ###
+*.log
+npm-debug.log*
+yarn-error.log*
+
+### ----- Excepciones (NO ignorar) ----- ###
+!docs/                  # GitHub Pages necesita esta carpeta
+!docs/**/*              # Todo dentro de docs/ es importante
+!assets/**/*            # CSS, JS, imágenes
