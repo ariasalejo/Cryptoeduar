@@ -1,14 +1,17 @@
 {
-  "name": "criptoeduar-web",
+  "name": "criptoeduar",
   "version": "1.0.0",
-  "description": "Plataforma educativa blockchain",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "live-server --port=3000",
-    "dev": "live-server --port=3000 --watch"
+    "start": "live-server docs --port=3000 --cors",
+    "dev": "live-server docs --port=3000 --cors --watch",
+    "build": "workbox generateSW workbox-config.js"
   },
-  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^4.4.0"
+  },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "workbox-cli": "^7.3.0"
   }
 }
