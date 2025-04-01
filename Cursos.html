@@ -11,8 +11,8 @@
     <!-- 🏆 Encabezado -->
     <header>
         <div class="banner">
-            <img src="assets/images/logo.png" alt="CriptoEduAr">
-            <h1>Cursos de Criptomonedas</h1>
+            <img src="assets/images/banner.png" alt="CriptoEduAr">
+            <h1>📚 Cursos de Criptomonedas</h1>
         </div>
         <nav>
             <ul>
@@ -23,28 +23,77 @@
         </nav>
     </header>
 
-    <!-- 📚 Lista de cursos -->
+    <!-- 📚 Sección de cursos -->
     <main>
         <section class="cursos">
-            <h2>📚 Cursos Disponibles</h2>
+            <h2>📖 Cursos Avanzados en Criptomonedas</h2>
 
+            <!-- 🏦 Curso de DeFi -->
             <div class="curso">
-                <h3>✅ Introducción a Bitcoin</h3>
-                <p>Aprende los fundamentos de Bitcoin y cómo funciona la tecnología blockchain.</p>
-                <button>Ver Curso</button>
+                <h3>🏦 ¿Qué es DeFi? (Finanzas Descentralizadas)</h3>
+                <p>Las **Finanzas Descentralizadas (DeFi)** representan una revolución en el sistema financiero tradicional. Son aplicaciones construidas sobre blockchain que eliminan intermediarios como bancos o brokers, permitiendo transacciones directas entre usuarios.</p>
+                <button onclick="mostrarDetalles('defi')">Ver más</button>
+                <div class="detalles" id="defi">
+                    <h4>🔹 Características de DeFi:</h4>
+                    <ul>
+                        <li>🚀 Acceso global sin restricciones.</li>
+                        <li>🔄 Transacciones rápidas y seguras.</li>
+                        <li>💰 Préstamos y staking sin intermediarios.</li>
+                        <li>🛡️ Transparencia y seguridad gracias a la blockchain.</li>
+                    </ul>
+                    <p>Algunas plataformas líderes en DeFi incluyen **Uniswap, Aave, Compound y MakerDAO**.</p>
+                </div>
             </div>
 
+            <!-- 💎 Curso de Memecoins -->
             <div class="curso">
-                <h3>✅ Trading de Criptomonedas</h3>
-                <p>Descubre estrategias de trading y cómo analizar tendencias del mercado.</p>
-                <button>Ver Curso</button>
+                <h3>💎 Memecoins: ¿Inversión o especulación?</h3>
+                <p>Los **Memecoins** son criptomonedas basadas en tendencias virales y memes de internet. Aunque comenzaron como una broma, han generado grandes ganancias para algunos inversores.</p>
+                <button onclick="mostrarDetalles('memecoin')">Ver más</button>
+                <div class="detalles" id="memecoin">
+                    <h4>🐶 Ejemplos famosos:</h4>
+                    <ul>
+                        <li>🚀 **Dogecoin (DOGE)** – La moneda que empezó como un meme y ahora es usada en pagos.</li>
+                        <li>🔥 **Shiba Inu (SHIB)** – Un competidor de Dogecoin con enormes movimientos de mercado.</li>
+                        <li>🦄 **PepeCoin, Floki Inu, BabyDoge** – Más monedas meme con comunidades activas.</li>
+                    </ul>
+                    <p>Si bien los **memecoins pueden tener ganancias explosivas**, también son altamente especulativos. ¡Invierte con precaución! 🚀</p>
+                </div>
             </div>
 
+            <!-- 🧱 Curso de Blockchain -->
             <div class="curso">
-                <h3>✅ Seguridad y Wallets</h3>
-                <p>Protege tus criptos con seguridad avanzada y aprende sobre billeteras digitales.</p>
-                <button>Ver Curso</button>
+                <h3>🧱 Blockchain: La tecnología detrás de las criptomonedas</h3>
+                <p>El **Blockchain** es un sistema descentralizado que registra información de manera segura, inmutable y transparente.</p>
+                <button onclick="mostrarDetalles('blockchain')">Ver más</button>
+                <div class="detalles" id="blockchain">
+                    <h4>🔗 Ventajas de Blockchain:</h4>
+                    <ul>
+                        <li>📜 Registro inmutable y transparente.</li>
+                        <li>🛡️ Seguridad mediante criptografía.</li>
+                        <li>🤝 Descentralización: sin intermediarios.</li>
+                        <li>📈 Aplicaciones en contratos inteligentes y finanzas.</li>
+                    </ul>
+                    <p>Las redes más utilizadas son **Bitcoin, Ethereum, Solana y Polygon**.</p>
+                </div>
             </div>
+
+            <!-- Ξ Curso de Ethereum -->
+            <div class="curso">
+                <h3>Ξ Ethereum y los contratos inteligentes</h3>
+                <p>Ethereum es más que una criptomoneda: es una plataforma que permite construir aplicaciones descentralizadas.</p>
+                <button onclick="mostrarDetalles('ethereum')">Ver más</button>
+                <div class="detalles" id="ethereum">
+                    <h4>⚙️ ¿Qué son los contratos inteligentes?</h4>
+                    <ul>
+                        <li>🤖 Código programado que ejecuta acuerdos automáticamente.</li>
+                        <li>🔄 Funciona en la red de Ethereum.</li>
+                        <li>🚀 Base de DeFi, NFTs y dApps.</li>
+                    </ul>
+                    <p>Ethereum ha revolucionado el mundo digital con **Uniswap, OpenSea y Metamask**.</p>
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -52,6 +101,8 @@
     <footer>
         <p>© 2025 CriptoEduAr - Educación Financiera en Blockchain</p>
     </footer>
+
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
