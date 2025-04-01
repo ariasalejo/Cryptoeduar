@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CriptoEduAr: Tu guía educativa en el mundo Web3. Aprende sobre blockchain, Bitcoin, Ethereum, NFTs, DeFi y más.">
+  <meta name="keywords" content="criptomonedas, blockchain, bitcoin, ethereum, defi, nft, web3">
+  <meta name="author" content="Tu Nombre">
+  <title>CriptoEduAr - Diagramas con Mermaid.js</title>
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Scripts Externos -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    // Inicializar Mermaid.js
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'forest', // Temas disponibles: 'default', 'forest', 'dark', 'neutral'
+      flowchart: {
+        curve: 'basis' // Tipo de curva para los diagramas
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Banner Principal -->
+  <header class="banner">
+    <div class="banner-content">
+      <img src="assets/images/banner.png" alt="Banner CriptoEduAr" class="banner-image">
+      <h1>CriptoEduAr</h1>
+      <p>Tu Guía en el Mundo Cripto 🌟</p>
+      <p class="author">Por [Tu Nombre]</p>
+    </div>
+  </header>
+
+  <!-- Sección de Diagramas con Mermaid.js -->
+  <section id="mermaid-charts">
+    <h2>Diagramas Interactivos con Mermaid.js</h2>
+    <p>Aquí tienes algunos ejemplos de diagramas que puedes crear con Mermaid.js:</p>
+
+    <!-- Hoja de Ruta -->
+    <h3>Hoja de Ruta Educativa</h3>
+    <div class="mermaid">
+      graph TD;
+        Fase1[Q1: Base Educativa] --> Fase2[Q2: Simulador DeFi];
+        Fase2 --> Fase3[Q3: Certificados NFT];
+        Fase3 --> Fase4[Q4: DAO Educativa];
+    </div>
+
+    <!-- Flujo de Procesos -->
+    <h3>Flujo de Procesos Blockchain</h3>
+    <div class="mermaid">
+      graph LR;
+        A[Usuario] --> B[Envía Transacción];
+        B --> C[Mineros Validan];
+        C --> D[Bloque Añadido];
+        D --> E[Red Actualizada];
+    </div>
+
+    <!-- Diagrama de Secuencia -->
+    <h3>Diagrama de Secuencia: Compra de Criptomonedas</h3>
+    <div class="mermaid">
+      sequenceDiagram
+        participant Usuario
+        participant Exchange
+        participant Blockchain
+        Usuario->>Exchange: Solicita compra de BTC
+        Exchange->>Blockchain: Verifica transacción
+        Blockchain-->>Exchange: Confirma transacción
+        Exchange-->>Usuario: Entrega BTC
+    </div>
+
+    <!-- Diagrama de Clases -->
+    <h3>Diagrama de Clases: Contrato Inteligente</h3>
+    <div class="mermaid">
+      classDiagram
+        class SmartContract {
+          +string address
+          +uint balance
+          +function transfer(address, uint)
+          +function balanceOf(address) uint
+        }
+        class Wallet {
+          +string owner
+          +uint balance
+          +function send(address, uint)
+        }
+        SmartContract -- Wallet : interactúa con
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 CriptoEduAr | Licencia MIT</p>
+    <p><a href="https://github.com/tu-usuario/CriptoEduAr">Ver en GitHub</a></p>
+    <!-- Insignias Personalizadas -->
+    <div class="badges">
+      <img src="https://img.shields.io/badge/Usuarios%20Activos-1K-blue" alt="Usuarios Activos">
+      <img src="https://img.shields.io/badge/Última%20Actualización-2024-brightgreen" alt="Última Actualización">
+    </div>
+  </footer>
+</body>
+</html>
