@@ -1,0 +1,26 @@
+name: Build y Deploy CriptoEduAr
+
+on:
+  push:
+    branches:
+      - main  # Ejecuta la acción cuando se haga push a la rama principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v3
+
+    - name: Instalar dependencias
+      run: npm install  # Usa esto si hay un `package.json`
+
+    - name: Construcción del sitio
+      run: npm run build  # Si tienes un script de compilación
+
+    - name: Desplegar en GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # Rama donde se publica la página
+        folder: docs  # Carpeta donde está el proyecto
