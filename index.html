@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- 🏆 Banner con logo optimizado -->
+    <!-- 🏆 Banner con logo -->
     <header>
         <div class="banner">
             <img src="assets/images/banner.png" alt="CriptoEduAr">
@@ -45,10 +45,6 @@
             </div>
         </section>
 
-<section id="noticias">
-    <h2>Últimas Noticias Cripto 📰</h2>
-</section>
-
         <!-- 📈 Gráfico interactivo del mercado -->
         <section id="grafico">
             <h2>📈 Tendencias del Mercado</h2>
@@ -66,6 +62,38 @@
             <p id="resultado">Ganancia/Pérdida estimada: -</p>
         </section>
 
+        <!-- 📊 Precios en tiempo real -->
+        <section id="precios">
+            <h2>📊 Precios en Tiempo Real</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criptomoneda</th>
+                        <th>Precio (USD)</th>
+                        <th>Variación 24h</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-precios">
+                    <tr>
+                        <td>Bitcoin</td>
+                        <td id="btc-price">$XX,XXX</td>
+                        <td id="btc-change">+X%</td>
+                    </tr>
+                    <tr>
+                        <td>Ethereum</td>
+                        <td id="eth-price">$X,XXX</td>
+                        <td id="eth-change">-X%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 📰 Últimas Noticias -->
+        <section id="noticias">
+            <h2>📰 Últimas Noticias del Ecosistema</h2>
+            <div id="contenedor-noticias"></div>
+        </section>
+
         <!-- 🎯 Hoja de Ruta 2024 -->
         <section>
             <h2>🎯 Hoja de Ruta 2024</h2>
@@ -73,27 +101,3 @@
                 graph TD;
                 Fase1(Base educativa) --> Fase2(Simulador DeFi);
                 Fase2 --> Fase3(Certificados NFT);
-                Fase3 --> Fase4(DAO Educativa);
-            </div>
-        </section>
-    </main>
-
-    <!-- 📜 Insignias y comunidad -->
-    <section class="insignias">
-        <h2>🌍 Comunidad Web3</h2>
-        <p>Únete a nuestra constelación en Discord, Telegram y Twitter.</p>
-        <img src="https://img.shields.io/github/last-commit/ariasalejo/CryptoEduAr?style=for-the-badge">
-        <img src="https://img.shields.io/github/stars/ariasalejo/CryptoEduAr?style=for-the-badge">
-    </section>
-
-    <!-- 📌 Pie de página -->
-    <footer>
-        <p>© 2025 CriptoEduAr - Educación Financiera en Blockchain</p>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/chart.js"></script>
-    <script>mermaid.initialize({ startOnLoad: true });</script>
-
-</body>
-</html>
