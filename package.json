@@ -1,71 +1,14 @@
 {
-  "name": "CriptoEduAr",
-  "short_name": "CriptoEduAr",
-  "description": "Educación sobre criptomonedas, DeFi y estrategias de inversión.",
-  "start_url": "https://ariasalejo.github.io/Cryptoeduar/",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#000000",
-  "theme_color": "#FFD700",
-  "categories": ["education", "finance", "cryptocurrency"],
-  "icons": [
-    {
-      "src": "assets/images/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/images/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "assets/images/screenshot1.png",
-      "type": "image/png",
-      "sizes": "800x600"
-    },
-    {
-      "src": "assets/images/screenshot2.png",
-      "type": "image/png",
-      "sizes": "1280x720"
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "web",
-      "url": "https://ariasalejo.github.io/Cryptoeduar/"
-    }
-  ],
-  "prefer_related_applications": false
-}
-{
-  "name": "criptoeduar",
+  "name": "criptoeduar-web",
   "version": "1.0.0",
-  "description": "Plataforma educativa sobre criptomonedas y Web3",
-  "author": "Alejo",
-  "license": "MIT",
+  "description": "Plataforma educativa blockchain",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "build": "npm run lint && npm run test",
-    "lint": "eslint .",
-    "test": "jest"
+    "start": "live-server --port=3000",
+    "dev": "live-server --port=3000 --watch"
   },
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "chart.js": "^3.9.1",
-    "mermaid": "^9.3.0"
-  },
+  "license": "MIT",
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "jest": "^29.0.3",
-    "eslint": "^8.45.0"
+    "live-server": "^1.2.2"
   }
 }

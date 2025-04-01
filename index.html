@@ -3,101 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CriptoEduAr - Aprende sobre Criptomonedas</title>
+    <title>CriptoEduAr</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js"></script>
 </head>
 <body>
-
-    <!-- 🏆 Banner con logo -->
     <header>
-        <div class="banner">
-            <img src="assets/images/banner.png" alt="CriptoEduAr">
-            <h1>CriptoEduAr: Desentraña los Secretos del Universo Cripto 🚀</h1>
-        </div>
+        <h1>Bienvenido a CriptoEduAr</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="mercado.html">Mercado</a></li>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Cursos</a></li>
+                <li><a href="#">Mercado</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 🎯 Botón de modo oscuro/claro -->
-    <div class="toggle-container">
-        <button id="toggleMode">Modo Oscuro/Claro</button>
-    </div>
+    <section id="simulador">
+        <h2>Simulador de Inversión</h2>
+        <label>Cantidad de BTC: <input type="number" id="cantidad-btc" value="1"></label>
+        <label>Precio de compra: <input type="number" id="precio-compra" value="85000"></label>
+        <button id="calcular">Calcular</button>
+        <p id="resultado">Ganancia/Pérdida estimada: -</p>
+    </section>
 
-    <!-- 🔮 Sección educativa -->
-    <main>
-        <section id="temas">
-            <h2>🔮 ¿Qué es CriptoEduAr?</h2>
-            <p>Más que una plataforma educativa, es tu nave espacial al mundo Web3.</p>
-            <div class="grid-temas">
-                <div class="tema">🧱 <strong>Blockchain</strong> - zk-SNARKs y más</div>
-                <div class="tema">₿ <strong>Bitcoin</strong> - Revolución descentralizada</div>
-                <div class="tema">Ξ <strong>Ethereum</strong> - Contratos inteligentes</div>
-                <div class="tema">🖼️ <strong>NFT</strong> - Más allá del arte digital</div>
-                <div class="tema">🏦 <strong>DeFi</strong> - El sistema financiero del mañana</div>
-            </div>
-        </section>
-
-        <!-- 📈 Gráfico interactivo del mercado -->
-        <section id="grafico">
-            <h2>📈 Tendencias del Mercado</h2>
-            <canvas id="cryptoChart"></canvas>
-        </section>
-
-        <!-- 🏦 Simulador de inversión -->
-        <section id="simulador">
-            <h2>Simulador de Inversión</h2>
-            <label for="cantidad">Cantidad de BTC:</label>
-            <input type="number" id="cantidad" placeholder="Ingrese cantidad">
-            <label for="precio">Precio de compra:</label>
-            <input type="number" id="precio" placeholder="Ingrese precio en USD">
-            <button id="calcular">Calcular</button>
-            <p id="resultado">Ganancia/Pérdida estimada: -</p>
-        </section>
-
-        <!-- 📊 Precios en tiempo real -->
-        <section id="precios">
-            <h2>📊 Precios en Tiempo Real</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Criptomoneda</th>
-                        <th>Precio (USD)</th>
-                        <th>Variación 24h</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-precios">
-                    <tr>
-                        <td>Bitcoin</td>
-                        <td id="btc-price">$XX,XXX</td>
-                        <td id="btc-change">+X%</td>
-                    </tr>
-                    <tr>
-                        <td>Ethereum</td>
-                        <td id="eth-price">$X,XXX</td>
-                        <td id="eth-change">-X%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- 📰 Últimas Noticias -->
-        <section id="noticias">
-            <h2>📰 Últimas Noticias del Ecosistema</h2>
-            <div id="contenedor-noticias"></div>
-        </section>
-
-        <!-- 🎯 Hoja de Ruta 2024 -->
-        <section>
-            <h2>🎯 Hoja de Ruta 2024</h2>
-            <div class="mermaid">
-                graph TD;
-                Fase1(Base educativa) --> Fase2(Simulador DeFi);
-                Fase2 --> Fase3(Certificados NFT);
+    <section id="tendencias">
+        <h2>📈 Tendencias del Mercado</h2
