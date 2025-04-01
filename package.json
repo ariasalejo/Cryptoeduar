@@ -43,3 +43,29 @@
   ],
   "prefer_related_applications": false
 }
+{
+  "name": "criptoeduar",
+  "version": "1.0.0",
+  "description": "Plataforma educativa sobre criptomonedas y Web3",
+  "author": "Alejo",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run lint && npm run test",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "chart.js": "^3.9.1",
+    "mermaid": "^9.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "jest": "^29.0.3",
+    "eslint": "^8.45.0"
+  }
+}
