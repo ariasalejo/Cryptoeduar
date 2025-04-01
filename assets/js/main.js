@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   mermaid.initialize({ startOnLoad: true });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    obtenerPrecios();
+    mostrarNoticias();
+    actualizarGrafico();
+});
+
 // Función para cargar contenido dinámico (si es necesario)
 function loadDynamicContent() {
   console.log("Cargando contenido dinámico...");
