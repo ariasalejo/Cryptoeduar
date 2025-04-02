@@ -1,17 +1,26 @@
-const ctx = document.getElementById('cryptoChart').getContext('2d');
-
-const cryptoChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'],
-        datasets: [{
-            label: 'Bitcoin Precio',
-            data: [32000, 33000, 34000, 35000, 36000], 
-            borderColor: 'rgba(255, 206, 86, 1)',
-            borderWidth: 2
-        }]
-    },
-    options: {
-        responsive: true
-    }
-});
+function initChart() {
+    const ctx = document.getElementById('mercadoChart').getContext('2d');
+    return new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Bitcoin (BTC)',
+                data: [65000, 70000, 80000, 85000, 90000, 95000],
+                borderColor: '#FFD700',
+                backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                borderWidth: 3,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tendencia Alcista 2024'
+                }
+            }
+        }
+    });
+}
