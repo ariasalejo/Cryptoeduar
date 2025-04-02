@@ -1,87 +1,217 @@
-/* 📌 Estilos generales */
+/* main.css */
+
+/* Estilos básicos para el cuerpo */
 body {
-    background-color: #000;
-    color: #fff;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
     text-align: center;
 }
-h2 {
-    color: #FFD700;
+
+header img {
+    vertical-align: middle;
 }
 
-/* 📌 Botones */
-.btn-primary, .btn-secondary {
+header h1 {
+    display: inline;
+    margin-left: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la sección de introducción */
+#intro {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+#intro h2 {
+    margin-bottom: 20px;
+}
+
+#intro p {
+    font-size: 1.2em;
+}
+
+#intro .btn-primary,
+#intro .btn-secondary {
     display: inline-block;
     padding: 10px 20px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    border-radius: 5px;
     margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.btn-primary {
-    background: #FFD700;
-    color: #000;
-    font-weight: bold;
-}
-.btn-secondary {
-    background: #444;
+
+#intro .btn-primary {
+    background-color: #007bff;
     color: #fff;
 }
 
-/* 📌 Sección comunidad en horizontal */
+#intro .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#intro .btn-primary:hover,
+#intro .btn-secondary:hover {
+    opacity: 0.8;
+}
+
+/* Estilos para la sección de noticias */
+#noticias {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#noticias h2 {
+    margin-bottom: 20px;
+}
+
+#lista-noticias .noticia {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+#lista-noticias .noticia h3 {
+    margin-top: 0;
+}
+
+#lista-noticias .noticia p {
+    font-size: 1em;
+}
+
+#lista-noticias .noticia a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#lista-noticias .noticia a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la sección de comunidad */
+#comunidad {
+    padding: 20px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+#comunidad h2 {
+    margin-bottom: 20px;
+}
+
 .comunidad-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    background: rgba(255, 215, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
 }
 
 .comunidad-item {
-    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
     width: 30%;
+    margin: 10px 0;
 }
 
 .comunidad-item h3 {
-    color: #FFD700;
-    font-size: 1.5rem;
+    margin-top: 0;
 }
 
 .comunidad-item p {
-    color: #fff;
+    font-size: 1em;
 }
 
-.btn-rojo {
-    display: inline-block;
+.comunidad-item .btn-rojo {
+    background-color: #dc3545;
+    color: #fff;
     padding: 10px 20px;
-    background: #FF0000;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+    border: none;
     border-radius: 5px;
-    transition: background 0.3s ease;
+    text-decoration: none;
 }
 
-.btn-rojo:hover {
-    background: #CC0000;
+.comunidad-item .btn-rojo:hover {
+    opacity: 0.8;
 }
 
-/* 📌 Footer */
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer h2 {
+    margin-top: 0;
+}
+
 .footer-links {
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    flex-wrap: wrap;
 }
+
+.footer-links div {
+    margin: 10px 0;
+}
+
 .footer-links h3 {
-    color: #FFD700;
+    margin-bottom: 10px;
 }
+
 .footer-links ul {
     list-style: none;
+    padding: 0;
 }
-.footer-links a {
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 10px 0 0;
 }

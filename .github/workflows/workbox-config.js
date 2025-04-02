@@ -3,5 +3,5 @@ module.exports = {
   globPatterns: ["**/*.{html,js,css,png,jpg,json}"],
   swDest: "docs/sw.js",
   clientsClaim: true,
-  skipWaiting: true,
+  skipWaiting: true
 };

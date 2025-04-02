@@ -3,58 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CriptoEduAr - Mercado</title>
+    <title>Mercado - CriptoEduAr</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
-        <h1>Datos del Mercado en Tiempo Real 📈</h1>
+        <img src="assets/images/logo.png" alt="CriptoEduAr Logo" width="150">
+        <h1>CriptoEduAr</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Cursos.html">Cursos</a></li>
+                <li><a href="Mercado.html">Mercado</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="mercado">
-        <h2>Precios en vivo 🚀</h2>
-        <div class="crypto-data">
-            <p><strong>Bitcoin:</strong> <span id="btc-price">$84687</span></p>
-            <p><strong>Ethereum:</strong> <span id="eth-price">$1879.44</span></p>
-        </div>
-    </section>
-
-    <section id="grafico">
-        <h2>📊 Tendencias del mercado</h2>
-        <canvas id="marketChart"></canvas>
+        <h2>Estado del Mercado</h2>
+        <canvas id="grafico-precios"></canvas>
     </section>
 
     <footer>
-        <p>&copy; 2024 CriptoEduAr - Educación blockchain para todos.</p>
+        <h2>CriptoEduAr</h2>
+        <p>Educación blockchain accesible para todos</p>
+        <div class="footer-links">
+            <div>
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Glosario</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Descargas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                </ul>
+            </div>
+        </div>
+        <p>&copy; 2024 CryptoEduAr. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        // Simulación de datos de mercado
-        const ctx = document.getElementById('marketChart').getContext('2d');
-        const marketChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
-                datasets: [{
-                    label: 'Precio BTC (USD)',
-                    data: [45000, 50000, 60000, 75000, 84687],
-                    borderColor: '#FFD700',
-                    backgroundColor: 'rgba(255, 215, 0, 0.2)',
-                    fill: true
-                }, {
-                    label: 'Precio ETH (USD)',
-                    data: [1400, 1600, 1800, 1700, 1879],
-                    borderColor: '#00FF00',
-                    backgroundColor: 'rgba(0, 255, 0, 0.2)',
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
