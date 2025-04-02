@@ -9,11 +9,12 @@ body {
 }
 
 /* Estilos para el encabezado */
-header {
-    background-color: #333;
-    color: #fff;
+header.banner {
+    background-color: #ffd700; /* Fondo dorado */
+    border: 5px solid #c0c0c0; /* Bordes plateados */
     padding: 10px 0;
     text-align: center;
+    box-sizing: border-box;
 }
 
 header img {
@@ -42,22 +43,6 @@ header nav ul li a {
 
 header nav ul li a:hover {
     text-decoration: underline;
-}
-
-/* Estilos para la sección de banner */
-#banner {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    background-color: #ffd700; /* Fondo dorado */
-    border: 5px solid #c0c0c0; /* Bordes plateados */
-    box-sizing: border-box;
-}
-
-#banner img {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 /* Estilos para la sección de introducción */
