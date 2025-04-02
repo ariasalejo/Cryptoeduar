@@ -44,6 +44,22 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Estilos para la sección de banner */
+#banner {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #ffd700; /* Fondo dorado */
+    border: 5px solid #c0c0c0; /* Bordes plateados */
+    box-sizing: border-box;
+}
+
+#banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Estilos para la sección de introducción */
 #intro {
     text-align: center;
