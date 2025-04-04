@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos - CriptoEduAr</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cursos - CryptoEduar</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
-    <header>
-        <img src="assets/images/logo.png" alt="CriptoEduAr Logo" width="150">
-        <h1>CriptoEduAr</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Cursos.html">Cursos</a></li>
-                <li><a href="Mercado.html">Mercado</a></li>
-                <li><a href="#comunidad">Comunidad</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="assets/css/images/logo.png" alt="CryptoEduar Logo" class="logo" />
+      <h1>CryptoEduar</h1>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="cursos.html">Cursos</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="cursos">
-        <h2>Explora Nuestros Cursos</h2>
-        <div class="curso">
-            <h3>Introducción a Blockchain</h3>
-            <p>Aprende los conceptos básicos de la tecnología blockchain.</p>
-            <button class="btn-primary">Inscribirse</button>
-        </div>
-        <div class="curso">
-            <h3>Criptomonedas Avanzadas</h3>
-            <p>Profundiza en el mundo de las criptomonedas y su funcionamiento.</p>
-            <button class="btn-primary">Inscribirse</button>
-        </div>
-        <!-- Agrega más cursos según sea necesario -->
+  <main class="container">
+    <section class="hero-section">
+      <h2>Explora Nuestros Cursos</h2>
+      <p>Aprende desde cero hasta convertirte en un experto en criptomonedas, blockchain y Web3.</p>
     </section>
 
-    <footer>
-        <h2>CriptoEduAr</h2>
-        <p>Educación blockchain accesible para todos</p>
-        <div class="footer-links">
-            <div>
-                <h3>Recursos</h3>
-                <ul>
-                    <li><a href="#">Glosario</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Descargas</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
-                </ul>
-            </div>
-        </div>
-        <p>&copy; 2024 CryptoEduAr. Todos los derechos reservados.</p>
-    </footer>
+    <section class="courses-grid">
+      <div class="curso-card">
+        <h3>Curso 1: Cómo empezar en el mundo de las criptomonedas</h3>
+        <p>Ideal para principiantes. Conoce qué es una criptomoneda, cómo funciona, cómo comprarla y mantenerla segura.</p>
+        <a href="curso1.html" class="btn-primary">Ver Curso</a>
+      </div>
 
-    <script src="assets/js/main.js"></script>
+      <div class="curso-card">
+        <h3>Curso 2: DeFi, Blockchain y Web3</h3>
+        <p>Explora el futuro de las finanzas descentralizadas, el funcionamiento de la blockchain y las tecnologías Web3.</p>
+        <a href="curso2.html" class="btn-primary">Ver Curso</a>
+      </div>
+
+      <div class="curso-card">
+        <h3>Curso 3: Altcoins y Memecoins</h3>
+        <p>Aprende a identificar oportunidades en el mercado alternativo de criptomonedas y cómo evaluar memecoins con criterio.</p>
+        <a href="curso3.html" class="btn-primary">Ver Curso</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 CryptoEduar. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

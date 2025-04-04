@@ -1,42 +1,66 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - CryptoEduar</title>
-    <link rel="stylesheet" href="main.css">
-    <script defer src="main.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | CryptoEduar</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <nav class="sidebar">
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="logo-container">
+        <img src="assets/css/images/logo.png" alt="Logo" class="logo" />
+        <h2>CryptoEduar</h2>
+      </div>
+      <nav class="menu">
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="#grafico">Gráfico</a></li>
+          <li><a href="#noticias">Noticias</a></li>
+          <li><a href="#inversion">Inversión</a></li>
+          <li><a href="#comparativa">Comparativa</a></li>
+          <li><a href="#historial">Historial</a></li>
+          <li><a href="index.html">Volver al Inicio</a></li>
         </ul>
-    </nav>
-    <main class="dashboard-container">
-        <section id="crypto-prices">
-            <h2>Precios en tiempo real</h2>
-            <canvas id="priceChart"></canvas>
-        </section>
-        <section id="crypto-news">
-            <h2>Noticias Destacadas</h2>
-            <div id="news-container">Cargando noticias...</div>
-        </section>
-        <section id="investment-calculator">
-            <h2>Calculadora de Inversión</h2>
-            <input type="number" id="investment-amount" placeholder="Cantidad">
-            <select id="crypto-select"></select>
-            <button onclick="calculateInvestment()">Calcular</button>
-            <p id="investment-result"></p>
-        </section>
-        <section id="crypto-comparison">
-            <h2>Comparativa de Criptomonedas</h2>
-            <canvas id="comparisonChart"></canvas>
-        </section>
-        <section id="activity-history">
-            <h2>Historial de Actividad</h2>
-            <ul id="activity-list">Cargando...</ul>
-        </section>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section id="grafico" class="panel">
+        <h2>Gráfico de Precio en Tiempo Real</h2>
+        <canvas id="priceChart"></canvas>
+      </section>
+
+      <section id="noticias" class="panel">
+        <h2>Últimas Noticias</h2>
+        <div id="news-container">Cargando noticias...</div>
+      </section>
+
+      <section id="inversion" class="panel">
+        <h2>Calculadora de Inversión</h2>
+        <input type="number" id="monto" placeholder="Monto en USD" />
+        <input type="number" id="precio" placeholder="Precio actual de la criptomoneda" />
+        <button onclick="calcularInversion()">Calcular</button>
+        <p id="resultado-inversion"></p>
+      </section>
+
+      <section id="comparativa" class="panel">
+        <h2>Comparativa de Criptomonedas</h2>
+        <p>Proximamente podrás comparar las principales criptos del mercado.</p>
+      </section>
+
+      <section id="historial" class="panel">
+        <h2>Actividad Reciente</h2>
+        <ul>
+          <li>Inversión de $100 en BTC</li>
+          <li>Consulta de noticias actualizadas</li>
+          <li>Visualización de gráfico en tiempo real</li>
+        </ul>
+      </section>
     </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

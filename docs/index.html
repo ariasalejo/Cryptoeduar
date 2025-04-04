@@ -1,36 +1,65 @@
-<link rel="stylesheet" href="main.css">
-<script src="main.js"></script>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoEduar</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
-    <header>
-        <h1>CryptoEduar</h1>
-        <p>Tu plataforma para información y análisis de criptomonedas.</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-        </ul>
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="assets/css/images/logo.png" alt="CryptoEduar Logo" class="logo" />
+      <h1>CryptoEduar</h1>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Cursos</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
     </nav>
-    <main>
-        <section id="noticias">
-            <h2>Últimas Noticias</h2>
-            <div id="lista-noticias">Cargando...</div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 CryptoEduar. Todos los derechos reservados.</p>
-    </footer>
-    <script src="main.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('Service Worker registrado:', reg.scope))
-                    .catch(err => console.error('Error registrando Service Worker:', err));
-            });
-        }
-    </script>
+  </header>
+
+  <section class="hero">
+    <h2>Tu plataforma educativa en criptomonedas</h2>
+    <p>CryptoEduar es una plataforma educativa diseñada para ayudarte a entender, analizar e invertir con confianza en el mundo de las criptomonedas.</p>
+    <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="button" target="_blank">Comenzar ahora</a>
+  </section>
+
+  <section class="section">
+    <h3>Video Explicativo</h3>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+      <iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya" 
+              frameborder="0" 
+              allowfullscreen 
+              style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
+      </iframe>
+    </div>
+  </section>
+
+  <section class="section">
+    <p>Desde gráficos en tiempo real hasta noticias actualizadas, te ofrecemos todo lo que necesitas en un solo lugar.</p>
+  </section>
+
+  <section class="section">
+    <h3>Síguenos en nuestras redes</h3>
+    <div class="social-buttons">
+      <a href="https://t.me/tu_grupo" class="social-button" target="_blank">Únete a Telegram</a>
+      <a href="https://facebook.com/tu_pagina" class="social-button" target="_blank">Nuestro Facebook</a>
+      <a href="https://discord.gg/tu_servidor" class="social-button" target="_blank">Únete a Discord</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Formulario de contacto</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSduGZcFakeFormID/viewform?embedded=true" 
+            width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+  </section>
+
+  <footer>
+    © 2025 CryptoEduar. Todos los derechos reservados.
+  </footer>
 </body>
 </html>

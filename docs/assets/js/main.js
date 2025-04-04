@@ -1,143 +1,105 @@
-// main.js
-
-document.addEventListener("DOMContentLoaded", () => {
-  registrarServiceWorker();
-  obtenerNoticias();
-  obtenerPrecios();
-  mostrarTendencias();
+// === Gráfico de precios en tiempo real ===
+const ctx = document.getElementById('priceChart');
+const priceChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Hace 5 min', 'Hace 4 min', 'Hace 3 min', 'Hace 2 min', 'Ahora'],
+    datasets: [{
+      label: 'Precio BTC (USD)',
+      data: [69000, 69200, 69150, 69300, 69400],
+      borderColor: '#0ff',
+      backgroundColor: 'rgba(0,255,255,0.2)',
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { color: '#fff' } } },
+    scales: {
+      x: { ticks: { color: '#aaa' } },
+      y: { ticks: { color: '#aaa' } }
+    }
+  }
 });
 
-// ========== Service Worker ==========
-function registrarServiceWorker() {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("sw.js")
-      .then((reg) => console.log("SW registrado:", reg.scope))
-      .catch((err) => console.error("Error al registrar SW:", err));
-  }
-}
+// === Noticias desde NewsAPI ===
+const newsContainer = document.getElementById('news-container');
+const apiKey = '45b326355e6646eb91a52c48776d369b';
+const url = `https://newsapi.org/v2/everything?q=crypto&language=es&apiKey=${apiKey}`;
 
-// ========== Noticias ==========
-async function obtenerNoticias() {
-  const apiKey = "45b326355e6646eb91a52c48776d369b";
-  const url = `https://newsapi.org/v2/everything?q=criptomonedas&language=es&sortBy=publishedAt&apiKey=${apiKey}`;
-
-  try {
-    const respuesta = await fetch(url);
-    const datos = await respuesta.json();
-    mostrarNoticias(datos.articles);
-  } catch (error) {
-    console.error("Error obteniendo noticias:", error);
-  }
-}
-
-function mostrarNoticias(noticias) {
-  const contenedor = document.getElementById("lista-noticias");
-  if (!contenedor) return;
-
-  contenedor.innerHTML = noticias
-    .map(
-      (noticia) => `
-    <div class="noticia">
-      <h3>${noticia.title}</h3>
-      <p>${noticia.description || "Sin descripción disponible."}</p>
-      <a href="${noticia.url}" target="_blank">Leer más</a>
-    </div>
-  `
-    )
-    .join("");
-}
-
-// ========== Precios ==========
-async function obtenerPrecios() {
-  const url =
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
-
-  try {
-    const respuesta = await fetch(url);
-    const datos = await respuesta.json();
-    mostrarPrecios(datos);
-  } catch (error) {
-    console.error("Error obteniendo precios:", error);
-  }
-}
-
-function mostrarPrecios(precios) {
-  const ctx = document.getElementById("grafico-precios").getContext("2d");
-  const labels = precios.map((p) => p.name);
-  const data = precios.map((p) => p.current_price);
-
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Precio en USD",
-          data: data,
-          backgroundColor: "rgba(0,255,255,0.2)",
-          borderColor: "rgba(0,255,255,1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    newsContainer.innerHTML = '';
+    data.articles.slice(0, 6).forEach(article => {
+      const div = document.createElement('div');
+      div.className = 'news-item';
+      div.innerHTML = `
+        <h4>${article.title}</h4>
+        <p>${article.description || ''}</p>
+        <a href="${article.url}" target="_blank">Leer más</a>
+      `;
+      newsContainer.appendChild(div);
+    });
+  })
+  .catch(() => {
+    newsContainer.innerHTML = '<p>Error al cargar noticias.</p>';
   });
-}
 
-// ========== Cálculo de ganancias/pérdidas ==========
-document.getElementById("calcular")?.addEventListener("click", async () => {
-  const cantidad = parseFloat(document.getElementById("cantidad-btc").value);
-  const precioCompra = parseFloat(
-    document.getElementById("precio-compra").value
-  );
-
-  if (isNaN(cantidad) || isNaN(precioCompra)) {
-    alert("Por favor ingresa valores válidos.");
-    return;
-  }
+// === Simulador de inversión ===
+document.getElementById('investment-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const amount = parseFloat(document.getElementById('amount').value);
+  const crypto = document.getElementById('crypto-select').value;
+  const resultEl = document.getElementById('investment-result');
 
   try {
-    const response = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
-    );
-    const data = await response.json();
-    const precioActual = data.bitcoin.usd;
-    const resultado = (precioActual - precioCompra) * cantidad;
-
-    document.getElementById(
-      "resultado"
-    ).innerText = `Ganancia/Pérdida estimada: $${resultado.toFixed(2)}`;
-  } catch (error) {
-    console.error("Error al obtener precios", error);
+    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+    const data = await res.json();
+    const price = data[crypto].usd;
+    const coins = amount / price;
+    resultEl.textContent = `Con $${amount} obtienes ${coins.toFixed(6)} ${crypto.toUpperCase()} (1 = $${price})`;
+  } catch {
+    resultEl.textContent = 'Error al calcular.';
   }
 });
 
-// ========== Tendencias ==========
-async function mostrarTendencias() {
+// === Comparativa de criptomonedas ===
+const comparativaContainer = document.getElementById('comparativa-container');
+
+async function cargarComparativa() {
   try {
-    const respuesta = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=3&page=1"
-    );
-    const datos = await respuesta.json();
-
-    const contenedor = document.getElementById("tendencias");
-    if (!contenedor) return;
-
-    contenedor.innerHTML = datos
-      .map(
-        (cripto) => `
-      <li>${cripto.name}: $${cripto.current_price}</li>
-    `
-      )
-      .join("");
-  } catch (error) {
-    console.error("Error al obtener tendencias:", error);
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,cardano,solana,polkadot');
+    const data = await res.json();
+    comparativaContainer.innerHTML = '';
+    data.forEach(coin => {
+      const card = document.createElement('div');
+      card.className = 'crypto-card';
+      card.innerHTML = `
+        <img src="${coin.image}" alt="${coin.name}" />
+        <h4>${coin.name} (${coin.symbol.toUpperCase()})</h4>
+        <p>Precio: $${coin.current_price}</p>
+        <p>Cap. Mercado: $${coin.market_cap.toLocaleString()}</p>
+        <p>24h: ${coin.price_change_percentage_24h.toFixed(2)}%</p>
+      `;
+      comparativaContainer.appendChild(card);
+    });
+  } catch (err) {
+    comparativaContainer.innerHTML = '<p>Error al cargar comparativas.</p>';
   }
 }
+cargarComparativa();
+
+// === Historial ficticio de actividades ===
+const historialList = document.getElementById('historial-list');
+const historial = [
+  'Calculaste inversión en BTC - $100 USD',
+  'Consultaste noticias de criptomonedas',
+  'Revisaste comparativa de Ethereum y Solana',
+];
+historialList.innerHTML = '';
+historial.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  historialList.appendChild(li);
+});
