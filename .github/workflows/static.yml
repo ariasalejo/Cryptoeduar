@@ -31,6 +31,8 @@ jobs:
 
       - name: 🚀 Subir archivos a GitHub Pages
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./docs  # Cambia esto si tu contenido no está en 'docs'
 
   deploy:
     runs-on: ubuntu-latest
