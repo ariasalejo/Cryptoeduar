@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Introducción a las Criptomonedas",
+    "description": "Aprende los conceptos básicos sobre criptomonedas, blockchain y seguridad.",
+    "level": "Principiante",
+    "duration": "4 semanas"
+  },
+  {
+    "id": 2,
+    "title": "DeFi y Finanzas Descentralizadas",
+    "description": "Explora el ecosistema DeFi y sus aplicaciones en inversión y préstamos.",
+    "level": "Intermedio",
+    "duration": "6 semanas"
+  },
+  {
+    "id": 3,
+    "title": "Desarrollo en Blockchain",
+    "description": "Aprende a desarrollar contratos inteligentes y aplicaciones descentralizadas.",
+    "level": "Avanzado",
+    "duration": "8 semanas"
+  }
+]

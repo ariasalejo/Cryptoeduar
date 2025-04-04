@@ -1,0 +1,17 @@
+cat <<EOF > docs/manifest.json
+{
+  "name": "CriptoEduAr",
+  "short_name": "CriptoEA",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#6e45e2",
+  "theme_color": "#6e45e2",
+  "icons": [
+    {
+      "src": "./assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
+EOF
