@@ -32,7 +32,7 @@ jobs:
       - name: 🚀 Subir archivos a GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./docs  # Cambia esto si tu contenido no está en 'docs'
+          path: ./docs  # O la carpeta donde estén tus archivos estáticos
 
   deploy:
     runs-on: ubuntu-latest
