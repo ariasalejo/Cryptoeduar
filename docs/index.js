@@ -1,5 +1,5 @@
 // 🌟 Función para obtener precios en tiempo real y calcular ganancias/pérdidas
-document.getElementById("calcular").addEventListener("click", function() {
+document.getElementById("calcular").addEventListener("click", function () {
     let cantidadBTC = parseFloat(document.getElementById("cantidad-btc").value);
     let precioCompra = parseFloat(document.getElementById("precio-compra").value);
 
@@ -21,3 +21,15 @@ async function mostrarTendencias() {
 
         let contenido = "<ul>";
         datos.forEach(cripto => {
+            contenido += `<li><strong>${cripto.name}:</strong> $${cripto.current_price} (24h: ${cripto.price_change_percentage_24h.toFixed(2)}%)</li>`;
+        });
+        contenido += "</ul>";
+
+        document.getElementById("tendencias").innerHTML = contenido;
+    } catch (error) {
+        console.error("Error al mostrar tendencias:", error);
+    }
+}
+
+// Ejecutar al cargar
+document.addEventListener("DOMContentLoaded", mostrarTendencias);

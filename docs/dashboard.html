@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoEduar Dashboard</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>CryptoEduar</h2>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#precios">Precios</a></li>
+            <li><a href="#noticias">Noticias</a></li>
+            <li><a href="#inversion">Calculadora</a></li>
+            <li><a href="#comparativa">Comparativa</a></li>
+            <li><a href="#historial">Historial</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <section id="precios">
+            <h2>Precios en Tiempo Real</h2>
+            <canvas id="grafico-precios"></canvas>
+        </section><section id="noticias">
+        <h2>Noticias</h2>
+        <div id="lista-noticias">Cargando noticias...</div>
+    </section>
+    
+    <section id="inversion">
+        <h2>Calculadora de Inversión</h2>
+        <input type="number" id="cantidad-btc" placeholder="Cantidad de BTC">
+        <input type="number" id="precio-compra" placeholder="Precio de compra">
+        <button id="calcular">Calcular</button>
+        <p id="resultado"></p>
+    </section>
+    
+    <section id="comparativa">
+        <h2>Comparativa de Criptomonedas</h2>
+        <canvas id="grafico-comparativa"></canvas>
+    </section>
+    
+    <section id="historial">
+        <h2>Historial de Movimientos</h2>
+        <ul id="lista-historial"></ul>
+    </section>
+</div>
+
+<script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>
