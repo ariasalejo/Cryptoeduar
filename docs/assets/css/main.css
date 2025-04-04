@@ -1,130 +1,167 @@
-/* main.css */
-body {
+/* Reset y fuentes */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(180deg, #000010 0%, #020220 100%);
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0a0a23;
-  padding: 1rem 2rem;
-  box-shadow: 0 0 10px #00ffff;
-  border-bottom: 2px solid #0ff;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Encabezado */
+header {
+  background: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #00ffff;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
 .logo {
-  width: 50px;
-  margin-right: 10px;
+  width: 60px;
+  height: 60px;
 }
 
-.navbar ul {
+nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
 }
 
-.navbar a {
+nav a {
   text-decoration: none;
-  color: #0ff;
+  color: #00ffff;
   font-weight: bold;
-  font-size: 1rem;
   transition: color 0.3s;
 }
 
-.navbar a:hover {
-  color: #fff;
+nav a:hover {
+  color: #ff00ff;
 }
 
-.hero {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: linear-gradient(145deg, #1c1c3c, #0a0a1a);
-  box-shadow: inset 0 0 20px #00ffff30;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: #aaa;
-  max-width: 600px;
+/* Secciones generales */
+section {
+  padding: 50px 20px;
+  max-width: 1200px;
   margin: auto;
 }
 
-.button {
-  background: linear-gradient(145deg, #0ff, #00f);
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00ffff;
+}
+
+/* Botones */
+.btn-primary {
+  background: linear-gradient(45deg, #00ffff, #0044ff);
   border: none;
   color: white;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 8px;
-  margin-top: 1.5rem;
+  padding: 10px 25px;
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 0 10px #0ff;
-  transition: transform 0.3s ease;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.button:hover {
+.btn-primary:hover {
+  background: linear-gradient(45deg, #00ccff, #6600ff);
   transform: scale(1.05);
-  background: linear-gradient(145deg, #00f, #0ff);
 }
 
-.section {
-  padding: 2rem;
-  text-align: center;
+/* Noticias */
+.noticia {
+  background: #1a1a2e;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 5px solid #00ffff;
+  border-radius: 10px;
 }
 
-.section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #0ff;
+.noticia h3 {
+  color: #00ffff;
 }
 
-footer {
-  background-color: #0a0a23;
-  text-align: center;
-  padding: 1.5rem;
-  color: #777;
-  font-size: 0.9rem;
-  margin-top: 3rem;
+.noticia a {
+  color: #ff00ff;
+  text-decoration: underline;
 }
 
-/* Social Buttons */
+.noticia a:hover {
+  color: #00ccff;
+}
+
+/* Redes sociales */
 .social-buttons {
   display: flex;
-  gap: 1rem;
   justify-content: center;
-  margin-top: 2rem;
+  gap: 20px;
+  margin: 20px auto;
+  flex-wrap: wrap;
 }
 
-.social-button {
-  background: linear-gradient(145deg, #0ff, #00f);
-  color: white;
-  border: none;
+.social-buttons a {
+  padding: 10px 20px;
+  background: #111122;
+  border: 2px solid #00ffff;
   border-radius: 12px;
-  padding: 12px 20px;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 0 10px #0ff;
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
-.social-button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(145deg, #00f, #0ff);
-  box-shadow: 0 0 15px #0ff, 0 0 30px #00f inset;
+.social-buttons a:hover {
+  background-color: #00ffff;
+  color: #000000;
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  background: #0f0c29;
+  padding: 40px 20px;
+  text-align: center;
+  color: #cccccc;
+  margin-top: 50px;
+  border-top: 1px solid #00ffff;
+}
+
+/* Animaciones al hacer scroll */
+.animar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
 }
