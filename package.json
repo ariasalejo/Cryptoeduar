@@ -5,7 +5,7 @@
   "scripts": {
     "start": "live-server docs --port=3000 --cors",
     "dev": "live-server docs --port=3000 --cors --watch",
-    "build": "workbox generateSW workbox-config.js"
+    "build": "workbox generateSW workbox-config.cjs"
   },
   "dependencies": {
     "chart.js": "^4.4.0",
