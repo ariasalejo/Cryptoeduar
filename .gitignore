@@ -1,31 +1,39 @@
-### ----- Archivos del Sistema ----- ###
+# --- Archivos del Sistema ---
 .DS_Store
 Thumbs.db
 desktop.ini
 
-### ----- Entornos y Dependencias ----- ###
-node_modules/
-.env
-.env.local
-*.env.*
+# --- Logs y Temporales ---
+*.log
+npm-debug.log*
+yarn-error.log*
 
-### ----- Build y Automatización ----- ###
+# --- Entornos y Variables ---
+.env
+.env.*
+*.env.local
+
+# --- Node y dependencias ---
+node_modules/
+package-lock.json
+yarn.lock
+
+# --- Build / Cache / Automatización ---
 dist/
 build/
 .cache/
 .tmp/
 
-### ----- Editor/IDE ----- ###
+# --- Archivos del editor ---
 .vscode/
 .idea/
 *.sublime-workspace
 
-### ----- Logs y Temporales ----- ###
-*.log
-npm-debug.log*
-yarn-error.log*
+# --- Service Workers de prueba o desarrollo ---
+*.cjs
+workbox-config.*
 
-### ----- Excepciones (NO ignorar) ----- ###
-!docs/                  # GitHub Pages necesita esta carpeta
-!docs/**/*              # Todo dentro de docs/ es importante
-!assets/**/*            # CSS, JS, imágenes
+# --- Permitir contenido necesario ---
+!docs/
+!docs/**
+!docs/assets/**
