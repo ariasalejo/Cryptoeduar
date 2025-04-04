@@ -56,8 +56,14 @@ if (document.getElementById("tendencias-datos")) {
 }
 
 // 🛠️ Registrar Service Worker para instalar como PWA
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-        .then(() => console.log("✅ Service Worker registrado"))
-        .catch(error => console.error("❌ Error registrando SW", error));
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.cjs').then((registration) => {
+      console.log('Service Worker registrado con éxito:', registration);
+    }).catch((error) => {
+      console.log('Error al registrar el Service Worker:', error);
+    });
+  });
 }
+
+// Tu código adicional aquí...
