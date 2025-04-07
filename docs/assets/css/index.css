@@ -1,264 +1,220 @@
-/* Reset básico */
-* {
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #0d0d0d; /* Fondo oscuro futurista */
+  color: #eaeaea;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Fuente y fondo general */
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #121212; /* Fondo oscuro */
-  color: #e0e0e0;
-  line-height: 1.6;
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
 }
 
-/* Encabezado y menú */
+/* Encabezado */
 header {
-  background-color: #1a1a1a;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #00ff99;
-}
-
-#logo-container {
-  margin-bottom: 10px;
-}
-
-#logo {
-  max-width: 150px;
-  height: auto;
-}
-
-nav ul {
-  list-style: none;
   display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el logo horizontalmente */
+  padding: 10px;
+  background-color: #1a1a1a;
+}
+
+#logo-container img {
+  max-width: 150px;
+}
+
+#main-menu ul {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos pequeños */
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  padding: 10px;
+  list-style: none;
+  gap: 25px; /* Espacio mayor entre botones */
 }
 
-nav ul li a {
-  display: block;
-  padding: 10px 20px;
-  background-color: #222;
-  color: #00ff99;
-  border: 2px solid #00ff99;
-  border-radius: 5px;
+#main-menu ul li a {
   text-decoration: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  color: #0d0d0d;
+  background-color: #00ffcc;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 5px #00ffcc;
 }
 
-nav ul li a:hover {
-  background-color: #00ff99;
-  color: #121212;
+#main-menu ul li a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff00ff;
 }
 
-/* Secciones principales */
-main {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
-}
-
-/* Sección de introducción */
+/* Bienvenida */
 #inicio {
   text-align: center;
-  margin-bottom: 40px;
+  padding: 50px 20px;
 }
 
 #inicio h1 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #00ff99;
+  color: #00ffcc;
 }
 
-#inicio p {
-  font-size: 1.2rem;
-}
-
-/* Sección de video */
+/* Video */
 #video {
-  text-align: center;
-  margin-bottom: 40px;
+  display: flex;
+  justify-content: center; /* Centra el video horizontalmente */
+  align-items: center; /* Centra el video verticalmente */
+  margin: 40px 20px;
 }
 
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  box-shadow: 0 0 20px #00ff99;
-  border-radius: 10px;
+#video iframe {
+  max-width: 95%; /* Aumenta el tamaño máximo del video */
+  height: auto; /* Ajusta dinámicamente la altura */
+  aspect-ratio: 16/9; /* Mantiene la proporción del video */
+  box-shadow: 0 0 15px #00ffcc, 0 0 20px #00ffcc; /* Efecto neón */
+  border-radius: 10px; /* Bordes ligeramente redondeados */
 }
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 10px;
-}
-
-/* Botón "Comenzar ahora" */
+/* Botón "Comenzar Ahora" */
 #cta {
   text-align: center;
-  margin-bottom: 40px;
+  margin: 20px;
 }
 
-.red-button {
+.btn-neon {
   display: inline-block;
   padding: 15px 30px;
-  background-color: #ff0000; /* Botón rojo */
-  color: #fff;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid #ff0000;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #00ffcc;
+  color: #0d0d0d;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00ffcc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.red-button:hover {
-  background-color: #cc0000;
-  border-color: #cc0000;
+.btn-neon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff00ff;
 }
 
-/* Sección de noticias */
-#noticias {
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 10px;
-  margin-bottom: 40px;
-  border-top: 2px solid #00ff99;
-  border-bottom: 2px solid #00ff99;
+/* Blog centrado */
+#blog {
+  text-align: center; /* Centra la sección Blog */
+  margin: 40px 20px; /* Espaciado adicional */
 }
 
-#noticias h2 {
-  text-align: center;
+#blog h2 {
+  font-size: 2rem;
+  color: #00ffcc;
   margin-bottom: 20px;
-  color: #00ff99;
 }
 
-#newsContainer {
+#blog p {
+  font-size: 1.2rem;
+  color: #eaeaea;
+}
+
+/* Noticias */
+#noticias {
+  margin: 40px 20px;
+  text-align: center; /* Centra el contenido */
+}
+
+.news-card {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  text-align: center;
+  background-color: #1a1a1a;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffcc;
 }
 
-.news-item {
-  background-color: #222;
-  padding: 20px;
-  border: 1px solid #00ff99;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.news-item:hover {
-  background-color: #00ff99;
-  color: #121212;
-}
-
-.news-item h3 {
-  font-size: 1.2rem;
+.news-card img {
+  max-width: 90%; /* Ajuste para móviles */
   margin-bottom: 10px;
 }
 
-.news-item p {
-  font-size: 0.95rem;
-}
-
-/* Redes Sociales */
+/* Redes Sociales centradas */
 #redes-sociales {
-  text-align: center;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column; /* Para apilar botones en móviles */
+  align-items: center; /* Centra los botones */
+  gap: 15px; /* Espacio entre botones */
+  margin: 40px 20px; /* Espaciado adicional */
 }
 
 #redes-sociales h2 {
+  font-size: 2rem;
+  color: #00ffcc;
   margin-bottom: 20px;
-  color: #00ff99;
 }
 
-#redes-sociales ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+/* Herramientas */
+#herramientas {
+  text-align: center; /* Centra todo el contenido */
+  padding: 20px;
 }
 
-#redes-sociales ul li a {
-  font-size: 1.2rem;
-  color: #00ff99;
-  transition: color 0.3s ease;
+#herramientas h3 {
+  color: #00ff00;
 }
 
-#redes-sociales ul li a:hover {
-  color: #fff;
-}
-
-/* Sección de Contacto */
-#contacto {
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 10px;
-  margin-bottom: 40px;
-}
-
-#contacto h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #00ff99;
-}
-
-#contacto form {
+/* Formulario de contacto */
+form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  align-items: center;
+  align-items: center; /* Centra los elementos */
+  gap: 10px;
 }
 
-#contacto label {
-  font-size: 1rem;
-  align-self: flex-start;
-}
-
-#contacto input, 
-#contacto textarea {
-  width: 80%;
-  padding: 10px;
-  border: 2px solid #00ff99;
-  border-radius: 5px;
-  background-color: #121212;
-  color: #fff;
-  font-size: 1rem;
-}
-
-#contacto button {
-  padding: 15px 30px;
-  background-color: #00ff99;
+input, textarea, button {
   border: none;
   border-radius: 5px;
-  font-size: 1.1rem;
-  color: #121212;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px;
+  width: 90%; /* Para móviles */
+  max-width: 500px; /* Ancho máximo */
 }
 
-#contacto button:hover {
-  background-color: #00b386;
+button {
+  background-color: #ff00ff;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
-/* Pie de página */
-footer {
-  background-color: #1a1a1a;
-  text-align: center;
-  padding: 20px;
-  color: #aaa;
-  font-size: 0.9rem;
-  border-top: 2px solid #00ff99;
-  margin-top: 40px;
+button:hover {
+  background-color: #00ffcc;
+  box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #logo-container img {
+    max-width: 120px; /* Ajusta el tamaño del logo en móviles */
+  }
+
+  #inicio h1 {
+    font-size: 2rem; /* Ajusta el tamaño del título */
+  }
+
+  #main-menu ul {
+    gap: 30px; /* Espacio adicional entre botones en móviles */
+  }
+
+  .news-card img {
+    max-width: 100%; /* Ajuste máximo para imágenes en móviles */
+  }
+
+  #video iframe {
+    max-width: 100%; /* Ajuste completo para pantallas pequeñas */
+  }
+
+  #redes-sociales {
+    flex-direction: column;
+    gap: 20px; /* Mayor espacio entre botones en móviles */
+  }
 }
