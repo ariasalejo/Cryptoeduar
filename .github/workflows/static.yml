@@ -30,8 +30,9 @@ jobs:
         run: npm run build
 
       - name: 🚀 Subir archivos a GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
+          name: github-pages
           path: ./docs
 
   deploy:
