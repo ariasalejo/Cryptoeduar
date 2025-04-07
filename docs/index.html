@@ -1,60 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoEduar</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoEduar - Inicio</title>
+  <!-- Enlace al CSS del index -->
+  <link rel="stylesheet" href="assets/css/index.css">
+  <!-- Carga de JS -->
+  <script src="assets/js/index.js" defer></script>
 </head>
 <body>
-  <header class="main-header">
-    <div class="logo-container">
-      <img src="assets/css/images/logo.png" alt="CryptoEduar Logo" class="logo" />
-      <h1>CryptoEduar</h1>
+  <!-- Encabezado con logo y menú de navegación vertical -->
+  <header>
+    <div id="logo-container">
+      <img src="assets/images/logo.png" alt="CryptoEduar Logo" id="logo">
     </div>
-    <nav class="navbar">
+    <nav id="vertical-menu">
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="cursos.html">Cursos</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#inicio" class="menu-btn">Inicio</a></li>
+        <li><a href="dashboard.html" class="menu-btn">Dashboard</a></li>
+        <li><a href="mercados.html" class="menu-btn">Mercado</a></li>
+        <li><a href="blog.html" class="menu-btn">Blog</a></li>
+        <li><a href="glosario.html" class="menu-btn">Glosario</a></li>
+        <li><a href="comunidad.html" class="menu-btn">Comunidad</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="hero">
-    <h2>Bienvenido a CryptoEduar</h2>
-    <p>CryptoEduar es una plataforma educativa diseñada para ayudarte a entender, analizar e invertir con confianza en el mundo de las criptomonedas.</p>
+  <main>
+    <!-- Sección: Inicio/Introducción -->
+    <section id="inicio">
+      <h1>Bienvenido a CryptoEduar</h1>
+      <p>Tu plataforma para aprender y explorar el mundo de las criptomonedas y blockchain.</p>
+    </section>
 
-    <div class="video-container">
-      <iframe width="100%" height="315" src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya"
-        title="Video explicativo CryptoEduar" frameborder="0" allowfullscreen></iframe>
-    </div>
+    <!-- Sección: Video embebido -->
+    <section id="video">
+      <h2>Explora el mundo de las criptomonedas</h2>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya" 
+          title="Video de CryptoEduar" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+      </div>
+    </section>
 
-    <p>Desde gráficos en tiempo real hasta noticias actualizadas, te ofrecemos todo lo que necesitas en un solo lugar.</p>
+    <!-- Sección: Botón "Comenzar ahora" -->
+    <section id="cta">
+      <div class="btn-container">
+        <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" target="_blank" class="red-button">
+          Comenzar ahora
+        </a>
+      </div>
+    </section>
 
-    <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="btn-primary">Comenzar ahora</a>
+    <!-- Sección: Noticias (cargar 5 últimas mediante API) -->
+    <section id="noticias">
+      <h2>Últimas Noticias</h2>
+      <div id="newsContainer">
+        <!-- Las noticias se cargarán aquí dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Sección: Redes Sociales -->
+    <section id="redes-sociales">
+      <h2>Redes Sociales</h2>
+      <ul>
+        <li><a href="https://t.me/criptoeduar" target="_blank">Telegram</a></li>
+        <li><a href="https://facebook.com/criptoeduar" target="_blank">Facebook</a></li>
+        <li><a href="https://discord.gg/criptoeduar" target="_blank">Discord</a></li>
+      </ul>
+    </section>
+
+    <!-- Sección: Contacto -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSfjT0uLQZ9GoQtOhHpMdlpF2yTtDqU9P3wSjB9J3RrjvD23zA/viewform" method="get" target="_blank">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
   </main>
-
-  <section class="tools">
-    <h2>Explora nuestras herramientas</h2>
-    <p>Accede a gráficos interactivos, comparativas de criptomonedas y más funciones desde el Dashboard.</p>
-    <a href="dashboard.html" class="btn-secondary">Ir al Dashboard</a>
-  </section>
-
-  <section class="socials">
-    <h2>Conéctate con nosotros</h2>
-    <div class="social-buttons">
-      <a href="https://t.me/tu_grupo" class="btn-social telegram">Únete a nuestro grupo en Telegram</a>
-      <a href="https://facebook.com/tu_pagina" class="btn-social facebook">Síguenos en Facebook</a>
-      <a href="https://discord.gg/tu_invitacion" class="btn-social discord">Únete a nuestra comunidad en Discord</a>
-    </div>
-  </section>
-
-  <section class="contact-form">
-    <h2>Contáctanos</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXEjemploFORMULARIO/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-  </section>
 
   <footer>
     <p>&copy; 2025 CryptoEduar. Todos los derechos reservados.</p>

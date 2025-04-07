@@ -26,13 +26,13 @@ jobs:
       - name: 📦 Instalar dependencias
         run: npm install
 
-      - name: 📜 Construir el proyecto
+      - name: 🧱 Construir sitio (Generar SW con Workbox)
         run: npm run build
 
       - name: 🚀 Subir archivos a GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./docs  # O la carpeta donde estén tus archivos estáticos
+          path: ./docs
 
   deploy:
     runs-on: ubuntu-latest
