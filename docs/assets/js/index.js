@@ -1,56 +1,52 @@
 // index.js - CryptoEduar
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("CryptoEduar cargado correctamente.");
-
-  // Inicialización de animaciones AOS
-  AOS.init();
-
-  // Scroll suave a secciones internas
-  document.querySelectorAll('a[href^="#"]').forEach(enlace => {
-    enlace.addEventListener("click", function (e) {
-      const destino = document.querySelector(this.getAttribute("href"));
-      if (destino) {
-        e.preventDefault();
-        destino.scrollIntoView({ behavior: "smooth" });
-      }
-    });
+// Registro del Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+      .catch(err => console.error('❌ Error al registrar Service Worker:', err));
   });
+}
 
-  // Validación rápida del formulario de contacto
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nombre = form.querySelector('input[type="text"]').value.trim();
-      const email = form.querySelector('input[type="email"]').value.trim();
-      const mensaje = form.querySelector('textarea').value.trim();
-
-      if (!nombre || !email || !mensaje) {
-        alert("Por favor, completa todos los campos.");
-      } else {
-        alert("¡Mensaje enviado correctamente!");
-        form.reset();
-      }
-    });
-  }
-
-  // Enlace del botón de comunidad (sección comunidad)
-  const botonesComunidad = document.querySelectorAll(".comunidad-boton");
-  botonesComunidad.forEach(btn => {
-    btn.addEventListener("click", () => {
-      window.open("https://t.me/criptoeduar", "_blank");
-    });
+// Animación suave al hacer scroll a secciones ancladas
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   });
-
-  // Pulsación animada en botón de "Comenzar ahora"
-  const botonYoutube = document.querySelector(".pulse");
-  if (botonYoutube) {
-    botonYoutube.addEventListener("mouseenter", () => {
-      botonYoutube.classList.add("animado");
-    });
-    botonYoutube.addEventListener("mouseleave", () => {
-      botonYoutube.classList.remove("animado");
-    });
-  }
 });
+
+// Efecto hover para botones con clase .btn-neon
+const neonButtons = document.querySelectorAll('.btn-neon');
+neonButtons.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    btn.classList.add('hovered');
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.classList.remove('hovered');
+  });
+});
+
+// Formulario de contacto - validación sencilla (opcional)
+const form = document.querySelector('.contact-form');
+if (form) {
+  form.addEventListener('submit', e => {
+    const name = form.querySelector('input[name="name"]');
+    const email = form.querySelector('input[name="email"]');
+    const message = form.querySelector('textarea[name="message"]');
+    
+    if (!name.value || !email.value || !message.value) {
+      e.preventDefault();
+      alert('Por favor, completa todos los campos antes de enviar.');
+    }
+  });
+}
+
+// Placeholder de futuras funciones
+console.log('CryptoEduar listo para explorar el mundo cripto.');

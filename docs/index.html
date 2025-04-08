@@ -3,126 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoEduar</title>
+  <title>CryptoEduar - Aprende Criptomonedas</title>
   <link rel="stylesheet" href="assets/css/index.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="icon" href="assets/images/logo.png" />
+  <style>
+    .video-container {
+      max-width: 800px;
+      margin: 20px auto;
+      border: 2px solid #00ffcc;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #00ffcc;
+    }
+    .video-container iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-
-  <header class="neon-header">
+  <header class="main-header">
     <img src="assets/images/logo.png" alt="Logo CryptoEduar" class="logo" />
-    <nav class="menu">
-      <a href="#dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
-      <a href="#cursos"><i class="bi bi-book"></i> Cursos</a>
-      <a href="#blog"><i class="bi bi-journal-text"></i> Blog</a> <!-- NUEVO -->
-      <a href="#herramientas"><i class="bi bi-tools"></i> Herramientas</a>
-      <a href="#mercado"><i class="bi bi-bar-chart-line"></i> Mercado</a>
-      <a href="#contacto"><i class="bi bi-envelope"></i> Contacto</a>
+    <nav class="nav-menu">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="#">Blog</a>
+      <a href="#">Herramientas</a>
+      <a href="#">Mercado</a>
+      <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <main class="main-content">
-
-    <section class="cuadro" data-aos="fade-up">
+  <main>
+    <section class="intro-section">
       <h1>Bienvenido a <span>CryptoEduar</span></h1>
-      <p>Aprende sobre criptomonedas, inversión y tecnología blockchain desde cero.</p>
+      <p>Explora el fascinante mundo de las criptomonedas desde cero con nuestra plataforma educativa.</p>
+      
       <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya"
-          title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya"
+          title="Video explicativo CryptoEduar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
       </div>
-      <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="neon-button youtube-button pulse" target="_blank">
-        <i class="bi bi-play-circle"></i> Comenzar ahora
-      </a>
+
+      <div class="buttons">
+        <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="btn-neon">Comenzar ahora</a>
+        <a href="dashboard.html" class="btn-alt">Ir al Dashboard</a>
+      </div>
     </section>
 
-    <section id="dashboard" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-speedometer2"></i> Dashboard</h2>
-      <p>Visualiza precios en tiempo real, gráficos, comparativas y más.</p>
-      <a href="dashboard.html" class="neon-button">Ir al Dashboard</a>
+    <section class="tools-section">
+      <div class="tool-box">
+        <h2>Dashboard</h2>
+        <p>Visualiza precios en tiempo real, gráficos y estadísticas.</p>
+        <a href="dashboard.html" class="btn-simple">Acceder</a>
+      </div>
+      <div class="tool-box">
+        <h2>Cursos</h2>
+        <p>Aprende sobre blockchain, DeFi, altcoins y más.</p>
+        <a href="cursos.html" class="btn-simple">Ver cursos</a>
+      </div>
+      <div class="tool-box">
+        <h2>Blog</h2>
+        <p>Noticias, análisis y tutoriales sobre criptomonedas.</p>
+        <a href="#" class="btn-simple">Explorar blog</a>
+      </div>
+      <div class="tool-box">
+        <h2>Herramientas</h2>
+        <p>Calculadoras, conversores y análisis técnico.</p>
+        <a href="#" class="btn-simple">Ir a herramientas</a>
+      </div>
+      <div class="tool-box">
+        <h2>Mercado</h2>
+        <p>Datos de mercado actualizados de criptos.</p>
+        <a href="#" class="btn-simple">Ver mercado</a>
+      </div>
     </section>
 
-    <section id="cursos" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-book"></i> Cursos</h2>
-      <p>Explora cursos diseñados para aprender desde cero.</p>
-      <a href="cursos.html" class="neon-button">Ver Cursos</a>
+    <section class="testimonios-section">
+      <h2>Testimonios</h2>
+      <blockquote>"Gracias a CryptoEduar comencé a invertir con confianza."</blockquote>
+      <blockquote>"Una plataforma clara, útil y muy educativa."</blockquote>
     </section>
 
-    <section id="blog" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-journal-text"></i> Blog</h2>
-      <p>Lee artículos y novedades del mundo cripto.</p>
-      <a href="blog.html" class="neon-button">Ir al Blog</a>
+    <section class="faq-section">
+      <h2>Preguntas Frecuentes</h2>
+      <details>
+        <summary>¿Es gratuito?</summary>
+        <p>Sí, todo el contenido base es gratuito.</p>
+      </details>
+      <details>
+        <summary>¿Necesito experiencia previa?</summary>
+        <p>No, está hecho para principiantes.</p>
+      </details>
     </section>
 
-    <section id="herramientas" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-tools"></i> Herramientas</h2>
-      <p>Utilidades útiles para análisis de criptomonedas.</p>
-      <a href="#" class="neon-button">Explorar Herramientas</a>
-    </section>
-
-    <section id="mercado" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-bar-chart-line"></i> Mercado</h2>
-      <p>Consulta datos de criptomonedas y tendencias del mercado.</p>
-      <a href="#" class="neon-button">Ver Mercado</a>
-    </section>
-
-    <section id="testimonios" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-chat-dots"></i> Testimonios</h2>
-      <p>Lo que dicen nuestros estudiantes:</p>
-      <blockquote>"Gracias a CryptoEduar, aprendí a invertir con confianza." – Ana R.</blockquote>
-      <blockquote>"Sus cursos me ayudaron a entender DeFi sin experiencia previa." – Luis C.</blockquote>
-    </section>
-
-    <section id="faq" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-question-circle"></i> Preguntas Frecuentes</h2>
-      <p><strong>¿Necesito experiencia previa?</strong> No, nuestros cursos son desde cero.</p>
-      <p><strong>¿Cuánto cuesta?</strong> Muchos recursos son gratuitos.</p>
-    </section>
-
-    <section id="roadmap" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-map"></i> Roadmap</h2>
+    <section class="benefits-section">
+      <h2>Beneficios de unirte</h2>
       <ul>
-        <li>Q1: Lanzamiento de plataforma</li>
-        <li>Q2: Cursos intermedios y foro de comunidad</li>
-        <li>Q3: App móvil y funciones premium</li>
+        <li>Acceso a comunidad privada</li>
+        <li>Actualizaciones constantes</li>
+        <li>Soporte y asesoría gratuita</li>
       </ul>
     </section>
 
-    <section id="beneficios" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-gift"></i> Beneficios de unirte</h2>
-      <ul>
-        <li>Acceso a contenido exclusivo</li>
-        <li>Grupo privado de Telegram</li>
-        <li>Actualizaciones semanales</li>
-      </ul>
+    <section class="comunidad-section">
+      <h2>Únete a nuestras comunidades</h2>
+      <div class="comunidad-links">
+        <a href="https://t.me/criptoeduar" class="btn-social">Telegram</a>
+        <a href="https://discord.gg/criptoeduar" class="btn-social">Discord</a>
+        <a href="https://facebook.com/criptoeduar" class="btn-social">Facebook</a>
+      </div>
     </section>
 
-    <section id="comunidad" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-people"></i> Únete a la comunidad</h2>
-      <p>Conecta con otros entusiastas de criptomonedas:</p>
-      <a href="#" class="neon-button"><i class="bi bi-telegram"></i> Telegram</a>
-      <a href="#" class="neon-button"><i class="bi bi-discord"></i> Discord</a>
-      <a href="#" class="neon-button"><i class="bi bi-facebook"></i> Facebook</a>
-    </section>
-
-    <section id="contacto" class="cuadro" data-aos="fade-up">
-      <h2><i class="bi bi-envelope"></i> Contáctanos</h2>
-      <form>
-        <input type="text" placeholder="Tu nombre" required />
-        <input type="email" placeholder="Tu correo electrónico" required />
-        <textarea placeholder="Escribe tu mensaje" required></textarea>
-        <button type="submit" class="neon-button">Enviar mensaje</button>
+    <section class="contacto-section" id="contacto">
+      <h2>Contacto</h2>
+      <form action="https://formsubmit.co/tucorreo@email.com" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Tu nombre" required />
+        <input type="email" name="email" placeholder="Tu correo" required />
+        <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
+        <button type="submit" class="btn-neon">Enviar mensaje</button>
       </form>
     </section>
-
   </main>
 
-  <footer class="footer">
+  <footer class="main-footer">
     <p>&copy; 2025 CryptoEduar. Todos los derechos reservados.</p>
   </footer>
 
   <script src="assets/js/index.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registrado:', reg.scope))
+          .catch(err => console.error('Error al registrar Service Worker:', err));
+      });
+    }
+  </script>
 </body>
 </html>
