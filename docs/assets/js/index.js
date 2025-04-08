@@ -1,53 +1,56 @@
-// API de Noticias
-const apiKey = '45b326355e6646eb91a52c48776d369b';
-const url = `https://newsapi.org/v2/everything?q=cryptocurrency&language=es&sortBy=publishedAt&pageSize=5&apiKey=${apiKey}`;
+// index.js - CryptoEduar
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    const newsContainer = document.getElementById('news-container');
-    newsContainer.innerHTML = '';
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("CryptoEduar cargado correctamente.");
 
-    data.articles.forEach(article => {
-      const newsItem = document.createElement('div');
-      newsItem.className = 'news-card';
-      newsItem.innerHTML = `
-        <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="Imagen de noticia" />
-        <h3>${article.title}</h3>
-        <p>${article.description || 'Sin descripción disponible.'}</p>
-        <a href="${article.url}" target="_blank">Leer más</a>
-      `;
-      newsContainer.appendChild(newsItem);
+  // Inicialización de animaciones AOS
+  AOS.init();
+
+  // Scroll suave a secciones internas
+  document.querySelectorAll('a[href^="#"]').forEach(enlace => {
+    enlace.addEventListener("click", function (e) {
+      const destino = document.querySelector(this.getAttribute("href"));
+      if (destino) {
+        e.preventDefault();
+        destino.scrollIntoView({ behavior: "smooth" });
+      }
     });
-  })
-  .catch(error => {
-    console.error('Error al cargar las noticias:', error);
-    document.getElementById('news-container').innerHTML = `
-      <p>Error al cargar noticias. Intenta nuevamente más tarde.</p>
-    `;
   });
 
-// Botón "Comenzar Ahora" con scroll suave
-document.querySelector('.btn-neon').addEventListener('click', () => {
-  document.getElementById('herramientas').scrollIntoView({ behavior: 'smooth' });
-});
+  // Validación rápida del formulario de contacto
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = form.querySelector('input[type="text"]').value.trim();
+      const email = form.querySelector('input[type="email"]').value.trim();
+      const mensaje = form.querySelector('textarea').value.trim();
 
-// Validación del formulario de contacto
-document.getElementById('contacto').addEventListener('submit', function (e) {
-  e.preventDefault(); // Evita el envío del formulario por defecto
-
-  // Obtener valores del formulario
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const mensaje = document.getElementById('mensaje').value.trim();
-
-  // Validación básica
-  if (!nombre || !email || !mensaje) {
-    alert("Por favor, completa todos los campos antes de enviar.");
-    return;
+      if (!nombre || !email || !mensaje) {
+        alert("Por favor, completa todos los campos.");
+      } else {
+        alert("¡Mensaje enviado correctamente!");
+        form.reset();
+      }
+    });
   }
 
-  // Si todo está correcto, muestra un mensaje de confirmación
-  alert("¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.");
-  this.reset(); // Limpia los campos del formulario
+  // Enlace del botón de comunidad (sección comunidad)
+  const botonesComunidad = document.querySelectorAll(".comunidad-boton");
+  botonesComunidad.forEach(btn => {
+    btn.addEventListener("click", () => {
+      window.open("https://t.me/criptoeduar", "_blank");
+    });
+  });
+
+  // Pulsación animada en botón de "Comenzar ahora"
+  const botonYoutube = document.querySelector(".pulse");
+  if (botonYoutube) {
+    botonYoutube.addEventListener("mouseenter", () => {
+      botonYoutube.classList.add("animado");
+    });
+    botonYoutube.addEventListener("mouseleave", () => {
+      botonYoutube.classList.remove("animado");
+    });
+  }
 });

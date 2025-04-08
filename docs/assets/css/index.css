@@ -1,220 +1,174 @@
-/* General Styles */
+/* index.css - CryptoEduar Estilo Futurista */
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #0d0d0d; /* Fondo oscuro futurista */
-  color: #eaeaea;
   margin: 0;
   padding: 0;
-}
-
-h1, h2 {
   font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(145deg, #0a0f1f, #11152a);
+  color: #ffffff;
+  scroll-behavior: smooth;
 }
 
-/* Encabezado */
-header {
+header.neon-header {
+  background-color: #0d0f2e;
+  padding: 1rem 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra el logo horizontalmente */
-  padding: 10px;
-  background-color: #1a1a1a;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 0 15px #00f0ff77;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-#logo-container img {
-  max-width: 150px;
+.logo {
+  height: 50px;
 }
 
-#main-menu ul {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos pequeños */
-  justify-content: center;
-  padding: 10px;
-  list-style: none;
-  gap: 25px; /* Espacio mayor entre botones */
-}
-
-#main-menu ul li a {
+nav.menu a {
+  color: #fff;
   text-decoration: none;
-  color: #0d0d0d;
-  background-color: #00ffcc;
-  padding: 10px 15px;
-  border-radius: 5px;
+  margin: 0 0.8rem;
   font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 5px #00ffcc;
+  transition: color 0.3s ease;
 }
 
-#main-menu ul li a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ff00ff;
+nav.menu a:hover {
+  color: #00fff0;
 }
 
-/* Bienvenida */
-#inicio {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-#inicio h1 {
-  font-size: 2.5rem;
-  color: #00ffcc;
-}
-
-/* Video */
-#video {
-  display: flex;
-  justify-content: center; /* Centra el video horizontalmente */
-  align-items: center; /* Centra el video verticalmente */
-  margin: 40px 20px;
-}
-
-#video iframe {
-  max-width: 95%; /* Aumenta el tamaño máximo del video */
-  height: auto; /* Ajusta dinámicamente la altura */
-  aspect-ratio: 16/9; /* Mantiene la proporción del video */
-  box-shadow: 0 0 15px #00ffcc, 0 0 20px #00ffcc; /* Efecto neón */
-  border-radius: 10px; /* Bordes ligeramente redondeados */
-}
-
-/* Botón "Comenzar Ahora" */
-#cta {
-  text-align: center;
-  margin: 20px;
-}
-
-.btn-neon {
-  display: inline-block;
-  padding: 15px 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #00ffcc;
-  color: #0d0d0d;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #00ffcc;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-neon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ff00ff;
-}
-
-/* Blog centrado */
-#blog {
-  text-align: center; /* Centra la sección Blog */
-  margin: 40px 20px; /* Espaciado adicional */
-}
-
-#blog h2 {
-  font-size: 2rem;
-  color: #00ffcc;
-  margin-bottom: 20px;
-}
-
-#blog p {
-  font-size: 1.2rem;
-  color: #eaeaea;
-}
-
-/* Noticias */
-#noticias {
-  margin: 40px 20px;
-  text-align: center; /* Centra el contenido */
-}
-
-.news-card {
+.main-content {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.cuadro {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #00fff050;
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 0 15px #00fff033;
+  backdrop-filter: blur(10px);
   text-align: center;
-  background-color: #1a1a1a;
-  margin-bottom: 15px;
-  padding: 15px;
+}
+
+.cuadro h2 {
+  color: #00ff99;
+  text-shadow: 0 0 10px #00ff99;
+}
+
+.cuadro h1 span {
+  color: #00ff99;
+  text-shadow: 0 0 10px #00ff99;
+}
+
+.neon-button {
+  background: linear-gradient(90deg, #00f0ff, #008cff);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px #00ffcc;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 10px #00cfff88;
+  transition: all 0.3s ease;
 }
 
-.news-card img {
-  max-width: 90%; /* Ajuste para móviles */
-  margin-bottom: 10px;
+.neon-button:hover {
+  box-shadow: 0 0 20px #00e6ffcc;
+  transform: scale(1.05);
 }
 
-/* Redes Sociales centradas */
-#redes-sociales {
-  display: flex;
-  flex-direction: column; /* Para apilar botones en móviles */
-  align-items: center; /* Centra los botones */
-  gap: 15px; /* Espacio entre botones */
-  margin: 40px 20px; /* Espaciado adicional */
+a.neon-button.pulse {
+  background: linear-gradient(90deg, #ff0040, #ff2f68);
+  box-shadow: 0 0 10px #ff2f6888;
 }
 
-#redes-sociales h2 {
-  font-size: 2rem;
-  color: #00ffcc;
-  margin-bottom: 20px;
+a.neon-button.pulse:hover {
+  box-shadow: 0 0 20px #ff2f68cc;
+  transform: scale(1.05);
 }
 
-/* Herramientas */
-#herramientas {
-  text-align: center; /* Centra todo el contenido */
-  padding: 20px;
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00fff055;
 }
 
-#herramientas h3 {
-  color: #00ff00;
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-/* Formulario de contacto */
 form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los elementos */
-  gap: 10px;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-input, textarea, button {
+form input,
+form textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 90%; /* Para móviles */
-  max-width: 500px; /* Ancho máximo */
+  outline: none;
+  background: #1d1f33;
+  color: white;
+  resize: none;
 }
 
-button {
-  background-color: #ff00ff;
-  font-weight: bold;
-  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+form button {
+  align-self: center;
 }
 
-button:hover {
-  background-color: #00ffcc;
-  box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #0a0c1d;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 3rem;
 }
 
-/* Responsivo */
+/* Responsive */
 @media (max-width: 768px) {
-  #logo-container img {
-    max-width: 120px; /* Ajusta el tamaño del logo en móviles */
-  }
-
-  #inicio h1 {
-    font-size: 2rem; /* Ajusta el tamaño del título */
-  }
-
-  #main-menu ul {
-    gap: 30px; /* Espacio adicional entre botones en móviles */
-  }
-
-  .news-card img {
-    max-width: 100%; /* Ajuste máximo para imágenes en móviles */
-  }
-
-  #video iframe {
-    max-width: 100%; /* Ajuste completo para pantallas pequeñas */
-  }
-
-  #redes-sociales {
+  header.neon-header {
     flex-direction: column;
-    gap: 20px; /* Mayor espacio entre botones en móviles */
+    align-items: flex-start;
+  }
+
+  nav.menu {
+    margin-top: 1rem;
+  }
+
+  nav.menu a {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 0 0;
+  }
+
+  .cuadro {
+    padding: 1.5rem;
+  }
+
+  .neon-button {
+    padding: 0.6rem 1.2rem;
   }
 }
