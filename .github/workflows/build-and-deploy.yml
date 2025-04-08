@@ -28,6 +28,9 @@ jobs:
     - name: Run build
       run: npm run build
 
+    - name: Debug content of working directory
+      run: ls -R
+
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
