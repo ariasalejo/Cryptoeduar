@@ -105,3 +105,31 @@ mostrarPrecios();
 mostrarGrafico();
 mostrarComparativa();
 mostrarEstadoMercado();
+const API_KEY = "7029e04c1d06f0215fd37aaa9a588654";
+const url = `https://gnews.io/api/v4/top-headlines?lang=es&topic=business&q=criptomonedas&max=6&apikey=${API_KEY}`;
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
+
+    data.articles.forEach(article => {
+      const articleEl = document.createElement('div');
+      articleEl.classList.add('news-card');
+      articleEl.innerHTML = `
+        <img src="${article.image}" alt="Noticia" class="news-img">
+        <div class="news-content">
+          <h3>${article.title}</h3>
+          <p>${article.description || ''}</p>
+          <a href="${article.url}" class="news-link" target="_blank">Leer más</a>
+        </div>
+      `;
+      newsContainer.appendChild(articleEl);
+    });
+  })
+  .catch(error => {
+    console.error("Error al cargar noticias:", error);
+    document.getElementById('news-container').innerHTML =
+      '<p class="loading-text">No se pudieron cargar las noticias.</p>';
+  });
