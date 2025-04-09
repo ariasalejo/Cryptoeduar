@@ -1,312 +1,118 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta name="description" content="Dashboard completo de criptomonedas con análisis en tiempo real, gráficos interactivos y herramientas financieras">
-  <title>CryptoEduar - Dashboard Inteligente de Criptomonedas</title>
-
-  <meta property="og:title" content="CryptoEduar - Dashboard Profesional">
-  <meta property="og:image" content="http://localhost:8000/assets/images/logo.png">
-
-  <link rel="stylesheet" href="assets/css/dashboard.css">
-  <link rel="preload" href="assets/images/logo.png" as="image">
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoEduar Dashboard</title>
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-
 <body>
-  <a class="skip-nav" href="#main-content">Saltar al contenido principal</a>
 
-  <header class="main-header">
-    <div class="header-container">
-      <a href="index.html" class="brand-logo">
-        <img src="assets/images/logo.png"
-             alt="CryptoEduar - Plataforma educativa de criptomonedas"
-             width="200"
-             height="40">
-      </a>
-
-      <nav class="main-nav" aria-label="Navegación principal">
-        <ul class="nav-list">
-          <li><a href="#overview" class="nav-link active" data-section="overview">Vista General</a></li>
-          <li><a href="#comparativa" class="nav-link" data-section="comparativa">Comparativa</a></li>
-          <li><a href="#herramientas" class="nav-link" data-section="herramientas">Herramientas</a></li>
-          <li><a href="#educacion" class="nav-link" data-section="educacion">Educación</a></li>
-        </ul>
-      </nav>
-
-      <button class="mobile-menu-button" aria-label="Abrir menú móvil">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-      </button>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="CryptoEduar Logo" />
+      <span>CryptoEduar</span>
     </div>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="navMenu">
+      <a class="neon-btn" href="index.html"><i class="ph ph-house"></i> Inicio</a>
+      <a class="neon-btn" href="cursos.html"><i class="ph ph-book-open"></i> Cursos</a>
+      <a class="neon-btn" href="blog.html"><i class="ph ph-note-pencil"></i> Blog</a>
+      <a class="neon-btn active" href="dashboard.html"><i class="ph ph-monitor-play"></i> Dashboard</a>
+    </nav>
   </header>
 
-  <main id="main-content" class="dashboard-container">
-    <section id="overview" class="dashboard-section" aria-labelledby="overview-title">
-      <h2 id="overview-title" class="section-title">Vista General del Mercado</h2>
-
-      <div class="overview-grid">
-        <div class="price-ticker-container">
-          <h3>Precios en Tiempo Real</h3>
-          <div id="price-ticker" class="price-ticker">
-            </div>
-        </div>
-
-        <div class="sentiment-widget-container">
-          <h3>Sentimiento del Mercado</h3>
-          <div id="market-sentiment">
-            </div>
-        </div>
-
-        <div class="dominance-container">
-          <h3>Dominio del Mercado</h3>
-          <canvas id="dominance-chart" role="img" aria-label="Gráfico de dominio de Bitcoin y Ethereum"></canvas>
-          <p class="dominance-explanation">Este gráfico muestra el porcentaje de la capitalización total del mercado de criptomonedas que representan Bitcoin y Ethereum.</p>
-        </div>
-      </div>
+  <main>
+    <!-- Estado del mercado -->
+    <section id="estado-mercado" class="neon-box">
+      <h2>Estado del mercado</h2>
+      <div id="market-status"></div>
     </section>
 
-    <section id="comparativa" class="dashboard-section" aria-labelledby="comparativa-title">
-      <h2 id="comparativa-title" class="section-title">Comparativa de Criptomonedas</h2>
+    <!-- Gráfico -->
+    <section id="chart" class="neon-box">
+      <h2>Gráfico de precios en tiempo real</h2>
+      <canvas id="priceChart"></canvas>
+    </section>
 
-      <div class="table-controls">
-        <div class="search-filter">
-          <label for="crypto-search">Buscar:</label>
-          <input type="text" id="crypto-search" placeholder="Ingrese nombre o símbolo">
-        </div>
-        </div>
+    <!-- Precios -->
+    <section id="precios" class="neon-box">
+      <h2>Precios en tiempo real</h2>
+      <ul class="price-list">
+        <li>Bitcoin: <span id="bitcoin-price">Cargando...</span></li>
+        <li>Ethereum: <span id="ethereum-price">Cargando...</span></li>
+        <li>Solana: <span id="solana-price">Cargando...</span></li>
+        <li>Cardano: <span id="cardano-price">Cargando...</span></li>
+        <li>Dogecoin: <span id="dogecoin-price">Cargando...</span></li>
+        <li>XRP: <span id="xrp-price">Cargando...</span></li>
+      </ul>
+    </section>
 
-      <div class="table-responsive">
-        <table class="crypto-table" aria-describedby="comparativa-desc">
-          <caption id="comparativa-desc" class="sr-only">Tabla comparativa de las principales criptomonedas</caption>
+    <!-- Comparativa -->
+    <section id="comparativa" class="neon-box">
+      <h2>Comparativa de criptomonedas</h2>
+      <div class="table-scroll">
+        <table id="crypto-comparison">
           <thead>
             <tr>
-              <th scope="col">Logo</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Símbolo</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Cambio (1h)</th>
-              <th scope="col">Cambio (24h)</th>
-              <th scope="col">Cambio (7d)</th>
-              <th scope="col">Capitalización</th>
-              <th scope="col">Volumen (24h)</th>
-              <th scope="col">Más Detalles</th>
+              <th>Criptomoneda</th>
+              <th>Símbolo</th>
+              <th>Precio</th>
+              <th>Market Cap</th>
+              <th>Volumen</th>
             </tr>
           </thead>
-          <tbody id="comparative-table-body">
-            </tbody>
+          <tbody></tbody>
         </table>
       </div>
-
-      <div id="crypto-details" class="crypto-details" style="display:none;" aria-live="polite">
-        <h3 id="crypto-details-title"></h3>
-        <div id="crypto-details-content">
-          </div>
-        <button id="close-details">Cerrar</button>
-      </div>
     </section>
 
-    <section id="herramientas" class="tools-grid">
-      <article class="tool-card" aria-labelledby="inversion-title">
-        <div class="card-header">
-          <h3 id="inversion-title" class="card-title">Simulador de Inversión</h3>
-        </div>
-        <form id="investment-form" class="tool-form">
-          <div class="form-group">
-            <label for="amount">Monto en USD:</label>
-            <input type="number"
-                   id="amount"
-                   name="amount"
-                   min="10"
-                   step="10"
-                   required
-                   aria-describedby="investment-help">
-            <span id="investment-help" class="help-text">Monto mínimo: $10</span>
-          </div>
-
-          <div class="form-group">
-            <label for="crypto-select">Criptomoneda:</label>
-            <select id="crypto-select" name="crypto" required>
-              <option value="" disabled selected>Seleccione...</option>
-              <option value="bitcoin">Bitcoin (BTC)</option>
-              <option value="ethereum">Ethereum (ETH)</option>
-              <option value="cardano">Cardano (ADA)</option>
-              <option value="ripple">Ripple (XRP)</option>
-              <option value="solana">Solana (SOL)</option>
-              <option value="binancecoin">Binance Coin (BNB)</option>
-              <option value="dogecoin">Dogecoin (DOGE)</option>
-              <option value="shiba-inu">Shiba Inu (SHIB)</option>
-              <option value="avalanche-2">Avalanche (AVAX)</option>
-              <option value="polkadot">Polkadot (DOT)</option>
-            </select>
-          </div>
-
-          <button type="submit" class="primary-btn">Calcular</button>
-        </form>
-        <div id="investment-result" class="result-box" aria-live="polite"></div>
-      </article>
-
-      <article class="tool-card" aria-labelledby="conversor-title">
-        <div class="card-header">
-          <h3 id="conversor-title" class="card-title">Conversor Instantáneo</h3>
-        </div>
-        <form id="converter-form" class="tool-form">
-          <div class="converter-row">
-            <div class="form-group">
-              <label for="from-crypto">De:</label>
-              <select id="from-crypto" class="currency-select">
-                <option value="bitcoin">BTC</option>
-                <option value="ethereum">ETH</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="to-crypto">A:</label>
-              <select id="to-crypto" class="currency-select">
-                <option value="usd">USD</option>
-                <option value="eur">EUR</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="conv-amount">Cantidad:</label>
-            <input type="text"
-                   id="conv-amount"
-                   step="0.00000001"
-                   required
-                   placeholder="Ej: 0.5">
-          </div>
-
-          <button type="button" id="convertButton" class="primary-btn">Convertir</button>
-        </form>
-        <div id="conversion-result" class="result-box" aria-live="polite"></div>
-      </article>
-
-      <article class="tool-card" aria-labelledby="alerts-title">
-        <div class="card-header">
-          <h3 id="alerts-title" class="card-title">Alertas de Precio</h3>
-        </div>
-        <form id="alert-form" class="tool-form">
-          <div class="form-group">
-            <label for="alert-crypto-select">Criptomoneda:</label>
-            <select id="alert-crypto-select" name="alert-crypto" required>
-              <option value="" disabled selected>Seleccione...</option>
-              <option value="bitcoin">Bitcoin (BTC)</option>
-              <option value="ethereum">Ethereum (ETH)</option>
-              <option value="cardano">Cardano (ADA)</option>
-              <option value="ripple">Ripple (XRP)</option>
-              <option value="solana">Solana (SOL)</option>
-              <option value="binancecoin">Binance Coin (BNB)</option>
-              <option value="dogecoin">Dogecoin (DOGE)</option>
-              <option value="shiba-inu">Shiba Inu (SHIB)</option>
-              <option value="avalanche-2">Avalanche (AVAX)</option>
-              <option value="polkadot">Polkadot (DOT)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="price-target">Precio objetivo (USD):</label>
-            <input type="number" id="price-target" name="price" required>
-          </div>
-          <button type="submit" class="primary-btn">Crear Alerta</button>
-        </form>
-        <div id="alerts-list">
-          </div>
-      </article>
-
-      <article class="tool-card" aria-labelledby="target-price-title">
-        <div class="card-header">
-          <h3 id="target-price-title" class="card-title">¿Cuándo Alcanzará Bitcoin...?</h3>
-        </div>
-        <form id="target-price-form" class="tool-form">
-          <div class="form-group">
-            <label for="target-price">Precio Objetivo (USD):</label>
-            <select id="target-price" name="target-price" required>
-              <option value="60000">60,000</option>
-              <option value="70000">70,000</option>
-              <option value="80000">80,000</option>
-              <option value="90000">90,000</option>
-              <option value="100000">100,000</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="timeframe">Horizonte de Tiempo:</label>
-            <select id="timeframe" name="timeframe" required>
-              <option value="days">Días</option>
-              <option value="months">Meses</option>
-              <option value="years">Años</option>
-            </select>
-          </div>
-          <button type="button" id="calculate-target-time" class="primary-btn">Calcular</button>
-        </form>
-        <div id="target-time-result" class="result-box" aria-live="polite"></div>
-      </article>
+    <!-- Extra / Actividad -->
+    <section id="actividad" class="neon-box">
+      <h2>Extra Destacado</h2>
+      <ul>
+        <li>Usa billeteras frías para almacenar criptos a largo plazo.</li>
+        <li>No compartas tu frase semilla con nadie.</li>
+        <li>Verifica siempre los enlaces antes de conectar tu wallet.</li>
+      </ul>
     </section>
-
-    <section id="educacion" class="education-section">
-      <h2 class="section-title">Recursos Educativos</h2>
-
-      <article class="glossary-accordion">
-        <h3>Glosario Cripto</h3>
-        <div class="accordion-content">
-          <dl>
-            <dt>Blockchain</dt>
-            <dd>Tecnología de registro distribuido que forma la base de las criptomonedas.</dd>
-
-            <dt>DeFi</dt>
-            <dd>Sistema financiero construido con tecnología blockchain.</dd>
-            </dl>
-        </div>
-        <button class="accordion-toggle" aria-expanded="false">Ver más términos</button>
-      </article>
-      </section>
   </main>
 
-  <footer class="main-footer">
-    <div class="footer-grid">
-      <div class="footer-section">
-        <h4>Recursos</h4>
-        <nav aria-label="Recursos útiles">
-          <ul>
-            <li><a href="#glosario">Glosario</a></li>
-            <li><a href="#tutoriales">Tutoriales</a></li>
-            <li><a href="#api">API Docs</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#privacidad">Privacidad</a></li>
-          <li><a href="#terminos">Términos</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Conectar</h4>
-        <div class="social-links">
-          <a href="#twitter" aria-label="Twitter">
-            <svg></svg>
-          </a>
-          <a href="#telegram" aria-label="Telegram">
-            <svg></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="copyright">
-      <p>&copy; 2024 CryptoEduar. Todos los derechos reservados.</p>
-      <p>Datos proporcionados por CoinGecko API</p>
-    </div>
+  <!-- Pie de página -->
+  <footer>
+    <p>© 2025 CryptoEduar. Todos los derechos reservados.</p>
+    <p>Síguenos en 
+      <a href="https://t.me/criptoeduar" target="_blank">Telegram</a> | 
+      <a href="https://facebook.com" target="_blank">Facebook</a> | 
+      <a href="https://discord.com" target="_blank">Discord</a>
+    </p>
   </footer>
 
-  <script src="assets/js/dashboard.js" type="module"></script>
+  <!-- JS -->
+  <script src="assets/js/dashboard.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => {
+            console.log('Service Worker registrado con éxito:', registration);
+          })
+          .catch(error => {
+            console.error('Error al registrar el Service Worker:', error);
+          });
+      });
+    }
+
+    function toggleMenu() {
+      const nav = document.getElementById("navMenu");
+      nav.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
