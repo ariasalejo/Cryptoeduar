@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,10 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body>
-
-  <!-- Encabezado -->
-  <header>
+<body>  <!-- Encabezado -->  <header>
     <div class="logo">
       <img src="assets/images/logo.png" alt="CryptoEduar Logo" />
       <span>CryptoEduar</span>
@@ -23,79 +19,79 @@
       <a class="neon-btn" href="blog.html"><i class="ph ph-note-pencil"></i> Blog</a>
       <a class="neon-btn active" href="dashboard.html"><i class="ph ph-monitor-play"></i> Dashboard</a>
     </nav>
-  </header>
-
-  <main>
+  </header>  <main>
     <!-- Estado del mercado -->
     <section id="estado-mercado" class="neon-box">
       <h2>Estado del mercado</h2>
       <div id="market-status"></div>
-    </section>
+    </section><!-- Gráfico -->
+<section id="chart" class="neon-box">
+  <h2>Gráfico de precios en tiempo real</h2>
+  <canvas id="priceChart"></canvas>
+</section>
 
-    <!-- Gráfico -->
-    <section id="chart" class="neon-box">
-      <h2>Gráfico de precios en tiempo real</h2>
-      <canvas id="priceChart"></canvas>
-    </section>
+<!-- Precios -->
+<section id="precios" class="neon-box">
+  <h2>Precios en tiempo real</h2>
+  <ul class="price-list">
+    <li>Bitcoin: <span id="bitcoin-price">Cargando...</span></li>
+    <li>Ethereum: <span id="ethereum-price">Cargando...</span></li>
+    <li>Solana: <span id="solana-price">Cargando...</span></li>
+    <li>Cardano: <span id="cardano-price">Cargando...</span></li>
+    <li>Dogecoin: <span id="dogecoin-price">Cargando...</span></li>
+    <li>XRP: <span id="xrp-price">Cargando...</span></li>
+  </ul>
+</section>
 
-    <!-- Precios -->
-    <section id="precios" class="neon-box">
-      <h2>Precios en tiempo real</h2>
-      <ul class="price-list">
-        <li>Bitcoin: <span id="bitcoin-price">Cargando...</span></li>
-        <li>Ethereum: <span id="ethereum-price">Cargando...</span></li>
-        <li>Solana: <span id="solana-price">Cargando...</span></li>
-        <li>Cardano: <span id="cardano-price">Cargando...</span></li>
-        <li>Dogecoin: <span id="dogecoin-price">Cargando...</span></li>
-        <li>XRP: <span id="xrp-price">Cargando...</span></li>
-      </ul>
-    </section>
+<!-- Comparativa -->
+<section id="comparativa" class="neon-box">
+  <h2>Comparativa de criptomonedas</h2>
+  <div class="table-scroll">
+    <table id="crypto-comparison">
+      <thead>
+        <tr>
+          <th>Criptomoneda</th>
+          <th>Símbolo</th>
+          <th>Precio</th>
+          <th>Market Cap</th>
+          <th>Volumen</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
 
-    <!-- Comparativa -->
-    <section id="comparativa" class="neon-box">
-      <h2>Comparativa de criptomonedas</h2>
-      <div class="table-scroll">
-        <table id="crypto-comparison">
-          <thead>
-            <tr>
-              <th>Criptomoneda</th>
-              <th>Símbolo</th>
-              <th>Precio</th>
-              <th>Market Cap</th>
-              <th>Volumen</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+<!-- Extra / Actividad -->
+<section id="actividad" class="neon-box">
+  <h2>Extra Destacado</h2>
+  <ul>
+    <li>Usa billeteras frías para almacenar criptos a largo plazo.</li>
+    <li>No compartas tu frase semilla con nadie.</li>
+    <li>Verifica siempre los enlaces antes de conectar tu wallet.</li>
+  </ul>
+</section>
 
-    <!-- Extra / Actividad -->
-    <section id="actividad" class="neon-box">
-      <h2>Extra Destacado</h2>
-      <ul>
-        <li>Usa billeteras frías para almacenar criptos a largo plazo.</li>
-        <li>No compartas tu frase semilla con nadie.</li>
-        <li>Verifica siempre los enlaces antes de conectar tu wallet.</li>
-      </ul>
-    </section>
-  </main>
+<!-- Créditos -->
+<section id="creditos" class="neon-box">
+  <h2>Créditos & Colaboradores</h2>
+  <ul>
+    <li>Diseño y desarrollo: <strong>CryptoEduar</strong></li>
+    <li>Inspiración y comunidad: <strong>Usuarios de Telegram, Discord y Facebook</strong></li>
+    <li>Gráficos y APIs: <strong>CoinGecko, Chart.js</strong></li>
+    <li>Icons: <strong>Phosphor Icons</strong></li>
+    <li>Frontend Style: <strong>Estilo futurista neón inspirado en CyberWeb</strong></li>
+  </ul>
+</section>
 
-  <!-- Pie de página -->
-  <footer>
+  </main>  <!-- Pie de página -->  <footer>
     <p>© 2025 CryptoEduar. Todos los derechos reservados.</p>
     <p>Síguenos en 
       <a href="https://t.me/criptoeduar" target="_blank">Telegram</a> | 
       <a href="https://facebook.com" target="_blank">Facebook</a> | 
       <a href="https://discord.com" target="_blank">Discord</a>
     </p>
-  </footer>
-
-  <!-- JS -->
-  <script src="assets/js/dashboard.js"></script>
-
-  <!-- Service Worker -->
-  <script>
+  </footer>  <!-- JS -->  <script src="assets/js/dashboard.js"></script>  <!-- Service Worker -->  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
@@ -113,6 +109,5 @@
       const nav = document.getElementById("navMenu");
       nav.classList.toggle("active");
     }
-  </script>
-</body>
+  </script></body>
 </html>
