@@ -1,44 +1,55 @@
+// Importar Workbox desde CDN
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox-sw.js');
 
 workbox.setConfig({ debug: false });
 
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
+workbox.core.skipWaiting(); // Forzar que se active de inmediato
+workbox.core.clientsClaim(); // Tomar control de todas las pestañas
 
-// Archivos precacheados
-workbox.precaching.precacheAndRoute([
-  // HTMLs
-  { url: '/index.html', revision: null },
-  { url: '/dashboard.html', revision: null },
-  { url: '/cursos.html', revision: null },
-  { url: '/blog.html', revision: null },
-  { url: '/herramientas.html', revision: null },
-  { url: '/mercado.html', revision: null },
-  { url: '/contacto.html', revision: null },
+// Función para versionar archivos dinámicamente
+const getRevisionedAssets = (files) => {
+  return files.map((file) => ({
+    url: file,
+    revision: `${Date.now()}`, // Forzamos que siempre use la última versión
+  }));
+};
+
+// Precaching de archivos estáticos importantes
+const PRECACHE_FILES = getRevisionedAssets([
+  // HTML
+  '/index.html',
+  '/dashboard.html',
+  '/cursos.html',
+  '/blog.html',
+  '/herramientas.html',
+  '/mercado.html',
+  '/contacto.html',
 
   // CSS
-  { url: '/assets/css/index.css', revision: null },
-  { url: '/assets/css/dashboard.css', revision: null },
-  { url: '/assets/css/cursos.css', revision: null },
-  { url: '/assets/css/mercado.css', revision: null },
-  { url: '/assets/css/blog.css', revision: null },
-  { url: '/assets/css/herramientas.css', revision: null },
-  { url: '/assets/css/contacto.css', revision: null },
+  '/assets/css/index.css',
+  '/assets/css/dashboard.css',
+  '/assets/css/cursos.css',
+  '/assets/css/mercado.css',
+  '/assets/css/blog.css',
+  '/assets/css/herramientas.css',
+  '/assets/css/contacto.css',
 
   // JS
-  { url: '/assets/js/index.js', revision: null },
-  { url: '/assets/js/dashboard.js', revision: null },
-  { url: '/assets/js/cursos.js', revision: null },
-  { url: '/assets/js/mercado.js', revision: null },
-  { url: '/assets/js/blog.js', revision: null },
-  { url: '/assets/js/herramientas.js', revision: null },
-  { url: '/assets/js/contacto.js', revision: null },
+  '/assets/js/index.js',
+  '/assets/js/dashboard.js',
+  '/assets/js/cursos.js',
+  '/assets/js/mercado.js',
+  '/assets/js/blog.js',
+  '/assets/js/herramientas.js',
+  '/assets/js/contacto.js',
 
-  // Imágenes (puedes agregar más aquí si usas otras)
-  { url: '/assets/images/logo.png', revision: null },
+  // Imágenes
+  '/assets/images/logo.png',
 ]);
 
-// API: CoinGecko
+workbox.precaching.precacheAndRoute(PRECACHE_FILES);
+
+// Cache dinámico para las APIs de CoinGecko
 workbox.routing.registerRoute(
   ({ url }) => url.origin.includes('api.coingecko.com'),
   new workbox.strategies.NetworkFirst({
@@ -52,7 +63,7 @@ workbox.routing.registerRoute(
   })
 );
 
-// API: NewsAPI
+// Cache dinámico para NewsAPI
 workbox.routing.registerRoute(
   ({ url }) => url.origin.includes('newsapi.org'),
   new workbox.strategies.NetworkFirst({
@@ -66,7 +77,7 @@ workbox.routing.registerRoute(
   })
 );
 
-// Imágenes
+// Imágenes: carga rápida
 workbox.routing.registerRoute(
   ({ request }) => request.destination === 'image',
   new workbox.strategies.CacheFirst({
@@ -80,7 +91,7 @@ workbox.routing.registerRoute(
   })
 );
 
-// Estilos, fuentes, scripts
+// Recursos estáticos (CSS, JS, fuentes): respuesta rápida, actualiza en segundo plano
 workbox.routing.registerRoute(
   ({ request }) =>
     request.destination === 'style' ||
@@ -90,3 +101,17 @@ workbox.routing.registerRoute(
     cacheName: 'static-resources',
   })
 );
+
+// Limpieza automática de cachés antiguos (opcional pero recomendable)
+self.addEventListener('activate', (event) => {
+  const currentCaches = ['coingecko-api', 'news-api', 'images', 'static-resources'];
+  event.waitUntil(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames
+          .filter((cacheName) => !currentCaches.includes(cacheName))
+          .map((cacheName) => caches.delete(cacheName))
+      )
+    )
+  );
+});
