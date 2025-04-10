@@ -1,0 +1,111 @@
+/* Estilo futurista con neón y hover personalizados */
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #0a0f1c;
+  color: #f0f0f0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0ff, #f0f);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem 2rem;
+}
+
+h2, h3 {
+  position: relative;
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  color: #00ffc3;
+  text-shadow: 0 0 10px #00ffc3;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+h2::before,
+h3::before {
+  content: '⚡'; /* Puedes cambiar por otros emojis o usar SVGs si prefieres */
+  color: #ff00d4;
+  text-shadow: 0 0 5px #ff00d4;
+  font-size: 1.4rem;
+}
+
+.intro, .video-section, .simulacion, .casos, .desafios-oportunidades, .testimonio, .graficos {
+  border: 2px solid #00ffe7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px #00ffc3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro:hover, .video-section:hover, .simulacion:hover, .casos:hover, .desafios-oportunidades:hover, .testimonio:hover, .graficos:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px #00fff7, 0 0 40px #ff00d4 inset;
+}
+
+ul {
+  list-style: square;
+  padding-left: 1.5rem;
+  color: #ccc;
+}
+
+blockquote {
+  border-left: 4px solid #ff00d4;
+  padding-left: 1rem;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px #ff00d4;
+  color: #ff99ff;
+  margin-top: 1rem;
+}
+
+canvas {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+  background: #0a0f1c;
+  border-top: 1px solid #222;
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h2, h3 {
+    font-size: 1.4rem;
+  }
+
+  .logo {
+    width: 60px;
+  }
+}

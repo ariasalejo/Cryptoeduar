@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curso 1 - Fundamentos de Criptomonedas</title>
+  <link rel="stylesheet" href="assets/css/curso1.css"/>
+</head>
+<body>
+  <header class="header">
+    <img src="assets/images/logo.png" alt="CryptoEduar Logo" class="logo">
+    <h1>Curso 1: Fundamentos de Criptomonedas</h1>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Bienvenidos al Futuro del Dinero</h2>
+      <p>El mundo de las finanzas está cambiando rápidamente, y las criptomonedas están liderando esta transformación. ¿Estás listo para adentrarte en este nuevo paradigma que está cambiando el mundo?</p>
+      <p>En esta sección, cubriremos los fundamentos de las criptomonedas: cómo funcionan, por qué son importantes, y cómo puedes utilizarlas para mejorar tu vida financiera.</p>
+
+      <h3>¿Por qué el Dinero Digital es Importante?</h3>
+      <p>En un mundo cada vez más globalizado, las criptomonedas permiten transacciones rápidas, seguras y descentralizadas, sin necesidad de intermediarios como bancos.</p>
+
+      <h3>Criptomonedas como Revolución Social y Financiera</h3>
+      <p>El dinero digital es accesible desde cualquier lugar del mundo y está diseñado para empoderar a las personas y facilitar una mayor inclusión financiera.</p>
+    </section>
+
+    <section class="video-section">
+      <h2>Video Introductorio</h2>
+      <video width="100%" height="auto" controls>
+        <source src="assets/videos/cursos/curso1/bitcoin.mp4" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video.
+      </video>
+    </section>
+
+    <section class="simulacion">
+      <h2>Simulación de Envío de Criptomonedas</h2>
+      <p>Imagina que necesitas enviar dinero a un amigo o realizar una compra internacional. Las criptomonedas permiten hacer esto de manera casi instantánea y sin grandes comisiones.</p>
+      <ul>
+        <li>1. Abre tu wallet.</li>
+        <li>2. Introduce la dirección de tu amigo.</li>
+        <li>3. Especifica la cantidad de BTC.</li>
+        <li>4. ¡Presiona enviar!</li>
+      </ul>
+    </section>
+
+    <section class="casos">
+      <h2>Casos de Estudio Internacionales</h2>
+      <h3>El Salvador y Bitcoin</h3>
+      <p>En 2021, El Salvador se convirtió en el primer país en adoptar Bitcoin como moneda de curso legal.</p>
+    </section>
+
+    <section class="desafios-oportunidades">
+      <h2>Desafíos y Oportunidades</h2>
+      <h3>Desafíos</h3>
+      <p>La volatilidad de los precios, la falta de regulación global y la adopción aún limitada son algunos de los retos.</p>
+      <h3>Oportunidades</h3>
+      <p>Desde la inclusión financiera hasta nuevas formas de inversión, el dinero digital ofrece un futuro prometedor.</p>
+    </section>
+
+    <section class="testimonio especial">
+      <h2>Testimonio Inspirador</h2>
+      <blockquote class="testimonio-rojo">
+        Sebastián Londoño: "Inspiras a Eduar a ser mejor, no te rindas que si Dios te abrió esta gran puerta en otros rumbos lejanos es por bendición."
+      </blockquote>
+    </section>
+
+    <section class="graficos">
+      <h2>Crecimiento de las Criptomonedas</h2>
+      <canvas id="cryptoGrowthChart" width="400" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CryptoEduar. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/curso1.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('SW registrado', reg))
+        .catch(err => console.error('Error al registrar SW:', err));
+    }
+  </script>
+</body>
+</html>
