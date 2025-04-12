@@ -1,88 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Curso 1 - Fundamentos de Criptomonedas</title>
-  <link rel="stylesheet" href="assets/css/curso1.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriptoEducación - Curso 1</title>
+    <link rel="stylesheet" href="assets/css/curso1.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00ffea">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-  <header class="header">
-    <img src="assets/images/logo.png" alt="CryptoEduar Logo" class="logo">
-    <h1>Curso 1: Fundamentos de Criptomonedas</h1>
-  </header>
+    <header class="navbar">
+        <h1>CriptoEducación</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">Introducción</a></li>
+                <li><a href="#bitcoin">Bitcoin</a></li>
+                <li><a href="#wallets">Wallets</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="container">
-    <section class="intro">
-      <h2>Bienvenidos al Futuro del Dinero</h2>
-      <p>El mundo de las finanzas está cambiando rápidamente, y las criptomonedas están liderando esta transformación. ¿Estás listo para adentrarte en este nuevo paradigma que está cambiando el mundo?</p>
-      <p>En esta sección, cubriremos los fundamentos de las criptomonedas: cómo funcionan, por qué son importantes, y cómo puedes utilizarlas para mejorar tu vida financiera.</p>
+    <!-- Módulo 1: Introducción al Dinero Digital -->
+    <section id="intro" class="module">
+        <div class="neon-circle">
+            <h2>1. Introducción al Dinero Digital</h2>
+        </div>
 
-      <h3>¿Por qué el Dinero Digital es Importante?</h3>
-      <p>En un mundo cada vez más globalizado, las criptomonedas permiten transacciones rápidas, seguras y descentralizadas, sin necesidad de intermediarios como bancos.</p>
+        <div class="section">
+            <h3>1.1 ¿Qué es el dinero digital?</h3>
+            <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico...</p>
+            <button class="info-button" data-section="1.1">Más información</button>
+            <div class="hidden-info" id="info-1.1">
+                <p>El dinero digital utiliza tecnología blockchain para garantizar transacciones seguras y descentralizadas.</p>
+            </div>
+            <img src="assets/images/dinero-digital.jpg" alt="Dinero Digital" class="section-image">
+        </div>
 
-      <h3>Criptomonedas como Revolución Social y Financiera</h3>
-      <p>El dinero digital es accesible desde cualquier lugar del mundo y está diseñado para empoderar a las personas y facilitar una mayor inclusión financiera.</p>
+        <div class="section">
+            <h3>1.2 Ventajas del dinero digital</h3>
+            <ul>
+                <li>Transacciones globales rápidas.</li>
+                <li>Bajas comisiones.</li>
+                <li>Inclusión financiera.</li>
+            </ul>
+            <img src="assets/images/transacciones-globales.jpg" alt="Ventajas del Dinero Digital" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>1.3 Desafíos actuales</h3>
+            <p>Volatilidad, regulación y adopción masiva son algunos de los desafíos...</p>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volatilitySlider">
+            <span id="volatilityValue">50%</span>
+            <p>Volatilidad actual (simulada).</p>
+            <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="section-image">
+        </div>
+
+        <div class="section video-section">
+            <h3>1.4 Video explicativo</h3>
+            <video controls>
+                <source src="assets/videos/bitcoin.mp4" type="video/mp4">
+                Tu navegador no soporta video HTML5.
+            </video>
+        </div>
+
+        <div class="section">
+            <h3>1.5 Futuro del dinero digital</h3>
+            <p>El futuro incluye más adopción en comercios y gobiernos...</p>
+            <canvas id="futureChart" width="400" height="200"></canvas>
+            <img src="assets/images/futuro-dinero.jpg" alt="Futuro del Dinero Digital" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>1.6 Preguntas frecuentes</h3>
+            <details>
+                <summary>¿Es seguro el dinero digital?</summary>
+                <p>Sí, siempre que se usen prácticas seguras como wallets cifradas...</p>
+            </details>
+            <img src="assets/images/seguridad.jpg" alt="Seguridad del Dinero Digital" class="section-image">
+        </div>
     </section>
 
-    <section class="video-section">
-      <h2>Video Introductorio</h2>
-      <video width="100%" height="auto" controls>
-        <source src="assets/videos/cursos/curso1/bitcoin.mp4" type="video/mp4">
-        Tu navegador no soporta la etiqueta de video.
-      </video>
+    <!-- Módulo 2: Historia de Bitcoin -->
+    <section id="bitcoin" class="module">
+        <div class="neon-circle">
+            <h2>2. Historia de Bitcoin</h2>
+        </div>
+
+        <div class="section timeline">
+            <h3>2.1 2008: Whitepaper de Satoshi</h3>
+            <p>Publicación del documento fundacional de Bitcoin...</p>
+            <button class="download-button">Descargar Whitepaper</button>
+            <img src="assets/images/whitepaper.jpg" alt="Whitepaper de Bitcoin" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>2.2 2009: Bloque Génesis</h3>
+            <p>Primer bloque minado con el mensaje "The Times 03/Jan/2009..."</p>
+            <img src="assets/images/bloque-genesis.jpg" alt="Bloque Génesis" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>2.3 2010: Primera transacción comercial</h3>
+            <p>Laszlo Hanyecz compra pizzas con BTC...</p>
+            <img src="assets/images/pizza-bitcoin.jpg" alt="Primera Transacción Comercial" class="section-image">
+        </div>
+
+        <div class="section chart-section">
+            <h3>2.4 Gráfico de adopción</h3>
+            <canvas id="adoptionChart"></canvas>
+            <img src="assets/images/adopcion-bitcoin.jpg" alt="Gráfico de Adopción" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>2.5 Hitos recientes</h3>
+            <p>Adopción en El Salvador como moneda legal...</p>
+            <img src="assets/images/el-salvador.jpg" alt="Hitos Recientes" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>2.6 Línea de tiempo interactiva</h3>
+            <button onclick="alert('¡Explora la línea de tiempo!')">Ver hitos</button>
+            <img src="assets/images/timeline.jpg" alt="Línea de Tiempo Interactiva" class="section-image">
+        </div>
     </section>
 
-    <section class="simulacion">
-      <h2>Simulación de Envío de Criptomonedas</h2>
-      <p>Imagina que necesitas enviar dinero a un amigo o realizar una compra internacional. Las criptomonedas permiten hacer esto de manera casi instantánea y sin grandes comisiones.</p>
-      <ul>
-        <li>1. Abre tu wallet.</li>
-        <li>2. Introduce la dirección de tu amigo.</li>
-        <li>3. Especifica la cantidad de BTC.</li>
-        <li>4. ¡Presiona enviar!</li>
-      </ul>
+    <!-- Módulo 3: Wallets y Seguridad -->
+    <section id="wallets" class="module">
+        <div class="neon-circle">
+            <h2>3. Wallets y Seguridad</h2>
+        </div>
+
+        <div class="section">
+            <h3>3.1 Tipos de wallets</h3>
+            <ul>
+                <li>Hot wallets</li>
+                <li>Cold wallets</li>
+                <li>Hardware wallets</li>
+            </ul>
+            <img src="assets/images/tipos-wallets.jpg" alt="Tipos de Wallets" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>3.2 Claves pública y privada</h3>
+            <p>Explicación de criptografía asimétrica...</p>
+            <button id="generateKeysButton">Generar Claves</button>
+            <p>Clave Pública: <span id="publicKey">---</span></p>
+            <p>Clave Privada: <span id="privateKey">---</span></p>
+            <img src="assets/images/claves-criptografia.jpg" alt="Claves Públicas y Privadas" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>3.3 Buenas prácticas</h3>
+            <ul>
+                <li>Backups múltiples.</li>
+                <li>Autenticación de 2 factores.</li>
+            </ul>
+            <img src="assets/images/mejores-practicas.jpg" alt="Buenas Prácticas" class="section-image">
+        </div>
+
+        <div class="section activity">
+            <h3>3.4 Simulador de transacción</h3>
+            <div class="simulator">
+                <input type="text" placeholder="Dirección de destino" id="destinationAddress">
+                <input type="number" placeholder="Cantidad BTC" id="btcAmount">
+                <button onclick="simulateTransaction()">Simular envío</button>
+                <div id="transactionResult"></div>
+            </div>
+            <img src="assets/images/simulador-transaccion.jpg" alt="Simulador de Transacciones" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>3.5 Riesgos comunes</h3>
+            <p>Phishing, exchanges hackeados...</p>
+            <button id="showRiskAlertButton">Mostrar Alerta de Riesgo</button>
+            <img src="assets/images/riesgos-seguridad.jpg" alt="Riesgos Comunes" class="section-image">
+        </div>
+
+        <div class="section">
+            <h3>3.6 Checklist de seguridad</h3>
+            <label><input type="checkbox" id="backupCheckbox"> Backup realizado</label>
+            <label><input type="checkbox" id="2faCheckbox"> 2FA activado</label>
+            <button id="checkSecurityButton">Verificar Seguridad</button>
+            <img src="assets/images/checklist-seguridad.jpg" alt="Checklist de Seguridad" class="section-image">
+        </div>
     </section>
 
-    <section class="casos">
-      <h2>Casos de Estudio Internacionales</h2>
-      <h3>El Salvador y Bitcoin</h3>
-      <p>En 2021, El Salvador se convirtió en el primer país en adoptar Bitcoin como moneda de curso legal.</p>
-    </section>
+    <footer>
+        <p>© 2025 CriptoEducación - Todos los derechos reservados</p>
+    </footer>
 
-    <section class="desafios-oportunidades">
-      <h2>Desafíos y Oportunidades</h2>
-      <h3>Desafíos</h3>
-      <p>La volatilidad de los precios, la falta de regulación global y la adopción aún limitada son algunos de los retos.</p>
-      <h3>Oportunidades</h3>
-      <p>Desde la inclusión financiera hasta nuevas formas de inversión, el dinero digital ofrece un futuro prometedor.</p>
-    </section>
+    <script>
+         // Animaciones GSAP
+        gsap.from(".neon-circle", { opacity: 0, scale: 0.5, duration: 1, stagger: 0.5 });
+        gsap.from(".section", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
 
-    <section class="testimonio especial">
-      <h2>Testimonio Inspirador</h2>
-      <blockquote class="testimonio-rojo">
-        Sebastián Londoño: "Inspiras a Eduar a ser mejor, no te rindas que si Dios te abrió esta gran puerta en otros rumbos lejanos es por bendición."
-      </blockquote>
-    </section>
+        // Gráficos Chart.js
+        const adoptionCtx = document.getElementById('adoptionChart');
+        if (adoptionCtx) {
+            new Chart(adoptionCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2015', '2020', '2023'],
+                    datasets: [{
+                        label: 'Usuarios de Bitcoin (millones)',
+                        data: [0.1, 10, 100, 400],
+                        borderColor: '#00ffea',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true }
+                    }
+                }
+            });
+        }
 
-    <section class="graficos">
-      <h2>Crecimiento de las Criptomonedas</h2>
-      <canvas id="cryptoGrowthChart" width="400" height="200"></canvas>
-    </section>
-  </main>
+        const futureCtx = document.getElementById('futureChart');
+        if (futureCtx) {
+            new Chart(futureCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Comercios', 'Gobiernos', 'Individuos'],
+                    datasets: [{
+                        label: 'Adopción Futura (%)',
+                        data: [70, 50, 90],
+                        backgroundColor: ['#00ffea', '#ffea00', '#ff00ea']
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
 
-  <footer>
-    <p>&copy; 2025 CryptoEduar. Todos los derechos reservados.</p>
-  </footer>
+        // Slider de Volatilidad
+        const volatilitySlider = document.getElementById("volatilitySlider");
+        const volatilityValue = document.getElementById("volatilityValue");
+        volatilitySlider.addEventListener("input", () => {
+            volatilityValue.textContent = `${volatilitySlider.value}%`;
+        });
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="assets/js/curso1.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('SW registrado', reg))
-        .catch(err => console.error('Error al registrar SW:', err));
-    }
-  </script>
+        // Generador de Claves
+        document.getElementById("generateKeysButton")?.addEventListener("click", () => {
+            const publicKey = `pub_${Math.random().toString(36).substring(7)}`;
+            const privateKey = `priv_${Math.random().toString(36).substring(7)}`;
+            document.getElementById("publicKey").textContent = publicKey;
+            document.getElementById("privateKey").textContent = privateKey;
+        });
+
+        // Simulador de Transacciones
+        function simulateTransaction() {
+            const address = document.getElementById("destinationAddress").value.trim();
+            const amount = parseFloat(document.getElementById("btcAmount").value);
+
+            if (!address || address.length < 26) {
+                alert("Dirección inválida. Mínimo 26 caracteres.");
+                return;
+            }
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("Cantidad inválida. Debe ser mayor a 0.");
+                return;
+            }
+
+            document.getElementById("transactionResult").innerHTML = `
+                <p style="color: #00ffea;">✔ Transacción exitosa: ${amount} BTC a ${address}</p>
+            `;
+        }
+
+        // Modo Oscuro
+        const darkModeToggle = document.createElement("button");
+        darkModeToggle.textContent = "🌙 Modo Oscuro";
+        darkModeToggle.style.position = "fixed";
+        darkModeToggle.style.bottom = "20px";
+        darkModeToggle.style.right = "20px";
+        darkModeToggle.style.padding = "10px 20px";
+        darkModeToggle.style.backgroundColor = "#00ffea";
+        darkModeToggle.style.color = "#000";
+        darkModeToggle.style.border = "none";
+        darkModeToggle.style.borderRadius = "5px";
+        darkModeToggle.style.cursor = "pointer";
+        darkModeToggle.style.zIndex = "1000";
+
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            darkModeToggle.textContent = document.body.classList.contains("dark-mode")
+                ? "☀️ Modo Claro"
+                : "🌙 Modo Oscuro";
+        });
+
+        document.body.appendChild(darkModeToggle);
+
+        // Service Worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js")
+                    .then(reg => console.log("SW Registrado:", reg))
+                    .catch(err => console.error("Error SW:", err));
+            });
+        }
+    </script>
 </body>
 </html>
