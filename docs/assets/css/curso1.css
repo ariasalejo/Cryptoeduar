@@ -1,151 +1,247 @@
-/* Fondo y fuentes */
+/* Fondo de partículas animadas */
 body {
-  background-color: #0f0f0f;
-  color: #e0e0e0;
-  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Pseudo-elemento para partículas */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#00ffea 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -2;
+  animation: moveParticles 30s linear infinite;
+}
+
+@keyframes moveParticles {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-100px, -100px); }
+}
+
+/* Encabezado (navbar) mejorado */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #00ffea, #0075ff);
+  padding: 20px 40px;
+  box-shadow: 0 0 20px #00ffea;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar h1 {
+  font-size: 2rem;
+  color: #000;
+  text-shadow: 0 0 5px #fff;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
   margin: 0;
   padding: 0;
 }
 
-/* Contenedor principal */
-.content {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+.navbar nav ul li {
+  margin-right: 20px;
 }
 
-/* Secciones */
+.navbar nav ul li:last-child {
+  margin-right: 0;
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #00ffea;
+}
+
+/* Secciones y módulos con efecto neón */
+.module,
 .section {
-  background: linear-gradient(145deg, #1c1c1c, #101010);
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  margin-bottom: 30px;
+  margin: 20px 40px;
   padding: 20px;
-  box-shadow: 0 0 10px #00ffcc33;
-  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(0, 255, 234, 0.8);
+  box-shadow: 0 0 15px #00ffea, 0 0 30px #00ffea;
+  border-radius: 10px;
+  position: relative;
 }
 
-.section:hover {
-  box-shadow: 0 0 15px #00ffcc88;
-}
-
-/* Títulos */
-.section h3 {
-  text-align: center;
-  font-size: 1.6em;
-  color: #00ffc8;
-  margin-bottom: 15px;
-}
-
-/* Botones plegables */
-.toggle-button {
-  display: block;
-  margin: 0 auto 15px auto;
-  background: #00ffc8;
-  color: #000;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.toggle-button:hover {
-  background: #00cfa5;
-}
-
-/* Contenido ocultable */
-.toggle-content {
-  display: none;
+/* Círculo para encabezados tipo neón */
+.neon-circle {
   padding: 10px;
-  background-color: #181818;
-  border: 1px solid #333;
-  border-radius: 10px;
-  margin-top: 10px;
-  color: #eee;
+  border: 2px solid #00ffea;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00ffea;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.7);
 }
 
-.toggle-content.visible {
-  display: block;
-}
-
-/* Imágenes */
-.section-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 15px auto;
-  border-radius: 10px;
-}
-
-/* Video */
-.video-section video {
-  display: block;
-  max-width: 100%;
-  margin: 20px auto;
-  border-radius: 12px;
-}
-
-/* Botón "Ver Video" */
-.watch-button {
-  display: block;
-  margin: 10px auto 0 auto;
+/* Estilizado de botones */
+button,
+.toggle-button,
+.toggle-btn {
+  background: transparent;
+  color: #00ffea;
+  border: 2px solid #00ffea;
   padding: 10px 20px;
-  background-color: #33ccff;
-  border: none;
-  color: #000;
+  text-transform: uppercase;
   font-weight: bold;
-  border-radius: 25px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.watch-button:hover {
-  background-color: #1aa3cc;
+button:hover,
+.toggle-button:hover,
+.toggle-btn:hover {
+  background: #00ffea;
+  color: #000;
+  box-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
 }
 
-/* Gráficos */
-canvas {
-  display: block;
+/* Imágenes dentro de las secciones */
+.section-image {
   max-width: 100%;
-  height: auto;
-  margin: 20px auto;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 0 10px #00ffea;
 }
 
-/* Responsive */
+/* Video container para responsividad y efecto sutil */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.video-container .video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  box-shadow: 0 0 15px #00ffea;
+  border-radius: 8px;
+}
+
+/* FAQ - Detalles animados */
+.faq-card {
+  background: rgba(0, 0, 0, 0.8);
+  margin: 10px 0;
+  padding: 15px;
+  border: 1px solid #00ffea;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00ffea;
+  transition: background 0.3s;
+}
+.faq-card summary {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-card summary:hover {
+  color: #00ffea;
+}
+.faq-card[open] {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Animación para el toggle de secciones internas */
+.toggle-content {
+  overflow: hidden;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efectos para elementos interactivos */
+a {
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #00ffea;
+}
+
+/* Gráficos y sliders */
+.slider {
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* Pequeños ajustes en tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+table caption {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #00ffea;
+}
+
+/* Recursos adicionales */
+.resources-box ul {
+  list-style: none;
+  padding: 0;
+}
+.resources-box ul li {
+  margin-bottom: 5px;
+}
+
+/* Ajustes responsivos */
 @media (max-width: 768px) {
-  .section h3 {
-    font-size: 1.3em;
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-
-  .toggle-button,
-  .watch-button {
+  
+  .navbar nav ul {
+    flex-direction: column;
     width: 100%;
-    padding: 12px;
+  }
+  
+  .navbar nav ul li {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+  
+  .module,
+  .section {
+    margin: 10px 20px;
+    padding: 15px;
   }
 }
-chart-container {
-        margin: 20px 0;
-        position: relative;
-    }
-    .chart-source {
-        font-size: 0.8em;
-        color: #666;
-        text-align: right;
-    }
-    .crypto-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-        margin: 15px 0;
-    }
-    .crypto-card {
-        background: #f8f9fa;
-        padding: 12px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    /* Conservar los estilos toggle del ejemplo anterior */
