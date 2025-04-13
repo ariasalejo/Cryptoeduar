@@ -87,13 +87,277 @@
 <div class="section video-section">
     <h3>1.4 Video explicativo</h3>
     <p>Para comprender mejor los conceptos relacionados con Bitcoin y el dinero digital, te invitamos a ver el siguiente video explicativo.</p>
-    
+
     <div class="video-container">
         <video controls class="video-player" id="bitcoinVideo">
             <source src="assets/videos/cursos/curso1/bitcoin.mp4" type="video/mp4">
             Tu navegador no soporta video HTML5.
         </video>
     </div>
+</div>
+
+<div class="section">
+    <h3>1.5 Futuro del dinero digital</h3>
+    
+    <div class="main-content">
+        <p>El mercado de criptomonedas muestra una capitalización actual de <span id="market-cap">---</span> billones USD, con una adopción creciente de CBDCs en 130 países. La tecnología blockchain permite transacciones <strong>24/7</strong> con costes hasta <strong>90% menores</strong> que sistemas tradicionales.</p>
+        
+        <!-- Gráfico restaurado con API CoinGecko -->
+        <div class="chart-container">
+            <canvas id="coinChart" width="400" height="250"></canvas>
+            <p class="chart-source">Datos en tiempo vivo via CoinGecko API</p>
+        </div>
+        
+        <img src="assets/images/futuro-dinero.jpg" alt="Proyección mercado cripto 2025-2030" class="section-image">
+    </div>
+    
+    <button class="toggle-btn" onclick="toggleAdditionalInfo()">Más información ▼</button>
+    
+    <div class="additional-info" style="display: none;">
+        <h4>Datos en Tiempo Real:</h4>
+        <div class="crypto-grid">
+            <div class="crypto-card">
+                <img src="https://static.coingecko.com/s/bitcoin-63b17e82.svg" alt="Bitcoin" width="20">
+                <span id="btc-price">Cargando...</span>
+            </div>
+            <div class="crypto-card">
+                <img src="https://static.coingecko.com/s/ethereum-7a9c2a3d.svg" alt="Ethereum" width="20">
+                <span id="eth-price">Cargando...</span>
+            </div>
+            <div class="crypto-card">
+                <span>📈 Volumen 24h:</span>
+                <span id="daily-volume">---</span>
+            </div>
+        </div>
+        
+        <h4>Proyecciones 2030:</h4>
+        <ul>
+            <li>Mercado cripto: $10-15 billones (BCG)</li>
+            <li>Usuarios de CBDCs: 2 mil millones (IMF)</li>
+            <li>Transacciones blockchain diarias: 1 billón</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section faq-section">
+    <h2 class="section-title">1.6 Preguntas Frecuentes sobre Dinero Digital</h2>
+    
+    <div class="intro-box">
+        <p>Resolvemos tus dudas más comunes con información actualizada al 2024. Datos basados en informes de Chainalysis, IMF y CoinGecko.</p>
+    </div>
+
+    <div class="faq-grid">
+        <!-- FAQ 1 - Seguridad -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🔒</span> ¿Es realmente seguro el dinero digital?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <p>La seguridad del dinero digital depende de varios factores:</p>
+                <ul>
+                    <li><strong>Nivel institucional:</strong> Exchanges regulados como Coinbase (EEUU) o Bitso (Latam) ofrecen seguros de hasta $250,000 USD por cuenta</li>
+                    <li><strong>Autocustodia:</strong> Wallets hardware (Ledger, Trezor) tienen 0 casos de hackeo cuando se usan correctamente</li>
+                    <li><strong>Blockchain:</strong> Bitcoin nunca ha sido hackeado en sus 15 años de historia (hashrate récord de 600 EH/s en 2024)</li>
+                </ul>
+                <div class="security-tips">
+                    <h4>Mejores prácticas 2024:</h4>
+                    <ol>
+                        <li>Usar autenticación biométrica + 2FA (no SMS)</li>
+                        <li>Dividir fondos: 80% en cold wallet, 20% en hot wallet</li>
+                        <li>Verificar contratos inteligentes con Etherscan antes de interactuar</li>
+                    </ol>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 2 - Recuperación -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🔄</span> ¿Cómo recuperar fondos si pierdo acceso?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <p>Soluciones según tipo de wallet:</p>
+                
+                <div class="recovery-methods">
+                    <div class="method">
+                        <h4>🧠 Seed Phrase (12/24 palabras)</h4>
+                        <p>Única forma de recuperar wallets no custodiales. En 2024, el 23% de usuarios pierde acceso por mala gestión de estas frases (Datos: Chainalysis).</p>
+                        <p><strong>Novedad:</strong> Wallets como Ledger ahora ofrecen fragmentación de la seed phrase (Shamir Backup).</p>
+                    </div>
+                    
+                    <div class="method">
+                        <h4>🏦 Custodias (Exchanges)</h4>
+                        <p>Requieren KYC avanzado. Binance recupera el 78% de cuentas en <72h con verificación facial + prueba de fondos.</p>
+                    </div>
+                    
+                    <div class="method">
+                        <h4>⚡ Social Recovery (Nuevo)</h4>
+                        <p>Wallets como Argent permiten designar 5 contactos de confianza para recuperar acceso colectivamente.</p>
+                    </div>
+                </div>
+                
+                <p class="warning-note">⚠️ Nunca compartas tu seed phrase completa. Los soportes técnicos legítimos nunca la piden.</p>
+            </div>
+        </details>
+
+        <!-- FAQ 3 - Criptos populares -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🏆</span> ¿Qué criptomonedas lideran el 2024?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="crypto-leaders">
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" width="24">
+                        <div>
+                            <h4>Bitcoin (BTC)</h4>
+                            <p>Dominancia: 42% · $1.2T market cap · Store of value</p>
+                        </div>
+                    </div>
+                    
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" width="24">
+                        <div>
+                            <h4>Ethereum (ETH)</h4>
+                            <p>Smart contracts · 3,500+ dApps · Post-merge: -99.9% energía</p>
+                        </div>
+                    </div>
+                    
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" width="24">
+                        <div>
+                            <h4>Solana (SOL)</h4>
+                            <p>50,000 TPS · Coste tx: $0.00025 · Líder en DeFi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-table">
+                    <table>
+                        <caption>Tendencias Q2 2024</caption>
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Líder</th>
+                                <th>TVL*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DeFi</td>
+                                <td>Lido Finance</td>
+                                <td>$34B</td>
+                            </tr>
+                            <tr>
+                                <td>NFTs</td>
+                                <td>Blur</td>
+                                <td>$1.2B</td>
+                            </tr>
+                            <tr>
+                                <td>Layer 2</td>
+                                <td>Arbitrum</td>
+                                <td>$12B</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note">*Total Value Locked (Datos: DefiLlama)</p>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 4 - Transacciones -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">💸</span> ¿Cómo funcionan las transacciones?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="transaction-flow">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p><strong>Inicio:</strong> Escaneo QR o dirección (ej: 0x71C...). Verifica los primeros/últimos 4 caracteres.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p><strong>Firma:</strong> Tu wallet crea una firma digital única con tu clave privada (nunca se comparte).</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p><strong>Red:</strong> Mineros/validadores confirman la tx. Bitcoin: ~10 min · Solana: ~400ms.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <p><strong>Finalización:</strong> Irreversible después de 6 confirmaciones (BTC) o 32 slots (SOL).</p>
+                    </div>
+                </div>
+                
+                <div class="fee-comparison">
+                    <h4>Costes promedio por red (USD):</h4>
+                    <div class="fee-bar bitcoin">BTC: $1.20</div>
+                    <div class="fee-bar ethereum">ETH: $0.35</div>
+                    <div class="fee-bar solana">SOL: $0.00025</div>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 5 - Ventajas -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🚀</span> ¿Ventajas vs dinero tradicional?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="advantages-grid">
+                    <div class="advantage">
+                        <h4>🌍 Remesas</h4>
+                        <p>Stablecoins reducen costes del 6.2% (Western Union) a <0.5% (USDC).</p>
+                    </div>
+                    
+                    <div class="advantage">
+                        <h4>💳 Inclusión</h4>
+                        <p>1.4B adultos no bancarizados pueden acceder con solo smartphone.</p>
+                    </div>
+                    
+                    <div class="advantage">
+                        <h4>🛡️ Resistencia</h4>
+                        <p>Bitcoin operó durante protestas en Nigeria (2021) y guerra Ucrania-Rusia.</p>
+                    </div>
+                    
+                    <div class="advantage">
+                        <h4>🔍 Transparencia</h4>
+                        <p>Todas las transacciones son auditables públicamente (exploradores blockchain).</p>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <h4>📌 Caso real: El Salvador</h4>
+                    <p>Desde 2021 usando Bitcoin como moneda legal:</p>
+                    <ul>
+                        <li>+40% turismo crypto</li>
+                        <li>$4M ahorro en comisiones remesas (Banco Mundial)</li>
+                        <li>20 volcanes minando BTC con energía geotérmica</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+    
+    <div class="resources-box">
+        <h4>📚 Recursos adicionales:</h4>
+        <ul>
+            <li><a href="#" target="_blank">Guía seguridad 2024 (CoinGecko)</a></li>
+            <li><a href="#" target="_blank">Comparativa de wallets hardware</a></li>
+            <li><a href="#" target="_blank">Mapa global de cajeros crypto</a></li>
+        </ul>
+    </div>
+    
+    <img src="assets/images/seguridad.jpg" alt="Infografía: Seguridad en transacciones digitales con blockchain" class="section-image">
 </div>
 
     </section>
@@ -106,7 +370,7 @@
                 // Se espera que el atributo data-section sea "1.1" en este caso.
                 const sectionId = this.getAttribute('data-section');
                 const infoDiv = document.getElementById('info-' + sectionId);
-                
+
                 // Alternamos la visibilidad con animación usando GSAP
                 if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
                     infoDiv.style.display = 'block';
@@ -256,6 +520,73 @@ src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       button.textContent = isVisible ? 'Más información' : 'Ocultar';
     });
   });
+// 1. Función toggle (se mantiene igual)
+    function toggleAdditionalInfo() {
+        const info = document.querySelector('.additional-info');
+        const btn = document.querySelector('.toggle-btn');
+        info.style.display = info.style.display === 'none' ? 'block' : 'none';
+        btn.textContent = info.style.display === 'none' ? 'Más información ▼' : 'Ocultar ▲';
+    }
+
+    // 2. Conexión a CoinGecko API
+    async function fetchCryptoData() {
+        try {
+            // Datos de mercado global
+            const globalRes = await fetch('https://api.coingecko.com/api/v3/global');
+            const globalData = await globalRes.json();
+            document.getElementById('market-cap').textContent = 
+                (globalData.data.total_market_cap.usd / 1e12).toFixed(2);
+            document.getElementById('daily-volume').textContent = 
+                `$${(globalData.data.total_volume.usd / 1e9).toFixed(1)}B`;
+            
+            // Precios individuales
+            const coinsRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
+            const coinsData = await coinsRes.json();
+            document.getElementById('btc-price').innerHTML = 
+                `$${coinsData.bitcoin.usd.toLocaleString()} <small>(${coinsData.bitcoin.usd_24h_change.toFixed(2)}%)</small>`;
+            document.getElementById('eth-price').innerHTML = 
+                `$${coinsData.ethereum.usd.toLocaleString()} <small>(${coinsData.ethereum.usd_24h_change.toFixed(2)}%)</small>`;
+            
+            // Renderizar gráfico
+            renderChart(globalData.data.market_cap_percentage);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            document.getElementById('market-cap').textContent = "Error";
+        }
+    }
+
+    // 3. Configuración del gráfico
+    function renderChart(marketData) {
+        const ctx = document.getElementById('coinChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(marketData).map(coin => coin.toUpperCase()),
+                datasets: [{
+                    data: Object.values(marketData),
+                    backgroundColor: [
+                        '#f7931a', // Bitcoin
+                        '#627eea', // Ethereum
+                        '#26a17b', // Tether
+                        '#2775ca', // BNB
+                        '#5a67d8', // USD Coin
+                        '#171c28'  // Otros
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } }
+                }
+            }
+        });
+    }
+
+    // Cargar datos al iniciar
+    document.addEventListener('DOMContentLoaded', fetchCryptoData);
     </script>
 </body>
 </html>
