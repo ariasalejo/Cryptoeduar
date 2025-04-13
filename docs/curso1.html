@@ -9,6 +9,8 @@
     <meta name="theme-color" content="#00ffea">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -27,280 +29,221 @@
         <div class="neon-circle">
             <h2>1. Introducción al Dinero Digital</h2>
         </div>
+</div>
 
-        <div class="section">
-            <h3>1.1 ¿Qué es el dinero digital?</h3>
-            <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico...</p>
-            <button class="info-button" data-section="1.1">Más información</button>
-            <div class="hidden-info" id="info-1.1">
-                <p>El dinero digital utiliza tecnología blockchain para garantizar transacciones seguras y descentralizadas.</p>
-            </div>
-            <img src="assets/images/dinero-digital.jpg" alt="Dinero Digital" class="section-image">
-        </div>
+      <div class="section">
+  <h3>1.1 ¿Qué es el dinero digital?</h3>
+  <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico...</p>
+  <button class="toggle-button">Más información</button>
+  <div class="toggle-content" style="display: none;">
+    <p>El dinero digital utiliza tecnología blockchain para garantizar transacciones seguras y descentralizadas.</p>
+    <p>Además de blockchain, existen otras plataformas digitales como las fintech, bancos digitales y aplicaciones móviles que permiten realizar pagos, ahorrar y transferir fondos sin la necesidad de efectivo.</p>
+    <p>Una de las mayores ventajas del dinero digital es su capacidad para eliminar intermediarios y ofrecer acceso económico incluso a comunidades sin servicios bancarios tradicionales.</p>
+    <p>Desde criptomonedas como Bitcoin y Ethereum hasta stablecoins respaldadas por activos reales, el ecosistema del dinero digital está transformando el sistema financiero global, promoviendo una mayor transparencia, rapidez y eficiencia.</p>
+   </div>
+<img src="assets/images/dinero-digital.jpg" alt="Introducción al Dinero Digital" class="section-image">
+</div>
 
-        <div class="section">
-            <h3>1.2 Ventajas del dinero digital</h3>
-            <ul>
-                <li>Transacciones globales rápidas.</li>
-                <li>Bajas comisiones.</li>
-                <li>Inclusión financiera.</li>
-            </ul>
-            <img src="assets/images/transacciones-globales.jpg" alt="Ventajas del Dinero Digital" class="section-image">
-        </div>
+<div class="section">
+  <h3>1.2 Ventajas del dinero digital</h3>
+  <ul>
+    <li>Transacciones globales instantáneas</li>
+    <li>Bajas comisiones</li>
+    <li>Inclusión financiera</li>
+    <li>Mayor seguridad y trazabilidad</li>
+    <li>Facilidad de uso</li>
+  </ul>
+  <button class="toggle-button">Más información</button>
+  <div class="toggle-content" style="display: none;">
+    <p>Además de lo anterior, el dinero digital facilita la integración con nuevos modelos de negocio, como las finanzas descentralizadas (DeFi) y las aplicaciones de economía colaborativa.</p>
+    <p>Esto impulsa la innovación en el sector financiero y permite el surgimiento de servicios personalizados y adaptativos para diferentes mercados.</p>
+    <p>Las plataformas digitales ofrecen interfaces intuitivas y sistemas de notificación en tiempo real, mejorando significativamente la experiencia del usuario.</p>
+  </div>
+ <img src="assets/images/transacciones-globales.jpg" alt="Ventajas del Dinero Digital" class="section-image">
+</div>
 
-        <div class="section">
-            <h3>1.3 Desafíos actuales</h3>
-            <p>Volatilidad, regulación y adopción masiva son algunos de los desafíos...</p>
-            <input type="range" min="0" max="100" value="50" class="slider" id="volatilitySlider">
-            <span id="volatilityValue">50%</span>
-            <p>Volatilidad actual (simulada).</p>
-            <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="section-image">
-        </div>
+<div class="section">
+    <h3>1.3 Desafíos actuales</h3>
+    <p>El dinero digital, a pesar de sus ventajas, enfrenta importantes desafíos en su camino hacia la adopción global:</p>
+    <ul>
+        <li><strong>Volatilidad:</strong> Muchas criptomonedas sufren fluctuaciones bruscas de precio, lo que puede generar incertidumbre para usuarios e inversores.</li>
+        <li><strong>Falta de regulación:</strong> La ausencia de marcos legales claros en varios países genera desconfianza y dificulta su integración al sistema financiero tradicional.</li>
+        <li><strong>Adopción masiva:</strong> Aún existen barreras tecnológicas, educativas y culturales que impiden su uso generalizado.</li>
+    </ul>
 
-        <div class="section video-section">
-            <h3>1.4 Video explicativo</h3>
-            <video controls>
-                <source src="assets/videos/bitcoin.mp4" type="video/mp4">
-                Tu navegador no soporta video HTML5.
-            </video>
-        </div>
+    <label for="volatilitySlider"><strong>Volatilidad actual (simulada):</strong></label>
+    <input type="range" min="0" max="100" value="50" class="slider" id="volatilitySlider" oninput="updateVolatilityChart(this.value)">
+    <span id="volatilityValue">50%</span>
 
-        <div class="section">
-            <h3>1.5 Futuro del dinero digital</h3>
-            <p>El futuro incluye más adopción en comercios y gobiernos...</p>
-            <canvas id="futureChart" width="400" height="200"></canvas>
-            <img src="assets/images/futuro-dinero.jpg" alt="Futuro del Dinero Digital" class="section-image">
-        </div>
+    <canvas id="volatilityChart" width="400" height="200"></canvas>
 
-        <div class="section">
-            <h3>1.6 Preguntas frecuentes</h3>
-            <details>
-                <summary>¿Es seguro el dinero digital?</summary>
-                <p>Sí, siempre que se usen prácticas seguras como wallets cifradas...</p>
-            </details>
-            <img src="assets/images/seguridad.jpg" alt="Seguridad del Dinero Digital" class="section-image">
-        </div>
+    <h4>Volatilidad de Bitcoin en las últimas 24h (dato real)</h4>
+    <canvas id="volatilityDonut" width="400" height="200"></canvas>
+
+    <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="section-image">
+</div>
     </section>
 
-    <!-- Módulo 2: Historia de Bitcoin -->
-    <section id="bitcoin" class="module">
-        <div class="neon-circle">
-            <h2>2. Historia de Bitcoin</h2>
-        </div>
-
-        <div class="section timeline">
-            <h3>2.1 2008: Whitepaper de Satoshi</h3>
-            <p>Publicación del documento fundacional de Bitcoin...</p>
-            <button class="download-button">Descargar Whitepaper</button>
-            <img src="assets/images/whitepaper.jpg" alt="Whitepaper de Bitcoin" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>2.2 2009: Bloque Génesis</h3>
-            <p>Primer bloque minado con el mensaje "The Times 03/Jan/2009..."</p>
-            <img src="assets/images/bloque-genesis.jpg" alt="Bloque Génesis" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>2.3 2010: Primera transacción comercial</h3>
-            <p>Laszlo Hanyecz compra pizzas con BTC...</p>
-            <img src="assets/images/pizza-bitcoin.jpg" alt="Primera Transacción Comercial" class="section-image">
-        </div>
-
-        <div class="section chart-section">
-            <h3>2.4 Gráfico de adopción</h3>
-            <canvas id="adoptionChart"></canvas>
-            <img src="assets/images/adopcion-bitcoin.jpg" alt="Gráfico de Adopción" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>2.5 Hitos recientes</h3>
-            <p>Adopción en El Salvador como moneda legal...</p>
-            <img src="assets/images/el-salvador.jpg" alt="Hitos Recientes" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>2.6 Línea de tiempo interactiva</h3>
-            <button onclick="alert('¡Explora la línea de tiempo!')">Ver hitos</button>
-            <img src="assets/images/timeline.jpg" alt="Línea de Tiempo Interactiva" class="section-image">
-        </div>
-    </section>
-
-    <!-- Módulo 3: Wallets y Seguridad -->
-    <section id="wallets" class="module">
-        <div class="neon-circle">
-            <h2>3. Wallets y Seguridad</h2>
-        </div>
-
-        <div class="section">
-            <h3>3.1 Tipos de wallets</h3>
-            <ul>
-                <li>Hot wallets</li>
-                <li>Cold wallets</li>
-                <li>Hardware wallets</li>
-            </ul>
-            <img src="assets/images/tipos-wallets.jpg" alt="Tipos de Wallets" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>3.2 Claves pública y privada</h3>
-            <p>Explicación de criptografía asimétrica...</p>
-            <button id="generateKeysButton">Generar Claves</button>
-            <p>Clave Pública: <span id="publicKey">---</span></p>
-            <p>Clave Privada: <span id="privateKey">---</span></p>
-            <img src="assets/images/claves-criptografia.jpg" alt="Claves Públicas y Privadas" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>3.3 Buenas prácticas</h3>
-            <ul>
-                <li>Backups múltiples.</li>
-                <li>Autenticación de 2 factores.</li>
-            </ul>
-            <img src="assets/images/mejores-practicas.jpg" alt="Buenas Prácticas" class="section-image">
-        </div>
-
-        <div class="section activity">
-            <h3>3.4 Simulador de transacción</h3>
-            <div class="simulator">
-                <input type="text" placeholder="Dirección de destino" id="destinationAddress">
-                <input type="number" placeholder="Cantidad BTC" id="btcAmount">
-                <button onclick="simulateTransaction()">Simular envío</button>
-                <div id="transactionResult"></div>
-            </div>
-            <img src="assets/images/simulador-transaccion.jpg" alt="Simulador de Transacciones" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>3.5 Riesgos comunes</h3>
-            <p>Phishing, exchanges hackeados...</p>
-            <button id="showRiskAlertButton">Mostrar Alerta de Riesgo</button>
-            <img src="assets/images/riesgos-seguridad.jpg" alt="Riesgos Comunes" class="section-image">
-        </div>
-
-        <div class="section">
-            <h3>3.6 Checklist de seguridad</h3>
-            <label><input type="checkbox" id="backupCheckbox"> Backup realizado</label>
-            <label><input type="checkbox" id="2faCheckbox"> 2FA activado</label>
-            <button id="checkSecurityButton">Verificar Seguridad</button>
-            <img src="assets/images/checklist-seguridad.jpg" alt="Checklist de Seguridad" class="section-image">
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 CriptoEducación - Todos los derechos reservados</p>
-    </footer>
-
+    <!-- Scripts para la funcionalidad del botón "Más información" -->
     <script>
-         // Animaciones GSAP
-        gsap.from(".neon-circle", { opacity: 0, scale: 0.5, duration: 1, stagger: 0.5 });
-        gsap.from(".section", { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
-
-        // Gráficos Chart.js
-        const adoptionCtx = document.getElementById('adoptionChart');
-        if (adoptionCtx) {
-            new Chart(adoptionCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2010', '2015', '2020', '2023'],
-                    datasets: [{
-                        label: 'Usuarios de Bitcoin (millones)',
-                        data: [0.1, 10, 100, 400],
-                        borderColor: '#00ffea',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { display: true }
-                    }
+        // Selecciona todos los botones con la clase info-button y añade el listener
+        document.querySelectorAll('.info-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Se espera que el atributo data-section sea "1.1" en este caso.
+                const sectionId = this.getAttribute('data-section');
+                const infoDiv = document.getElementById('info-' + sectionId);
+                
+                // Alternamos la visibilidad con animación usando GSAP
+                if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
+                    infoDiv.style.display = 'block';
+                    gsap.fromTo(infoDiv, { opacity: 0, y: -10 }, { duration: 0.5, opacity: 1, y: 0 });
+                } else {
+                    gsap.to(infoDiv, { duration: 0.5, opacity: 0, y: -10, onComplete: () => {
+                        infoDiv.style.display = 'none';
+                    }});
                 }
             });
-        }
+        });
+<script>
+async function fetchVolatilityData() {
+    try {
+        // Obtenemos datos de Bitcoin desde la API de CoinGecko
+        const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin');
+        const data = await response.json();
+        // Usamos el cambio porcentual en 24h como "volatilidad". Este dato puede ser positivo o negativo.
+        // Para el gráfico de dona, tomaremos el valor absoluto
+        const volatility24h = Math.abs(data.market_data.price_change_percentage_24h);
+        return volatility24h;
+    } catch (error) {
+        console.error("Error al obtener datos de CoinGecko:", error);
+        return 0; // En caso de error, retornar 0
+    }
+}
 
-        const futureCtx = document.getElementById('futureChart');
-        if (futureCtx) {
-            new Chart(futureCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Comercios', 'Gobiernos', 'Individuos'],
-                    datasets: [{
-                        label: 'Adopción Futura (%)',
-                        data: [70, 50, 90],
-                        backgroundColor: ['#00ffea', '#ffea00', '#ff00ea']
-                    }]
+document.addEventListener('DOMContentLoaded', async () => {
+    const volatilityValue = await fetchVolatilityData();
+
+    // Crear la gráfica de dona con Chart.js
+    const ctxDona = document.getElementById('volatilityDonut').getContext('2d');
+    new Chart(ctxDona, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cambio 24h', 'Resto (para completar 100%)'],
+            datasets: [{
+                data: [volatilityValue, Math.max(0, 100 - volatilityValue)],
+                backgroundColor: ['#00ffea', '#333'],
+                borderWidth: 1,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            if (context.label === 'Cambio 24h') {
+                                return `Cambio 24h: ${volatilityValue.toFixed(2)}%`;
+                            } else {
+                                return `Resto: ${(100 - volatilityValue).toFixed(2)}%`;
+                            }
+                        }
+                    }
                 },
-                options: { responsive: true }
-            });
-        }
-
-        // Slider de Volatilidad
-        const volatilitySlider = document.getElementById("volatilitySlider");
-        const volatilityValue = document.getElementById("volatilityValue");
-        volatilitySlider.addEventListener("input", () => {
-            volatilityValue.textContent = `${volatilitySlider.value}%`;
-        });
-
-        // Generador de Claves
-        document.getElementById("generateKeysButton")?.addEventListener("click", () => {
-            const publicKey = `pub_${Math.random().toString(36).substring(7)}`;
-            const privateKey = `priv_${Math.random().toString(36).substring(7)}`;
-            document.getElementById("publicKey").textContent = publicKey;
-            document.getElementById("privateKey").textContent = privateKey;
-        });
-
-        // Simulador de Transacciones
-        function simulateTransaction() {
-            const address = document.getElementById("destinationAddress").value.trim();
-            const amount = parseFloat(document.getElementById("btcAmount").value);
-
-            if (!address || address.length < 26) {
-                alert("Dirección inválida. Mínimo 26 caracteres.");
-                return;
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
             }
+        }
+    });
+});
+src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function updateVolatilityChart(value) {
+        document.getElementById('volatilityValue').innerText = value + '%';
+        if (window.volatilityBarChart) {
+            window.volatilityBarChart.data.datasets[0].data = [value];
+            window.volatilityBarChart.update();
+        }
+    }
 
-            if (isNaN(amount) || amount <= 0) {
-                alert("Cantidad inválida. Debe ser mayor a 0.");
-                return;
+    const ctxLine = document.getElementById('volatilityChart').getContext('2d');
+    window.volatilityBarChart = new Chart(ctxLine, {
+        type: 'bar',
+        data: {
+            labels: ['Volatilidad simulada'],
+            datasets: [{
+                label: 'Volatilidad (%)',
+                data: [50],
+                backgroundColor: '#00ffea'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
             }
-
-            document.getElementById("transactionResult").innerHTML = `
-                <p style="color: #00ffea;">✔ Transacción exitosa: ${amount} BTC a ${address}</p>
-            `;
         }
+    });
 
-        // Modo Oscuro
-        const darkModeToggle = document.createElement("button");
-        darkModeToggle.textContent = "🌙 Modo Oscuro";
-        darkModeToggle.style.position = "fixed";
-        darkModeToggle.style.bottom = "20px";
-        darkModeToggle.style.right = "20px";
-        darkModeToggle.style.padding = "10px 20px";
-        darkModeToggle.style.backgroundColor = "#00ffea";
-        darkModeToggle.style.color = "#000";
-        darkModeToggle.style.border = "none";
-        darkModeToggle.style.borderRadius = "5px";
-        darkModeToggle.style.cursor = "pointer";
-        darkModeToggle.style.zIndex = "1000";
+    async function fetchVolatilityData() {
+        try {
+            const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin');
+            const data = await response.json();
+            const volatility = Math.abs(data.market_data.price_change_percentage_24h);
+            return volatility;
+        } catch (error) {
+            console.error("Error al obtener datos de CoinGecko:", error);
+            return 0;
+        }
+    }
 
-        darkModeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            darkModeToggle.textContent = document.body.classList.contains("dark-mode")
-                ? "☀️ Modo Claro"
-                : "🌙 Modo Oscuro";
+    document.addEventListener('DOMContentLoaded', async () => {
+        const volatilityReal = await fetchVolatilityData();
+        const ctxDona = document.getElementById('volatilityDonut').getContext('2d');
+        new Chart(ctxDona, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cambio 24h', 'Resto hasta 100%'],
+                datasets: [{
+                    data: [volatilityReal, Math.max(0, 100 - volatilityReal)],
+                    backgroundColor: ['#00ffea', '#444'],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                if (context.label === 'Cambio 24h') {
+                                    return `Volatilidad real: ${volatilityReal.toFixed(2)}%`;
+                                } else {
+                                    return `Resto: ${(100 - volatilityReal).toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
         });
-
-        document.body.appendChild(darkModeToggle);
-
-        // Service Worker
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/sw.js")
-                    .then(reg => console.log("SW Registrado:", reg))
-                    .catch(err => console.error("Error SW:", err));
-            });
-        }
+    });
+  document.querySelectorAll('.toggle-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const isVisible = content.style.display === 'block';
+      content.style.display = isVisible ? 'none' : 'block';
+      button.textContent = isVisible ? 'Más información' : 'Ocultar';
+    });
+  });
     </script>
 </body>
 </html>
