@@ -82,6 +82,20 @@
 
     <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="section-image">
 </div>
+</div>
+
+<div class="section video-section">
+    <h3>1.4 Video explicativo</h3>
+    <p>Para comprender mejor los conceptos relacionados con Bitcoin y el dinero digital, te invitamos a ver el siguiente video explicativo.</p>
+    
+    <div class="video-container">
+        <video controls class="video-player" id="bitcoinVideo">
+            <source src="assets/videos/cursos/curso1/bitcoin.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+    </div>
+</div>
+
     </section>
 
     <!-- Scripts para la funcionalidad del botón "Más información" -->
@@ -104,7 +118,6 @@
                 }
             });
         });
-<script>
 async function fetchVolatilityData() {
     try {
         // Obtenemos datos de Bitcoin desde la API de CoinGecko
@@ -119,7 +132,6 @@ async function fetchVolatilityData() {
         return 0; // En caso de error, retornar 0
     }
 }
-
 document.addEventListener('DOMContentLoaded', async () => {
     const volatilityValue = await fetchVolatilityData();
 
