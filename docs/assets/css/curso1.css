@@ -65,7 +65,7 @@ body {
     border-radius: 10px;
     background-color: #181818;
     position: relative;
-    overflow: hidden; /* To contain the neon circle */
+/    overflow: hidden; /* To contain the neon circle */
 }
 
 .neon-circle {
@@ -1253,5 +1253,245 @@ caption {
     text-align: center;
     margin-bottom: 20px;
     text-shadow: 0 0 10px #00ffea;
+}
+
+/* curso1.css */
+
+/* ... (resto del CSS anterior) ... */
+
+/* Sección 2.4 */
+#2\.4 {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Encerrar el título 2.4 en naranjado */
+#2\.4 h2 {
+    color: #00ffea; /* Color neon estándar */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ffea;
+    border: 2px solid #ff9800; /* Añadir borde naranja */
+    padding: 10px; /* Añadir espacio alrededor del texto dentro del borde */
+    border-radius: 5px; /* Opcional: añadir un poco de redondeo al borde */
+    display: inline-block; /* Para que el borde se ajuste al ancho del texto */
+}
+
+#2\.4 p {
+    color: #d4d4d4;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+#2\.4 .crypto-toggle {
+    margin-top: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#2\.4 .crypto-toggle summary {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Un color naranja al botón más información en la sección 2.4 */
+    background-color: #ff9800; /* Color naranja */
+    border: none; /* Eliminar borde si lo hubiera */
+    border-radius: 5px; /* Mantener el radio del borde */
+}
+
+#2\.4 .crypto-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+#2\.4 .crypto-toggle summary::after {
+    content: '+';
+    color: #00ffea;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+#2\.4 .crypto-toggle[open] summary::after {
+    content: '−';
+    transform: rotate(45deg);
+}
+
+#2\.4 .crypto-data {
+    padding: 15px;
+    color: #d4d4d4;
+    border-top: 1px solid #424242;
+}
+
+#2\.4 .crypto-data h3 {
+    color: #00ffea;
+    border-bottom: 1px solid #00ffea;
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+
+#2\.4 .crypto-data ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+#2\.4 .crypto-data ul li {
+    margin-bottom: 5px;
+}
+
+/* Sección 2.5 */
+#info-avanzada {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#info-avanzada h2 {
+    color: #00ffea;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ffea;
+}
+
+#info-avanzada p {
+    color: #d4d4d4;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#info-avanzada label {
+    color: #00ffea;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#info-avanzada select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #424242;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1em;
+}
+
+#info-avanzada canvas {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    width: 100% !important; /* Ensure canvas takes full width */
+    height: auto !important; /* Maintain aspect ratio */
+}
+
+#info-avanzada img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    max-width: 100%; /* Make image responsive */
+    height: auto;
+}
+
+/* Un color naranja al botón más información en la sección 2.5 */
+#info-avanzada button {
+    background-color: #ff9800; /* Color naranja */
+    color: #fff; /* Texto blanco para contraste */
+    border: none; /* Eliminar borde si lo hubiera */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#info-avanzada button:hover {
+    background-color: #f57c00; /* Un tono más oscuro al pasar el ratón */
+}
+/* ... (resto del CSS anterior) ... */
+
+/* Sección 2.6 - Información Clasificada */
+#section-2-6 .classified-info {
+    margin-top: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#section-2-6 .classified-info details {
+    border-top: 1px solid #424242; /* Separador visual */
+}
+
+#section-2-6 .classified-info details:first-child {
+    border-top: none; /* Evitar un borde superior en el primer elemento si hubiera varios */
+}
+
+#section-2-6 .classified-info summary {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#section-2-6 .classified-info summary::-webkit-details-marker {
+    display: none; /* Ocultar la flecha por defecto en algunos navegadores */
+}
+
+#section-2-6 .classified-info summary::after {
+    content: '+'; /* Símbolo de "más" */
+    color: #ff9800; /* Color naranja para el símbolo */
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+#section-2-6 .classified-info details[open] summary::after {
+    content: '−'; /* Símbolo de "menos" cuando está abierto */
+    transform: rotate(45deg);
+}
+
+#section-2-6 .classified-info .classified-content {
+    padding: 15px;
+    color: #d4d4d4;
+    border-top: 1px solid #424242;
+}
+
+#section-2-6 .classified-info .classified-content p {
+    margin-bottom: 10px;
+}
+
+#section-2-6 .classified-info .classified-content ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+/* Estilo específico para el botón "Mostrar Información Clasificada" */
+#section-2-6 .classified-info summary {
+    background-color: #ff9800; /* Fondo naranja */
+    color: #fff; /* Texto blanco */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+#section-2-6 .classified-info summary::after {
+    color: #fff; /* Símbolo blanco para contraste */
 }
 
