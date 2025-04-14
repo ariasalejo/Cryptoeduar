@@ -695,3 +695,104 @@ table td {
         width: 100%;
     }
 }
+/* Estilo para el botón desplegable */
+details.crypto-toggle {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid #00ffc8;
+  border-radius: 12px;
+  background: rgba(0, 255, 200, 0.05);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+details.crypto-toggle summary {
+  font-weight: bold;
+  color: #00ffc8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem;
+}
+
+details.crypto-toggle summary:hover {
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+details.crypto-toggle[open] {
+  background: rgba(0, 255, 200, 0.1);
+  border-color: #0ff;
+}
+
+/* Contenido interno oculto/revelado */
+.crypto-data p {
+  margin: 0.5rem 0;
+  color: #eee;
+  font-size: 0.95rem;
+}
+/* Estilos generales para la sección */
+.contenido-seccion {
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  background-color: #121212;
+  color: #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* Estilos para el botón desplegable y contenido oculto */
+.crypto-toggle {
+  margin-top: 1rem;
+  border: 2px solid #00ffc8;
+  border-radius: 10px;
+  background: rgba(0, 255, 200, 0.05);
+  transition: background 0.3s ease;
+}
+
+.crypto-toggle summary {
+  font-weight: bold;
+  color: #00ffc8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  outline: none;
+  list-style: none;
+}
+
+.crypto-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.crypto-toggle summary::after {
+  content: "▼";
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.crypto-toggle[open] summary::after {
+  transform: rotate(-180deg);
+}
+
+.crypto-data {
+  padding: 1rem;
+  border-top: 1px solid #00ffc8;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+  .contenido-seccion {
+    margin: 0.5rem;
+    padding: 0.8rem;
+  }
+  .crypto-toggle summary {
+    font-size: 1rem;
+  }
+}

@@ -407,7 +407,7 @@
 
 <div class="section timeline">
     <h3 class="responsive-title">2.2 2009: El nacimiento de Bitcoin</h3>
-    
+
     <p class="responsive-text">En enero de 2009, Satoshi Nakamoto minó el primer bloque de Bitcoin, conocido como el "bloque génesis", lo que marcó el inicio de la red de Bitcoin. Este bloque contenía un mensaje oculto que decía: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</em>, un claro comentario sobre la inestabilidad financiera global.</p>
 
     <!-- Información Clasificada 1 - Mobile Optimized -->
@@ -458,23 +458,23 @@
                 <p>⚠️ Metadatos Ocultos:</p>
                 <pre class="mobile-code"><code>OP_RETURN 48656C6C6F20576F726C64</code></pre>
             </div>
-      </div>
+      </section>
   <!-- Sección 2.3 - Versión Premium -->
 <div class="section timeline premium-section">
     <div class="header-container">
         <h3 class="glowing-title">2.3 2010: Primera compra con Bitcoin - El Día que Cambió Todo</h3>
         <div class="timeline-marker"></div>
     </div>
-    
+
     <div class="content-grid">
         <div class="text-content">
             <p class="highlight-paragraph">El 22 de mayo de 2010, el programador <strong>Laszlo Hanyecz</strong> hizo historia al comprar 2 pizzas de Papa John's por <span class="bitcoin-amount">10,000 BTC</span> (equivalente a ~$41 entonces, hoy ~$600 millones).</p>
-            
+
             <div class="interactive-container">
                 <button class="interactive-btn" id="pizzaCalculator">📈 Calcular Valor Actual</button>
                 <div class="result-display" id="pizzaResult"></div>
             </div>
-            
+
             <details class="classified-info">
                 <summary>🔍 <strong>Datos Secretos:</strong> Lo que nunca se contó</summary>
                 <div class="classified-content">
@@ -486,7 +486,7 @@
                 </div>
             </details>
         </div>
-        
+
         <div class="visual-content">
             <div class="pizza-timeline-chart">
                 <canvas id="pizzaChart"></canvas>
@@ -495,6 +495,38 @@
             <img src="assets/images/bitcoin-pizza.jpg" alt="Las pizzas más caras de la historia" class="hover-zoom">
         </div>
 
+</section>
+<section id="2.4" class="contenido-seccion">
+  <h2>2.4 2011: Nacen los Altcoins</h2>
+  <p>En 2011, mientras Bitcoin ya consolidaba sus bases, emergieron las primeras alternativas conocidas como Altcoins. Proyectos como <strong>Litecoin</strong> y <strong>Namecoin</strong> surgieron para experimentar con nuevas implementaciones de la tecnología blockchain, ofreciendo mejoras en tiempos de transacción, algoritmos de minería y en algunos casos, extendiendo la utilidad del sistema a otras áreas como el registro descentralizado de dominios.</p>
+  <p>Este año marcó un momento de gran efervescencia en el ecosistema cripto, en el que la crisis financiera global incentivó la búsqueda de sistemas descentralizados y resistentes a la censura.</p>
+
+  <!-- Botón Desplegable para información oculta -->
+  <details class="crypto-toggle">
+    <summary>Mostrar Información Oculta y Datos Técnicos</summary>
+    <div class="crypto-data">
+      <h3>Detrás de Namecoin</h3>
+      <p><strong>Namecoin</strong> se lanzó en 2011 como la primera criptomoneda en extender el concepto de blockchain al registro de nombres de dominio. Su visión era crear un sistema DNS descentralizado que evite la censura y la centralización del control.</p>
+      <ul>
+        <li><strong>Innovación técnica:</strong> Basada en el protocolo de Bitcoin pero adaptada para gestionar dominios, lo que posibilitó la creación de dominios .bit resistentes a intervenciones externas.</li>
+        <li><strong>Desafíos:</strong> En sus inicios, la adopción fue limitada debido a barreras técnicas y una interfaz poco intuitiva, restringiendo su uso a nichos especializados.</li>
+        <li><strong>Información oculta:</strong> Foros y publicaciones especializadas de la época comentaban experimentos con sistemas híbridos de autenticación y registro que inspirarían futuros desarrollos en la identidad digital.</li>
+      </ul>
+      
+      <h3>El Impacto de Litecoin</h3>
+      <p><strong>Litecoin</strong> fue creada en 2011 por Charlie Lee, con el objetivo de ofrecer una alternativa más ágil a Bitcoin. Al modificar parámetros clave del protocolo original, Litecoin se diseñó para facilitar transacciones rápidas y mejorar la distribución de la minería.</p>
+      <ul>
+        <li><strong>Algoritmo Scrypt:</strong> A diferencia de Bitcoin, que utiliza SHA-256, Litecoin incorporó Scrypt para dificultar el uso exclusivo de mineros ASICs, promoviendo una minería más accesible.</li>
+        <li><strong>Rapidez:</strong> Con tiempos de bloque de aproximadamente 2.5 minutos, Litecoin ofrecía una confirmación de transacciones mucho más veloz que los 10 minutos de Bitcoin, haciéndolo ideal para micropagos y comercio diario.</li>
+        <li><strong>Información oculta:</strong> En comunidades técnicas se debatía que Litecoin era una plataforma de experimentación en cuanto a escalabilidad y seguridad, lo cual influiría en el desarrollo de métodos de consenso y medidas de protección adoptadas por futuros Altcoins.</li>
+      </ul>
+      
+      <h3>El Ecosistema en Evolución</h3>
+      <p>La irrupción de estos Altcoins no solo implicó mejoras técnicas, sino también la apertura de debates en foros y comunidades especializadas, donde se compartían ideas para superar las limitaciones de Bitcoin. Estos intercambios estimularon innovaciones en áreas como privacidad, contratos inteligentes y sistemas híbridos de validación.</p>
+      <p>La diversidad de propuestas de 2011 sentó las bases para una evolución que abarcó nuevos modelos de negocio y enfoques tecnológicos, anticipando la explosión de innovaciones en años posteriores.</p>
+    </div>
+  </details>
+</section>
     <!-- Scripts para la funcionalidad del botón "Más información" -->
     <script>
         // Selecciona todos los botones con la clase info-button y añade el listener
@@ -720,13 +752,13 @@ src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     // Cargar datos al iniciar
     document.addEventListener('DOMContentLoaded', fetchCryptoData);
-  
+
 // Interactividad para la calculadora
 document.getElementById('pizzaCalculator').addEventListener('click', function() {
     const resultDiv = document.getElementById('pizzaResult');
     const currentPrice = 60000; // Precio actual aproximado de BTC en USD
     const totalValue = 10000 * currentPrice;
-    
+
     resultDiv.innerHTML = `
         <h4>💰 Valor Actual de las 10,000 BTC:</h4>
         <p class="result-amount">$${totalValue.toLocaleString()} USD</p>
