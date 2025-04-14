@@ -1,0 +1,343 @@
+/* estilos_blog_avanzado.css */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #181818; /* Dark background for a modern feel */
+    color: #f0f0f0; /* Light text for contrast */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #222;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 2px solid #00ffea; /* Neon accent */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #00ffea; /* Neon title */
+    text-shadow: 0 0 10px #00ffea;
+}
+
+header h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header p {
+    color: #aaa;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #2a2a2a;
+    padding: 15px 0;
+    border-bottom: 1px solid #444;
+}
+
+nav .container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav .container ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav .container ul li a {
+    color: #ddd;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav .container ul li a:hover {
+    background-color: #333;
+    color: #00ffea; /* Neon hover */
+}
+
+/* Main Content Styles */
+main {
+    padding: 30px 0;
+}
+
+.blog-post-avanzado {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.blog-post-avanzado header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+    margin-bottom: 25px;
+}
+
+.blog-post-avanzado header h2 {
+    font-size: 2.2em;
+    color: #00ffea; /* Neon heading */
+    text-shadow: 0 0 8px #00ffea;
+    margin-bottom: 10px;
+}
+
+.blog-post-avanzado header h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-post-avanzado header p.post-meta {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.blog-post-avanzado section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.blog-post-avanzado section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.blog-post-avanzado section h3 {
+    font-size: 1.8em;
+    color: #00ffea; /* Neon subheading */
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00ffea;
+}
+
+.blog-post-avanzado section h4 {
+    font-size: 1.4em;
+    color: #ddd;
+    margin-top: 20px;
+}
+
+.blog-post-avanzado section p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.blog-post-avanzado section ul,
+.blog-post-avanzado section ol {
+    color: #ccc;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.blog-post-avanzado section li {
+    margin-bottom: 8px;
+}
+
+.blog-post-avanzado section pre {
+    background-color: #333;
+    color: #eee;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+/* Comments Section */
+#comentarios {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #444;
+}
+
+#comentarios h2 {
+    font-size: 2em;
+    color: #00ffea; /* Neon heading */
+    padding-bottom: 15px;
+    border-bottom: 1px solid #00ffea;
+    margin-bottom: 20px;
+}
+
+.comment-form h3 {
+    font-size: 1.5em;
+    color: #ddd;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.comment-form form p {
+    margin-bottom: 15px;
+}
+
+.comment-form label {
+    display: block;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #eee;
+    border: 1px solid #555;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.comment-form textarea {
+    resize: vertical;
+}
+
+.comment-form button[type="submit"] {
+    background-color: #ff9800; /* Orange for action */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.comment-form button[type="submit"]:hover {
+    background-color: #f57c00;
+}
+
+.existing-comments h3 {
+    font-size: 1.5em;
+    color: #ddd;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.comment {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.comment-meta {
+    color: #aaa;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    color: #ccc;
+    margin-bottom: 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+    margin-top: 40px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav .container ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav .container ul {
+        text-align: left;
+    }
+
+    .blog-post-avanzado {
+        padding: 20px;
+    }
+
+    .blog-post-avanzado header h2 {
+        font-size: 1.8em;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer nav ul {
+        margin-top: 10px;
+    }
+}
+.blog-post-avanzado section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    border-left: 2px solid #ff9800; /* Añadimos un borde izquierdo naranja */
+    padding-left: 20px; /* Ajustamos el padding para que el texto no esté pegado al borde */
+}
+
+.blog-post-avanzado section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

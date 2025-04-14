@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriptoEducación - Curso 1</title>
+    <link rel="stylesheet" href="assets/css/curso1.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00ffea">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <h1>CriptoEducación</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">Introducción</a></li>
+                <li><a href="#bitcoin">Bitcoin</a></li>
+                <li><a href="#wallets">Wallets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Módulo 1: Introducción al Dinero Digital -->
+    <section id="intro" class="module">
+        <div class="neon-circle">
+            <h2>1. Introducción al Dinero Digital</h2>
+        </div>
+</div>
+
+      <div class="section">
+  <h3>1.1 ¿Qué es el dinero digital?</h3>
+  <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico...</p>
+  <button class="toggle-button">Más información</button>
+  <div class="toggle-content" style="display: none;">
+    <p>El dinero digital utiliza tecnología blockchain para garantizar transacciones seguras y descentralizadas.</p>
+    <p>Además de blockchain, existen otras plataformas digitales como las fintech, bancos digitales y aplicaciones móviles que permiten realizar pagos, ahorrar y transferir fondos sin la necesidad de efectivo.</p>
+    <p>Una de las mayores ventajas del dinero digital es su capacidad para eliminar intermediarios y ofrecer acceso económico incluso a comunidades sin servicios bancarios tradicionales.</p>
+    <p>Desde criptomonedas como Bitcoin y Ethereum hasta stablecoins respaldadas por activos reales, el ecosistema del dinero digital está transformando el sistema financiero global, promoviendo una mayor transparencia, rapidez y eficiencia.</p>
+   </div>
+<img src="assets/images/dinero-digital.jpg" alt="Introducción al Dinero Digital" class="section-image">
+</div>
+
+<div class="section">
+  <h3>1.2 Ventajas del dinero digital</h3>
+  <ul>
+    <li>Transacciones globales instantáneas</li>
+    <li>Bajas comisiones</li>
+    <li>Inclusión financiera</li>
+    <li>Mayor seguridad y trazabilidad</li>
+    <li>Facilidad de uso</li>
+  </ul>
+  <button class="toggle-button">Más información</button>
+  <div class="toggle-content" style="display: none;">
+    <p>Además de lo anterior, el dinero digital facilita la integración con nuevos modelos de negocio, como las finanzas descentralizadas (DeFi) y las aplicaciones de economía colaborativa.</p>
+    <p>Esto impulsa la innovación en el sector financiero y permite el surgimiento de servicios personalizados y adaptativos para diferentes mercados.</p>
+    <p>Las plataformas digitales ofrecen interfaces intuitivas y sistemas de notificación en tiempo real, mejorando significativamente la experiencia del usuario.</p>
+  </div>
+ <img src="assets/images/transacciones-globales.jpg" alt="Ventajas del Dinero Digital" class="section-image">
+</div>
+
+<div class="section">
+    <h3>1.3 Desafíos actuales</h3>
+    <p>El dinero digital, a pesar de sus ventajas, enfrenta importantes desafíos en su camino hacia la adopción global:</p>
+    <ul>
+        <li><strong>Volatilidad:</strong> Muchas criptomonedas sufren fluctuaciones bruscas de precio, lo que puede generar incertidumbre para usuarios e inversores.</li>
+        <li><strong>Falta de regulación:</strong> La ausencia de marcos legales claros en varios países genera desconfianza y dificulta su integración al sistema financiero tradicional.</li>
+        <li><strong>Adopción masiva:</strong> Aún existen barreras tecnológicas, educativas y culturales que impiden su uso generalizado.</li>
+    </ul>
+
+    <label for="volatilitySlider"><strong>Volatilidad actual (simulada):</strong></label>
+    <input type="range" min="0" max="100" value="50" class="slider" id="volatilitySlider" oninput="updateVolatilityChart(this.value)">
+    <span id="volatilityValue">50%</span>
+
+    <canvas id="volatilityChart" width="400" height="200"></canvas>
+
+    <h4>Volatilidad de Bitcoin en las últimas 24h (dato real)</h4>
+    <canvas id="volatilityDonut" width="400" height="200"></canvas>
+
+    <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="section-image">
+</div>
+</div>
+
+<div class="section video-section">
+    <h3>1.4 Video explicativo</h3>
+    <p>Para comprender mejor los conceptos relacionados con Bitcoin y el dinero digital, te invitamos a ver el siguiente video explicativo.</p>
+
+    <div class="video-container">
+        <video controls class="video-player" id="bitcoinVideo">
+            <source src="assets/videos/cursos/curso1/bitcoin.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+    </div>
+</div>
+
+<div class="section">
+    <h3>1.5 Futuro del dinero digital</h3>
+
+    <div class="main-content">
+        <p>El mercado de criptomonedas muestra una capitalización actual de <span id="market-cap">---</span> billones USD, con una adopción creciente de CBDCs en 130 países. La tecnología blockchain permite transacciones <strong>24/7</strong> con costes hasta <strong>90% menores</strong> que sistemas tradicionales.</p>
+
+        <!-- Gráfico restaurado con API CoinGecko -->
+        <div class="chart-container">
+            <canvas id="coinChart" width="400" height="250"></canvas>
+            <p class="chart-source">Datos en tiempo vivo via CoinGecko API</p>
+        </div>
+
+        <img src="assets/images/futuro-dinero.jpg" alt="Proyección mercado cripto 2025-2030" class="section-image">
+    </div>
+
+    <button class="toggle-btn" onclick="toggleAdditionalInfo()">Más información ▼</button>
+
+    <div class="additional-info" style="display: none;">
+        <h4>Datos en Tiempo Real:</h4>
+        <div class="crypto-grid">
+            <div class="crypto-card">
+                <img src="https://static.coingecko.com/s/bitcoin-63b17e82.svg" alt="Bitcoin" width="20">
+                <span id="btc-price">Cargando...</span>
+            </div>
+            <div class="crypto-card">
+                <img src="https://static.coingecko.com/s/ethereum-7a9c2a3d.svg" alt="Ethereum" width="20">
+                <span id="eth-price">Cargando...</span>
+            </div>
+            <div class="crypto-card">
+                <span>📈 Volumen 24h:</span>
+                <span id="daily-volume">---</span>
+            </div>
+        </div>
+
+        <h4>Proyecciones 2030:</h4>
+        <ul>
+            <li>Mercado cripto: $10-15 billones (BCG)</li>
+            <li>Usuarios de CBDCs: 2 mil millones (IMF)</li>
+            <li>Transacciones blockchain diarias: 1 billón</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section faq-section">
+    <h2 class="section-title">1.6 Preguntas Frecuentes sobre Dinero Digital</h2>
+
+    <div class="intro-box">
+        <p>Resolvemos tus dudas más comunes con información actualizada al 2024. Datos basados en informes de Chainalysis, IMF y CoinGecko.</p>
+    </div>
+
+    <div class="faq-grid">
+        <!-- FAQ 1 - Seguridad -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🔒</span> ¿Es realmente seguro el dinero digital?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <p>La seguridad del dinero digital depende de varios factores:</p>
+                <ul>
+                    <li><strong>Nivel institucional:</strong> Exchanges regulados como Coinbase (EEUU) o Bitso (Latam) ofrecen seguros de hasta $250,000 USD por cuenta</li>
+                    <li><strong>Autocustodia:</strong> Wallets hardware (Ledger, Trezor) tienen 0 casos de hackeo cuando se usan correctamente</li>
+                    <li><strong>Blockchain:</strong> Bitcoin nunca ha sido hackeado en sus 15 años de historia (hashrate récord de 600 EH/s en 2024)</li>
+                </ul>
+                <div class="security-tips">
+                    <h4>Mejores prácticas 2024:</h4>
+                    <ol>
+                        <li>Usar autenticación biométrica + 2FA (no SMS)</li>
+                        <li>Dividir fondos: 80% en cold wallet, 20% en hot wallet</li>
+                        <li>Verificar contratos inteligentes con Etherscan antes de interactuar</li>
+                    </ol>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 2 - Recuperación -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🔄</span> ¿Cómo recuperar fondos si pierdo acceso?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <p>Soluciones según tipo de wallet:</p>
+
+                <div class="recovery-methods">
+                    <div class="method">
+                        <h4>🧠 Seed Phrase (12/24 palabras)</h4>
+                        <p>Única forma de recuperar wallets no custodiales. En 2024, el 23% de usuarios pierde acceso por mala gestión de estas frases (Datos: Chainalysis).</p>
+                        <p><strong>Novedad:</strong> Wallets como Ledger ahora ofrecen fragmentación de la seed phrase (Shamir Backup).</p>
+                    </div>
+
+                    <div class="method">
+                        <h4>🏦 Custodias (Exchanges)</h4>
+                        <p>Requieren KYC avanzado. Binance recupera el 78% de cuentas en <72h con verificación facial + prueba de fondos.</p>
+                    </div>
+
+                    <div class="method">
+                        <h4>⚡ Social Recovery (Nuevo)</h4>
+                        <p>Wallets como Argent permiten designar 5 contactos de confianza para recuperar acceso colectivamente.</p>
+                    </div>
+                </div>
+
+                <p class="warning-note">⚠️ Nunca compartas tu seed phrase completa. Los soportes técnicos legítimos nunca la piden.</p>
+            </div>
+        </details>
+
+        <!-- FAQ 3 - Criptos populares -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🏆</span> ¿Qué criptomonedas lideran el 2024?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="crypto-leaders">
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" width="24">
+                        <div>
+                            <h4>Bitcoin (BTC)</h4>
+                            <p>Dominancia: 42% · $1.2T market cap · Store of value</p>
+                        </div>
+                    </div>
+
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" width="24">
+                        <div>
+                            <h4>Ethereum (ETH)</h4>
+                            <p>Smart contracts · 3,500+ dApps · Post-merge: -99.9% energía</p>
+                        </div>
+                    </div>
+
+                    <div class="crypto-item">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" width="24">
+                        <div>
+                            <h4>Solana (SOL)</h4>
+                            <p>50,000 TPS · Coste tx: $0.00025 · Líder en DeFi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trending-table">
+                    <table>
+                        <caption>Tendencias Q2 2024</caption>
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Líder</th>
+                                <th>TVL*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DeFi</td>
+                                <td>Lido Finance</td>
+                                <td>$34B</td>
+                            </tr>
+                            <tr>
+                                <td>NFTs</td>
+                                <td>Blur</td>
+                                <td>$1.2B</td>
+                            </tr>
+                            <tr>
+                                <td>Layer 2</td>
+                                <td>Arbitrum</td>
+                                <td>$12B</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note">*Total Value Locked (Datos: DefiLlama)</p>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 4 - Transacciones -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">💸</span> ¿Cómo funcionan las transacciones?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="transaction-flow">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p><strong>Inicio:</strong> Escaneo QR o dirección (ej: 0x71C...). Verifica los primeros/últimos 4 caracteres.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p><strong>Firma:</strong> Tu wallet crea una firma digital única con tu clave privada (nunca se comparte).</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p><strong>Red:</strong> Mineros/validadores confirman la tx. Bitcoin: ~10 min · Solana: ~400ms.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <p><strong>Finalización:</strong> Irreversible después de 6 confirmaciones (BTC) o 32 slots (SOL).</p>
+                    </div>
+                </div>
+
+                <div class="fee-comparison">
+                    <h4>Costes promedio por red (USD):</h4>
+                    <div class="fee-bar bitcoin">BTC: $1.20</div>
+                    <div class="fee-bar ethereum">ETH: $0.35</div>
+                    <div class="fee-bar solana">SOL: $0.00025</div>
+                </div>
+            </div>
+        </details>
+
+        <!-- FAQ 5 - Ventajas -->
+        <details class="faq-card">
+            <summary class="faq-question">
+                <span class="icon">🚀</span> ¿Ventajas vs dinero tradicional?
+                <span class="toggle-icon">+</span>
+            </summary>
+            <div class="faq-answer">
+                <div class="advantages-grid">
+                    <div class="advantage">
+                        <h4>🌍 Remesas</h4>
+                        <p>Stablecoins reducen costes del 6.2% (Western Union) a <0.5% (USDC).</p>
+                    </div>
+
+                    <div class="advantage">
+                        <h4>💳 Inclusión</h4>
+                        <p>1.4B adultos no bancarizados pueden acceder con solo smartphone.</p>
+                    </div>
+
+                    <div class="advantage">
+                        <h4>🛡️ Resistencia</h4>
+                        <p>Bitcoin operó durante protestas en Nigeria (2021) y guerra Ucrania-Rusia.</p>
+                    </div>
+
+                    <div class="advantage">
+                        <h4>🔍 Transparencia</h4>
+                        <p>Todas las transacciones son auditables públicamente (exploradores blockchain).</p>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <h4>📌 Caso real: El Salvador</h4>
+                    <p>Desde 2021 usando Bitcoin como moneda legal:</p>
+                    <ul>
+                        <li>+40% turismo crypto</li>
+                        <li>$4M ahorro en comisiones remesas (Banco Mundial)</li>
+                        <li>20 volcanes minando BTC con energía geotérmica</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+    <img src="assets/images/seguridad.jpg" alt=" Seguridad en transacciones digitales con blockchain" class="section-image">
+</div>
+
+    </section>
+
+<section id="bitcoin" class="module">
+    <div class="neon-container">
+        <div class="neon-circle">
+            <h2>2. Historia de Bitcoin: Lo Que No Sabías</h2>
+        </div>
+    </div>
+
+    <div class="section timeline">
+        <h3 class="section-subtitle">2.1 2008: Whitepaper de Satoshi (La Verdad Oculta)</h3>
+        <p class="section-intro">El <strong>Whitepaper de Bitcoin</strong> no solo describe una criptomoneda, sino un sistema de resistencia contra la censura financiera. Lo que pocos saben:</p>
+
+        <div class="hidden-facts">
+            <!-- Contenido clasificado -->
+            <details class="classified-info">
+                <summary>🔐 <strong>Dato Clasificado #1:</strong> ¿Por qué se publicó en 2008?</summary>
+                <div class="classified-content">
+                    <p>El whitepaper salió justo después de la crisis financiera global (15/09/2008 - Quiebra de Lehman Brothers). Satoshi dejó un mensaje en el <strong>bloque génesis</strong>: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</em>, una crítica directa al sistema bancario.</p>
+                </div>
+            </details>
+
+            <details class="classified-info">
+                <summary>🕵️ <strong>Dato Clasificado #2:</strong> Los emails perdidos de Satoshi</summary>
+                <div class="classified-content">
+                    <p>En correos filtrados (2014), Satoshi mencionó que Bitcoin fue diseñado para ser <strong>inmune a ataques cuánticos</strong>, usando firmas ECDSA modificables. También reveló que el límite de 21 millones fue calculado para emular el oro físico en reservas mundiales.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="responsive-grid">
+            <div class="satoshi-identity">
+                <h4 class="warning-title">🚨 Teorías No Reveladas:</h4>
+                <ul class="conspiracy-list">
+                    <li class="conspiracy-item"><strong>Grupo de Cypherpunks:</strong> Posiblemente un equipo (Hal Finney, Nick Szabo y Wei Dai)</li>
+                    <li class="conspiracy-item"><strong>Conexión NSA:</strong> Algoritmo SHA-256 creado por la NSA</li>
+                    <li class="conspiracy-item"><strong>Patente CIA #20100042841:</strong> Sistema similar descrito en 2008</li>
+                </ul>
+            </div>
+
+            <div class="hidden-document">
+                <h4 class="document-title">📜 Código Censurado (v0.1):</h4>
+                <pre class="code-block"><code>// Comentario oculto:
+"Bitcoin es confiscation-proof."</code></pre>
+            </div>
+        </div>
+
+        <div class="download-container">
+            <a href="https://bitcoin.org/bitcoin.pdf" class="download-button" target="_blank">🔍 Whitepaper Original</a>
+        </div>
+
+        <img src="./assets/images/whitepaper.jpg" alt="Whitepaper con secretos" class="responsive-image">
+    </div>
+</div>
+
+<div class="section timeline">
+    <h3 class="responsive-title">2.2 2009: El nacimiento de Bitcoin</h3>
+
+    <p class="responsive-text">En enero de 2009, Satoshi Nakamoto minó el primer bloque de Bitcoin, conocido como el "bloque génesis", lo que marcó el inicio de la red de Bitcoin. Este bloque contenía un mensaje oculto que decía: <em>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</em>, un claro comentario sobre la inestabilidad financiera global.</p>
+
+    <!-- Información Clasificada 1 - Mobile Optimized -->
+    <details class="classified mobile-optimized">
+        <summary class="toggle-header">
+            <span class="toggle-icon">🔍</span>
+            <span class="toggle-text">Dato Oculto: Firmas del Bloque Génesis</span>
+            <span class="toggle-arrow">▼</span>
+        </summary>
+        <div class="classified-content">
+            <div class="responsive-grid">
+                <div class="info-card">
+                    <h4>🔢 Nonce Misterioso</h4>
+                    <p>Ajustado 2,863 veces (valor final: 2083236893)</p>
+                </div>
+                <div class="info-card">
+                    <h4>⏰ Timestamp Alterado</h4>
+                    <p>Creación real: 2009-01-03 18:09:05 UTC</p>
+                </div>
+            </div>
+            <div class="code-container">
+                <pre><code>Hash Génesis: 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</code></pre>
+            </div>
+        </div>
+    </details>
+
+    <p class="responsive-text">El primer bloque de Bitcoin generó 50 BTC como recompensa, y estos primeros bitcoins fueron enviados a la dirección de Satoshi Nakamoto.</p>
+
+    <!-- Información Clasificada 2 - Mobile Optimized -->
+    <details class="classified mobile-optimized">
+        <summary class="toggle-header">
+            <span class="toggle-icon">🕵️</span>
+            <span class="toggle-text">Archivo Confidencial: Primera Transacción</span>
+            <span class="toggle-arrow">▼</span>
+        </summary>
+        <div class="classified-content">
+            <div class="transaction-details">
+                <div class="detail-item">
+                    <h4>📤 De:</h4>
+                    <p class="crypto-address">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</p>
+                </div>
+                <div class="detail-item">
+                    <h4>📥 Para:</h4>
+                    <p class="crypto-address">1HalFinneyS2HbJRSFuv7boEXLvq8G4jqBg</p>
+                </div>
+            </div>
+            <div class="metadata-alert">
+                <p>⚠️ Metadatos Ocultos:</p>
+                <pre class="mobile-code"><code>OP_RETURN 48656C6C6F20576F726C64</code></pre>
+            </div>
+      </section>
+  <!-- Sección 2.3 - Versión Premium -->
+<div class="section timeline premium-section">
+    <div class="header-container">
+        <h3 class="glowing-title">2.3 2010: Primera compra con Bitcoin - El Día que Cambió Todo</h3>
+        <div class="timeline-marker"></div>
+    </div>
+
+    <div class="content-grid">
+        <div class="text-content">
+            <p class="highlight-paragraph">El 22 de mayo de 2010, el programador <strong>Laszlo Hanyecz</strong> hizo historia al comprar 2 pizzas de Papa John's por <span class="bitcoin-amount">10,000 BTC</span> (equivalente a ~$41 entonces, hoy ~$600 millones).</p>
+
+            <div class="interactive-container">
+                <button class="interactive-btn" id="pizzaCalculator">📈 Calcular Valor Actual</button>
+                <div class="result-display" id="pizzaResult"></div>
+            </div>
+
+            <details class="classified-info">
+                <summary>🔍 <strong>Datos Secretos:</strong> Lo que nunca se contó</summary>
+                <div class="classified-content">
+                    <ul>
+                        <li>La transacción requirió <strong>3 días</strong> para completarse (la blockchain era lenta)</li>
+                        <li>Jeremy Sturdivant ("Jercos"), el comprador, vendió los BTC a <strong>$400</strong> pocos meses después</li>
+                        <li>El código de la transacción contenía un mensaje oculto: <code>"🍕#Bitcoin Pizza Day"</code></li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="visual-content">
+            <div class="pizza-timeline-chart">
+                <canvas id="pizzaChart"></canvas>
+                <p class="chart-caption">Evolución del valor de 10,000 BTC vs. precio de pizzas</p>
+            </div>
+            <img src="assets/images/bitcoin-pizza.jpg" alt="Las pizzas más caras de la historia" class="hover-zoom">
+        </div>
+
+</section>
+<section id="2.4" class="contenido-seccion">
+  <h2>2.4 2011: Nacen los Altcoins</h2>
+  <p>En 2011, mientras Bitcoin ya consolidaba sus bases, emergieron las primeras alternativas conocidas como Altcoins. Proyectos como <strong>Litecoin</strong> y <strong>Namecoin</strong> surgieron para experimentar con nuevas implementaciones de la tecnología blockchain, ofreciendo mejoras en tiempos de transacción, algoritmos de minería y en algunos casos, extendiendo la utilidad del sistema a otras áreas como el registro descentralizado de dominios.</p>
+  <p>Este año marcó un momento de gran efervescencia en el ecosistema cripto, en el que la crisis financiera global incentivó la búsqueda de sistemas descentralizados y resistentes a la censura.</p>
+
+  <!-- Botón Desplegable para información oculta -->
+  <details class="crypto-toggle">
+    <summary>Mostrar Información Oculta y Datos Técnicos</summary>
+    <div class="crypto-data">
+      <h3>Detrás de Namecoin</h3>
+      <p><strong>Namecoin</strong> se lanzó en 2011 como la primera criptomoneda en extender el concepto de blockchain al registro de nombres de dominio. Su visión era crear un sistema DNS descentralizado que evite la censura y la centralización del control.</p>
+      <ul>
+        <li><strong>Innovación técnica:</strong> Basada en el protocolo de Bitcoin pero adaptada para gestionar dominios, lo que posibilitó la creación de dominios .bit resistentes a intervenciones externas.</li>
+        <li><strong>Desafíos:</strong> En sus inicios, la adopción fue limitada debido a barreras técnicas y una interfaz poco intuitiva, restringiendo su uso a nichos especializados.</li>
+        <li><strong>Información oculta:</strong> Foros y publicaciones especializadas de la época comentaban experimentos con sistemas híbridos de autenticación y registro que inspirarían futuros desarrollos en la identidad digital.</li>
+      </ul>
+
+      <h3>El Impacto de Litecoin</h3>
+      <p><strong>Litecoin</strong> fue creada en 2011 por Charlie Lee, con el objetivo de ofrecer una alternativa más ágil a Bitcoin. Al modificar parámetros clave del protocolo original, Litecoin se diseñó para facilitar transacciones rápidas y mejorar la distribución de la minería.</p>
+      <ul>
+        <li><strong>Algoritmo Scrypt:</strong> A diferencia de Bitcoin, que utiliza SHA-256, Litecoin incorporó Scrypt para dificultar el uso exclusivo de mineros ASICs, promoviendo una minería más accesible.</li>
+        <li><strong>Rapidez:</strong> Con tiempos de bloque de aproximadamente 2.5 minutos, Litecoin ofrecía una confirmación de transacciones mucho más veloz que los 10 minutos de Bitcoin, haciéndolo ideal para micropagos y comercio diario.</li>
+        <li><strong>Información oculta:</strong> En comunidades técnicas se debatía que Litecoin era una plataforma de experimentación en cuanto a escalabilidad y seguridad, lo cual influiría en el desarrollo de métodos de consenso y medidas de protección adoptadas por futuros Altcoins.</li>
+      </ul>
+
+      <h3>El Ecosistema en Evolución</h3>
+      <p>La irrupción de estos Altcoins no solo implicó mejoras técnicas, sino también la apertura de debates en foros y comunidades especializadas, donde se compartían ideas para superar las limitaciones de Bitcoin. Estos intercambios estimularon innovaciones en áreas como privacidad, contratos inteligentes y sistemas híbridos de validación.</p>
+      <p>La diversidad de propuestas de 2011 sentó las bases para una evolución que abarcó nuevos modelos de negocio y enfoques tecnológicos, anticipando la explosión de innovaciones en años posteriores.</p>
+    </div>
+  </details>
+</section>
+
+<section id="info-avanzada" class="seccion">
+  <h2>2.5 Información de Punta: Innovación y Dinamismo en el Mercado Cripto</h2>
+  <p>
+    La evolución del mercado cripto integra tecnologías como soluciones Layer-2, protocolos de interoperabilidad y dApps híbridas que combinan IA con contratos inteligentes. Estas herramientas están redefiniendo la gobernanza, velocidad y eficiencia en el ecosistema financiero descentralizado.
+  </p>
+
+  <button onclick="document.getElementById('extraInfo').classList.toggle('hidden')">Mostrar Información Avanzada y Datos Exclusivos</button>
+  
+  <div id="extraInfo" class="hidden mt-4">
+    <p><strong>Casos reales:</strong> Arbitrum y Optimism están acelerando la adopción con capas 2; Chainlink introduce interoperabilidad cross-chain con CCIP; y plataformas como Morpheus AI están entrenando contratos inteligentes.</p>
+
+    <label for="coinSelect">Selecciona una criptomoneda:</label>
+    <select id="coinSelect" onchange="loadCoinData()">
+      <option value="bitcoin">Bitcoin (BTC)</option>
+      <option value="ethereum">Ethereum (ETH)</option>
+      <option value="solana">Solana (SOL)</option>
+      <option value="cardano">Cardano (ADA)</option>
+    </select>
+
+    <canvas id="coingeckoChart" width="400" height="200"></canvas>
+
+    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=026" alt="Logo Cripto" style="width:150px;margin-top:20px;" />
+  </div>
+</section>
+
+   <section class="classified-info">
+    <details>
+        <summary>Mostrar Información Clasificada</summary>
+        <div class="classified-content">
+            <p><strong>Información Estrictamente Confidencial:</strong></p>
+            <p>En el año 2017, mientras Bitcoin comenzaba su incursión en los mercados financieros tradicionales, se gestaron movimientos estratégicos a nivel institucional que no fueron inmediatamente evidentes para el público general.</p>
+            <ul>
+                <li><strong>Inversiones Encubiertas:</strong> Reportes no confirmados sugieren que grandes fondos de inversión y bancos de Wall Street iniciaron la adquisición discreta de Bitcoin a través de vehículos de inversión especializados y mercados OTC (Over-The-Counter). Esta acumulación silenciosa sentó las bases para la posterior entrada más pública de estas instituciones.</li>
+                <li><strong>Desarrollo de Infraestructura Secreta:</strong> Paralelamente, se estaban desarrollando infraestructuras tecnológicas y de custodia especializadas para manejar los activos digitales a escala institucional. Empresas emergentes y divisiones internas de las instituciones financieras trabajaron en secreto para garantizar la seguridad y el cumplimiento normativo de estas operaciones.</li>
+                <li><strong>Debates Internos y Estrategias:</strong> Documentos filtrados revelan intensos debates internos dentro de las instituciones sobre la viabilidad a largo plazo y los riesgos asociados con la inversión en Bitcoin. Se elaboraron diversas estrategias de entrada y gestión de riesgos, muchas de las cuales se mantuvieron confidenciales para evitar la volatilidad del mercado y la especulación.</li>
+            </ul>
+            <p>Esta información, aunque no siempre pública en su momento, jugó un papel crucial en la eventual aceptación de Bitcoin por parte del mundo financiero tradicional.</p>
+        </div>
+        <img src="assets/images/wallstreet.jpg" alt="Infraestructura Secreta">
+    </details>
+</div>
+
+    <!-- Scripts para la funcionalidad del botón "Más información" -->
+    <script>
+        // Selecciona todos los botones con la clase info-button y añade el listener
+        document.querySelectorAll('.info-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Se espera que el atributo data-section sea "1.1" en este caso.
+                const sectionId = this.getAttribute('data-section');
+                const infoDiv = document.getElementById('info-' + sectionId);
+
+                // Alternamos la visibilidad con animación usando GSAP
+                if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
+                    infoDiv.style.display = 'block';
+                    gsap.fromTo(infoDiv, { opacity: 0, y: -10 }, { duration: 0.5, opacity: 1, y: 0 });
+                } else {
+                    gsap.to(infoDiv, { duration: 0.5, opacity: 0, y: -10, onComplete: () => {
+                        infoDiv.style.display = 'none';
+                    }});
+                }
+            });
+        });
+async function fetchVolatilityData() {
+    try {
+        // Obtenemos datos de Bitcoin desde la API de CoinGecko
+        const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin');
+        const data = await response.json();
+        // Usamos el cambio porcentual en 24h como "volatilidad". Este dato puede ser positivo o negativo.
+        // Para el gráfico de dona, tomaremos el valor absoluto
+        const volatility24h = Math.abs(data.market_data.price_change_percentage_24h);
+        return volatility24h;
+    } catch (error) {
+        console.error("Error al obtener datos de CoinGecko:", error);
+        return 0; // En caso de error, retornar 0
+    }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+    const volatilityValue = await fetchVolatilityData();
+
+    // Crear la gráfica de dona con Chart.js
+    const ctxDona = document.getElementById('volatilityDonut').getContext('2d');
+    new Chart(ctxDona, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cambio 24h', 'Resto (para completar 100%)'],
+            datasets: [{
+                data: [volatilityValue, Math.max(0, 100 - volatilityValue)],
+                backgroundColor: ['#00ffea', '#333'],
+                borderWidth: 1,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            if (context.label === 'Cambio 24h') {
+                                return `Cambio 24h: ${volatilityValue.toFixed(2)}%`;
+                            } else {
+                                return `Resto: ${(100 - volatilityValue).toFixed(2)}%`;
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+});
+src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function updateVolatilityChart(value) {
+        document.getElementById('volatilityValue').innerText = value + '%';
+        if (window.volatilityBarChart) {
+            window.volatilityBarChart.data.datasets[0].data = [value];
+            window.volatilityBarChart.update();
+        }
+    }
+
+    const ctxLine = document.getElementById('volatilityChart').getContext('2d');
+    window.volatilityBarChart = new Chart(ctxLine, {
+        type: 'bar',
+        data: {
+            labels: ['Volatilidad simulada'],
+            datasets: [{
+                label: 'Volatilidad (%)',
+                data: [50],
+                backgroundColor: '#00ffea'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    async function fetchVolatilityData() {
+        try {
+            const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin');
+            const data = await response.json();
+            const volatility = Math.abs(data.market_data.price_change_percentage_24h);
+            return volatility;
+        } catch (error) {
+            console.error("Error al obtener datos de CoinGecko:", error);
+            return 0;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const volatilityReal = await fetchVolatilityData();
+        const ctxDona = document.getElementById('volatilityDonut').getContext('2d');
+        new Chart(ctxDona, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cambio 24h', 'Resto hasta 100%'],
+                datasets: [{
+                    data: [volatilityReal, Math.max(0, 100 - volatilityReal)],
+                    backgroundColor: ['#00ffea', '#444'],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                if (context.label === 'Cambio 24h') {
+                                    return `Volatilidad real: ${volatilityReal.toFixed(2)}%`;
+                                } else {
+                                    return `Resto: ${(100 - volatilityReal).toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    });
+  document.querySelectorAll('.toggle-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const isVisible = content.style.display === 'block';
+      content.style.display = isVisible ? 'none' : 'block';
+      button.textContent = isVisible ? 'Más información' : 'Ocultar';
+    });
+  });
+// 1. Función toggle (se mantiene igual)
+    function toggleAdditionalInfo() {
+        const info = document.querySelector('.additional-info');
+        const btn = document.querySelector('.toggle-btn');
+        info.style.display = info.style.display === 'none' ? 'block' : 'none';
+        btn.textContent = info.style.display === 'none' ? 'Más información ▼' : 'Ocultar ▲';
+    }
+
+    // 2. Conexión a CoinGecko API
+    async function fetchCryptoData() {
+        try {
+            // Datos de mercado global
+            const globalRes = await fetch('https://api.coingecko.com/api/v3/global');
+            const globalData = await globalRes.json();
+            document.getElementById('market-cap').textContent = 
+                (globalData.data.total_market_cap.usd / 1e12).toFixed(2);
+            document.getElementById('daily-volume').textContent = 
+                `$${(globalData.data.total_volume.usd / 1e9).toFixed(1)}B`;
+
+            // Precios individuales
+            const coinsRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
+            const coinsData = await coinsRes.json();
+            document.getElementById('btc-price').innerHTML = 
+                `$${coinsData.bitcoin.usd.toLocaleString()} <small>(${coinsData.bitcoin.usd_24h_change.toFixed(2)}%)</small>`;
+            document.getElementById('eth-price').innerHTML = 
+                `$${coinsData.ethereum.usd.toLocaleString()} <small>(${coinsData.ethereum.usd_24h_change.toFixed(2)}%)</small>`;
+
+            // Renderizar gráfico
+            renderChart(globalData.data.market_cap_percentage);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            document.getElementById('market-cap').textContent = "Error";
+        }
+    }
+
+    // 3. Configuración del gráfico
+    function renderChart(marketData) {
+        const ctx = document.getElementById('coinChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(marketData).map(coin => coin.toUpperCase()),
+                datasets: [{
+                    data: Object.values(marketData),
+                    backgroundColor: [
+                        '#f7931a', // Bitcoin
+                        '#627eea', // Ethereum
+                        '#26a17b', // Tether
+                        '#2775ca', // BNB
+                        '#5a67d8', // USD Coin
+                        '#171c28'  // Otros
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } }
+                }
+            }
+        });
+    }
+
+    // Cargar datos al iniciar
+    document.addEventListener('DOMContentLoaded', fetchCryptoData);
+
+// Interactividad para la calculadora
+document.getElementById('pizzaCalculator').addEventListener('click', function() {
+    const resultDiv = document.getElementById('pizzaResult');
+    const currentPrice = 60000; // Precio actual aproximado de BTC en USD
+    const totalValue = 10000 * currentPrice;
+
+    resultDiv.innerHTML = `
+        <h4>💰 Valor Actual de las 10,000 BTC:</h4>
+        <p class="result-amount">$${totalValue.toLocaleString()} USD</p>
+        <p>Equivalente a ~${Math.round(totalValue/15)} millones de pizzas hoy</p>
+    `;
+    resultDiv.style.display = 'block';
+});
+
+// Gráfico interactivo
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('pizzaChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2010', '2013', '2017', '2021', '2023'],
+            datasets: [{
+                label: 'Valor de 10,000 BTC (USD)',
+                data: [41, 1000000, 20000000, 600000000, 300000000],
+                borderColor: '#f7931a',
+                backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `$${context.raw.toLocaleString()}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+let chartInstance = null;
+
+function loadCoinData() {
+  const coin = document.getElementById('coinSelect').value;
+  fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.length > 0) {
+        const c = data[0];
+
+        const chartData = {
+          labels: ['Precio (USD)', 'Capitalización (USD)', 'Volumen 24h (USD)'],
+          datasets: [{
+            label: c.name,
+            data: [c.current_price, c.market_cap, c.total_volume],
+            backgroundColor: [
+              'rgba(0,255,255,0.6)',
+              'rgba(255,0,255,0.6)',
+              'rgba(0,255,127,0.6)'
+            ],
+            borderColor: ['rgba(0,255,255,1)', 'rgba(255,0,255,1)', 'rgba(0,255,127,1)'],
+            borderWidth: 1
+          }]
+        };
+
+        const config = {
+          type: 'bar',
+          data: chartData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true, position: 'bottom' }
+            }
+          }
+        };
+
+        const ctx = document.getElementById('coingeckoChart').getContext('2d');
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(ctx, config);
+      }
+    })
+    .catch(err => console.error("Error al obtener datos:", err));
+}
+
+// Cargar por defecto Bitcoin
+document.addEventListener("DOMContentLoaded", () => {
+  loadCoinData();
+});
+  </script>
+</body>
+</html>

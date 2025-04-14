@@ -1,0 +1,205 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Estilos generales === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* === Encabezado === */
+.main-header {
+  background-color: #121212;
+  padding: 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-menu a {
+  padding: 10px 16px;
+  background: linear-gradient(45deg, #00fff7, #008cff);
+  color: #000;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+  box-shadow: 0 0 15px #00fff7;
+  transform: scale(1.05);
+}
+
+/* === Secciones === */
+section {
+  margin: 60px auto;
+  padding: 40px 20px;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 247, 0.2);
+  text-align: center;
+}
+
+/* === Intro === */
+.intro-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.intro-section span {
+  color: #00fff7;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+}
+
+.intro-section .buttons {
+  margin-top: 20px;
+}
+
+/* === Botones principales === */
+.btn-neon, .btn-alt {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn-neon {
+  background: linear-gradient(45deg, #00fff7, #008cff);
+  color: #000;
+}
+
+.btn-neon:hover {
+  box-shadow: 0 0 20px #00fff7;
+  transform: scale(1.05);
+}
+
+.btn-alt {
+  background: #333;
+  color: #fff;
+}
+
+.btn-alt:hover {
+  background: #444;
+}
+
+/* === Sección herramientas === */
+.tool-box {
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: #222;
+  box-shadow: 0 0 10px rgba(0, 255, 247, 0.1);
+}
+
+.btn-simple {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00fff7;
+  color: #000;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-simple:hover {
+  background: #00b4a3;
+}
+
+/* === Social buttons === */
+.btn-social {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 22px;
+  background: #444;
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-social:hover {
+  background: #00fff7;
+  color: #000;
+}
+
+/* === Formulario de contacto === */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+/* === Footer === */
+.main-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #121212;
+  color: #aaa;
+  margin-top: 60px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-menu {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+
+  section {
+    padding: 30px 15px;
+  }
+
+  .intro-section h1 {
+    font-size: 2rem;
+  }
+}
