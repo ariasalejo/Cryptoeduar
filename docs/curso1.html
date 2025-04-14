@@ -459,9 +459,42 @@
                 <pre class="mobile-code"><code>OP_RETURN 48656C6C6F20576F726C64</code></pre>
             </div>
       </div>
-  <img src="assets/images/bloque-genesis.jpg" alt="Bloque Génesis">
-</div>
-</div>
+  <!-- Sección 2.3 - Versión Premium -->
+<div class="section timeline premium-section">
+    <div class="header-container">
+        <h3 class="glowing-title">2.3 2010: Primera compra con Bitcoin - El Día que Cambió Todo</h3>
+        <div class="timeline-marker"></div>
+    </div>
+    
+    <div class="content-grid">
+        <div class="text-content">
+            <p class="highlight-paragraph">El 22 de mayo de 2010, el programador <strong>Laszlo Hanyecz</strong> hizo historia al comprar 2 pizzas de Papa John's por <span class="bitcoin-amount">10,000 BTC</span> (equivalente a ~$41 entonces, hoy ~$600 millones).</p>
+            
+            <div class="interactive-container">
+                <button class="interactive-btn" id="pizzaCalculator">📈 Calcular Valor Actual</button>
+                <div class="result-display" id="pizzaResult"></div>
+            </div>
+            
+            <details class="classified-info">
+                <summary>🔍 <strong>Datos Secretos:</strong> Lo que nunca se contó</summary>
+                <div class="classified-content">
+                    <ul>
+                        <li>La transacción requirió <strong>3 días</strong> para completarse (la blockchain era lenta)</li>
+                        <li>Jeremy Sturdivant ("Jercos"), el comprador, vendió los BTC a <strong>$400</strong> pocos meses después</li>
+                        <li>El código de la transacción contenía un mensaje oculto: <code>"🍕#Bitcoin Pizza Day"</code></li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+        
+        <div class="visual-content">
+            <div class="pizza-timeline-chart">
+                <canvas id="pizzaChart"></canvas>
+                <p class="chart-caption">Evolución del valor de 10,000 BTC vs. precio de pizzas</p>
+            </div>
+            <img src="assets/images/bitcoin-pizza.jpg" alt="Las pizzas más caras de la historia" class="hover-zoom">
+        </div>
+
     <!-- Scripts para la funcionalidad del botón "Más información" -->
     <script>
         // Selecciona todos los botones con la clase info-button y añade el listener
@@ -687,6 +720,49 @@ src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     // Cargar datos al iniciar
     document.addEventListener('DOMContentLoaded', fetchCryptoData);
-    </script>
+  
+// Interactividad para la calculadora
+document.getElementById('pizzaCalculator').addEventListener('click', function() {
+    const resultDiv = document.getElementById('pizzaResult');
+    const currentPrice = 60000; // Precio actual aproximado de BTC en USD
+    const totalValue = 10000 * currentPrice;
+    
+    resultDiv.innerHTML = `
+        <h4>💰 Valor Actual de las 10,000 BTC:</h4>
+        <p class="result-amount">$${totalValue.toLocaleString()} USD</p>
+        <p>Equivalente a ~${Math.round(totalValue/15)} millones de pizzas hoy</p>
+    `;
+    resultDiv.style.display = 'block';
+});
+
+// Gráfico interactivo
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('pizzaChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2010', '2013', '2017', '2021', '2023'],
+            datasets: [{
+                label: 'Valor de 10,000 BTC (USD)',
+                data: [41, 1000000, 20000000, 600000000, 300000000],
+                borderColor: '#f7931a',
+                backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `$${context.raw.toLocaleString()}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});  </script>
 </body>
 </html>

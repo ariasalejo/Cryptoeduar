@@ -590,3 +590,108 @@ table td {
 .info-card:hover {
     transform: translateY(-2px);
 }
+/* Estilos Premium */
+.premium-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.glowing-title {
+    color: #f8f8f8;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    position: relative;
+    padding-left: 20px;
+}
+
+.glowing-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 80%;
+    background: #00ffff;
+    border-radius: 4px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.highlight-paragraph {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #ff9900;
+}
+
+.bitcoin-amount {
+    color: #f7931a;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.interactive-container {
+    margin: 1.5rem 0;
+}
+
+.interactive-btn {
+    background: linear-gradient(90deg, #ff8a00 0%, #ff0058 100%);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.interactive-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 138, 0, 0.4);
+}
+
+.result-display {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    display: none;
+}
+
+.pizza-timeline-chart {
+    background: rgba(0,0,0,0.2);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.hover-zoom {
+    transition: transform 0.5s;
+    border-radius: 8px;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .glowing-title {
+        font-size: 1.3rem;
+    }
+    
+    .interactive-btn {
+        width: 100%;
+    }
+}
