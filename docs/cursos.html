@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+ <!DOCTYPE html>
+ <html lang="es">
+ <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cursos CryptoEduar</title>
@@ -12,161 +12,155 @@
   <style>
   /* Estilos básicos para los botones de navegación y registro. Puedes personalizarlos en tu archivo CSS */
   .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
   }
   .nav-button, .auth-button {
-    background-color: #00b386; /* Tono menos brillante del neón */
-    color: #181818;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+  background-color: #00b386; /* Tono menos brillante del neón */
+  color: #181818;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
   }
   .nav-button:hover, .auth-button:hover {
-    background-color: #008060; /* Un tono aún más oscuro al pasar el ratón */
+  background-color: #008060; /* Un tono aún más oscuro al pasar el ratón */
   }
   .auth-links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
   }
   .auth-links a {
-    color: #f0f0f0;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
   }
   .auth-links a:hover {
-    color: #00b386; /* Tono menos brillante del neón al pasar el ratón */
+  color: #00b386; /* Tono menos brillante del neón al pasar el ratón */
   }
   .visitor-counter {
-    font-size: 0.8em;
-    color: #aaa;
-    margin-top: 10px;
+  font-size: 0.8em;
+  color: #aaa;
+  margin-top: 10px;
   }
-
   /* Estilos para hacerlo responsivo en móviles */
   @media (max-width: 600px) {
-    .header-container {
-      flex-direction: column; /* Apila los elementos en columnas en pantallas pequeñas */
-      align-items: center; /* Centra los elementos */
-      text-align: center; /* Centra el texto dentro del contenedor */
-    }
-    .auth-links {
-      margin-top: 15px; /* Añade un espacio entre el texto del encabezado y los botones */
-      flex-direction: row; /* Vuelve a poner los botones en fila para que no ocupen todo el ancho */
-      width: 100%; /* Ocupa todo el ancho disponible */
-      justify-content: center; /* Centra los botones horizontalmente */
-      gap: 10px;
-    }
-    .auth-button {
-      padding: 12px 25px; /* Aumenta un poco el padding para que sean más fáciles de tocar */
-      font-size: 1em; /* Ajusta el tamaño de la fuente si es necesario */
-      /* width: 45%; /* Ocupan un porcentaje del ancho para dejar espacio entre ellos */
-      display: inline-block; /* Asegura que se comporten como bloques en línea */
-      box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
-    }
+  .header-container {
+  flex-direction: column; /* Apila los elementos en columnas en pantallas pequeñas */
+  align-items: center; /* Centra los elementos */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  }
+  .auth-links {
+  margin-top: 15px; /* Añade un espacio entre el texto del encabezado y los botones */
+  flex-direction: row; /* Vuelve a poner los botones en fila para que no ocupen todo el ancho */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px;
+  }
+  .auth-button {
+  padding: 12px 25px; /* Aumenta un poco el padding para que sean más fáciles de tocar */
+  font-size: 1em; /* Ajusta el tamaño de la fuente si es necesario */
+  /* width: 45%; /* Ocupan un porcentaje del ancho para dejar espacio entre ellos */
+  display: inline-block; /* Asegura que se comporten como bloques en línea */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
+  }
   }
   </style>
-</head>
-<body>
+ </head>
+ <body>
   <button id="menu-toggle">☰ Menú</button>
-
   <aside id="sidebar">
-    <div class="logo-container">
-      <img src="assets/images/logo.png" alt="CryptoEduar Logo" class="logo" />
-      <h1>CryptoEduar</h1>
-    </div>
-    <nav class="sidebar-nav">
-      <a href="#curso1">Curso 1: Fundamentos</a>
-      <a href="#curso2">Curso 2: Blockchain</a>
-      <a href="#curso3">Curso 3: Altcoins</a>
-    </nav>
-  </aside>
-
-  <div id="overlay"></div>
-
-  <header class="main-header">
-    <div class="header-container" style="display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <h1>Plataforma de Cursos CryptoEduar</h1>
-        <p>Explora desde Fundamentos hasta lo último en criptomonedas</p>
-      </div>
-      <div class="auth-links">
-        <a href="/signup" class="auth-button">Sign Up</a>
-        <a href="/signin" class="auth-button">Sign In</a>
-      </div>
-    </div>
-  </header>
-
-  <div class="search-container">
-    <input type="text" id="course-search" placeholder="Buscar cursos..." />
+  <div class="logo-container">
+  <img src="assets/images/logo.png" alt="CryptoEduar Logo" class="logo" />
+  <h1>CryptoEduar</h1>
   </div>
-
+  <nav class="sidebar-nav">
+  <a href="#curso1">Curso 1: Fundamentos</a>
+  <a href="#curso2">Curso 2: Blockchain</a>
+  <a href="#curso3">Curso 3: Altcoins</a>
+  </nav>
+  </aside>
+  <div id="overlay"></div>
+  <header class="main-header">
+  <div class="header-container" style="display: flex; justify-content: space-between; align-items: center;">
+  <div>
+  <h1>Plataforma de Cursos CryptoEduar</h1>
+  <p>Explora desde Fundamentos hasta lo último en criptomonedas</p>
+  </div>
+  <div class="auth-links">
+  <a href="/signup" class="auth-button">Sign Up</a>
+  <a href="/signin" class="auth-button">Sign In</a>
+  </div>
+  </div>
+  </header>
+  <div class="search-container">
+  <input type="text" id="course-search" placeholder="Buscar cursos..." />
+  </div>
   <main class="container">
-    <div class="nav-buttons">
-      <a href="/" class="nav-button">Inicio</a>
-    </div>
-
-    <section id="curso1" class="course-section">
-      <h2 onclick="toggleCourse('lecciones-curso1')" class="course-title">
-        1. Fundamentos de Criptomonedas <i class="fas fa-chevron-down"></i>
-      </h2>
-      <div class="video-intro">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/ZrW2Yfjr1Dw?si=z7j_4x8ZkFVtdK3F" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" id="progress-curso1" style="width: 0%;"></div>
-      </div>
-      <div id="lecciones-curso1" class="lecciones">
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-          <span>Introducción al dinero digital</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-          <span>Historia de Bitcoin</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-          <span>Wallets y seguridad</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-          <span>Conceptos básicos de Blockchain</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-          <span>¿Qué es la minería?</span>
-        </div>
-      </div>
-      <div class="rating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-      </div>
-      <button class="course-btn" onclick="window.location.href='curso1.html'">Acceder al curso completo</button>
-    </section>
-
-    <section id="curso2" class="course-section">
-      <h2 onclick="toggleCourse('lecciones-curso2')" class="course-title">
-        2. Tecnología Blockchain <i class="fas fa-chevron-down"></i>
-      </h2>
-      <div class="video-intro">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/GCZ8w1gql4w?si=IYhn0R8AJH6-PkQZ" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" id="progress-curso2" style="width: 0%;"></div>
-      </div>
-      <div id="lecciones-curso2" class="lecciones">
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
+  <div class="nav-buttons">
+  <a href="/" class="nav-button">Inicio</a>
+  </div>
+  <section id="curso1" class="course-section">
+  <h2 onclick="toggleCourse('lecciones-curso1')" class="course-title">
+  1. Fundamentos de Criptomonedas <i class="fas fa-chevron-down"></i>
+  </h2>
+  <div class="video-intro">
+  <iframe width="100%" height="315" src="https://www.youtube.com/embed/ZrW2Yfjr1Dw?si=z7j_4x8ZkFVtdK3F" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="progress">
+  <div class="progress-bar" id="progress-curso1" style="width: 0%;"></div>
+  </div>
+  <div id="lecciones-curso1" class="lecciones">
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
+  <span>Introducción al dinero digital</span>
+  </div>
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
+  <span>Historia de Bitcoin</span>
+  </div>
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
+  <span>Wallets y seguridad</span>
+  </div>
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
+  <span>Conceptos básicos de Blockchain</span>
+  </div>
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
+  <span>¿Qué es la minería?</span>
+  </div>
+  </div>
+  <div class="rating">
+  <span class="star" data-value="1">★</span>
+  <span class="star" data-value="2">★</span>
+  <span class="star" data-value="3">★</span>
+  <span class="star" data-value="4">★</span>
+  <span class="star" data-value="5">★</span>
+  </div>
+  <button class="course-btn" onclick="window.location.href='curso1.html'">Acceder al curso completo</button>
+  </section>
+  <section id="curso2" class="course-section">
+  <h2 onclick="toggleCourse('lecciones-curso2')" class="course-title">
+  2. Tecnología Blockchain <i class="fas fa-chevron-down"></i>
+  </h2>
+  <div class="video-intro">
+  <iframe width="100%" height="315" src="https://www.youtube.com/embed/GCZ8w1gql4w?si=IYhn0R8AJH6-PkQZ" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="progress">
+  <div class="progress-bar" id="progress-curso2" style="width: 0%;"></div>
+  </div>
+  <div id="lecciones-curso2" class="lecciones">
+  <div class="lesson-item">
+  <input type="checkbox" class="lesson-
+http://googleusercontent.com/action_card_content/0 http://googleusercontent.com/action_card_content/1 http://googleusercontent.com/action_card_content/2 http://googleusercontent.com/action_card_content/3 http://googleusercontent.com/action_card_content/4 http://googleusercontent.com/action_card_content/5
+  checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
           <span>Fundamentos de blockchain</span>
         </div>
         <div class="lesson-item">
@@ -308,10 +302,10 @@
       // Aquí iría el código para obtener y mostrar el número de visitantes
       // Esto generalmente se hace con un lenguaje de backend (como PHP, Python, Node.js)
       // o utilizando un servicio de analíticas.
-      const visitorCountElement = document.getElementById('visitor-count');
+      const visitanteCountElement = document.getElementById('visitor-count');
       // Ejemplo simulado:
       const contadorSimulado = Math.floor(Math.random() * 500) + 100;
-      visitorCountElement.textContent = contadorSimulado;
+      visitanteCountElement.textContent = contadorSimulado;
     });
 
     // Función para marcar lecciones (asumo que está en tu archivo cursos.js)
@@ -399,4 +393,3 @@
   </script>
 </body>
 </html>
-
