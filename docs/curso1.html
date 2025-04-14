@@ -512,7 +512,7 @@
         <li><strong>Desafíos:</strong> En sus inicios, la adopción fue limitada debido a barreras técnicas y una interfaz poco intuitiva, restringiendo su uso a nichos especializados.</li>
         <li><strong>Información oculta:</strong> Foros y publicaciones especializadas de la época comentaban experimentos con sistemas híbridos de autenticación y registro que inspirarían futuros desarrollos en la identidad digital.</li>
       </ul>
-      
+
       <h3>El Impacto de Litecoin</h3>
       <p><strong>Litecoin</strong> fue creada en 2011 por Charlie Lee, con el objetivo de ofrecer una alternativa más ágil a Bitcoin. Al modificar parámetros clave del protocolo original, Litecoin se diseñó para facilitar transacciones rápidas y mejorar la distribución de la minería.</p>
       <ul>
@@ -520,13 +520,39 @@
         <li><strong>Rapidez:</strong> Con tiempos de bloque de aproximadamente 2.5 minutos, Litecoin ofrecía una confirmación de transacciones mucho más veloz que los 10 minutos de Bitcoin, haciéndolo ideal para micropagos y comercio diario.</li>
         <li><strong>Información oculta:</strong> En comunidades técnicas se debatía que Litecoin era una plataforma de experimentación en cuanto a escalabilidad y seguridad, lo cual influiría en el desarrollo de métodos de consenso y medidas de protección adoptadas por futuros Altcoins.</li>
       </ul>
-      
+
       <h3>El Ecosistema en Evolución</h3>
       <p>La irrupción de estos Altcoins no solo implicó mejoras técnicas, sino también la apertura de debates en foros y comunidades especializadas, donde se compartían ideas para superar las limitaciones de Bitcoin. Estos intercambios estimularon innovaciones en áreas como privacidad, contratos inteligentes y sistemas híbridos de validación.</p>
       <p>La diversidad de propuestas de 2011 sentó las bases para una evolución que abarcó nuevos modelos de negocio y enfoques tecnológicos, anticipando la explosión de innovaciones en años posteriores.</p>
     </div>
   </details>
 </section>
+
+<section id="info-avanzada" class="seccion">
+  <h2>2.5 Información de Punta: Innovación y Dinamismo en el Mercado Cripto</h2>
+  <p>
+    La evolución del mercado cripto integra tecnologías como soluciones Layer-2, protocolos de interoperabilidad y dApps híbridas que combinan IA con contratos inteligentes. Estas herramientas están redefiniendo la gobernanza, velocidad y eficiencia en el ecosistema financiero descentralizado.
+  </p>
+
+  <button onclick="document.getElementById('extraInfo').classList.toggle('hidden')">Mostrar Información Avanzada y Datos Exclusivos</button>
+  
+  <div id="extraInfo" class="hidden mt-4">
+    <p><strong>Casos reales:</strong> Arbitrum y Optimism están acelerando la adopción con capas 2; Chainlink introduce interoperabilidad cross-chain con CCIP; y plataformas como Morpheus AI están entrenando contratos inteligentes.</p>
+
+    <label for="coinSelect">Selecciona una criptomoneda:</label>
+    <select id="coinSelect" onchange="loadCoinData()">
+      <option value="bitcoin">Bitcoin (BTC)</option>
+      <option value="ethereum">Ethereum (ETH)</option>
+      <option value="solana">Solana (SOL)</option>
+      <option value="cardano">Cardano (ADA)</option>
+    </select>
+
+    <canvas id="coingeckoChart" width="400" height="200"></canvas>
+
+    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=026" alt="Logo Cripto" style="width:150px;margin-top:20px;" />
+  </div>
+</section>
+
     <!-- Scripts para la funcionalidad del botón "Más información" -->
     <script>
         // Selecciona todos los botones con la clase info-button y añade el listener
@@ -795,6 +821,55 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-});  </script>
+});
+let chartInstance = null;
+
+function loadCoinData() {
+  const coin = document.getElementById('coinSelect').value;
+  fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.length > 0) {
+        const c = data[0];
+
+        const chartData = {
+          labels: ['Precio (USD)', 'Capitalización (USD)', 'Volumen 24h (USD)'],
+          datasets: [{
+            label: c.name,
+            data: [c.current_price, c.market_cap, c.total_volume],
+            backgroundColor: [
+              'rgba(0,255,255,0.6)',
+              'rgba(255,0,255,0.6)',
+              'rgba(0,255,127,0.6)'
+            ],
+            borderColor: ['rgba(0,255,255,1)', 'rgba(255,0,255,1)', 'rgba(0,255,127,1)'],
+            borderWidth: 1
+          }]
+        };
+
+        const config = {
+          type: 'bar',
+          data: chartData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true, position: 'bottom' }
+            }
+          }
+        };
+
+        const ctx = document.getElementById('coingeckoChart').getContext('2d');
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(ctx, config);
+      }
+    })
+    .catch(err => console.error("Error al obtener datos:", err));
+}
+
+// Cargar por defecto Bitcoin
+document.addEventListener("DOMContentLoaded", () => {
+  loadCoinData();
+});
+  </script>
 </body>
 </html>
