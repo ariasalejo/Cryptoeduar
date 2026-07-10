@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificado - CryptoEduar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #050508;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00fff5;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .form-container {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,255,245,0.3);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      color: #00fff5;
+      font-weight: 600;
+    }
+    .form-container input, .form-container select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,255,245,0.3);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      font-size: 1em;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #00fff5 0%, #7000ff 100%);
+      color: #0a0a0f;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .form-container button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,255,245,0.4);
+    }
+    #certificado-canvas {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 40px rgba(0,255,245,0.3);
+      margin-bottom: 20px;
+    }
+    .download-btn {
+      display: none;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #00ff88 0%, #00fff5 100%);
+      color: #0a0a0f;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
+    .verify-info {
+      max-width: 600px;
+      text-align: center;
+      color: #a0a0b0;
+      font-size: 0.9em;
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 20px;
+    }
+    .verify-info code {
+      background: rgba(0,255,245,0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #00fff5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏆 Generador de Certificados</h1>
+
+  <div class="form-container">
+    <label>Nombre completo del estudiante:</label>
+    <input type="text" id="nombre" placeholder="Ej: Juan Pérez García" required>
+
+    <label>Curso completado:</label>
+    <select id="curso">
+      <option value="Módulo 1: Fundamentos de Criptomonedas">Módulo 1: Fundamentos de Criptomonedas</option>
+      <option value="Módulo 2: Tecnología Blockchain">Módulo 2: Tecnología Blockchain</option>
+      <option value="Módulo 3: Altcoins y Memecoins">Módulo 3: Altcoins y Memecoins</option>
+      <option value="Módulo 4: Ciberseguridad y Anti-Scam">Módulo 4: Ciberseguridad y Anti-Scam</option>
+      <option value="Módulo 5: Trading y Análisis Técnico">Módulo 5: Trading y Análisis Técnico</option>
+      <option value="Módulo 6: DeFi y Web3">Módulo 6: DeFi y Web3</option>
+      <option value="Módulo 7: Hardware Wallets">Módulo 7: Hardware Wallets</option>
+    </select>
+
+    <label>Horas de estudio:</label>
+    <input type="text" id="horas" placeholder="Ej: 12" value="10">
+
+    <button onclick="generarCertificado()">✨ Generar Certificado</button>
+  </div>
+
+  <canvas id="certificado-canvas" width="1200" height="800"></canvas>
+  <button class="download-btn" id="downloadBtn" onclick="descargarCertificado()">⬇️ Descargar Certificado</button>
+
+  <div class="verify-info">
+    <p>🔒 Cada certificado incluye un <strong>código único de verificación</strong>.</p>
+    <p>Para verificar autenticidad, visita: <code>https://criptoeduar.github.io/verificar?id=[CÓDIGO]</code></p>
+    <p>© 2026 CryptoEduar Security - Todos los derechos reservados</p>
+  </div>
+
+  <script>
+    // Generar código único de verificación
+    function generarCodigo() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let codigo = 'CE-';
+      for (let i = 0; i < 4; i++) codigo += chars.charAt(Math.floor(Math.random() * chars.length));
+      codigo += '-';
+      for (let i = 0; i < 4; i++) codigo += chars.charAt(Math.floor(Math.random() * chars.length));
+      return codigo;
+    }
+
+    let codigoActual = '';
+
+    function generarCertificado() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const curso = document.getElementById('curso').value;
+      const horas = document.getElementById('horas').value || '10';
+
+      if (!nombre) {
+        alert('⚠️ Por favor ingresa el nombre del estudiante');
+        return;
+      }
+
+      codigoActual = generarCodigo();
+      const fecha = new Date().toLocaleDateString('es-ES', { 
+        year: 'numeric', month: 'long', day: 'numeric' 
+      });
+
+      const canvas = document.getElementById('certificado-canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Fondo con gradiente
+      const gradiente = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradiente.addColorStop(0, '#0a0a1a');
+      gradiente.addColorStop(0.5, '#1a0a2e');
+      gradiente.addColorStop(1, '#0a0a1a');
+      ctx.fillStyle = gradiente;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Borde decorativo
+      ctx.strokeStyle = '#00fff5';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+      
+      ctx.strokeStyle = '#7000ff';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(35, 35, canvas.width - 70, canvas.height - 70);
+
+      // Esquinas decorativas
+      ctx.fillStyle = '#00fff5';
+      ctx.fillRect(20, 20, 60, 8);
+      ctx.fillRect(20, 20, 8, 60);
+      ctx.fillRect(canvas.width - 80, 20, 60, 8);
+      ctx.fillRect(canvas.width - 28, 20, 8, 60);
+      ctx.fillRect(20, canvas.height - 28, 60, 8);
+      ctx.fillRect(20, canvas.height - 80, 8, 60);
+      ctx.fillRect(canvas.width - 80, canvas.height - 28, 60, 8);
+      ctx.fillRect(canvas.width - 28, canvas.height - 80, 8, 60);
+
+      // Título
+      ctx.fillStyle = '#00fff5';
+      ctx.font = 'bold 60px Orbitron, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('CERTIFICADO', canvas.width / 2, 140);
+
+      // Subtítulo
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '300 28px Roboto, sans-serif';
+      ctx.fillText('de finalización de curso', canvas.width / 2, 185);
+
+      // Línea decorativa
+      ctx.strokeStyle = '#00fff5';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - 200, 210);
+      ctx.lineTo(canvas.width / 2 + 200, 210);
+      ctx.stroke();
+
+      // Texto "Se otorga a"
+      ctx.fillStyle = '#a0a0b0';
+      ctx.font = '24px Roboto, sans-serif';
+      ctx.fillText('Se otorga el presente certificado a:', canvas.width / 2, 260);
+
+      // Nombre del estudiante
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 50px Roboto, sans-serif';
+      ctx.fillText(nombre.toUpperCase(), canvas.width / 2, 330);
+
+      // Línea bajo el nombre
+      ctx.strokeStyle = '#ff00aa';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - 300, 350);
+      ctx.lineTo(canvas.width / 2 + 300, 350);
+      ctx.stroke();
+
+      // Texto del curso
+      ctx.fillStyle = '#a0a0b0';
+      ctx.font = '22px Roboto, sans-serif';
+      ctx.fillText('Por haber completado satisfactoriamente el curso:', canvas.width / 2, 400);
+
+      // Nombre del curso
+      ctx.fillStyle = '#00fff5';
+      ctx.font = 'bold 32px Roboto, sans-serif';
+      ctx.fillText(curso, canvas.width / 2, 450);
+
+      // Horas y fecha
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '22px Roboto, sans-serif';
+      ctx.fillText(`Con una duración de ${horas} horas de estudio`, canvas.width / 2, 510);
+      ctx.fillText(`Expedido el ${fecha}`, canvas.width / 2, 545);
+
+      // Código de verificación
+      ctx.fillStyle = '#ff00aa';
+      ctx.font = 'bold 20px Orbitron, sans-serif';
+      ctx.fillText(`Código de verificación: ${codigoActual}`, canvas.width / 2, 620);
+
+      // Firma
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(200, 700);
+      ctx.lineTo(450, 700);
+      ctx.stroke();
+      ctx.fillStyle = '#a0a0b0';
+      ctx.font = '18px Roboto, sans-serif';
+      ctx.fillText('CryptoEduar Security', 325, 730);
+      ctx.fillText('Director Académico', 325, 755);
+
+      // Logo (texto simulado)
+      ctx.fillStyle = '#00fff5';
+      ctx.font = 'bold 24px Orbitron, sans-serif';
+      ctx.fillText('CRYPTOEDUAR', canvas.width - 200, 720);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '16px Roboto, sans-serif';
+      ctx.fillText('Security Academy', canvas.width - 200, 745);
+
+      // Mostrar botón de descarga
+      document.getElementById('downloadBtn').style.display = 'block';
+
+      // Guardar en localStorage para verificación futura
+      const certificadoData = {
+        codigo: codigoActual,
+        nombre: nombre,
+        curso: curso,
+        horas: horas,
+        fecha: fecha,
+        timestamp: Date.now()
+      };
+      const certificados = JSON.parse(localStorage.getItem('certificados_criptoeduar') || '[]');
+      certificados.push(certificadoData);
+      localStorage.setItem('certificados_criptoeduar', JSON.stringify(certificados));
+    }
+
+    function descargarCertificado() {
+      const canvas = document.getElementById('certificado-canvas');
+      const link = document.createElement('a');
+      const nombre = document.getElementById('nombre').value.replace(/\s+/g, '_');
+      link.download = `Certificado_CryptoEduar_${nombre}_${codigoActual}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+
+</body>
+</html>

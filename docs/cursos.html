@@ -1,395 +1,522 @@
- <!DOCTYPE html>
- <html lang="es">
- <head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cursos CryptoEduar</title>
-  <link rel="stylesheet" href="assets/css/cursos.css" />
+  <meta name="description" content="Cursos de Criptomonedas, Blockchain y Ciberseguridad - CryptoEduar" />
+  <meta name="keywords" content="cursos criptomonedas, blockchain, ciberseguridad, bitcoin, ethereum, trading, defi" />
+  <meta property="og:title" content="Cursos CryptoEduar Security" />
+  <meta property="og:description" content="Aprende cripto y ciberseguridad desde cero hasta nivel experto" />
+  <title>Cursos | CryptoEduar Security</title>
+  <link rel="icon" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-  /* Estilos básicos para los botones de navegación y registro. Puedes personalizarlos en tu archivo CSS */
-  .nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  }
-  .nav-button, .auth-button {
-  background-color: #00b386; /* Tono menos brillante del neón */
-  color: #181818;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  }
-  .nav-button:hover, .auth-button:hover {
-  background-color: #008060; /* Un tono aún más oscuro al pasar el ratón */
-  }
-  .auth-links {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  }
-  .auth-links a {
-  color: #f0f0f0;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  }
-  .auth-links a:hover {
-  color: #00b386; /* Tono menos brillante del neón al pasar el ratón */
-  }
-  .visitor-counter {
-  font-size: 0.8em;
-  color: #aaa;
-  margin-top: 10px;
-  }
-  /* Estilos para hacerlo responsivo en móviles */
-  @media (max-width: 600px) {
-  .header-container {
-  flex-direction: column; /* Apila los elementos en columnas en pantallas pequeñas */
-  align-items: center; /* Centra los elementos */
-  text-align: center; /* Centra el texto dentro del contenedor */
-  }
-  .auth-links {
-  margin-top: 15px; /* Añade un espacio entre el texto del encabezado y los botones */
-  flex-direction: row; /* Vuelve a poner los botones en fila para que no ocupen todo el ancho */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  justify-content: center; /* Centra los botones horizontalmente */
-  gap: 10px;
-  }
-  .auth-button {
-  padding: 12px 25px; /* Aumenta un poco el padding para que sean más fáciles de tocar */
-  font-size: 1em; /* Ajusta el tamaño de la fuente si es necesario */
-  /* width: 45%; /* Ocupan un porcentaje del ancho para dejar espacio entre ellos */
-  display: inline-block; /* Asegura que se comporten como bloques en línea */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
-  }
-  }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #00fff5;
+      --secondary: #7000ff;
+      --accent: #ff00aa;
+      --dark: #0a0a0f;
+      --darker: #050508;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --success: #00ff88;
+      --danger: #ff4757;
+      --warning: #ffaa00;
+      --gradient-1: linear-gradient(135deg, #00fff5 0%, #7000ff 100%);
+      --gradient-2: linear-gradient(135deg, #ff00aa 0%, #7000ff 100%);
+      --gradient-3: linear-gradient(135deg, #00fff5 0%, #00ff88 100%);
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--darker);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .main-header {
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 0 30px rgba(0, 255, 245, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 255, 245, 0.5); }
+    .header-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5em;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-menu { display: flex; gap: 20px; }
+    .nav-menu a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+      color: var(--dark);
+      background: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 255, 245, 0.5);
+    }
+    .courses-hero {
+      padding: 80px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+    }
+    .courses-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(112, 0, 255, 0.1) 0%, transparent 50%);
+      animation: background-shift 15s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes background-shift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    .courses-hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      margin-bottom: 15px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+    .courses-hero p {
+      font-size: 1.2em;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .search-container {
+      max-width: 600px;
+      margin: -30px auto 40px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+    #course-search {
+      width: 100%;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: 2px solid var(--primary);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      font-size: 1.1em;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    #course-search:focus {
+      outline: none;
+      box-shadow: 0 0 30px rgba(0, 255, 245, 0.4);
+      transform: scale(1.02);
+    }
+    .courses-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .module-section {
+      margin-bottom: 60px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .module-section:hover {
+      border-color: var(--primary);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.1);
+    }
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .module-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .module-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .badge-principiante { background: rgba(0, 255, 136, 0.1); color: var(--success); border: 1px solid var(--success); }
+    .badge-intermedio { background: rgba(255, 170, 0, 0.1); color: var(--warning); border: 1px solid var(--warning); }
+    .badge-avanzado { background: rgba(255, 71, 87, 0.1); color: var(--danger); border: 1px solid var(--danger); }
+    .badge-experto { background: rgba(255, 0, 170, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+    .module-progress { margin-bottom: 25px; }
+    .progress-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9em; color: var(--text-secondary); }
+    .progress-bar-container { width: 100%; height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+    .progress-bar { height: 100%; background: var(--gradient-3); border-radius: 10px; transition: width 0.5s ease; box-shadow: 0 0 10px rgba(0, 255, 245, 0.5); }
+    .video-main { margin-bottom: 25px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(0, 255, 245, 0.3); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+    .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .lessons-list { background: rgba(0, 0, 0, 0.3); border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+    .lesson-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .lesson-item:hover { background: rgba(0, 255, 245, 0.05); transform: translateX(5px); }
+    .lesson-item input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; cursor: pointer; accent-color: var(--primary); }
+    .lesson-item span { flex: 1; font-size: 1em; transition: all 0.3s; }
+    .lesson-item.completed span { text-decoration: line-through; color: var(--text-secondary); }
+    .lesson-item.completed { background: rgba(0, 255, 136, 0.05); }
+    .lesson-duration { color: var(--text-secondary); font-size: 0.85em; margin-left: 10px; }
+    .module-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+    .btn-module {
+      flex: 1;
+      min-width: 200px;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary { background: var(--gradient-1); color: var(--dark); box-shadow: 0 5px 20px rgba(0, 255, 245, 0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 255, 245, 0.5); }
+    .btn-certificate { background: var(--gradient-2); color: var(--text-primary); box-shadow: 0 5px 20px rgba(255, 0, 170, 0.3); }
+    .btn-certificate:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 0, 170, 0.5); }
+    .btn-certificate:disabled { opacity: 0.5; cursor: not-allowed; }
+    .main-footer { background: var(--dark); padding: 40px 20px; text-align: center; border-top: 2px solid var(--primary); margin-top: 60px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; }
+    .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+    .social-links a { color: var(--primary); font-size: 1.5em; transition: all 0.3s; }
+    .social-links a:hover { transform: scale(1.2); text-shadow: 0 0 15px rgba(0, 255, 245, 0.8); }
+    @media (max-width: 768px) {
+      .main-header { flex-direction: column; gap: 15px; padding: 15px; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .courses-hero h1 { font-size: 2em; }
+      .module-title { font-size: 1.4em; }
+      .module-header { flex-direction: column; align-items: flex-start; }
+    }
   </style>
- </head>
- <body>
-  <button id="menu-toggle">☰ Menú</button>
-  <aside id="sidebar">
-  <div class="logo-container">
-  <img src="assets/images/logo.png" alt="CryptoEduar Logo" class="logo" />
-  <h1>CryptoEduar</h1>
-  </div>
-  <nav class="sidebar-nav">
-  <a href="#curso1">Curso 1: Fundamentos</a>
-  <a href="#curso2">Curso 2: Blockchain</a>
-  <a href="#curso3">Curso 3: Altcoins</a>
-  </nav>
-  </aside>
-  <div id="overlay"></div>
+</head>
+<body>
+
   <header class="main-header">
-  <div class="header-container" style="display: flex; justify-content: space-between; align-items: center;">
-  <div>
-  <h1>Plataforma de Cursos CryptoEduar</h1>
-  <p>Explora desde Fundamentos hasta lo último en criptomonedas</p>
-  </div>
-  <div class="auth-links">
-  <a href="/signup" class="auth-button">Sign Up</a>
-  <a href="/signin" class="auth-button">Sign In</a>
-  </div>
-  </div>
+    <img src="assets/images/logo.png" alt="Logo" class="logo" />
+    <h2 class="header-title">CryptoEduar Academy</h2>
+    <nav class="nav-menu">
+      <a href="index.html">Inicio</a>
+      <a href="cursos.html" class="active">Cursos</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#dashboard-precios">Mercado</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
   </header>
-  <div class="search-container">
-  <input type="text" id="course-search" placeholder="Buscar cursos..." />
-  </div>
-  <main class="container">
-  <div class="nav-buttons">
-  <a href="/" class="nav-button">Inicio</a>
-  </div>
-  <section id="curso1" class="course-section">
-  <h2 onclick="toggleCourse('lecciones-curso1')" class="course-title">
-  1. Fundamentos de Criptomonedas <i class="fas fa-chevron-down"></i>
-  </h2>
-  <div class="video-intro">
-  <iframe width="100%" height="315" src="https://www.youtube.com/embed/ZrW2Yfjr1Dw?si=z7j_4x8ZkFVtdK3F" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div class="progress">
-  <div class="progress-bar" id="progress-curso1" style="width: 0%;"></div>
-  </div>
-  <div id="lecciones-curso1" class="lecciones">
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-  <span>Introducción al dinero digital</span>
-  </div>
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-  <span>Historia de Bitcoin</span>
-  </div>
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-  <span>Wallets y seguridad</span>
-  </div>
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-  <span>Conceptos básicos de Blockchain</span>
-  </div>
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso1');">
-  <span>¿Qué es la minería?</span>
-  </div>
-  </div>
-  <div class="rating">
-  <span class="star" data-value="1">★</span>
-  <span class="star" data-value="2">★</span>
-  <span class="star" data-value="3">★</span>
-  <span class="star" data-value="4">★</span>
-  <span class="star" data-value="5">★</span>
-  </div>
-  <button class="course-btn" onclick="window.location.href='curso1.html'">Acceder al curso completo</button>
-  </section>
-  <section id="curso2" class="course-section">
-  <h2 onclick="toggleCourse('lecciones-curso2')" class="course-title">
-  2. Tecnología Blockchain <i class="fas fa-chevron-down"></i>
-  </h2>
-  <div class="video-intro">
-  <iframe width="100%" height="315" src="https://www.youtube.com/embed/GCZ8w1gql4w?si=IYhn0R8AJH6-PkQZ" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div class="progress">
-  <div class="progress-bar" id="progress-curso2" style="width: 0%;"></div>
-  </div>
-  <div id="lecciones-curso2" class="lecciones">
-  <div class="lesson-item">
-  <input type="checkbox" class="lesson-
-http://googleusercontent.com/action_card_content/0 http://googleusercontent.com/action_card_content/1 http://googleusercontent.com/action_card_content/2 http://googleusercontent.com/action_card_content/3 http://googleusercontent.com/action_card_content/4 http://googleusercontent.com/action_card_content/5
-  checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
-          <span>Fundamentos de blockchain</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
-          <span>Protocolos de consenso</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
-          <span>Smart Contracts</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
-          <span>Tipos de Blockchain</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso2');">
-          <span>Casos de uso de Blockchain</span>
-        </div>
-      </div>
-      <div class="rating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-      </div>
-      <button class="course-btn" onclick="window.location.href='curso2.html'">Acceder al curso completo</button>
+
+  <main>
+    <section class="courses-hero">
+      <h1> Academia CryptoEduar</h1>
+      <p>De principiante a experto en criptomonedas, blockchain y ciberseguridad. 7 módulos completos con certificación verificable.</p>
     </section>
 
-    <section id="curso3" class="course-section">
-      <h2 onclick="toggleCourse('lecciones-curso3')" class="course-title">
-        3. Altcoins y Memecoins <i class="fas fa-chevron-down"></i>
-      </h2>
-      <div class="video-intro">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/ve_e24cDxZM?si=MLrOxGO5-u1mvPrb" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" id="progress-curso3" style="width: 0%;"></div>
-      </div>
-      <div id="lecciones-curso3" class="lecciones">
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso3');">
-          <span>Ecosistema de altcoins</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso3');">
-          <span>Análisis de proyectos</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso3');">
-          <span>Fenómeno memecoin</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso3');">
-          <span>Riesgos de las Altcoins</span>
-        </div>
-        <div class="lesson-item">
-          <input type="checkbox" class="lesson-checkbox" onchange="marcarLeccion(this); actualizarProgreso('curso3');">
-          <span>Casos de éxito de Memecoins</span>
-        </div>
-      </div>
-      <div class="rating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-      </div>
-      <button class="course-btn" onclick="window.location.href='curso3.html'">Acceder al curso completo</button>
-    </section>
+    <div class="search-container">
+      <input type="text" id="course-search" placeholder="🔍 Buscar cursos..." />
+    </div>
 
-    <section class="testimonials">
-      <h2>Lo que dicen nuestros estudiantes</h2>
-      <div class="testimonial-container">
-        <div class="testimonial">
-          <p>"Este curso me abrió los ojos al mundo de las criptomonedas. ¡Muy recomendable!"</p>
-          <span>- Juan Pérez</span>
-        </div>
-        <div class="testimonial">
-          <p>"La información es clara y actualizada. Aprendí muchísimo."</p>
-          <span>- María Gómez</span>
-        </div>
-      </div>
-    </section>
+    <div class="courses-container">
 
-    <div class="nav-buttons">
-      <a href="#" class="nav-button">Anterior</a>
-      <a href="#" class="nav-button">Siguiente</a>
+      <!-- MÓDULO 1 -->
+      <section class="module-section" data-module="modulo1">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-coins"></i> Módulo 1: Fundamentos de Cripto</h2>
+          <span class="module-badge badge-principiante">Principiante</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo1">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo1" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZrW2Yfjr1Dw" title="Fundamentos de Cripto" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo1">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo1" onchange="updateProgress('modulo1')"><span>Introducción al dinero digital</span><span class="lesson-duration">15 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo1" onchange="updateProgress('modulo1')"><span>Historia de Bitcoin</span><span class="lesson-duration">20 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo1" onchange="updateProgress('modulo1')"><span>Wallets y seguridad básica</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo1" onchange="updateProgress('modulo1')"><span>Conceptos básicos de Blockchain</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo1" onchange="updateProgress('modulo1')"><span>¿Qué es la minería?</span><span class="lesson-duration">18 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo1" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 2 -->
+      <section class="module-section" data-module="modulo2">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-cubes"></i> Módulo 2: Tecnología Blockchain</h2>
+          <span class="module-badge badge-intermedio">Intermedio</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo2">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo2" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GCZ8w1gql4w" title="Tecnología Blockchain" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo2">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo2" onchange="updateProgress('modulo2')"><span>Fundamentos de blockchain</span><span class="lesson-duration">22 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo2" onchange="updateProgress('modulo2')"><span>Protocolos de consenso (PoW vs PoS)</span><span class="lesson-duration">28 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo2" onchange="updateProgress('modulo2')"><span>Smart Contracts introducción</span><span class="lesson-duration">35 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo2" onchange="updateProgress('modulo2')"><span>Tipos de Blockchain</span><span class="lesson-duration">20 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo2" onchange="updateProgress('modulo2')"><span>Casos de uso reales</span><span class="lesson-duration">25 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo2" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 3 -->
+      <section class="module-section" data-module="modulo3">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-rocket"></i> Módulo 3: Altcoins y Memecoins</h2>
+          <span class="module-badge badge-intermedio">Intermedio</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo3">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo3" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ve_e24cDxZM" title="Altcoins y Memecoins" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo3">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo3" onchange="updateProgress('modulo3')"><span>Ecosistema de altcoins</span><span class="lesson-duration">20 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo3" onchange="updateProgress('modulo3')"><span>Análisis de proyectos</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo3" onchange="updateProgress('modulo3')"><span>Fenómeno memecoin</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo3" onchange="updateProgress('modulo3')"><span>Riesgos de las Altcoins</span><span class="lesson-duration">22 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo3" onchange="updateProgress('modulo3')"><span>Casos de éxito</span><span class="lesson-duration">18 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo3" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 4 -->
+      <section class="module-section" data-module="modulo4">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-shield-alt"></i> Módulo 4: Ciberseguridad y Anti-Scam</h2>
+          <span class="module-badge badge-avanzado">Avanzado</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo4">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo4" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8" title="Ciberseguridad" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo4">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo4" onchange="updateProgress('modulo4')"><span>Cómo detectar Honeypots</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo4" onchange="updateProgress('modulo4')"><span>Identificar Rug Pulls</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo4" onchange="updateProgress('modulo4')"><span>Phishing en Web3</span><span class="lesson-duration">28 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo4" onchange="updateProgress('modulo4')"><span>Auditoría básica de Smart Contracts</span><span class="lesson-duration">45 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo4" onchange="updateProgress('modulo4')"><span>Uso del Arsenal de Seguridad</span><span class="lesson-duration">35 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo4" disabled> Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 5 -->
+      <section class="module-section" data-module="modulo5">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-chart-line"></i> Módulo 5: Trading y Análisis Técnico</h2>
+          <span class="module-badge badge-avanzado">Avanzado</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo5">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo5" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8" title="Trading" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo5">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo5" onchange="updateProgress('modulo5')"><span>Análisis técnico básico</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo5" onchange="updateProgress('modulo5')"><span>Patrones de velas</span><span class="lesson-duration">35 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo5" onchange="updateProgress('modulo5')"><span>Indicadores (RSI, MACD, Bollinger)</span><span class="lesson-duration">40 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo5" onchange="updateProgress('modulo5')"><span>Gestión de riesgo</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo5" onchange="updateProgress('modulo5')"><span>Psicología del trading</span><span class="lesson-duration">28 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo5" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 6 -->
+      <section class="module-section" data-module="modulo6">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-link"></i> Módulo 6: DeFi y Web3</h2>
+          <span class="module-badge badge-experto">Experto</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo6">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo6" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8" title="DeFi" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo6">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo6" onchange="updateProgress('modulo6')"><span>Introducción a DeFi</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo6" onchange="updateProgress('modulo6')"><span>DEX vs CEX</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo6" onchange="updateProgress('modulo6')"><span>Yield Farming y Liquidity Pools</span><span class="lesson-duration">40 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo6" onchange="updateProgress('modulo6')"><span>NFTs y su ecosistema</span><span class="lesson-duration">35 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo6" onchange="updateProgress('modulo6')"><span>DAOs y gobernanza</span><span class="lesson-duration">28 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo6" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
+      <!-- MÓDULO 7 -->
+      <section class="module-section" data-module="modulo7">
+        <div class="module-header">
+          <h2 class="module-title"><i class="fas fa-key"></i> Módulo 7: Hardware Wallets</h2>
+          <span class="module-badge badge-experto">Experto</span>
+        </div>
+        <div class="module-progress">
+          <div class="progress-info"><span>Progreso del módulo</span><span id="progress-text-modulo7">0%</span></div>
+          <div class="progress-bar-container"><div class="progress-bar" id="progress-bar-modulo7" style="width: 0%;"></div></div>
+        </div>
+        <div class="video-main"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8" title="Hardware Wallets" allowfullscreen></iframe></div></div>
+        <div class="lessons-list" id="lessons-modulo7">
+          <div class="lesson-item"><input type="checkbox" data-module="modulo7" onchange="updateProgress('modulo7')"><span>Ledger vs Trezor</span><span class="lesson-duration">20 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo7" onchange="updateProgress('modulo7')"><span>Configuración segura</span><span class="lesson-duration">35 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo7" onchange="updateProgress('modulo7')"><span>Backup y recuperación</span><span class="lesson-duration">25 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo7" onchange="updateProgress('modulo7')"><span>Mejores prácticas de seguridad</span><span class="lesson-duration">30 min</span></div>
+          <div class="lesson-item"><input type="checkbox" data-module="modulo7" onchange="updateProgress('modulo7')"><span>Casos de hackeos y lecciones</span><span class="lesson-duration">28 min</span></div>
+        </div>
+        <div class="module-actions"><button class="btn-module btn-certificate" data-module="modulo7" disabled>🏆 Obtener Certificado</button></div>
+      </section>
+
     </div>
   </main>
 
-  <footer class="footer">
+  <footer class="main-footer">
     <div class="footer-container">
-      <p>© 2025 CryptoEduar. Todos los derechos reservados.</p>
-      <p class="visitor-counter">Visitantes: <span id="visitor-count">0</span></p> <div class="social-links">
+      <p>&copy; 2026 CryptoEduar Security. Todos los derechos reservados.</p>
+      <div class="social-links">
         <a href="https://t.me/criptoeduar" target="_blank"><i class="fab fa-telegram"></i></a>
         <a href="https://facebook.com/criptoeduar" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://discord.gg/criptoeduar" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@criptoeduar" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/cursos.js"></script>
-
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('Service Worker registrado con scope:', reg.scope))
-          .catch(err => console.error('Error al registrar el Service Worker:', err));
+    document.addEventListener('DOMContentLoaded', function() {
+      loadProgress();
+      setupSearch();
+      setupCertificates();
+    });
+
+    function saveProgress(moduleId) {
+      const lessons = document.querySelectorAll(`#lessons-${moduleId} input[type="checkbox"]`);
+      const completed = Array.from(lessons).filter(cb => cb.checked).map((cb, index) => index);
+      localStorage.setItem(`progress-${moduleId}`, JSON.stringify(completed));
+    }
+
+    function loadProgress() {
+      const modules = ['modulo1', 'modulo2', 'modulo3', 'modulo4', 'modulo5', 'modulo6', 'modulo7'];
+      modules.forEach(moduleId => {
+        const saved = localStorage.getItem(`progress-${moduleId}`);
+        if (saved) {
+          const completed = JSON.parse(saved);
+          const lessons = document.querySelectorAll(`#lessons-${moduleId} input[type="checkbox"]`);
+          completed.forEach(index => {
+            if (lessons[index]) {
+              lessons[index].checked = true;
+              lessons[index].closest('.lesson-item').classList.add('completed');
+            }
+          });
+          updateProgress(moduleId);
+        }
       });
     }
 
-    // Configuración del sistema de valoraciones (estrellas)
-    document.querySelectorAll('.rating').forEach(function(ratingContainer) {
-      const stars = ratingContainer.querySelectorAll('.star');
-      stars.forEach(function(star) {
-        star.addEventListener('click', function() {
-          const rating = star.dataset.value;
-          stars.forEach(function(s) {
-            s.classList.toggle('selected', s.dataset.value <= rating);
-          });
-          console.log("Se ha calificado con " + rating + " estrellas");
+    function updateProgress(moduleId) {
+      const lessons = document.querySelectorAll(`#lessons-${moduleId} input[type="checkbox"]`);
+      const total = lessons.length;
+      const completed = Array.from(lessons).filter(cb => cb.checked).length;
+      const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+      const progressBar = document.getElementById(`progress-bar-${moduleId}`);
+      const progressText = document.getElementById(`progress-text-${moduleId}`);
+      if (progressBar) progressBar.style.width = percentage + '%';
+      if (progressText) progressText.textContent = percentage + '%';
+      lessons.forEach(lesson => {
+        const item = lesson.closest('.lesson-item');
+        if (lesson.checked) item.classList.add('completed');
+        else item.classList.remove('completed');
+      });
+      saveProgress(moduleId);
+      const certBtn = document.querySelector(`.btn-certificate[data-module="${moduleId}"]`);
+      if (certBtn) certBtn.disabled = percentage < 100;
+    }
+
+    function setupSearch() {
+      const searchInput = document.getElementById('course-search');
+      searchInput.addEventListener('input', function() {
+        const searchText = this.value.toLowerCase();
+        document.querySelectorAll('.module-section').forEach(section => {
+          const title = section.querySelector('.module-title').textContent.toLowerCase();
+          section.style.display = title.includes(searchText) ? 'block' : 'none';
         });
       });
-    });
+    }
 
-    // Filtro de búsqueda para cursos
-    document.getElementById('course-search').addEventListener('input', function() {
-      const searchText = this.value.toLowerCase();
-      document.querySelectorAll('.course-section').forEach(function(section) {
-        const title = section.querySelector('.course-title').textContent.toLowerCase();
-        section.style.display = title.includes(searchText) ? 'block' : 'none';
+    function setupCertificates() {
+      document.querySelectorAll('.btn-certificate').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const moduleId = this.dataset.module;
+          const moduleName = this.closest('.module-section').querySelector('.module-title').textContent;
+          if (this.disabled) {
+            alert('⚠️ Debes completar todas las lecciones del módulo para obtener el certificado.');
+            return;
+          }
+          
+          // Calcular horas según el módulo
+          const horasPorModulo = {
+            'modulo1': '10',
+            'modulo2': '12',
+            'modulo3': '10',
+            'modulo4': '15',
+            'modulo5': '14',
+            'modulo6': '13',
+            'modulo7': '11'
+          };
+          const horas = horasPorModulo[moduleId] || '10';
+          
+          // Redirigir al generador de certificados
+          window.open(`assets/certificados/certificado.html?curso=${encodeURIComponent(moduleName)}&horas=${horas}`, '_blank');
+        });
       });
-    });
-
-    // Contador de visitantes (requiere backend o servicio externo)
-    document.addEventListener('DOMContentLoaded', function() {
-      // Aquí iría el código para obtener y mostrar el número de visitantes
-      // Esto generalmente se hace con un lenguaje de backend (como PHP, Python, Node.js)
-      // o utilizando un servicio de analíticas.
-      const visitanteCountElement = document.getElementById('visitor-count');
-      // Ejemplo simulado:
-      const contadorSimulado = Math.floor(Math.random() * 500) + 100;
-      visitanteCountElement.textContent = contadorSimulado;
-    });
-
-    // Función para marcar lecciones (asumo que está en tu archivo cursos.js)
-    // function marcarLeccion(checkbox) {
-    //   const span = checkbox.nextElementSibling;
-    //   if (checkbox.checked) {
-    //     span.style.textDecoration = 'underline';
-    //   } else {
-    //     span.style.textDecoration = 'none';
-    //   }
-    // }
-
-    // Función para actualizar el progreso (asumo que está en tu archivo cursos.js)
-    // function actualizarProgreso(cursoId) {
-    //   const lecciones = document.querySelectorAll(`#lecciones-${cursoId} .lesson-checkbox`);
-    //   const barraProgreso = document.getElementById(`progress-${cursoId}`);
-    //   const completadas = Array.from(lecciones).filter(checkbox => checkbox.checked).length;
-    //   const porcentaje = lecciones.length > 0 ? (completadas / lecciones.length) * 100 : 0;
-    //   barraProgreso.style.width = porcentaje + '%';
-    // }
-
-    // Función para mostrar/ocultar lecciones (asumo que está en tu archivo cursos.js)
-    // function toggleCourse(idLecciones) {
-    //   const leccionesDiv = document.getElementById(idLecciones);
-    //   const icono = document.querySelector(`#${idLecciones.replace('lecciones-', 'curso')} i`);
-    //   if (leccionesDiv.style.display === 'none' || leccionesDiv.style.display === '') {
-    //     leccionesDiv.style.display = 'block';
-    //     icono.classList.remove('fa-chevron-down');
-    //     icono.classList.add('fa-chevron-up');
-    //   } else {
-    //     leccionesDiv.style.display = 'none';
-    //     icono.classList.remove('fa-chevron-up');
-    //     icono.classList.add('fa-chevron-down');
-    //   }
-    // }
-    // Función para marcar la lección como completada (subrayar el texto)
-    function marcarLeccion(checkbox) {
-      const span = checkbox.nextElementSibling;
-      if (checkbox.checked) {
-        span.style.textDecoration = 'underline';
-      } else {
-        span.style.textDecoration = 'none';
-      }
     }
-
-    // Función para actualizar la barra de progreso de un curso específico
-    function actualizarProgreso(cursoId) {
-      const leccionesDiv = document.getElementById(`lecciones-${cursoId}`);
-      const checkboxes = leccionesDiv.querySelectorAll('.lesson-checkbox');
-      const progressBar = document.getElementById(`progress-${cursoId}`);
-
-      if (checkboxes && progressBar) {
-        const totalLecciones = checkboxes.length;
-        const completadas = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-        const porcentaje = totalLecciones > 0 ? (completadas / totalLecciones) * 100 : 0;
-        progressBar.style.width = porcentaje + '%';
-      }
-    }
-
-    // Función para mostrar/ocultar las lecciones de un curso
-    function toggleCourse(idLecciones) {
-      const leccionesDiv = document.getElementById(idLecciones);
-      const icono = document.querySelector(`#${idLecciones.replace('lecciones-', 'curso')} i`);
-      if (leccionesDiv.style.display === 'none' || leccionesDiv.style.display === '') {
-        leccionesDiv.style.display = 'block';
-        if (icono) {
-          icono.classList.remove('fa-chevron-down');
-          icono.classList.add('fa-chevron-up');
-        }
-      } else {
-        leccionesDiv.style.display = 'none';
-        if (icono) {
-          icono.classList.remove('fa-chevron-up');
-          icono.classList.add('fa-chevron-down');
-        }
-      }
-    }
-
-    // Inicializar el progreso al cargar la página (opcional, por si algunas lecciones ya están marcadas)
-    document.addEventListener('DOMContentLoaded', function() {
-      actualizarProgreso('curso1');
-      actualizarProgreso('curso2');
-      actualizarProgreso('curso3');
-    });
   </script>
+
 </body>
 </html>

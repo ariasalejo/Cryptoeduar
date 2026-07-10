@@ -3,43 +3,902 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoEduar - Aprende Criptomonedas</title>
-  <link rel="stylesheet" href="assets/css/index.css" />
+  <meta name="description" content="CryptoEduar - Aprende criptomonedas desde cero con cursos, herramientas y datos en tiempo real" />
+  <meta name="keywords" content="criptomonedas, bitcoin, ethereum, blockchain, cursos, trading, educación cripto" />
+  <title>CryptoEduar - Aprende Criptomonedas | Precios en Tiempo Real</title>
   <link rel="icon" href="assets/images/logo.png" />
+  
   <style>
+    /* ===== VARIABLES Y RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #00fff5;
+      --secondary: #7000ff;
+      --accent: #ff00aa;
+      --dark: #0a0a0f;
+      --darker: #050508;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --success: #00ff88;
+      --danger: #ff4757;
+      --gradient-1: linear-gradient(135deg, #00fff5 0%, #7000ff 100%);
+      --gradient-2: linear-gradient(135deg, #ff00aa 0%, #7000ff 100%);
+      --gradient-3: linear-gradient(135deg, #00fff5 0%, #00ff88 100%);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--darker);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    .main-header {
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 0 30px rgba(0, 255, 245, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 245, 0.5);
+      transition: all 0.3s;
+    }
+
+    .logo:hover {
+      transform: rotate(360deg) scale(1.1);
+      box-shadow: 0 0 40px rgba(0, 255, 245, 0.8);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-menu a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-1);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+
+    .nav-menu a:hover::before {
+      width: 80%;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(0, 255, 245, 0.5);
+    }
+
+    /* ===== SECCIÓN INTRO ===== */
+    .intro-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(0, 255, 245, 0.1) 0%, transparent 70%);
+    }
+
+    .intro-section h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: title-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes title-glow {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 245, 0.5)); }
+      50% { filter: drop-shadow(0 0 40px rgba(0, 255, 245, 0.8)); }
+    }
+
+    .intro-section p {
+      font-size: 1.3em;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .video-container {
       max-width: 800px;
       margin: 20px auto;
-      border: 2px solid #00ffcc;
-      border-radius: 12px;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 0 15px #00ffcc;
+      box-shadow: 0 0 30px rgba(0, 255, 245, 0.4), inset 0 0 30px rgba(0, 255, 245, 0.1);
+      animation: glow-pulse 3s ease-in-out infinite;
     }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 245, 0.4), inset 0 0 30px rgba(0, 255, 245, 0.1); }
+      50% { box-shadow: 0 0 50px rgba(0, 255, 245, 0.6), inset 0 0 50px rgba(0, 255, 245, 0.2); }
+    }
+
     .video-container iframe {
       width: 100%;
       height: 315px;
       border: none;
     }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn-neon {
+      background: var(--gradient-1);
+      color: var(--dark);
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: 0 5px 25px rgba(0, 255, 245, 0.4);
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-neon:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.6);
+    }
+
+    .btn-alt {
+      background: transparent;
+      color: var(--primary);
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      border: 2px solid var(--primary);
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-alt:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.4);
+    }
+
+    /* ===== SECCIÓN HERRAMIENTAS ===== */
+    .tools-section {
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tools-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 50px;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tool-box {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    .tool-box:hover::before {
+      left: 0;
+      opacity: 0.05;
+    }
+
+    .tool-box:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.2);
+    }
+
+    .tool-box h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: var(--primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-box p {
+      color: var(--text-secondary);
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-simple {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 25px;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-simple:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: scale(1.05);
+    }
+
+    /* ===== DASHBOARD DE PRECIOS ===== */
+    .crypto-dashboard {
+      padding: 80px 20px;
+      background: var(--darker);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crypto-dashboard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 245, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(112, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 0, 170, 0.1) 0%, transparent 40%);
+      animation: background-shift 15s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes background-shift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+
+    .dashboard-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard-title {
+      text-align: center;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: title-glow 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 245, 0.5));
+    }
+
+    .dashboard-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 50px;
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+
+    .crypto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .crypto-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .crypto-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      opacity: 0;
+      transition: all 0.5s;
+      z-index: 0;
+    }
+
+    .crypto-card:hover::before {
+      left: 0;
+      opacity: 0.1;
+    }
+
+    .crypto-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 
+        0 20px 60px rgba(0, 255, 245, 0.3),
+        inset 0 0 20px rgba(0, 255, 245, 0.1);
+    }
+
+    .crypto-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .crypto-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .crypto-logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 255, 245, 0.3);
+      box-shadow: 0 0 15px rgba(0, 255, 245, 0.3);
+      transition: all 0.3s;
+    }
+
+    .crypto-card:hover .crypto-logo {
+      transform: rotate(360deg) scale(1.1);
+      border-color: var(--primary);
+      box-shadow: 0 0 25px rgba(0, 255, 245, 0.6);
+    }
+
+    .crypto-info h3 {
+      color: var(--text-primary);
+      margin: 0;
+      font-size: 1.5em;
+      font-weight: 700;
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .crypto-info p {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.95em;
+    }
+
+    .crypto-price {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.2em;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(0, 255, 245, 0.5);
+    }
+
+    .crypto-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .crypto-change {
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 8px 15px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s;
+    }
+
+    .crypto-change.positive {
+      color: var(--success);
+      background: rgba(0, 255, 136, 0.15);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    }
+
+    .crypto-change.negative {
+      color: var(--danger);
+      background: rgba(255, 71, 87, 0.15);
+      border: 1px solid rgba(255, 71, 87, 0.3);
+      box-shadow: 0 0 15px rgba(255, 71, 87, 0.2);
+    }
+
+    .crypto-change:hover {
+      transform: scale(1.1);
+    }
+
+    .crypto-volume {
+      color: var(--text-secondary);
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+
+    .crypto-market-cap {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    .loading-state {
+      text-align: center;
+      color: var(--text-primary);
+      padding: 80px 20px;
+      grid-column: 1/-1;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 255, 245, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--primary);
+      animation: spin 1s linear infinite;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(0, 255, 245, 0.3);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error-state {
+      text-align: center;
+      color: var(--danger);
+      padding: 60px;
+      grid-column: 1/-1;
+      background: rgba(255, 71, 87, 0.1);
+      border-radius: 20px;
+      border: 2px solid rgba(255, 71, 87, 0.3);
+    }
+
+    .error-state h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .error-state p {
+      color: var(--text-secondary);
+    }
+
+    .update-controls {
+      text-align: center;
+    }
+
+    .btn-update {
+      background: var(--gradient-1);
+      color: var(--dark);
+      border: none;
+      padding: 18px 50px;
+      font-size: 1.2em;
+      font-weight: 800;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-update::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-update:hover::before {
+      left: 100%;
+    }
+
+    .btn-update:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 60px rgba(0, 255, 245, 0.6);
+    }
+
+    .btn-update:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .last-update {
+      color: var(--text-secondary);
+      margin-top: 20px;
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+
+    /* ===== TESTIMONIOS ===== */
+    .testimonios-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(112, 0, 255, 0.1) 0%, rgba(0, 255, 245, 0.1) 100%);
+    }
+
+    .testimonios-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .testimonios-section blockquote {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      border-left: 4px solid var(--primary);
+      font-style: italic;
+      font-size: 1.2em;
+      color: var(--text-secondary);
+      backdrop-filter: blur(10px);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .faq-section details {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .faq-section details:hover {
+      border-color: var(--primary);
+      box-shadow: 0 5px 20px rgba(0, 255, 245, 0.2);
+    }
+
+    .faq-section summary {
+      font-weight: 700;
+      font-size: 1.2em;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .faq-section details p {
+      padding: 15px;
+      color: var(--text-secondary);
+      font-size: 1.1em;
+    }
+
+    /* ===== BENEFICIOS ===== */
+    .benefits-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 245, 0.1) 0%, rgba(112, 0, 255, 0.1) 100%);
+    }
+
+    .benefits-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .benefits-section ul {
+      max-width: 600px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .benefits-section li {
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      font-size: 1.2em;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .benefits-section li:hover {
+      border-color: var(--primary);
+      transform: translateX(10px);
+      box-shadow: 0 5px 20px rgba(0, 255, 245, 0.2);
+    }
+
+    /* ===== COMUNIDAD ===== */
+    .comunidad-section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .comunidad-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .comunidad-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-social {
+      background: var(--gradient-1);
+      color: var(--dark);
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: 0 5px 25px rgba(0, 255, 245, 0.4);
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .btn-social:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.6);
+    }
+
+    /* ===== CONTACTO ===== */
+    .contacto-section {
+      padding: 80px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contacto-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px 20px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      font-size: 1.1em;
+      transition: all 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 255, 245, 0.3);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: var(--gradient-1);
+      color: var(--dark);
+      padding: 15px 40px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 5px 25px rgba(0, 255, 245, 0.4);
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(0, 255, 245, 0.6);
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+      background: var(--dark);
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 2px solid var(--primary);
+    }
+
+    .main-footer p {
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .main-footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .main-footer a:hover {
+      text-shadow: 0 0 10px rgba(0, 255, 245, 0.5);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .main-header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .intro-section h1 {
+        font-size: 2.2em;
+      }
+
+      .dashboard-title {
+        font-size: 2.2em;
+      }
+      
+      .crypto-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .crypto-price {
+        font-size: 1.8em;
+      }
+      
+      .crypto-card {
+        padding: 25px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header class="main-header">
     <img src="assets/images/logo.png" alt="Logo CryptoEduar" class="logo" />
     <nav class="nav-menu">
       <a href="dashboard.html">Dashboard</a>
       <a href="cursos.html">Cursos</a>
-      <a href="#">Blog</a>
-      <a href="#">Herramientas</a>
-      <a href="#">Mercado</a>
+      <a href="blog.html">Blog</a>
+      <a href="#dashboard-precios">Mercado</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <main>
+    <!-- SECCIÓN INTRO -->
     <section class="intro-section">
       <h1>Bienvenido a <span>CryptoEduar</span></h1>
       <p>Explora el fascinante mundo de las criptomonedas desde cero con nuestra plataforma educativa.</p>
-      
+
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/rZQ2bV-T-E8?si=dGwBj0q5C10aO7ya"
           title="Video explicativo CryptoEduar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -47,99 +906,265 @@
       </div>
 
       <div class="buttons">
-        <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="btn-neon">Comenzar ahora</a>
+        <a href="https://youtube.com/@criptoeduar?si=wzpFmoLtHxrRqJbw" class="btn-neon" target="_blank" rel="noopener">Comenzar ahora</a>
         <a href="dashboard.html" class="btn-alt">Ir al Dashboard</a>
       </div>
     </section>
 
+    <!-- SECCIÓN HERRAMIENTAS -->
     <section class="tools-section">
+      <h2>🛠️ Nuestras Herramientas</h2>
       <div class="tool-box">
-        <h2>Dashboard</h2>
-        <p>Visualiza precios en tiempo real, gráficos y estadísticas.</p>
+        <h2>📊 Dashboard</h2>
+        <p>Visualiza precios en tiempo real, gráficos y estadísticas del mercado cripto.</p>
         <a href="dashboard.html" class="btn-simple">Acceder</a>
       </div>
       <div class="tool-box">
-        <h2>Cursos</h2>
-        <p>Aprende sobre blockchain, DeFi, altcoins y más.</p>
+        <h2> Cursos</h2>
+        <p>Aprende sobre blockchain, DeFi, altcoins y más con cursos estructurados.</p>
         <a href="cursos.html" class="btn-simple">Ver cursos</a>
       </div>
       <div class="tool-box">
-        <h2>Blog</h2>
-        <p>Noticias, análisis y tutoriales sobre criptomonedas.</p>
-        <a href="#" class="btn-simple">Explorar blog</a>
+        <h2> Blog</h2>
+        <p>Noticias, análisis y tutoriales sobre criptomonedas actualizados diariamente.</p>
+        <a href="blog.html" class="btn-simple">Explorar blog</a>
       </div>
       <div class="tool-box">
-        <h2>Herramientas</h2>
-        <p>Calculadoras, conversores y análisis técnico.</p>
-        <a href="#" class="btn-simple">Ir a herramientas</a>
-      </div>
-      <div class="tool-box">
-        <h2>Mercado</h2>
-        <p>Datos de mercado actualizados de criptos.</p>
-        <a href="#" class="btn-simple">Ver mercado</a>
+        <h2>💹 Mercado en Vivo</h2>
+        <p>Datos de mercado actualizados de las principales criptomonedas.</p>
+        <a href="#dashboard-precios" class="btn-simple">Ver mercado</a>
       </div>
     </section>
 
+    <!-- DASHBOARD DE PRECIOS EN TIEMPO REAL -->
+    <section id="dashboard-precios" class="crypto-dashboard">
+      <div class="dashboard-container">
+        <h2 class="dashboard-title"> Mercado Cripto en Tiempo Real</h2>
+        <p class="dashboard-subtitle">Las 12 criptomonedas más importantes del mundo, actualizadas automáticamente cada minuto</p>
+        
+        <div id="crypto-grid" class="crypto-grid">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Cargando precios del mercado...</p>
+          </div>
+        </div>
+        
+        <div class="update-controls">
+          <button onclick="CryptoDashboard.actualizar()" class="btn-update">
+            🔄 Actualizar Precios
+          </button>
+          <p class="last-update">
+            Última actualización: <span id="ultima-actualizacion">--:--:--</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN TESTIMONIOS -->
     <section class="testimonios-section">
-      <h2>Testimonios</h2>
+      <h2>💬 Testimonios</h2>
       <blockquote>"Gracias a CryptoEduar comencé a invertir con confianza."</blockquote>
       <blockquote>"Una plataforma clara, útil y muy educativa."</blockquote>
     </section>
 
+    <!-- SECCIÓN FAQ -->
     <section class="faq-section">
-      <h2>Preguntas Frecuentes</h2>
+      <h2>❓ Preguntas Frecuentes</h2>
       <details>
         <summary>¿Es gratuito?</summary>
-        <p>Sí, todo el contenido base es gratuito.</p>
+        <p>Sí, todo el contenido base es completamente gratuito.</p>
       </details>
       <details>
         <summary>¿Necesito experiencia previa?</summary>
-        <p>No, está hecho para principiantes.</p>
+        <p>No, está diseñado para principiantes desde cero.</p>
+      </details>
+      <details>
+        <summary>¿Los precios son en tiempo real?</summary>
+        <p>Sí, se actualizan automáticamente cada minuto desde CoinCap API.</p>
       </details>
     </section>
 
+    <!-- SECCIÓN BENEFICIOS -->
     <section class="benefits-section">
-      <h2>Beneficios de unirte</h2>
+      <h2>✨ Beneficios de unirte</h2>
       <ul>
-        <li>Acceso a comunidad privada</li>
-        <li>Actualizaciones constantes</li>
-        <li>Soporte y asesoría gratuita</li>
+        <li>✅ Acceso a comunidad privada</li>
+        <li>✅ Actualizaciones constantes</li>
+        <li>✅ Soporte y asesoría gratuita</li>
+        <li>✅ Datos de mercado en tiempo real</li>
       </ul>
     </section>
 
+    <!-- SECCIÓN COMUNIDAD -->
     <section class="comunidad-section">
-      <h2>Únete a nuestras comunidades</h2>
+      <h2>🌐 Únete a nuestras comunidades</h2>
       <div class="comunidad-links">
-        <a href="https://t.me/criptoeduar" class="btn-social">Telegram</a>
-        <a href="https://discord.gg/criptoeduar" class="btn-social">Discord</a>
-        <a href="https://facebook.com/criptoeduar" class="btn-social">Facebook</a>
+        <a href="https://t.me/criptoeduar" class="btn-social" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://discord.gg/criptoeduar" class="btn-social" target="_blank" rel="noopener">Discord</a>
+        <a href="https://facebook.com/criptoeduar" class="btn-social" target="_blank" rel="noopener">Facebook</a>
       </div>
     </section>
 
+    <!-- SECCIÓN CONTACTO -->
     <section class="contacto-section" id="contacto">
-      <h2>Contacto</h2>
+      <h2>📧 Contacto</h2>
       <form action="https://formsubmit.co/tucorreo@email.com" method="POST" class="contact-form">
         <input type="text" name="name" placeholder="Tu nombre" required />
         <input type="email" name="email" placeholder="Tu correo" required />
         <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
-        <button type="submit" class="btn-neon">Enviar mensaje</button>
+        <button type="submit">Enviar mensaje</button>
       </form>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="main-footer">
-    <p>&copy; 2025 CryptoEduar. Todos los derechos reservados.</p>
+    <p>&copy; 2026 CryptoEduar. Todos los derechos reservados.</p>
+    <p>Datos proporcionados por <a href="https://www.coincap.io/" target="_blank" rel="noopener">CoinCap API</a></p>
   </footer>
 
-  <script src="assets/js/index.js"></script>
+  <!-- SCRIPT DEL DASHBOARD DE PRECIOS -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker registrado:', reg.scope))
-          .catch(err => console.error('Error al registrar Service Worker:', err));
-      });
-    }
+    const CryptoDashboard = {
+      apiUrl: 'https://api.coincap.io/v2/assets',
+      params: {
+        limit: 12
+      },
+      updateInterval: 60000,
+      intervalId: null,
+      
+      init() {
+        this.cargarPrecios();
+        this.intervalId = setInterval(() => this.cargarPrecios(), this.updateInterval);
+      },
+      
+      construirUrl() {
+        const queryString = Object.keys(this.params)
+          .map(key => `${key}=${this.params[key]}`)
+          .join('&');
+        return `${this.apiUrl}?${queryString}`;
+      },
+      
+      formatearNumero(numero, decimales = 2) {
+        if (numero >= 1000000000) {
+          return `$${(numero / 1000000000).toFixed(decimales)}B`;
+        } else if (numero >= 1000000) {
+          return `$${(numero / 1000000).toFixed(decimales)}M`;
+        }
+        return `$${numero.toLocaleString('es-ES', { minimumFractionDigits: decimales, maximumFractionDigits: decimales })}`;
+      },
+      
+      crearTarjeta(crypto) {
+        const cambio = crypto.changePercent24Hr || 0;
+        const esPositivo = cambio >= 0;
+        const claseCambio = esPositivo ? 'positive' : 'negative';
+        const iconoCambio = esPositivo ? '' : '📉';
+        const precio = parseFloat(crypto.priceUsd);
+        const volumen = parseFloat(crypto.volumeUsd24Hr);
+        const marketCap = parseFloat(crypto.marketCapUsd);
+        
+        return `
+          <div class="crypto-card">
+            <div class="crypto-header">
+              <img src="https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png" alt="${crypto.name}" class="crypto-logo" loading="lazy" />
+              <div class="crypto-info">
+                <h3>${crypto.symbol.toUpperCase()}</h3>
+                <p>${crypto.name}</p>
+              </div>
+            </div>
+            <div class="crypto-price">
+              ${this.formatearNumero(precio, precio < 1 ? 6 : 2)}
+            </div>
+            <div class="crypto-stats">
+              <span class="crypto-change ${claseCambio}">
+                ${iconoCambio} ${Math.abs(cambio).toFixed(2)}%
+              </span>
+              <span class="crypto-volume">
+                Vol: ${this.formatearNumero(volumen)}
+              </span>
+            </div>
+            <div class="crypto-market-cap">
+              💼 Market Cap: ${this.formatearNumero(marketCap)}
+            </div>
+          </div>
+        `;
+      },
+      
+      mostrarCarga() {
+        const grid = document.getElementById('crypto-grid');
+        grid.innerHTML = `
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Cargando precios del mercado...</p>
+          </div>
+        `;
+      },
+      
+      mostrarError(mensaje = 'Error al cargar precios') {
+        const grid = document.getElementById('crypto-grid');
+        grid.innerHTML = `
+          <div class="error-state">
+            <h3>⚠️ ${mensaje}</h3>
+            <p>Verifica tu conexión a internet e intenta actualizar nuevamente.</p>
+          </div>
+        `;
+      },
+      
+      actualizarHora() {
+        const ahora = new Date();
+        const horaFormateada = ahora.toLocaleTimeString('es-ES', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+        document.getElementById('ultima-actualizacion').textContent = horaFormateada;
+      },
+      
+      async cargarPrecios() {
+        try {
+          const response = await fetch(this.construirUrl());
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          
+          const result = await response.json();
+          const data = result.data;
+          
+          if (!Array.isArray(data) || data.length === 0) {
+            throw new Error('No se recibieron datos válidos');
+          }
+          
+          const grid = document.getElementById('crypto-grid');
+          grid.innerHTML = data.map(crypto => this.crearTarjeta(crypto)).join('');
+          this.actualizarHora();
+          
+        } catch (error) {
+          console.error('Error al cargar precios:', error);
+          this.mostrarError();
+        }
+      },
+      
+      actualizar() {
+        this.mostrarCarga();
+        this.cargarPrecios();
+      },
+      
+      detener() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
+      }
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      CryptoDashboard.init();
+    });
+    
+    window.addEventListener('beforeunload', () => {
+      CryptoDashboard.detener();
+    });
   </script>
 </body>
 </html>
