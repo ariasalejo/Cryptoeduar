@@ -1,121 +1,213 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoEduar Dashboard</title>
-  <link rel="stylesheet" href="assets/css/dashboard.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Dashboard CryptoEduar - Precios, gráficos y análisis en tiempo real" />
+<title>Dashboard | CryptoEduar Security</title>
+<link rel="icon" href="assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
+body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
+.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
+.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5);transition:all 0.3s}
+.logo:hover{transform:rotate(360deg) scale(1.1)}
+.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
+.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
+.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.hero{padding:60px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%)}
+.hero h1{font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase}
+.hero p{font-size:1.1em;color:var(--text-secondary);max-width:700px;margin:0 auto}
+.section{padding:60px 20px;max-width:1400px;margin:0 auto}
+.section-title{text-align:center;font-size:2.2em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:40px;font-size:1em}
+.crypto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:50px}
+.crypto-card{background:var(--card-bg);border-radius:20px;padding:25px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);transition:all 0.4s}
+.crypto-card:hover{transform:translateY(-8px);border-color:var(--primary);box-shadow:0 20px 60px rgba(0,255,245,0.3)}
+.crypto-header{display:flex;align-items:center;margin-bottom:15px}
+.crypto-logo{width:45px;height:45px;margin-right:12px;border-radius:50%;border:2px solid rgba(0,255,245,0.3)}
+.crypto-info h4{color:var(--text-primary);font-size:1.2em;background:var(--gradient-3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.crypto-info p{color:var(--text-secondary);font-size:0.85em}
+.crypto-price{font-size:1.8em;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.crypto-change{font-weight:700;padding:6px 12px;border-radius:10px;font-size:0.95em;display:inline-block}
+.crypto-change.positive{color:var(--success);background:rgba(0,255,136,0.15);border:1px solid rgba(0,255,136,0.3)}
+.crypto-change.negative{color:var(--danger);background:rgba(255,71,87,0.15);border:1px solid rgba(255,71,87,0.3)}
+.crypto-volume{color:var(--text-secondary);font-size:0.85em;margin-top:5px}
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:30px;margin-bottom:40px}
+.chart-box{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1)}
+.chart-box h3{color:var(--primary);margin-bottom:20px;text-align:center}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:40px}
+.stat-card{background:var(--card-bg);border-radius:15px;padding:25px;border:1px solid rgba(255,255,255,0.1);text-align:center}
+.stat-card h4{color:var(--text-secondary);font-size:0.9em;margin-bottom:10px}
+.stat-card .stat-value{font-size:2em;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-card .stat-label{color:var(--text-secondary);font-size:0.85em;margin-top:5px}
+.update-controls{text-align:center;margin-top:30px}
+.btn-update{background:var(--gradient-1);color:var(--dark);border:none;padding:15px 40px;border-radius:30px;font-weight:700;cursor:pointer;transition:all 0.3s;text-transform:uppercase;font-size:1em}
+.btn-update:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 40px rgba(0,255,245,0.4)}
+.last-update{color:var(--text-secondary);margin-top:15px;font-size:0.9em}
+.api-status{position:fixed;top:15px;right:15px;padding:8px 15px;background:rgba(0,255,136,0.2);border:1px solid #00ff88;border-radius:10px;font-size:0.85em;z-index:1001;color:#fff}
+.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
+.main-footer p{color:var(--text-secondary);font-size:0.9em;margin-bottom:8px}
+.main-footer a{color:var(--primary);text-decoration:none}
+.loading-state{text-align:center;padding:60px;grid-column:1/-1}
+.loading-spinner{display:inline-block;width:50px;height:50px;border:4px solid rgba(0,255,245,0.2);border-radius:50%;border-top-color:var(--primary);animation:spin 1s linear infinite;margin-bottom:20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-state{text-align:center;padding:40px;grid-column:1/-1;background:rgba(255,71,87,0.1);border-radius:20px;border:2px solid rgba(255,71,87,0.3)}
+@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:1.8em}.charts-grid{grid-template-columns:1fr}.crypto-grid{grid-template-columns:1fr}}
+</style>
 </head>
-<body>  <!-- Encabezado -->  <header>
-    <div class="logo">
-      <img src="assets/images/logo.png" alt="CryptoEduar Logo" />
-      <span>CryptoEduar</span>
-    </div>
-    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="navMenu">
-      <a class="neon-btn" href="index.html"><i class="ph ph-house"></i> Inicio</a>
-      <a class="neon-btn" href="cursos.html"><i class="ph ph-book-open"></i> Cursos</a>
-      <a class="neon-btn" href="blog.html"><i class="ph ph-note-pencil"></i> Blog</a>
-      <a class="neon-btn active" href="dashboard.html"><i class="ph ph-monitor-play"></i> Dashboard</a>
-    </nav>
-  </header>  <main>
-    <!-- Estado del mercado -->
-    <section id="estado-mercado" class="neon-box">
-      <h2>Estado del mercado</h2>
-      <div id="market-status"></div>
-    </section><!-- Gráfico -->
-<section id="chart" class="neon-box">
-  <h2>Gráfico de precios en tiempo real</h2>
-  <canvas id="priceChart"></canvas>
+<body>
+<div class="api-status" id="apiStatus">🔄 Conectando...</div>
+
+<header class="main-header">
+<img src="assets/images/logo.png" alt="Logo" class="logo" />
+<nav class="nav-menu">
+<a href="index.html">🏠 Inicio</a>
+<a href="dashboard.html" class="active">📊 Dashboard</a>
+<a href="mercado.html">💹 Mercado</a>
+<a href="herramientas.html">🛡️ Herramientas</a>
+<a href="cursos.html">📚 Cursos</a>
+<a href="blog.html">📰 Blog</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>📊 Dashboard de Precios</h1>
+<p>Visualiza precios en tiempo real, gráficos interactivos y estadísticas del mercado cripto</p>
 </section>
 
-<!-- noticias -->
-<section id="noticias" class="section futuristic-section">
-  <h2 class="section-title neon-text">Noticias Cripto en Español</h2>
-  <div id="news-container" class="news-grid">
-    <p class="loading-text">Cargando noticias...</p>
-  </div>
+<section class="section">
+<h2 class="section-title">💰 Precios en Tiempo Real</h2>
+<p class="section-subtitle">Las 12 criptomonedas más importantes del mundo</p>
+<div id="crypto-grid" class="crypto-grid">
+<div class="loading-state"><div class="loading-spinner"></div><p>Cargando precios...</p></div>
+</div>
+<div class="update-controls">
+<button onclick="CryptoDashboard.actualizar()" class="btn-update">🔄 Actualizar Precios</button>
+<p class="last-update">Última: <span id="ultima-actualizacion">--:--:--</span></p>
+</div>
 </section>
 
-<!-- Precios -->
-<section id="precios" class="neon-box">
-  <h2>Precios en tiempo real</h2>
-  <ul class="price-list">
-    <li>Bitcoin: <span id="bitcoin-price">Cargando...</span></li>
-    <li>Ethereum: <span id="ethereum-price">Cargando...</span></li>
-    <li>Solana: <span id="solana-price">Cargando...</span></li>
-    <li>Cardano: <span id="cardano-price">Cargando...</span></li>
-    <li>Dogecoin: <span id="dogecoin-price">Cargando...</span></li>
-    <li>XRP: <span id="xrp-price">Cargando...</span></li>
-  </ul>
+<section class="section">
+<h2 class="section-title">📈 Estadísticas del Mercado</h2>
+<p class="section-subtitle">Métricas clave del ecosistema cripto</p>
+<div class="stats-grid">
+<div class="stat-card">
+<h4>Market Cap Total</h4>
+<div class="stat-value" id="total-market-cap">$2.4T</div>
+<div class="stat-label">Capitalización total</div>
+</div>
+<div class="stat-card">
+<h4>Volumen 24h</h4>
+<div class="stat-value" id="total-volume">$98B</div>
+<div class="stat-label">Volumen de trading</div>
+</div>
+<div class="stat-card">
+<h4>Dominancia BTC</h4>
+<div class="stat-value">52%</div>
+<div class="stat-label">Bitcoin vs resto</div>
+</div>
+<div class="stat-card">
+<h4>Criptomonedas</h4>
+<div class="stat-value">12,847</div>
+<div class="stat-label">Activas en el mercado</div>
+</div>
+</div>
 </section>
 
-<!-- Comparativa -->
-<section id="comparativa" class="neon-box">
-  <h2>Comparativa de criptomonedas</h2>
-  <div class="table-scroll">
-    <table id="crypto-comparison">
-      <thead>
-        <tr>
-          <th>Criptomoneda</th>
-          <th>Símbolo</th>
-          <th>Precio</th>
-          <th>Market Cap</th>
-          <th>Volumen</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+<section class="section">
+<h2 class="section-title">📊 Gráficos Interactivos</h2>
+<p class="section-subtitle">Visualiza la distribución del mercado</p>
+<div class="charts-grid">
+<div class="chart-box">
+<h3>Dominancia de Mercado</h3>
+<canvas id="dominanceChart"></canvas>
+</div>
+<div class="chart-box">
+<h3>Top 5 por Market Cap</h3>
+<canvas id="marketCapChart"></canvas>
+</div>
+<div class="chart-box">
+<h3>Volumen de Trading 24h</h3>
+<canvas id="volumeChart"></canvas>
+</div>
+<div class="chart-box">
+<h3>Cambio 24h (%)</h3>
+<canvas id="changeChart"></canvas>
+</div>
+</div>
 </section>
 
-<!-- Extra / Actividad -->
-<section id="actividad" class="neon-box">
-  <h2>Extra Destacado</h2>
-  <ul>
-    <li>Usa billeteras frías para almacenar criptos a largo plazo.</li>
-    <li>No compartas tu frase semilla con nadie.</li>
-    <li>Verifica siempre los enlaces antes de conectar tu wallet.</li>
-  </ul>
-</section>
+<footer class="main-footer">
+<p>&copy; 2026 CryptoEduar Security. Dashboard en tiempo real.</p>
+<p>Datos por <a href="https://www.binance.com" target="_blank">Binance</a> · <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> · <a href="https://www.coincap.io" target="_blank">CoinCap</a></p>
+</footer>
 
-<!-- Créditos -->
-<section id="creditos" class="neon-box">
-  <h2>Créditos & Colaboradores</h2>
-  <ul>
-    <li>Diseño y desarrollo: <strong>CryptoEduar</strong></li>
-    <li>Inspiración y comunidad: <strong>Usuarios de Telegram, Discord y Facebook</strong></li>
-    <li>Gráficos y APIs: <strong>CoinGecko, Chart.js</strong></li>
-    <li>Icons: <strong>Phosphor Icons</strong></li>
-    <li>Frontend Style: <strong>Estilo futurista neón inspirado en CyberWeb</strong></li>
-  </ul>
-</section>
+<script>
+const CryptoDashboard={
+updateInterval:60000,intervalId:null,currentApiIndex:0,
+apis:[
+{name:'Binance',url:'https://api.binance.com/api/v3/ticker/24hr',parse:(data)=>{
+const symbols=['BTCUSDT','ETHUSDT','BNBUSDT','SOLUSDT','XRPUSDT','ADAUSDT','DOGEUSDT','DOTUSDT','MATICUSDT','LTCUSDT','TRXUSDT','AVAXUSDT'];
+return data.filter(c=>symbols.includes(c.symbol)).map(c=>({symbol:c.symbol.replace('USDT',''),name:c.symbol.replace('USDT',''),priceUsd:c.lastPrice,changePercent24Hr:c.priceChangePercent,volumeUsd24Hr:c.quoteVolume,marketCapUsd:'0'}));
+}},
+{name:'CoinGecko',url:'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=12&page=1',parse:(data)=>data.map(c=>({symbol:c.symbol.toUpperCase(),name:c.name,priceUsd:c.current_price,changePercent24Hr:c.price_change_percentage_24h,volumeUsd24Hr:c.total_volume,marketCapUsd:c.market_cap}))},
+{name:'CoinCap',url:'https://api.coincap.io/v2/assets?limit=12',parse:(data)=>data.data}
+],
+init(){this.cargarPrecios();this.intervalId=setInterval(()=>this.cargarPrecios(),this.updateInterval);},
+formatearNumero(n,d=2){if(n>=1e9)return'$'+(n/1e9).toFixed(d)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(d)+'M';return'$'+n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});},
+crearTarjeta(c){const ch=parseFloat(c.changePercent24Hr)||0;const pos=ch>=0;const precio=parseFloat(c.priceUsd);const vol=parseFloat(c.volumeUsd24Hr)||0;const mc=parseFloat(c.marketCapUsd)||0;
+return`<div class="crypto-card"><div class="crypto-header"><img src="https://assets.coincap.io/assets/icons/${c.symbol.toLowerCase()}@2x.png" class="crypto-logo" onerror="this.style.display='none'"/><div class="crypto-info"><h4>${c.symbol.toUpperCase()}</h4><p>${c.name}</p></div></div><div class="crypto-price">${this.formatearNumero(precio,precio<1?6:2)}</div><span class="crypto-change ${pos?'positive':'negative'}">${pos?'📈':'📉'} ${Math.abs(ch).toFixed(2)}%</span><div class="crypto-volume">Vol: ${this.formatearNumero(vol)}</div>${mc>0?`<div class="crypto-volume">Cap: ${this.formatearNumero(mc)}</div>`:''}</div>`;},
+actualizarHora(){document.getElementById('ultima-actualizacion').textContent=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});},
+async cargarPrecios(){
+const ck='crypto_cache',ct='crypto_cache_time',ahora=Date.now();
+const tc=localStorage.getItem(ct);
+if(tc&&(ahora-tc<300000)){const d=localStorage.getItem(ck);if(d){const data=JSON.parse(d);document.getElementById('crypto-grid').innerHTML=data.map(c=>this.crearTarjeta(c)).join('');this.actualizarHora();document.getElementById('apiStatus').textContent='💾 Caché';crearGraficos(data);return;}}
+const st=document.getElementById('apiStatus');
+for(let i=0;i<this.apis.length;i++){const api=this.apis[(this.currentApiIndex+i)%this.apis.length];
+try{st.textContent=`🔄 ${api.name}...`;
+const r=await fetch(api.url);if(!r.ok)throw new Error('fail');const d=await r.json();const c=api.parse(d);
+if(!c||c.length===0)throw new Error('vacio');
+localStorage.setItem(ck,JSON.stringify(c));localStorage.setItem(ct,ahora);
+document.getElementById('crypto-grid').innerHTML=c.map(x=>this.crearTarjeta(x)).join('');
+this.actualizarHora();st.textContent=`✅ ${api.name}`;st.style.background='rgba(0,255,136,0.2)';
+this.currentApiIndex=(this.currentApiIndex+i)%this.apis.length;crearGraficos(c);return;
+}catch(e){continue;}}
+const old=localStorage.getItem(ck);if(old){const data=JSON.parse(old);document.getElementById('crypto-grid').innerHTML=data.map(c=>this.crearTarjeta(c)).join('');st.textContent='⚠️ Caché';crearGraficos(data);}
+else{document.getElementById('crypto-grid').innerHTML='<div class="error-state"><h3>⚠️ APIs ocupadas</h3><p>Intenta en 1 min</p></div>';st.textContent='❌ Error';st.style.background='rgba(255,71,87,0.2)';}},
+actualizar(){document.getElementById('crypto-grid').innerHTML='<div class="loading-state"><div class="loading-spinner"></div><p>Actualizando...</p></div>';this.cargarPrecios();},
+detener(){if(this.intervalId){clearInterval(this.intervalId);this.intervalId=null;}}
+};
 
-  </main>  <!-- Pie de página -->  <footer>
-    <p>© 2025 CryptoEduar. Todos los derechos reservados.</p>
-    <p>Síguenos en 
-      <a href="https://t.me/criptoeduar" target="_blank">Telegram</a> | 
-      <a href="https://facebook.com" target="_blank">Facebook</a> | 
-      <a href="https://discord.com" target="_blank">Discord</a>
-    </p>
-  </footer>  <!-- JS -->  <script src="assets/js/dashboard.js"></script>  <!-- Service Worker -->  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('sw.js')
-          .then(registration => {
-            console.log('Service Worker registrado con éxito:', registration);
-          })
-          .catch(error => {
-            console.error('Error al registrar el Service Worker:', error);
-          });
-      });
-    }
+function crearGraficos(data){
+if(!data||data.length===0)return;
+const labels=data.slice(0,5).map(c=>c.symbol.toUpperCase());
+const prices=data.slice(0,5).map(c=>parseFloat(c.priceUsd));
+const volumes=data.slice(0,5).map(c=>parseFloat(c.volumeUsd24Hr)||0);
+const changes=data.slice(0,5).map(c=>parseFloat(c.changePercent24Hr)||0);
 
-    function toggleMenu() {
-      const nav = document.getElementById("navMenu");
-      nav.classList.toggle("active");
-    }
-  </script></body>
+if(window.dominanceChart)window.dominanceChart.destroy();
+if(window.marketCapChart)window.marketCapChart.destroy();
+if(window.volumeChart)window.volumeChart.destroy();
+if(window.changeChart)window.changeChart.destroy();
+
+window.dominanceChart=new Chart(document.getElementById('dominanceChart').getContext('2d'),{type:'doughnut',data:{labels:labels,datasets:[{data:prices,backgroundColor:['#f7931a','#627eea','#f3ba2f','#00ffa3','#00aae4'],borderWidth:0}]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#fff'}}}}});
+
+window.marketCapChart=new Chart(document.getElementById('marketCapChart').getContext('2d'),{type:'bar',data:{labels:labels,datasets:[{label:'Precio (USD)',data:prices,backgroundColor:['#f7931a','#627eea','#f3ba2f','#00ffa3','#00aae4']}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#a0a0b0'},grid:{color:'rgba(255,255,255,0.1)'}},x:{ticks:{color:'#a0a0b0'},grid:{display:false}}}}});
+
+window.volumeChart=new Chart(document.getElementById('volumeChart').getContext('2d'),{type:'bar',data:{labels:labels,datasets:[{label:'Volumen 24h',data:volumes,backgroundColor:['#00fff5','#7000ff','#ff00aa','#00ff88','#ffaa00']}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#a0a0b0',callback:v=>'$'+(v/1e6).toFixed(0)+'M'},grid:{color:'rgba(255,255,255,0.1)'}},x:{ticks:{color:'#a0a0b0'},grid:{display:false}}}}});
+
+window.changeChart=new Chart(document.getElementById('changeChart').getContext('2d'),{type:'bar',data:{labels:labels,datasets:[{label:'Cambio 24h (%)',data:changes,backgroundColor:changes.map(c=>c>=0?'#00ff88':'#ff4757')}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#a0a0b0',callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.1)'}},x:{ticks:{color:'#a0a0b0'},grid:{display:false}}}}});
+}
+
+document.addEventListener('DOMContentLoaded',()=>CryptoDashboard.init());
+window.addEventListener('beforeunload',()=>CryptoDashboard.detener());
+</script>
+</body>
 </html>

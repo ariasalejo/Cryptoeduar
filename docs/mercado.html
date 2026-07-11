@@ -1,54 +1,371 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado - CriptoEduAr</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Mercado Cripto - Precios, conversor, calculadora y análisis completo" />
+<title>Mercado Cripto | CryptoEduar Security</title>
+<link rel="icon" href="assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
+body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
+.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
+.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5);transition:all 0.3s}
+.logo:hover{transform:rotate(360deg) scale(1.1)}
+.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
+.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
+.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.hero{padding:60px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%)}
+.hero h1{font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase}
+.hero p{font-size:1.1em;color:var(--text-secondary);max-width:700px;margin:0 auto}
+.section{padding:60px 20px;max-width:1400px;margin:0 auto}
+.section-title{text-align:center;font-size:2.2em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:40px;font-size:1em}
+.search-filter{max-width:600px;margin:0 auto 40px;position:relative}
+.search-filter input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid var(--primary);background:rgba(0,0,0,0.5);color:#fff;font-size:1em}
+.search-filter input:focus{outline:none;box-shadow:0 0 20px rgba(0,255,245,0.4)}
+.market-table-container{background:var(--card-bg);border-radius:20px;border:1px solid rgba(255,255,255,0.1);overflow:hidden;margin-bottom:40px}
+.market-table{width:100%;border-collapse:collapse}
+.market-table thead{background:rgba(0,255,245,0.1)}
+.market-table th{padding:15px;text-align:left;color:var(--primary);font-weight:700;font-size:0.9em;text-transform:uppercase}
+.market-table td{padding:15px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.95em}
+.market-table tr{transition:all 0.3s}
+.market-table tr:hover{background:rgba(0,255,245,0.05)}
+.coin-cell{display:flex;align-items:center;gap:12px}
+.coin-cell img{width:35px;height:35px;border-radius:50%;border:2px solid rgba(0,255,245,0.3)}
+.coin-cell .coin-name{font-weight:700;color:var(--text-primary)}
+.coin-cell .coin-symbol{color:var(--text-secondary);font-size:0.85em}
+.price-cell{font-weight:700;color:var(--primary);font-size:1.05em}
+.change-positive{color:var(--success);font-weight:700}
+.change-negative{color:var(--danger);font-weight:700}
+.volume-cell{color:var(--text-secondary)}
+.rank-cell{color:var(--text-secondary);font-weight:700}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px;margin-bottom:40px}
+.tool-card{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);transition:all 0.4s}
+.tool-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 10px 40px rgba(0,255,245,0.2)}
+.tool-card h3{color:var(--primary);margin-bottom:15px;font-size:1.3em;display:flex;align-items:center;gap:10px}
+.tool-card p{color:var(--text-secondary);margin-bottom:20px;font-size:0.95em}
+.converter-box,.calculator-box{display:flex;flex-direction:column;gap:12px}
+.converter-box input,.calculator-box input,.converter-box select,.calculator-box select{padding:12px;border-radius:10px;border:1px solid rgba(0,255,245,0.3);background:rgba(0,0,0,0.5);color:#fff;font-size:1em}
+.converter-box input:focus,.calculator-box input:focus{outline:none;border-color:var(--primary)}
+.converter-result,.calculator-result{padding:15px;background:rgba(0,255,136,0.1);border:1px solid var(--success);border-radius:10px;color:var(--success);font-weight:700;text-align:center;margin-top:10px;display:none}
+.converter-result.show,.calculator-result.show{display:block}
+.btn-tool{padding:12px;background:var(--gradient-1);color:var(--dark);border:none;border-radius:10px;font-weight:700;cursor:pointer;transition:all 0.3s;text-transform:uppercase}
+.btn-tool:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,255,245,0.4)}
+.gainers-losers{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:40px}
+.gainer-box,.loser-box{background:var(--card-bg);border-radius:20px;padding:25px;border:1px solid rgba(255,255,255,0.1)}
+.gainer-box{border-color:rgba(0,255,136,0.3)}
+.loser-box{border-color:rgba(255,71,87,0.3)}
+.gainer-box h3{color:var(--success);margin-bottom:15px}
+.loser-box h3{color:var(--danger);margin-bottom:15px}
+.gainer-item,.loser-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.gainer-item:last-child,.loser-item:last-child{border-bottom:none}
+.fear-greed{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);text-align:center;margin-bottom:40px}
+.fear-greed h3{color:var(--primary);margin-bottom:20px}
+.fear-greed-meter{width:200px;height:200px;margin:0 auto 20px;position:relative}
+.fear-greed-value{font-size:3em;font-weight:900;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fear-greed-label{font-size:1.2em;color:var(--text-secondary);margin-top:10px}
+.heatmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:40px}
+.heatmap-item{padding:20px;border-radius:10px;text-align:center;transition:all 0.3s;cursor:pointer}
+.heatmap-item:hover{transform:scale(1.05)}
+.heatmap-item .heat-symbol{font-weight:700;font-size:1.1em;margin-bottom:5px}
+.heatmap-item .heat-change{font-size:0.9em}
+.heat-up{background:rgba(0,255,136,0.2);border:1px solid var(--success);color:var(--success)}
+.heat-down{background:rgba(255,71,87,0.2);border:1px solid var(--danger);color:var(--danger)}
+.update-controls{text-align:center;margin-top:30px}
+.btn-update{background:var(--gradient-1);color:var(--dark);border:none;padding:15px 40px;border-radius:30px;font-weight:700;cursor:pointer;transition:all 0.3s;text-transform:uppercase;font-size:1em}
+.btn-update:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 40px rgba(0,255,245,0.4)}
+.last-update{color:var(--text-secondary);margin-top:15px;font-size:0.9em}
+.api-status{position:fixed;top:15px;right:15px;padding:8px 15px;background:rgba(0,255,136,0.2);border:1px solid #00ff88;border-radius:10px;font-size:0.85em;z-index:1001;color:#fff}
+.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
+.main-footer p{color:var(--text-secondary);font-size:0.9em;margin-bottom:8px}
+.main-footer a{color:var(--primary);text-decoration:none}
+.loading-state{text-align:center;padding:60px}
+.loading-spinner{display:inline-block;width:50px;height:50px;border:4px solid rgba(0,255,245,0.2);border-radius:50%;border-top-color:var(--primary);animation:spin 1s linear infinite;margin-bottom:20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:1.8em}.gainers-losers{grid-template-columns:1fr}.tools-grid{grid-template-columns:1fr}.market-table{font-size:0.85em}.market-table th,.market-table td{padding:10px 5px}}
+</style>
 </head>
 <body>
-    <header>
-        <img src="assets/images/logo.png" alt="CriptoEduAr Logo" width="150">
-        <h1>CriptoEduAr</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Cursos.html">Cursos</a></li>
-                <li><a href="Mercado.html">Mercado</a></li>
-                <li><a href="#comunidad">Comunidad</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="api-status" id="apiStatus">🔄 Conectando...</div>
 
-    <section id="mercado">
-        <h2>Estado del Mercado</h2>
-        <canvas id="grafico-precios"></canvas>
-    </section>
+<header class="main-header">
+<img src="assets/images/logo.png" alt="Logo" class="logo" />
+<nav class="nav-menu">
+<a href="index.html">🏠 Inicio</a>
+<a href="dashboard.html">📊 Dashboard</a>
+<a href="mercado.html" class="active">💹 Mercado</a>
+<a href="herramientas.html">🛡️ Herramientas</a>
+<a href="cursos.html">📚 Cursos</a>
+<a href="blog.html">📰 Blog</a>
+</nav>
+</header>
 
-    <footer>
-        <h2>CriptoEduAr</h2>
-        <p>Educación blockchain accesible para todos</p>
-        <div class="footer-links">
-            <div>
-                <h3>Recursos</h3>
-                <ul>
-                    <li><a href="#">Glosario</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Descargas</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
-                </ul>
-            </div>
-        </div>
-        <p>&copy; 2024 CryptoEduAr. Todos los derechos reservados.</p>
-    </footer>
+<section class="hero">
+<h1>💹 Mercado Cripto Completo</h1>
+<p>Precios, conversor, calculadora de ganancias, heatmap y análisis de mercado en tiempo real</p>
+</section>
 
-    <script src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<section class="section">
+<h2 class="section-title">🔥 Top Criptomonedas</h2>
+<p class="section-subtitle">Las principales criptomonedas por capitalización de mercado</p>
+<div class="search-filter">
+<input type="text" id="searchCrypto" placeholder="🔍 Buscar criptomoneda..." oninput="filtrarTabla()" />
+</div>
+<div class="market-table-container">
+<table class="market-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Moneda</th>
+<th>Precio</th>
+<th>24h %</th>
+<th>Volumen 24h</th>
+<th>Market Cap</th>
+</tr>
+</thead>
+<tbody id="marketTableBody">
+<tr><td colspan="6" class="loading-state"><div class="loading-spinner"></div><p>Cargando datos del mercado...</p></td></tr>
+</tbody>
+</table>
+</div>
+<div class="update-controls">
+<button onclick="CryptoMarket.actualizar()" class="btn-update">🔄 Actualizar Mercado</button>
+<p class="last-update">Última: <span id="ultima-actualizacion">--:--:--</span></p>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">📊 Fear & Greed Index</h2>
+<p class="section-subtitle">Índice de miedo y codicia del mercado cripto</p>
+<div class="fear-greed">
+<h3>¿Cómo se siente el mercado?</h3>
+<div class="fear-greed-meter">
+<canvas id="fearGreedChart" width="200" height="200"></canvas>
+</div>
+<div class="fear-greed-value" id="fearGreedValue">--</div>
+<div class="fear-greed-label" id="fearGreedLabel">Cargando...</div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">️ Heatmap del Mercado</h2>
+<p class="section-subtitle">Visualización rápida del rendimiento 24h</p>
+<div class="heatmap" id="heatmapGrid">
+<div class="heatmap-item heat-up"><div class="heat-symbol">BTC</div><div class="heat-change">+2.5%</div></div>
+<div class="heatmap-item heat-up"><div class="heat-symbol">ETH</div><div class="heat-change">+1.8%</div></div>
+<div class="heatmap-item heat-down"><div class="heat-symbol">BNB</div><div class="heat-change">-0.5%</div></div>
+<div class="heatmap-item heat-up"><div class="heat-symbol">SOL</div><div class="heat-change">+4.2%</div></div>
+<div class="heatmap-item heat-down"><div class="heat-symbol">XRP</div><div class="heat-change">-1.2%</div></div>
+<div class="heatmap-item heat-up"><div class="heat-symbol">ADA</div><div class="heat-change">+0.8%</div></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title"> Top Gainers & Losers</h2>
+<p class="section-subtitle">Las criptomonedas con mayor movimiento en las últimas 24 horas</p>
+<div class="gainers-losers">
+<div class="gainer-box">
+<h3>📈 Top Gainers</h3>
+<div id="gainersList">
+<div class="gainer-item"><span>Cargando...</span></div>
+</div>
+</div>
+<div class="loser-box">
+<h3> Top Losers</h3>
+<div id="losersList">
+<div class="loser-item"><span>Cargando...</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">🛠️ Herramientas de Mercado</h2>
+<p class="section-subtitle">Conversor y calculadora para tus inversiones</p>
+<div class="tools-grid">
+<div class="tool-card">
+<h3>💱 Conversor de Criptomonedas</h3>
+<p>Convierte entre criptomonedas y monedas fiat en tiempo real</p>
+<div class="converter-box">
+<input type="number" id="convAmount" placeholder="Cantidad" value="1" />
+<select id="convFrom">
+<option value="BTC">Bitcoin (BTC)</option>
+<option value="ETH">Ethereum (ETH)</option>
+<option value="BNB">BNB (BNB)</option>
+<option value="SOL">Solana (SOL)</option>
+<option value="XRP">XRP (XRP)</option>
+<option value="USD">Dólar (USD)</option>
+</select>
+<select id="convTo">
+<option value="USD">Dólar (USD)</option>
+<option value="BTC">Bitcoin (BTC)</option>
+<option value="ETH">Ethereum (ETH)</option>
+<option value="BNB">BNB (BNB)</option>
+<option value="SOL">Solana (SOL)</option>
+<option value="XRP">XRP (XRP)</option>
+</select>
+<button class="btn-tool" onclick="convertir()">Convertir</button>
+<div class="converter-result" id="converterResult"></div>
+</div>
+</div>
+<div class="tool-card">
+<h3>💰 Calculadora de Ganancias</h3>
+<p>Calcula tus ganancias potenciales según tu inversión</p>
+<div class="calculator-box">
+<input type="number" id="calcInversion" placeholder="Inversión inicial (USD)" value="1000" />
+<input type="number" id="calcPrecioCompra" placeholder="Precio de compra (USD)" value="50000" />
+<input type="number" id="calcPrecioVenta" placeholder="Precio de venta esperado (USD)" value="75000" />
+<button class="btn-tool" onclick="calcularGanancia()">Calcular Ganancia</button>
+<div class="calculator-result" id="calculatorResult"></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="main-footer">
+<p>&copy; 2026 CryptoEduar Security. Mercado cripto en tiempo real.</p>
+<p>Datos por <a href="https://www.binance.com" target="_blank">Binance</a> · <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> · <a href="https://www.coincap.io" target="_blank">CoinCap</a></p>
+</footer>
+
+<script>
+let marketData=[];
+const CryptoMarket={
+updateInterval:60000,intervalId:null,currentApiIndex:0,
+apis:[
+{name:'Binance',url:'https://api.binance.com/api/v3/ticker/24hr',parse:(data)=>{
+const symbols=['BTCUSDT','ETHUSDT','BNBUSDT','SOLUSDT','XRPUSDT','ADAUSDT','DOGEUSDT','DOTUSDT','MATICUSDT','LTCUSDT','TRXUSDT','AVAXUSDT','LINKUSDT','ATOMUSDT','UNIUSDT'];
+return data.filter(c=>symbols.includes(c.symbol)).map((c,i)=>({rank:i+1,symbol:c.symbol.replace('USDT',''),name:c.symbol.replace('USDT',''),priceUsd:c.lastPrice,changePercent24Hr:c.priceChangePercent,volumeUsd24Hr:c.quoteVolume,marketCapUsd:'0'}));
+}},
+{name:'CoinGecko',url:'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1',parse:(data)=>data.map((c,i)=>({rank:i+1,symbol:c.symbol.toUpperCase(),name:c.name,priceUsd:c.current_price,changePercent24Hr:c.price_change_percentage_24h,volumeUsd24Hr:c.total_volume,marketCapUsd:c.market_cap}))},
+{name:'CoinCap',url:'https://api.coincap.io/v2/assets?limit=15',parse:(data)=>data.data.map((c,i)=>({rank:i+1,symbol:c.symbol,name:c.name,priceUsd:c.priceUsd,changePercent24Hr:c.changePercent24Hr,volumeUsd24Hr:c.volumeUsd24Hr,marketCapUsd:c.marketCapUsd}))}
+],
+init(){this.cargarDatos();this.intervalId=setInterval(()=>this.cargarDatos(),this.updateInterval);},
+formatearNumero(n,d=2){if(n>=1e12)return'$'+(n/1e12).toFixed(d)+'T';if(n>=1e9)return'$'+(n/1e9).toFixed(d)+'B';if(n>=1e6)return'$'+(n/1e6).toFixed(d)+'M';return'$'+n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});},
+async cargarDatos(){
+const ck='market_cache',ct='market_cache_time',ahora=Date.now();
+const tc=localStorage.getItem(ct);
+if(tc&&(ahora-tc<300000)){const d=localStorage.getItem(ck);if(d){marketData=JSON.parse(d);renderizarTabla(marketData);actualizarTodo(marketData);this.actualizarHora();document.getElementById('apiStatus').textContent='💾 Caché';return;}}
+const st=document.getElementById('apiStatus');
+for(let i=0;i<this.apis.length;i++){const api=this.apis[(this.currentApiIndex+i)%this.apis.length];
+try{st.textContent=`🔄 ${api.name}...`;
+const r=await fetch(api.url);if(!r.ok)throw new Error('fail');const d=await r.json();const c=api.parse(d);
+if(!c||c.length===0)throw new Error('vacio');
+marketData=c;
+localStorage.setItem(ck,JSON.stringify(c));localStorage.setItem(ct,ahora);
+renderizarTabla(c);actualizarTodo(c);
+this.actualizarHora();st.textContent=`✅ ${api.name}`;st.style.background='rgba(0,255,136,0.2)';
+this.currentApiIndex=(this.currentApiIndex+i)%this.apis.length;return;
+}catch(e){continue;}}
+const old=localStorage.getItem(ck);if(old){marketData=JSON.parse(old);renderizarTabla(marketData);actualizarTodo(marketData);st.textContent='⚠️ Caché';}
+else{st.textContent='❌ Error';st.style.background='rgba(255,71,87,0.2)';}},
+actualizarHora(){document.getElementById('ultima-actualizacion').textContent=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});},
+actualizar(){this.cargarDatos();}
+};
+
+function renderizarTabla(data){
+const tbody=document.getElementById('marketTableBody');
+if(!data||data.length===0)return;
+tbody.innerHTML=data.map(c=>{
+const ch=parseFloat(c.changePercent24Hr)||0;
+const pos=ch>=0;
+const precio=parseFloat(c.priceUsd);
+const vol=parseFloat(c.volumeUsd24Hr)||0;
+const mc=parseFloat(c.marketCapUsd)||0;
+return`<tr>
+<td class="rank-cell">${c.rank||'-'}</td>
+<td><div class="coin-cell"><img src="https://assets.coincap.io/assets/icons/${c.symbol.toLowerCase()}@2x.png" onerror="this.style.display='none'"/><div><div class="coin-name">${c.name}</div><div class="coin-symbol">${c.symbol.toUpperCase()}</div></div></div></td>
+<td class="price-cell">${CryptoMarket.formatearNumero(precio,precio<1?6:2)}</td>
+<td class="${pos?'change-positive':'change-negative'}">${pos?'▲':'▼'} ${Math.abs(ch).toFixed(2)}%</td>
+<td class="volume-cell">${CryptoMarket.formatearNumero(vol)}</td>
+<td class="volume-cell">${mc>0?CryptoMarket.formatearNumero(mc):'-'}</td>
+</tr>`;
+}).join('');
+}
+
+function actualizarTodo(data){
+if(!data||data.length===0)return;
+const sorted=[...data].sort((a,b)=>parseFloat(b.changePercent24Hr||0)-parseFloat(a.changePercent24Hr||0));
+const gainers=sorted.slice(0,5);
+const losers=sorted.slice(-5).reverse();
+document.getElementById('gainersList').innerHTML=gainers.map(c=>`<div class="gainer-item"><span>${c.symbol.toUpperCase()}</span><span class="change-positive">+${Math.abs(parseFloat(c.changePercent24Hr)||0).toFixed(2)}%</span></div>`).join('');
+document.getElementById('losersList').innerHTML=losers.map(c=>`<div class="loser-item"><span>${c.symbol.toUpperCase()}</span><span class="change-negative">${parseFloat(c.changePercent24Hr)||0}%</span></div>`).join('');
+const heatmap=document.getElementById('heatmapGrid');
+heatmap.innerHTML=data.slice(0,12).map(c=>{
+const ch=parseFloat(c.changePercent24Hr)||0;
+const pos=ch>=0;
+return`<div class="heatmap-item ${pos?'heat-up':'heat-down'}"><div class="heat-symbol">${c.symbol.toUpperCase()}</div><div class="heat-change">${pos?'+':''}${ch.toFixed(2)}%</div></div>`;
+}).join('');
+crearFearGreed(data);
+}
+
+function crearFearGreed(data){
+const avgChange=data.reduce((sum,c)=>sum+(parseFloat(c.changePercent24Hr)||0),0)/data.length;
+const valor=Math.min(100,Math.max(0,Math.round(50+avgChange*5)));
+let label='Neutral';
+let color='#ffaa00';
+if(valor<25){label='Miedo Extremo';color='#ff4757';}
+else if(valor<45){label='Miedo';color='#ff6b6b';}
+else if(valor<55){label='Neutral';color='#ffaa00';}
+else if(valor<75){label='Codicia';color='#00ff88';}
+else{label='Codicia Extrema';color='#00ff88';}
+document.getElementById('fearGreedValue').textContent=valor;
+document.getElementById('fearGreedValue').style.background=`linear-gradient(135deg, ${color}, ${color})`;
+document.getElementById('fearGreedValue').style.webkitBackgroundClip='text';
+document.getElementById('fearGreedValue').style.webkitTextFillColor='transparent';
+document.getElementById('fearGreedLabel').textContent=label;
+if(window.fearGreedChartInst)window.fearGreedChartInst.destroy();
+window.fearGreedChartInst=new Chart(document.getElementById('fearGreedChart').getContext('2d'),{type:'doughnut',data:{datasets:[{data:[valor,100-valor],backgroundColor:[color,'rgba(255,255,255,0.1)'],borderWidth:0}]},options:{cutout:'75%',plugins:{tooltip:{enabled:false},legend:{display:false}}}});
+}
+
+function filtrarTabla(){
+const query=document.getElementById('searchCrypto').value.toLowerCase();
+const filtrados=marketData.filter(c=>c.symbol.toLowerCase().includes(query)||c.name.toLowerCase().includes(query));
+renderizarTabla(filtrados);
+}
+
+function convertir(){
+const amount=parseFloat(document.getElementById('convAmount').value)||0;
+const from=document.getElementById('convFrom').value;
+const to=document.getElementById('convTo').value;
+const prices={};
+marketData.forEach(c=>{prices[c.symbol.toUpperCase()]=parseFloat(c.priceUsd);});
+prices['USD']=1;
+if(!prices[from]||!prices[to]){document.getElementById('converterResult').textContent='️ Moneda no disponible';document.getElementById('converterResult').className='converter-result show';document.getElementById('converterResult').style.background='rgba(255,170,0,0.1)';document.getElementById('converterResult').style.borderColor='#ffaa00';document.getElementById('converterResult').style.color='#ffaa00';return;}
+const usdValue=amount*prices[from];
+const result=usdValue/prices[to];
+document.getElementById('converterResult').textContent=`${amount} ${from} = ${result.toFixed(6)} ${to}`;
+document.getElementById('converterResult').className='converter-result show';
+document.getElementById('converterResult').style.background='rgba(0,255,136,0.1)';
+document.getElementById('converterResult').style.borderColor='#00ff88';
+document.getElementById('converterResult').style.color='#00ff88';
+}
+
+function calcularGanancia(){
+const inversion=parseFloat(document.getElementById('calcInversion').value)||0;
+const compra=parseFloat(document.getElementById('calcPrecioCompra').value)||0;
+const venta=parseFloat(document.getElementById('calcPrecioVenta').value)||0;
+if(compra===0){document.getElementById('calculatorResult').textContent='⚠️ Precio de compra inválido';document.getElementById('calculatorResult').className='calculator-result show';document.getElementById('calculatorResult').style.background='rgba(255,170,0,0.1)';document.getElementById('calculatorResult').style.borderColor='#ffaa00';document.getElementById('calculatorResult').style.color='#ffaa00';return;}
+const cantidad=inversion/compra;
+const valorFinal=cantidad*venta;
+const ganancia=valorFinal-inversion;
+const porcentaje=((venta-compra)/compra*100);
+const pos=ganancia>=0;
+document.getElementById('calculatorResult').innerHTML=`<div style="font-size:1.3em;margin-bottom:5px">${pos?'💰':'📉'} ${pos?'+':''}$${ganancia.toFixed(2)}</div><div style="font-size:0.9em">ROI: ${pos?'+':''}${porcentaje.toFixed(2)}%</div><div style="font-size:0.85em;margin-top:5px">Valor final: $${valorFinal.toFixed(2)}</div>`;
+document.getElementById('calculatorResult').className='calculator-result show';
+document.getElementById('calculatorResult').style.background=pos?'rgba(0,255,136,0.1)':'rgba(255,71,87,0.1)';
+document.getElementById('calculatorResult').style.borderColor=pos?'#00ff88':'#ff4757';
+document.getElementById('calculatorResult').style.color=pos?'#00ff88':'#ff4757';
+}
+
+document.addEventListener('DOMContentLoaded',()=>CryptoMarket.init());
+window.addEventListener('beforeunload',()=>{if(CryptoMarket.intervalId)clearInterval(CryptoMarket.intervalId);});
+</script>
 </body>
 </html>
