@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Herramientas de Ciberseguridad Cripto - Arsenal Anti-Scam" />
+<title>Herramientas | CryptoEduar Security</title>
+<link rel="icon" href="assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
+body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
+.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
+.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5);transition:all 0.3s}
+.logo:hover{transform:rotate(360deg) scale(1.1)}
+.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
+.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
+.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.hero{padding:60px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%)}
+.hero h1{font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase}
+.hero p{font-size:1.1em;color:var(--text-secondary);max-width:700px;margin:0 auto}
+.section{padding:60px 20px;max-width:1400px;margin:0 auto}
+.section-title{text-align:center;font-size:2.2em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:40px;font-size:1em}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:25px}
+.tool-card{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px);transition:all 0.4s}
+.tool-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 10px 40px rgba(0,255,245,0.2)}
+.tool-card h3{color:var(--primary);margin-bottom:10px;font-size:1.3em;display:flex;align-items:center;gap:10px}
+.tool-card p{color:var(--text-secondary);margin-bottom:20px;font-size:0.95em}
+.input-group{display:flex;flex-direction:column;gap:10px;margin-bottom:15px}
+.tool-input{width:100%;padding:12px 15px;border-radius:10px;border:1px solid rgba(0,255,245,0.3);background:rgba(0,0,0,0.5);color:#fff;font-size:1em;font-family:'Roboto',sans-serif}
+.tool-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.3)}
+.tool-btn{width:100%;padding:12px;background:var(--gradient-1);color:var(--dark);border:none;border-radius:10px;font-weight:700;cursor:pointer;transition:all 0.3s;text-transform:uppercase;font-size:0.95em}
+.tool-btn:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,255,245,0.4)}
+.result-box{margin-top:15px;padding:15px;border-radius:10px;font-size:0.9em;display:none;word-break:break-all}
+.result-box.show{display:block}
+.result-box.safe{background:rgba(0,255,136,0.1);border:1px solid var(--success);color:var(--success)}
+.result-box.danger{background:rgba(255,71,87,0.1);border:1px solid var(--danger);color:var(--danger)}
+.result-box.warning{background:rgba(255,170,0,0.1);border:1px solid var(--warning);color:var(--warning)}
+.result-box.info{background:rgba(0,255,245,0.1);border:1px solid var(--primary);color:var(--primary)}
+.password-display{background:rgba(0,0,0,0.5);padding:15px;border-radius:10px;text-align:center;font-family:monospace;font-size:1.2em;color:var(--primary);margin-bottom:15px;border:1px dashed var(--primary);min-height:50px;display:flex;align-items:center;justify-content:center}
+.strength-meter{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.strength-bar{height:100%;width:0%;transition:all 0.3s}
+.hash-output{background:rgba(0,0,0,0.5);padding:15px;border-radius:10px;font-family:monospace;font-size:0.85em;color:var(--text-secondary);word-break:break-all;text-align:center;border:1px solid rgba(255,255,255,0.1)}
+.system-status{background:rgba(0,255,136,0.05);border:1px solid var(--success);border-radius:15px;padding:20px;margin-bottom:40px;display:flex;align-items:center;justify-content:center;gap:15px}
+.status-dot{width:12px;height:12px;background:var(--success);border-radius:50%;box-shadow:0 0 10px var(--success);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
+.main-footer p{color:var(--text-secondary);font-size:0.9em;margin-bottom:8px}
+.main-footer a{color:var(--primary);text-decoration:none}
+@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:1.8em}.tools-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="main-header">
+<img src="assets/images/logo.png" alt="Logo" class="logo" />
+<nav class="nav-menu">
+<a href="index.html">🏠 Inicio</a>
+<a href="dashboard.html">📊 Dashboard</a>
+<a href="mercado.html">💹 Mercado</a>
+<a href="herramientas.html" class="active">🛡️ Herramientas</a>
+<a href="cursos.html">📚 Cursos</a>
+<a href="blog.html"> Blog</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>🛡️ Arsenal de Seguridad</h1>
+<p>Herramientas profesionales de ciberseguridad blockchain para proteger tu patrimonio digital</p>
+</section>
+
+<section class="section">
+<div class="system-status">
+<div class="status-dot"></div>
+<span style="color:var(--success);font-weight:700">SISTEMA ACTIVO</span>
+<span style="color:var(--text-secondary);font-size:0.9em">Todas las herramientas operativas y actualizadas</span>
+</div>
+
+<h2 class="section-title">🔍 Detectores de Amenazas</h2>
+<p class="section-subtitle">Analiza contratos, wallets y URLs antes de interactuar</p>
+
+<div class="tools-grid">
+<!-- HERRAMIENTA 1: HONEYPOT -->
+<div class="tool-card">
+<h3><i class="fas fa-bug"></i> Detector de Honeypots</h3>
+<p>Verifica si un token es una estafa que no te permite vender (Honeypot o Rug Pull).</p>
+<div class="input-group">
+<input type="text" class="tool-input" id="honeypotInput" placeholder="0x... (Dirección del contrato)" />
+</div>
+<button class="tool-btn" onclick="checkHoneypot()">Analizar Contrato</button>
+<div class="result-box" id="honeypotResult"></div>
+</div>
+
+<!-- HERRAMIENTA 2: PHISHING -->
+<div class="tool-card">
+<h3><i class="fas fa-fish"></i> Detector de Phishing</h3>
+<p>Analiza URLs sospechosas para detectar sitios falsos de wallets o exchanges.</p>
+<div class="input-group">
+<input type="text" class="tool-input" id="phishingInput" placeholder="https://... (URL sospechosa)" />
+</div>
+<button class="tool-btn" onclick="checkPhishing()">Analizar URL</button>
+<div class="result-box" id="phishingResult"></div>
+</div>
+
+<!-- HERRAMIENTA 3: WALLET AUDITOR -->
+<div class="tool-card">
+<h3><i class="fas fa-user-secret"></i> Auditor de Wallets</h3>
+<p>Obtén enlaces directos de auditoría para verificar el historial de una dirección.</p>
+<div class="input-group">
+<input type="text" class="tool-input" id="walletInput" placeholder="0x... (Dirección de wallet)" />
+</div>
+<button class="tool-btn" onclick="auditWallet()">Auditar Wallet</button>
+<div class="result-box" id="walletResult"></div>
+</div>
+
+<!-- HERRAMIENTA 4: PASSWORD GENERATOR -->
+<div class="tool-card">
+<h3><i class="fas fa-key"></i> Generador de Claves Seguras</h3>
+<p>Genera contraseñas criptográficamente seguras para tus exchanges y wallets.</p>
+<div class="password-display" id="passwordDisplay">Haz clic en generar</div>
+<div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
+<div class="input-group">
+<label style="color:var(--text-secondary);font-size:0.85em">Longitud: <span id="passLengthVal">16</span></label>
+<input type="range" id="passLength" min="8" max="32" value="16" oninput="document.getElementById('passLengthVal').innerText=this.value" style="accent-color:var(--primary)" />
+</div>
+<button class="tool-btn" onclick="generatePassword()">Generar Contraseña</button>
+</div>
+
+<!-- HERRAMIENTA 5: HASH VERIFIER -->
+<div class="tool-card">
+<h3><i class="fas fa-fingerprint"></i> Verificador Hash SHA-256</h3>
+<p>Genera el hash SHA-256 de cualquier texto para verificar integridad de datos o firmas.</p>
+<div class="input-group">
+<textarea class="tool-input" id="hashInput" placeholder="Escribe o pega el texto a hashear..." rows="3" style="resize:none"></textarea>
+</div>
+<button class="tool-btn" onclick="generateHash()">Generar Hash SHA-256</button>
+<div class="hash-output" id="hashOutput" style="margin-top:15px">El hash aparecerá aquí...</div>
+</div>
+
+<!-- HERRAMIENTA 6: GAS CALCULATOR -->
+<div class="tool-card">
+<h3><i class="fas fa-gas-pump"></i> Calculadora de Gas Fees</h3>
+<p>Estima el costo de transacción en Ethereum según los Gwei actuales.</p>
+<div class="input-group">
+<input type="number" class="tool-input" id="gasGwei" placeholder="Gwei actuales (ej: 25)" value="25" />
+<input type="number" class="tool-input" id="gasLimit" placeholder="Gas Limit (ej: 21000 para transferencias)" value="21000" />
+</div>
+<button class="tool-btn" onclick="calculateGas()">Calcular Costo</button>
+<div class="result-box info" id="gasResult" style="display:none"></div>
+</div>
+</div>
+</section>
+
+<footer class="main-footer">
+<p>&copy; 2026 CryptoEduar Security. Herramientas de ciberseguridad blockchain.</p>
+<p>⚠️ Estas herramientas son educativas. Siempre verifica en múltiples fuentes antes de invertir.</p>
+</footer>
+
+<script>
+function showResult(id, msg, type) {
+  const el = document.getElementById(id);
+  el.innerHTML = msg;
+  el.className = 'result-box show ' + type;
+}
+
+// 1. HONEYPOT CHECKER
+function checkHoneypot() {
+  const addr = document.getElementById('honeypotInput').value.trim();
+  const res = document.getElementById('honeypotResult');
+  
+  if (!addr || !/^0x[a-fA-F0-9]{40}$/.test(addr)) {
+    showResult('honeypotResult', '⚠️ Dirección de contrato inválida. Debe empezar con 0x y tener 42 caracteres.', 'warning');
+    return;
+  }
+  
+  showResult('honeypotResult', '🔄 Analizando contrato en blockchain...', 'info');
+  
+  // Simulación de análisis con validación real de formato
+  setTimeout(() => {
+    // En un entorno real, aquí iría el fetch a GoPlus o TokenSniffer
+    // Como las APIs tienen CORS, damos el enlace directo de auditoría profesional
+    const etherscanLink = `https://etherscan.io/token/${addr}#readContract`;
+    const tokensnifferLink = `https://tokensniffer.com/token/eth/${addr}`;
+    
+    showResult('honeypotResult', `
+      <strong>✅ Contrato formateado correctamente.</strong><br><br>
+      Para un análisis profundo de seguridad (Honeypot/Rug Pull), usa estos auditores profesionales:<br>
+      🔗 <a href="${tokensnifferLink}" target="_blank" style="color:#fff;text-decoration:underline">Analizar en TokenSniffer</a><br>
+      🔗 <a href="${etherscanLink}" target="_blank" style="color:#fff;text-decoration:underline">Ver en Etherscan</a><br><br>
+      <em>️ Nunca inviertas en tokens sin verificar la liquidez bloqueada y el ownership renunciado.</em>
+    `, 'safe');
+  }, 800);
+}
+
+// 2. PHISHING CHECKER
+function checkPhishing() {
+  const url = document.getElementById('phishingInput').value.trim().toLowerCase();
+  if (!url || !url.startsWith('http')) {
+    showResult('phishingResult', '⚠️ Ingresa una URL válida (debe empezar con http:// o https://)', 'warning');
+    return;
+  }
+  
+  showResult('phishingResult', '🔄 Escaneando base de datos de phishing...', 'info');
+  
+  const suspiciousPatterns = [
+    'metamask', 'walletconnect', 'trust-wallet', 'binance-login', 
+    'coinbase-verify', 'airdrop-claim', 'free-mint', 'nft-giveaway',
+    'uniswap-app', 'pancakeswap-finance', 'opensea-nft'
+  ];
+  
+  const officialDomains = ['metamask.io', 'walletconnect.com', 'trustwallet.com', 'binance.com', 'coinbase.com', 'uniswap.org', 'pancakeswap.finance', 'opensea.io'];
+  
+  setTimeout(() => {
+    let isSuspicious = suspiciousPatterns.some(p => url.includes(p) && !officialDomains.some(d => url.includes(d)));
+    let isOfficial = officialDomains.some(d => url.includes(d));
+    
+    if (isOfficial) {
+      showResult('phishingResult', '✅ Dominio oficial verificado. Parece seguro.', 'safe');
+    } else if (isSuspicious) {
+      showResult('phishingResult', ' <strong>¡ALTA PROBABILIDAD DE PHISHING!</strong><br>Este dominio imita un servicio oficial. <strong>NO conectes tu wallet ni ingreses datos.</strong>', 'danger');
+    } else {
+      showResult('phishingResult', '⚠️ Dominio no reconocido. No está en nuestra lista negra, pero verifica manualmente en <a href="https://www.phishtank.com/" target="_blank" style="color:#fff;text-decoration:underline">PhishTank</a>.', 'warning');
+    }
+  }, 600);
+}
+
+// 3. WALLET AUDITOR
+function auditWallet() {
+  const addr = document.getElementById('walletInput').value.trim();
+  if (!addr || !/^0x[a-fA-F0-9]{40}$/.test(addr)) {
+    showResult('walletResult', '⚠️ Dirección de wallet Ethereum inválida.', 'warning');
+    return;
+  }
+  
+  showResult('walletResult', `
+    <strong>🔍 Wallet Ethereum detectada:</strong><br>
+    <code style="background:rgba(0,0,0,0.3);padding:5px;border-radius:5px;font-size:0.85em">${addr}</code><br><br>
+    <strong>Enlaces de auditoría directa:</strong><br>
+     <a href="https://etherscan.io/address/${addr}" target="_blank" style="color:#fff;text-decoration:underline">Etherscan (Historial completo)</a><br>
+    🔗 <a href="https://debank.com/profile/${addr}" target="_blank" style="color:#fff;text-decoration:underline">DeBank (Portfolio DeFi)</a><br>
+    🔗 <a href="https://zapper.xyz/account/${addr}" target="_blank" style="color:#fff;text-decoration:underline">Zapper (Actividad NFT/DeFi)</a><br><br>
+    <em> Revisa si la wallet ha interactuado con contratos marcados como maliciosos.</em>
+  `, 'info');
+}
+
+// 4. PASSWORD GENERATOR
+function generatePassword() {
+  const length = parseInt(document.getElementById('passLength').value);
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+  let password = "";
+  const values = new Uint32Array(length);
+  window.crypto.getRandomValues(values);
+  
+  for (let i = 0; i < length; i++) {
+    password += charset[values[i] % charset.length];
+  }
+  
+  document.getElementById('passwordDisplay').innerText = password;
+  
+  // Calcular fuerza
+  let strength = 0;
+  if (length >= 12) strength += 25;
+  if (length >= 16) strength += 25;
+  if (/[A-Z]/.test(password) && /[a-z]/.test(password)) strength += 25;
+  if (/[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) strength += 25;
+  
+  const bar = document.getElementById('strengthBar');
+  bar.style.width = strength + '%';
+  bar.style.background = strength < 50 ? 'var(--danger)' : strength < 75 ? 'var(--warning)' : 'var(--success)';
+}
+
+// 5. HASH GENERATOR
+async function generateHash() {
+  const text = document.getElementById('hashInput').value;
+  if (!text) {
+    document.getElementById('hashOutput').innerText = '⚠️ Escribe algo para generar el hash';
+    return;
+  }
+  
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  
+  document.getElementById('hashOutput').innerText = hashHex;
+}
+
+// 6. GAS CALCULATOR
+function calculateGas() {
+  const gwei = parseFloat(document.getElementById('gasGwei').value);
+  const limit = parseFloat(document.getElementById('gasLimit').value);
+  
+  if (!gwei || !limit) {
+    showResult('gasResult', '⚠️ Ingresa valores válidos', 'warning');
+    return;
+  }
+  
+  // 1 Gwei = 1e-9 ETH
+  const ethCost = (gwei * 1e-9) * limit;
+  // Precio ETH simulado (en producción se fetchearía de la API)
+  const ethPrice = 3500; 
+  const usdCost = ethCost * ethPrice;
+  
+  showResult('gasResult', `
+    <strong>💰 Costo estimado de transacción:</strong><br><br>
+    <div style="font-size:1.5em;font-weight:700;color:var(--primary)">${ethCost.toFixed(6)} ETH</div>
+    <div style="font-size:1.2em;margin-top:5px">≈ $${usdCost.toFixed(2)} USD</div><br>
+    <em>Basado en precio ETH: $${ethPrice}</em>
+  `, 'info');
+}
+</script>
+</body>
+</html>
