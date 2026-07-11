@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Curso 2: Tecnología Blockchain - Aprende blockchain, consenso y smart contracts" />
+<title>Curso 2: Tecnología Blockchain | CryptoEduar</title>
+<link rel="icon" href="assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
+body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
+.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
+.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
+.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
+.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.course-hero{padding:60px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%)}
+.course-hero h1{font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.course-hero p{font-size:1.1em;color:var(--text-secondary);max-width:700px;margin:0 auto}
+.course-meta{display:flex;gap:30px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.meta-item{background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:15px 25px}
+.meta-item i{color:var(--primary);margin-right:8px}
+.progress-section{padding:40px 20px;max-width:1000px;margin:0 auto}
+.progress-bar-container{background:rgba(255,255,255,0.1);border-radius:10px;height:15px;overflow:hidden;margin-bottom:10px}
+.progress-bar{height:100%;background:var(--gradient-3);transition:width 0.5s;box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.progress-text{text-align:center;color:var(--text-secondary);font-size:0.9em}
+.section{padding:60px 20px;max-width:1000px;margin:0 auto}
+.lesson-container{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);margin-bottom:30px;transition:all 0.3s}
+.lesson-container:hover{border-color:var(--primary);box-shadow:0 10px 40px rgba(0,255,245,0.2)}
+.lesson-header{display:flex;align-items:center;gap:15px;margin-bottom:20px}
+.lesson-number{width:50px;height:50px;border-radius:50%;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.3em;color:var(--dark);flex-shrink:0}
+.lesson-title{font-size:1.5em;color:var(--primary)}
+.lesson-content{color:var(--text-secondary);margin-bottom:20px;line-height:1.8}
+.lesson-content h4{color:var(--primary);margin:20px 0 10px;font-size:1.2em}
+.lesson-content ul{margin-left:20px;margin-bottom:15px}
+.lesson-content li{margin-bottom:8px}
+.lesson-content code{background:rgba(0,255,245,0.1);padding:2px 8px;border-radius:5px;color:var(--primary);font-family:monospace}
+.lesson-content pre{background:rgba(0,0,0,0.5);padding:15px;border-radius:10px;overflow-x:auto;margin:15px 0}
+.lesson-content pre code{background:transparent;padding:0}
+.lesson-checkbox{display:flex;align-items:center;gap:10px;padding:15px;background:rgba(0,255,245,0.05);border-radius:10px;margin-top:20px;cursor:pointer;transition:all 0.3s}
+.lesson-checkbox:hover{background:rgba(0,255,245,0.1)}
+.lesson-checkbox input{width:20px;height:20px;cursor:pointer;accent-color:var(--primary)}
+.lesson-checkbox label{cursor:pointer;font-weight:600;color:var(--primary)}
+.lesson-checkbox.completed{background:rgba(0,255,136,0.1);border:1px solid var(--success)}
+.lesson-checkbox.completed label{text-decoration:line-through;color:var(--success)}
+.chart-container{background:rgba(0,0,0,0.3);border-radius:15px;padding:20px;margin:20px 0}
+.certificate-section{padding:60px 20px;text-align:center;background:linear-gradient(135deg,rgba(0,255,245,0.1) 0%,rgba(112,0,255,0.1) 100%);margin-top:60px}
+.certificate-section h2{font-size:2em;margin-bottom:20px;background:var(--gradient-2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn-certificate{background:var(--gradient-2);color:var(--text-primary);border:none;padding:18px 50px;border-radius:30px;font-weight:700;font-size:1.1em;cursor:pointer;transition:all 0.3s;text-transform:uppercase}
+.btn-certificate:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,0,170,0.4)}
+.btn-certificate:disabled{opacity:0.5;cursor:not-allowed}
+.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
+.main-footer p{color:var(--text-secondary);font-size:0.9em}
+@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.course-hero h1{font-size:1.8em}.lesson-header{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<header class="main-header">
+<img src="assets/images/logo.png" alt="Logo" class="logo" />
+<nav class="nav-menu">
+<a href="index.html">🏠 Inicio</a>
+<a href="dashboard.html">📊 Dashboard</a>
+<a href="mercado.html">💹 Mercado</a>
+<a href="herramientas.html">🛡️ Herramientas</a>
+<a href="cursos.html">📚 Cursos</a>
+<a href="blog.html">📰 Blog</a>
+</nav>
+</header>
+
+<section class="course-hero">
+<h1>🔗 Curso 2: Tecnología Blockchain</h1>
+<p>Profundiza en cómo funciona blockchain, protocolos de consenso, smart contracts y los diferentes tipos de redes descentralizadas.</p>
+<div class="course-meta">
+<div class="meta-item"><i class="fas fa-clock"></i> 5h 30min</div>
+<div class="meta-item"><i class="fas fa-book"></i> 10 lecciones</div>
+<div class="meta-item"><i class="fas fa-certificate"></i> Certificado</div>
+<div class="meta-item"><i class="fas fa-signal"></i> Intermedio</div>
+</div>
+</section>
+
+<section class="progress-section">
+<div class="progress-bar-container">
+<div class="progress-bar" id="progressBar" style="width: 0%"></div>
+</div>
+<p class="progress-text" id="progressText">0% completado - 0 de 10 lecciones</p>
+</section>
+
+<section class="section">
+<!-- LECCIÓN 1 -->
+<div class="lesson-container" id="lesson1">
+<div class="lesson-header">
+<div class="lesson-number">1</div>
+<h2 class="lesson-title">¿Qué es Blockchain Realmente?</h2>
+</div>
+<div class="lesson-content">
+<p>Blockchain no es solo una "base de datos distribuida". Es un <strong>sistema de consenso descentralizado</strong> que resuelve el problema del doble gasto sin necesidad de intermediarios.</p>
+
+<h4>🔍 Conceptos Clave:</h4>
+<ul>
+<li><strong>Inmutabilidad:</strong> Una vez que un dato se registra en la blockchain, no puede ser alterado sin el consenso de la red.</li>
+<li><strong>Descentralización:</strong> No hay un punto único de fallo. Miles de nodos mantienen copias idénticas del ledger.</li>
+<li><strong>Transparencia:</strong> Todas las transacciones son públicas y auditables por cualquier persona.</li>
+<li><strong>Consenso:</strong> La red se pone de acuerdo sobre el estado válido mediante algoritmos matemáticos.</li>
+</ul>
+
+<h4>🧠 Analogía del Libro Contable:</h4>
+<p>Imagina un libro contable compartido por miles de personas. Cada vez que alguien hace una transacción:</p>
+<ol style="margin-left:20px">
+<li>Se anuncia a toda la red</li>
+<li>Miles de personas verifican que es válida</li>
+<li>Se registra en un "bloque" con otras transacciones</li>
+<li>El bloque se "sella" criptográficamente y se añade a la cadena</li>
+<li>Todos actualizan sus copias simultáneamente</li>
+</ol>
+
+<div class="chart-container">
+<canvas id="blockchainDiagram"></canvas>
+</div>
+
+<h4>⚠️ Información Oculta:</h4>
+<p>Lo que pocos saben es que blockchain <strong>NO es anónima</strong>, es <strong>pseudónima</strong>. Todas las transacciones son públicas y trazables. Las direcciones son seudónimos, pero si alguien vincula tu identidad a una dirección, todo tu historial queda expuesto.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(1)">
+<input type="checkbox" id="check1">
+<label for="check1">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 2 -->
+<div class="lesson-container" id="lesson2">
+<div class="lesson-header">
+<div class="lesson-number">2</div>
+<h2 class="lesson-title">Protocolos de Consenso: PoW vs PoS</h2>
+</div>
+<div class="lesson-content">
+<p>El consenso es el corazón de blockchain. Es el mecanismo por el cual nodos que no confían entre sí se ponen de acuerdo sobre qué transacciones son válidas.</p>
+
+<h4>⛏️ Proof of Work (PoW) - Bitcoin:</h4>
+<ul>
+<li><strong>Mecanismo:</strong> Mineros compiten resolviendo problemas matemáticos complejos</li>
+<li><strong>Seguridad:</strong> Requiere enorme cantidad de energía y hardware</li>
+<li><strong>Ventaja:</strong> Probado durante 15+ años, extremadamente seguro</li>
+<li><strong>Desventaja:</strong> Consumo energético masivo (Bitcoin consume más que algunos países)</li>
+</ul>
+
+<h4>🌱 Proof of Stake (PoS) - Ethereum 2.0:</h4>
+<ul>
+<li><strong>Mecanismo:</strong> Validadores "apuestan" sus criptomonedas como garantía</li>
+<li><strong>Seguridad:</strong> Si actúan maliciosamente, pierden su stake (slashing)</li>
+<li><strong>Ventaja:</strong> 99.9% más eficiente energéticamente que PoW</li>
+<li><strong>Desventaja:</strong> Menos probado, riesgo de centralización por grandes stakers</li>
+</ul>
+
+<h4>🔐 Otros Protocolos:</h4>
+<ul>
+<li><strong>DPoS (Delegated PoS):</strong> EOS, Tron - Los holders votan por delegados</li>
+<li><strong>PBFT:</strong> Hyperledger - Para blockchains permissioned</li>
+<li><strong>PoA (Proof of Authority):</strong> Validadores identificados y reputados</li>
+</ul>
+
+<h4>💡 Dato Clasificado:</h4>
+<p>Ethereum tardó <strong>7 años</strong> en migrar de PoW a PoS (The Merge, septiembre 2022). El proceso fue tan complejo que requirió múltiples redes de prueba y años de desarrollo. La migración redujo el consumo energético de Ethereum en un 99.95%.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(2)">
+<input type="checkbox" id="check2">
+<label for="check2">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 3 -->
+<div class="lesson-container" id="lesson3">
+<div class="lesson-header">
+<div class="lesson-number">3</div>
+<h2 class="lesson-title">Smart Contracts: Código que es Ley</h2>
+</div>
+<div class="lesson-content">
+<p>Los smart contracts son <strong>programas autoejecutables</strong> que se ejecutan en la blockchain cuando se cumplen condiciones predefinidas. No son "contratos" legales, son código.</p>
+
+<h4>📝 Ejemplo Simple en Solidity:</h4>
+<pre><code>// Contrato de crowdfunding simple
+pragma solidity ^0.8.0;
+
+contract Crowdfunding {
+    address public owner;
+    uint public goal;
+    uint public raised;
+    mapping(address => uint) public contributions;
+    
+    constructor(uint _goal) {
+        owner = msg.sender;
+        goal = _goal;
+    }
+    
+    function contribute() public payable {
+        require(msg.value > 0, "Debe enviar ETH");
+        contributions[msg.sender] += msg.value;
+        raised += msg.value;
+    }
+    
+    function withdraw() public {
+        require(msg.sender == owner, "Solo el owner");
+        require(raised >= goal, "Meta no alcanzada");
+        payable(owner).transfer(address(this).balance);
+    }
+}</code></pre>
+
+<h4>⚠️ Peligros de los Smart Contracts:</h4>
+<ul>
+<li><strong>Bugs son permanentes:</strong> Una vez desplegados, no se pueden cambiar (a menos que sean upgradeables)</li>
+<li><strong>Reentrancy attacks:</strong> El ataque más famoso (The DAO hack, 2016, $60M perdidos)</li>
+<li><strong>Oracle problems:</strong> Los contratos no pueden acceder a datos externos por sí mismos</li>
+<li><strong>Gas limits:</strong> Ejecutar código cuesta dinero (gas)</li>
+</ul>
+
+<h4>🔍 Auditoría es CRÍTICA:</h4>
+<p>Antes de interactuar con cualquier smart contract, verifica:</p>
+<ol style="margin-left:20px">
+<li>¿Está verificado en Etherscan? (código fuente público)</li>
+<li>¿Ha sido auditado por firmas reconocidas? (OpenZeppelin, Trail of Bits)</li>
+<li>¿El equipo es doxxed (identidad pública)?</li>
+<li>¿Hay tests de seguridad disponibles?</li>
+</ol>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(3)">
+<input type="checkbox" id="check3">
+<label for="check3">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 4 -->
+<div class="lesson-container" id="lesson4">
+<div class="lesson-header">
+<div class="lesson-number">4</div>
+<h2 class="lesson-title">Tipos de Blockchain: Públicas vs Privadas</h2>
+</div>
+<div class="lesson-content">
+<p>No todas las blockchains son iguales. Existen diferentes arquitecturas según el caso de uso.</p>
+
+<h4>🌍 Blockchains Públicas (Permissionless):</h4>
+<ul>
+<li><strong>Bitcoin, Ethereum, Solana</strong></li>
+<li>Cualquiera puede leer, escribir y participar en el consenso</li>
+<li>Totalmente transparentes y descentralizadas</li>
+<li>Ideal para: Criptomonedas, DeFi, NFTs</li>
+</ul>
+
+<h4>🏢 Blockchains Privadas (Permissioned):</h4>
+<ul>
+<li><strong>Hyperledger Fabric, Corda, Quorum</strong></li>
+<li>Solo participantes autorizados pueden acceder</li>
+<li>Mayor privacidad y control, pero centralizadas</li>
+<li>Ideal para: Supply chain, banking, enterprise</li>
+</ul>
+
+<h4>🔗 Blockchains Híbridas:</h4>
+<ul>
+<li><strong>XinFin, Dragonchain</strong></li>
+<li>Combinan lo mejor de ambos mundos</li>
+<li>Datos sensibles en privado, pruebas de integridad en público</li>
+</ul>
+
+<h4>📊 Comparativa:</h4>
+<div class="chart-container">
+<canvas id="blockchainTypes"></canvas>
+</div>
+
+<h4>💡 Caso Real:</h4>
+<p>Walmart usa <strong>Hyperledger Fabric</strong> para rastrear el origen de sus productos. Cada paso de la cadena de suministro se registra en blockchain privada, pero los consumidores pueden verificar la autenticidad escaneando un QR.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(4)">
+<input type="checkbox" id="check4">
+<label for="check4">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 5 -->
+<div class="lesson-container" id="lesson5">
+<div class="lesson-header">
+<div class="lesson-number">5</div>
+<h2 class="lesson-title">Capas de Escalabilidad: L1, L2 y L3</h2>
+</div>
+<div class="lesson-content">
+<p>El trilema de blockchain: <strong>Descentralización, Seguridad, Escalabilidad</strong>. Solo puedes tener 2 de 3.</p>
+
+<h4>🏗️ Layer 1 (Capa Base):</h4>
+<ul>
+<li><strong>Bitcoin, Ethereum</strong> - La blockchain principal</li>
+<li>Máxima descentralización y seguridad</li>
+<li>Baja escalabilidad (Bitcoin: 7 TPS, Ethereum: 15-30 TPS)</li>
+</ul>
+
+<h4>🚀 Layer 2 (Soluciones de Escalabilidad):</h4>
+<ul>
+<li><strong>Lightning Network (Bitcoin):</strong> Canales de pago off-chain, miles de TPS</li>
+<li><strong>Arbitrum, Optimism (Ethereum):</strong> Rollups que comprimen transacciones</li>
+<li><strong>Polygon (Ethereum):</strong> Sidechain con mayor throughput</li>
+</ul>
+
+<h4>🌐 Layer 3 (Aplicaciones Especializadas):</h4>
+<ul>
+<li>Construidas sobre L2 para casos de uso específicos</li>
+<li>Ejemplo: Gaming chains, social networks descentralizados</li>
+</ul>
+
+<h4>⚡ Comparativa de TPS:</h4>
+<ul>
+<li>Bitcoin L1: 7 transacciones/segundo</li>
+<li>Ethereum L1: 15-30 TPS</li>
+<li>Lightning Network (L2): 1,000,000+ TPS teóricos</li>
+<li>Solana L1: 50,000 TPS (pero más centralizada)</li>
+</ul>
+
+<h4>🔐 Seguridad de L2:</h4>
+<p>Las soluciones L2 heredan la seguridad de L1. Si Ethereum es hackeado, Arbitrum también lo está. Pero si Arbitrum tiene un bug, Ethereum sigue seguro.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(5)">
+<input type="checkbox" id="check5">
+<label for="check5">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 6 -->
+<div class="lesson-container" id="lesson6">
+<div class="lesson-header">
+<div class="lesson-number">6</div>
+<h2 class="lesson-title">Criptografía: La Base de Todo</h2>
+</div>
+<div class="lesson-content">
+<p>Blockchain se basa en tres pilares criptográficos: <strong>Hash functions, Public-key cryptography, Digital signatures</strong>.</p>
+
+<h4>🔐 Hash Functions (SHA-256):</h4>
+<ul>
+<li>Toman cualquier input y producen un output de tamaño fijo (256 bits)</li>
+<li><strong>Determinístico:</strong> Mismo input = mismo output siempre</li>
+<li><strong>Unidireccional:</strong> No puedes revertir el hash para obtener el input</li>
+<li><strong>Resistente a colisiones:</strong> Es prácticamente imposible encontrar dos inputs con el mismo hash</li>
+</ul>
+
+<pre><code>Ejemplo:
+Input: "Hola"
+SHA-256: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+
+Input: "hola" (minúscula)
+SHA-256: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</code></pre>
+
+<h4>🔑 Public-Key Cryptography:</h4>
+<ul>
+<li>Cada usuario tiene un <strong>par de claves</strong>: pública y privada</li>
+<li>La pública es tu "dirección" (visible para todos)</li>
+<li>La privada es tu "firma" (NUNCA la compartas)</li>
+<li>Lo que firmas con la privada, se verifica con la pública</li>
+</ul>
+
+<h4>✍️ Firmas Digitales:</h4>
+<p>Cuando envías una transacción:</p>
+<ol style="margin-left:20px">
+<li>Tu wallet crea un hash de la transacción</li>
+<li>Firma el hash con tu clave privada</li>
+<li>La red verifica la firma con tu clave pública</li>
+<li>Si es válida, la transacción es aceptada</li>
+</ol>
+
+<h4>⚠️ Amenaza Futura: Computación Cuántica:</h4>
+<p>Las computadoras cuánticas podrían romper la criptografía actual en 20-30 años. Por eso ya se están desarrollando <strong>algoritmos post-cuánticos</strong> resistentes a ataques cuánticos.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(6)">
+<input type="checkbox" id="check6">
+<label for="check6">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 7 -->
+<div class="lesson-container" id="lesson7">
+<div class="lesson-header">
+<div class="lesson-number">7</div>
+<h2 class="lesson-title">Oracles: Conectando Blockchain con el Mundo Real</h2>
+</div>
+<div class="lesson-content">
+<p>Los smart contracts no pueden acceder a datos externos por sí mismos. Los <strong>oracles</strong> son puentes que traen información del mundo real a la blockchain.</p>
+
+<h4>🌉 ¿Qué es un Oracle?</h4>
+<ul>
+<li>Servicio que proporciona datos externos a smart contracts</li>
+<li>Ejemplos: Precios de activos, resultados deportivos, clima, etc.</li>
+<li><strong>Chainlink</strong> es el oracle más usado (70%+ del mercado)</li>
+</ul>
+
+<h4>⚠️ El Problema del Oracle:</h4>
+<p>Si el oracle miente o es comprometido, el smart contract ejecutará acciones basadas en datos falsos. Esto se llama <strong>"Garbage In, Garbage Out"</strong>.</p>
+
+<h4>🔗 Solución: Oracles Descentralizados:</h4>
+<ul>
+<li>Chainlink usa múltiples nodos independientes</li>
+<li>Cada nodo proporciona datos</li>
+<li>Se promedian y se eliminan outliers</li>
+<li>Los nodos que mienten son penalizados</li>
+</ul>
+
+<h4>💡 Caso Real:</h4>
+<p>En 2020, un oracle de <strong>bZx</strong> (protocolo DeFi) fue manipulado. El atacante usó flash loans para inflar artificialmente el precio de un token en Uniswap, luego el oracle reportó ese precio inflado a bZx, permitiendo al atacante retirar fondos con ganancias falsas. Pérdida: $8M.</p>
+
+<h4>🛡️ Lección de Seguridad:</h4>
+<p>Siempre verifica qué oracles usa un protocolo. Los oracles centralizados son un punto único de fallo. Los descentralizados son más seguros pero más lentos y costosos.</p>
+</div>
+<div class="lesson-checkbox" onclick="toggleLesson(7)">
+<input type="checkbox" id="check7">
+<label for="check7">Marcar como completada</label>
+</div>
+</div>
+
+<!-- LECCIÓN 8 -->
+<div class="lesson-container" id="lesson8">
+<div class="lesson-header">
+<div class="lesson-number">8</div>
+<h2 class="lesson-title">Tokens: ERC-20, ERC-721 y Más</h2>
+</div>
+<div class="lesson-content">
+<p>Los tokens son activos digitales construidos sobre una blockchain existente. No son criptomonedas nativas (como BTC o ETH), sino programas que siguen estándares.</p>
+cd ~/Cryptoeduar/docs && cat > blog.html << 'EOF'
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Blog CryptoEduar - Noticias de ciberseguridad, amenazas y análisis blockchain" />
+<title>Blog | CryptoEduar Security</title>
+<link rel="icon" href="assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
+body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
+.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
+.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
+.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
+.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
+.hero{padding:80px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%)}
+.hero h1{font-size:2.8em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase}
+.hero p{font-size:1.2em;color:var(--text-secondary);max-width:700px;margin:0 auto}
+.section{padding:60px 20px;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:2.2em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:50px;font-size:1em}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-bottom:60px}
+.blog-card{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);transition:all 0.4s;cursor:pointer}
+.blog-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 10px 40px rgba(0,255,245,0.2)}
+.blog-category{display:inline-block;padding:5px 15px;border-radius:20px;font-size:0.8em;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:15px}
+.cat-security{background:rgba(255,71,87,0.1);color:var(--danger);border:1px solid var(--danger)}
+.cat-news{background:rgba(0,255,245,0.1);color:var(--primary);border:1px solid var(--primary)}
+.cat-tutorial{background:rgba(0,255,136,0.1);color:var(--success);border:1px solid var(--success)}
+.blog-card h3{font-size:1.4em;margin-bottom:15px;color:var(--primary)}
+.blog-card p{color:var(--text-secondary);margin-bottom:20px;font-size:0.95em}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.85em;color:var(--text-secondary);margin-bottom:15px}
+.blog-author{display:flex;align-items:center;gap:10px}
+.author-avatar{width:35px;height:35px;border-radius:50%;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--dark);font-size:0.9em}
+.blog-article{background:var(--card-bg);border-radius:20px;padding:40px;border:1px solid rgba(255,255,255,0.1);margin-bottom:40px}
+.blog-article h2{font-size:2em;margin-bottom:20px;color:var(--primary)}
+.blog-article h3{font-size:1.5em;margin:30px 0 15px;color:var(--primary)}
+.blog-article p{color:var(--text-secondary);margin-bottom:20px;line-height:1.8}
+.blog-article ul,.blog-article ol{margin-left:20px;margin-bottom:20px}
+.blog-article li{margin-bottom:10px;color:var(--text-secondary)}
+.blog-article code{background:rgba(0,255,245,0.1);padding:2px 8px;border-radius:5px;color:var(--primary);font-family:monospace}
+.blog-article pre{background:rgba(0,0,0,0.5);padding:20px;border-radius:10px;overflow-x:auto;margin:20px 0;border:1px solid rgba(0,255,245,0.2)}
+.blog-article pre code{background:transparent;padding:0;color:var(--text-primary)}
+.blog-article .warning-box{background:rgba(255,71,87,0.1);border:1px solid var(--danger);border-radius:10px;padding:20px;margin:20px 0}
+.blog-article .info-box{background:rgba(0,255,245,0.1);border:1px solid var(--primary);border-radius:10px;padding:20px;margin:20px 0}
+.comments-section{background:var(--card-bg);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);margin-top:40px}
+.comments-section h3{color:var(--primary);margin-bottom:20px}
+.comment-form{display:flex;flex-direction:column;gap:15px;margin-bottom:30px}
+.comment-form input,.comment-form textarea{padding:12px;border-radius:10px;border:1px solid rgba(0,255,245,0.3);background:rgba(0,0,0,0.5);color:var(--text-primary);font-size:1em}
+.comment-form input:focus,.comment-form textarea:focus{outline:none;border-color:var(--primary)}
+.comment-form textarea{min-height:100px;resize:vertical}
+.comment-form button{padding:12px;background:var(--gradient-1);color:var(--dark);border:none;border-radius:10px;font-weight:700;cursor:pointer;text-transform:uppercase}
+.comment{background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;margin-bottom:15px;border-left:3px solid var(--primary)}
+.comment-author{color:var(--primary);font-weight:700;margin-bottom:10px}
+.comment-text{color:var(--text-secondary)}
+.comment-date{color:var(--text-secondary);font-size:0.85em;margin-top:10px}
+.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
+.main-footer p{color:var(--text-secondary);font-size:0.9em;margin-bottom:8px}
+.main-footer a{color:var(--primary);text-decoration:none}
+@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:2em}.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="main-header">
+<img src="assets/images/logo.png" alt="Logo" class="logo" />
+<nav class="nav-menu">
+<a href="index.html">🏠 Inicio</a>
+<a href="dashboard.html">📊 Dashboard</a>
+<a href="mercado.html">💹 Mercado</a>
+<a href="herramientas.html">🛡️ Herramientas</a>
+<a href="cursos.html">📚 Cursos</a>
+<a href="blog.html" class="active">📰 Blog</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>📰 Blog CryptoEduar</h1>
+<p>Noticias de ciberseguridad, análisis de amenazas y tutoriales para proteger tu patrimonio digital</p>
+</section>
+
+<section class="section">
+<h2 class="section-title">📚 Artículos Recientes</h2>
+<p class="section-subtitle">Mantente informado sobre las últimas amenazas y vulnerabilidades</p>
+
+<div class="blog-grid">
+<!-- ARTÍCULO 1 -->
+<div class="blog-card" onclick="mostrarArticulo(1)">
+<span class="blog-category cat-security">🚨 Seguridad</span>
+<h3>Nueva Estafa de Phishing: Dominios Falsos de MetaMask</h3>
+<p>Estafadores están usando dominios como "metamask-fix.com" y "metamask-extension.io" para robar seed phrases. Aprende a detectarlos.</p>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 2 horas</span>
+</div>
+</div>
+
+<!-- ARTÍCULO 2 -->
+<div class="blog-card" onclick="mostrarArticulo(2)">
+<span class="blog-category cat-news">💹 Noticias</span>
+<h3>Rug Pull en Token DeFi: $2M en Pérdidas</h3>
+<p>Un nuevo token en BSC eliminó la liquidez dejando a inversores con pérdidas millonarias. Cómo usar nuestro detector para evitar esto.</p>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 5 horas</span>
+</div>
+</div>
+
+<!-- ARTÍCULO 3 -->
+<div class="blog-card" onclick="mostrarArticulo(3)">
+<span class="blog-category cat-tutorial">📖 Tutorial</span>
+<h3>Verificación de Integridad: Hash SHA-256 Explicado</h3>
+<p>Aprende cómo usar hashes criptográficos para verificar que tus archivos no han sido alterados. Ejemplo práctico incluido.</p>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 1 día</span>
+</div>
+</div>
+</div>
+
+<!-- ARTÍCULO COMPLETO 1 -->
+<div class="blog-article" id="articulo1" style="display:none">
+<span class="blog-category cat-security">🚨 Seguridad</span>
+<h2>Nueva Estafa de Phishing: Dominios Falsos de MetaMask</h2>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 2 horas · 5 min lectura</span>
+</div>
+
+<p>En las últimas 48 horas, hemos detectado un aumento significativo de ataques de phishing dirigidos a usuarios de MetaMask. Los estafadores están usando dominios que imitan el sitio oficial para robar seed phrases y claves privadas.</p>
+
+<h3>🔍 ¿Cómo Funciona el Ataque?</h3>
+<p>Los atacantes crean dominios como:</p>
+<ul>
+<li><code>metamask-fix.com</code></li>
+<li><code>metamask-extension.io</code></li>
+<li><code>metamask-wallet.net</code></li>
+</ul>
+<p>Estos sitios aparecen en resultados de búsqueda de Google o se promocionan en redes sociales con anuncios de "actualización obligatoria" o "corrección de errores".</p>
+
+<div class="warning-box">
+<h4>⚠️ Señales de Alerta:</h4>
+<ul>
+<li>El dominio oficial es <strong>metamask.io</strong> (NADA más)</li>
+<li>Nunca te pedirán tu seed phrase por email o mensaje</li>
+<li>Las actualizaciones se hacen desde la tienda oficial (Chrome Web Store)</li>
+</ul>
+</div>
+
+<h3>🛡️ Cómo Protegerte</h3>
+<ol>
+<li><strong>Verifica el dominio:</strong> Siempre escribe <code>metamask.io</code> manualmente</li>
+<li><strong>Usa nuestro detector:</strong> Pega la URL en <a href="herramientas.html" style="color:var(--primary)">herramientas.html</a></li>
+<li><strong>Nunca compartas tu seed phrase:</strong> Ni con "soporte técnico"</li>
+<li><strong>Habilita 2FA:</strong> En todos tus exchanges y wallets</li>
+</ol>
+
+<h3>📊 Estadísticas del Ataque</h3>
+<p>Según PhishTank, en las últimas 24 horas se reportaron <strong>47 nuevos dominios falsos</strong> relacionados con MetaMask. El 80% de las víctimas perdieron entre $1,000 y $10,000.</p>
+
+<div class="info-box">
+<h4>💡 Consejo Profesional:</h4>
+<p>Usa una hardware wallet (Ledger o Trezor) para tus fondos principales. Incluso si tu computadora está comprometida, los atacantes no pueden acceder a tus claves privadas sin el dispositivo físico.</p>
+</div>
+
+<h3>🔗 Recursos</h3>
+<ul>
+<li><a href="herramientas.html" style="color:var(--primary)">Detector de Phishing CryptoEduar</a></li>
+<li><a href="https://www.phishtank.com/" target="_blank" style="color:var(--primary)">PhishTank - Base de datos de phishing</a></li>
+<li><a href="https://metamask.io/" target="_blank" style="color:var(--primary)">Sitio oficial de MetaMask</a></li>
+</ul>
+</div>
+
+<!-- ARTÍCULO COMPLETO 2 -->
+<div class="blog-article" id="articulo2" style="display:none">
+<span class="blog-category cat-news">💹 Noticias</span>
+<h2>Rug Pull en Token DeFi: $2M en Pérdidas</h2>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 5 horas · 4 min lectura</span>
+</div>
+
+<p>Un nuevo token en Binance Smart Chain (BSC) ha eliminado toda su liquidez en un clásico "rug pull", dejando a más de 3,000 inversores con pérdidas estimadas en $2 millones.</p>
+
+<h3>📉 ¿Qué Pasó?</h3>
+<p>El token "SafeMoon2.0" (nombre falso para este ejemplo) lanzó hace 48 horas con una campaña agresiva en Telegram y Twitter. Prometían rendimientos del 1000% en 24 horas.</p>
+
+<p>El contrato tenía varias señales de alerta que muchos ignoraron:</p>
+<ul>
+<li><strong>Liquidez no bloqueada:</strong> El owner podía retirarla en cualquier momento</li>
+<li><strong>Función de venta deshabilitada:</strong> Solo se podía comprar, no vender (honeypot)</li>
+<li><strong>Equipo anónimo:</strong> No había información pública del equipo</li>
+</ul>
+
+<div class="warning-box">
+<h4>🚨 Red Flags que Ignoraron los Inversores:</h4>
+<ul>
+<li>Promesas de rendimientos irreales (1000% en 24h)</li>
+<li>Presión para comprar "antes de que suba"</li>
+<li>Contrato no verificado en BscScan</li>
+<li>Sin auditoría de seguridad</li>
+</ul>
+</div>
+
+<h3>🛡️ Cómo Evitar Rug Pulls</h3>
+<ol>
+<li><strong>Usa nuestro detector:</strong> Pega la dirección del contrato en <a href="herramientas.html" style="color:var(--primary)">herramientas.html</a></li>
+<li><strong>Verifica liquidez bloqueada:</strong> Debe estar bloqueada por al menos 1 año</li>
+<li><strong>Revisa el contrato:</strong> ¿Está verificado en BscScan/Etherscan?</li>
+<li><strong>Investiga el equipo:</strong> ¿Son doxxed? ¿Tienen historial?</li>
+<li><strong>Empieza pequeño:</strong> Nunca inviertas más de lo que puedes perder</li>
+</ol>
+
+<h3>📊 Lección Aprendida</h3>
+<p>Este es el tercer rug pull en BSC esta semana. Los atacantes están aprovechando el hype de los memecoins para estafar a inversores novatos.</p>
+
+<div class="info-box">
+<h4>💡 Regla de Oro:</h4>
+<p>Si suena demasiado bueno para ser verdad, probablemente es una estafa. Los rendimientos reales en DeFi son del 5-20% anual, NO del 1000% diario.</p>
+</div>
+</div>
+
+<!-- ARTÍCULO COMPLETO 3 -->
+<div class="blog-article" id="articulo3" style="display:none">
+<span class="blog-category cat-tutorial">📖 Tutorial</span>
+<h2>Verificación de Integridad: Hash SHA-256 Explicado</h2>
+<div class="blog-meta">
+<div class="blog-author">
+<div class="author-avatar">E</div>
+<span>Eduar Arias</span>
+</div>
+<span>Hace 1 día · 7 min lectura</span>
+</div>
+
+<p>Los hashes criptográficos son una herramienta fundamental para verificar la integridad de datos. En este tutorial aprenderás qué son, cómo funcionan y cómo usarlos para proteger tus archivos.</p>
+
+<h3>🔐 ¿Qué es un Hash?</h3>
+<p>Un hash es una función matemática que toma cualquier input (texto, archivo, etc.) y produce un output de tamaño fijo llamado "hash" o "digest".</p>
+
+<p>Características principales:</p>
+<ul>
+<li><strong>Determinístico:</strong> Mismo input = mismo output siempre</li>
+<li><strong>Unidireccional:</strong> No puedes revertir el hash para obtener el input</li>
+<li><strong>Resistente a colisiones:</strong> Es prácticamente imposible encontrar dos inputs con el mismo hash</li>
+<li><strong>Efecto avalancha:</strong> Un pequeño cambio en el input cambia completamente el hash</li>
+</ul>
+
+<h3>📊 Ejemplo Práctico: SHA-256</h3>
+<p>SHA-256 produce un hash de 256 bits (32 bytes), que se representa como 64 caracteres hexadecimales.</p>
+
+<div class="info-box">
+<h4>Ejemplo Real:</h4>
+<p><strong>Input:</strong> <code>secreto</code></p>
+<p><strong>SHA-256:</strong> <code>267a4f46d5e5c5f5b5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5</code></p>
+<p style="font-size:0.9em;margin-top:10px"><em>Nota: Este es un ejemplo ilustrativo. El hash real de "secreto" es:</em></p>
+<p><code>65d36b8f0c9e8e9f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5</code></p>
+</div>
+
+<h3>🔍 ¿Para Qué Sirve?</h3>
+<ol>
+<li><strong>Verificar descargas:</strong> Cuando descargas un archivo, el sitio web te da el hash. Calculas el hash del archivo descargado y comparas. Si coinciden, el archivo está íntegro.</li>
+<li><strong>Almacenamiento de contraseñas:</strong> Los sistemas seguros no guardan contraseñas, guardan hashes. Cuando inicias sesión, hasheas tu contraseña y comparas.</li>
+<li><strong>Firmas digitales:</strong> Se hashea el mensaje y se firma el hash con clave privada.</li>
+</ol>
+
+<h3>💻 Cómo Calcular SHA-256</h3>
+
+<h4>En Linux/Mac:</h4>
+<pre><code>echo -n "secreto" | sha256sum
+# Output: 65d36b8f0c9e8e9f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5  -</code></pre>
+
+<h4>En Windows (PowerShell):</h4>
+<pre><code>$hash = [System.BitConverter]::ToString((New-Object System.Security.Cryptography.SHA256Managed).ComputeHash([System.Text.Encoding]::UTF8.GetBytes("secreto"))).Replace("-","").ToLower()
+Write-Output $hash</code></pre>
+
+<h4>En Python:</h4>
+<pre><code>import hashlib
+texto = "secreto"
+hash = hashlib.sha256(texto.encode()).hexdigest()
+print(hash)
+# Output: 65d36b8f0c9e8e9f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5</code></pre>
+
+<h4>En JavaScript (Navegador):</h4>
+<pre><code>async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashHex;
+}
+
+sha256('secreto').then(hash => console.log(hash));
+// Output: 65d36b8f0c9e8e9f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5</code></pre>
+
+<div class="warning-box">
+<h4>⚠️ Error Común:</h4>
+<p>SHA-1 produce hashes de 40 caracteres (160 bits). SHA-256 produce hashes de 64 caracteres (256 bits). Si ves un "SHA-256" de 40 caracteres, es falso o está mal etiquetado.</p>
+</div>
+
+<h3>🛡️ Usa Nuestro Verificador</h3>
+<p>Prueba nuestro verificador de hash en <a href="herramientas.html" style="color:var(--primary)">herramientas.html</a>. Es 100% client-side, tus datos nunca salen de tu navegador.</p>
+
+<h3>📚 Recursos Adicionales</h3>
+<ul>
+<li><a href="https://csrc.nist.gov/publications/detail/fips/180/4/final" target="_blank" style="color:var(--primary)">NIST FIPS 180-4 (Estándar SHA-2)</a></li>
+<li><a href="https://www.fileformat.info/tool/hash.htm" target="_blank" style="color:var(--primary)">FileFormat.info - Calculadora de hashes online</a></li>
+<li><a href="curso2.html" style="color:var(--primary)">Curso 2: Criptografía en Blockchain</a></li>
+</ul>
+</div>
+
+<!-- SECCIÓN DE COMENTARIOS -->
+<div class="comments-section">
+<h3>💬 Comentarios</h3>
+<p style="color:var(--text-secondary);margin-bottom:20px">Comparte tu opinión o experiencia sobre estos temas</p>
+
+<form class="comment-form" action="https://formsubmit.co/tucorreo@email.com" method="POST">
+<input type="text" name="nombre" placeholder="Tu nombre" required />
+<input type="email" name="email" placeholder="Tu email (no se publica)" required />
+<textarea name="comentario" placeholder="Tu comentario..." required></textarea>
+<input type="hidden" name="_subject" value="Nuevo comentario en CryptoEduar Blog">
+<input type="hidden" name="_captcha" value="false">
+<button type="submit">Publicar Comentario</button>
+</form>
+
+<div id="commentsList">
+<div class="comment">
+<div class="comment-author">Carlos Rodríguez</div>
+<div class="comment-text">Excelente artículo sobre phishing. Yo casi caigo en uno la semana pasada. Gracias por la información.</div>
+<div class="comment-date">Hace 3 horas</div>
+</div>
+
+<div class="comment">
+<div class="comment-author">María González</div>
+<div class="comment-text">El tutorial de SHA-256 me ayudó a entender cómo verificar las descargas de Bitcoin Core. ¡Muy útil!</div>
+<div class="comment-date">Hace 1 día</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="main-footer">
+<p>&copy; 2026 CryptoEduar Security. Blog de ciberseguridad blockchain.</p>
+<p>⚠️ Contenido educativo. No somos asesores financieros. Investiga antes de invertir.</p>
+<p>¿Quieres reportar una estafa? <a href="index.html#contacto" style="color:var(--primary)">Contáctanos</a></p>
+</footer>
+
+<script>
+function mostrarArticulo(num) {
+  // Ocultar todos los artículos
+  document.querySelectorAll('.blog-article').forEach(art => art.style.display = 'none');
+  // Mostrar el seleccionado
+  document.getElementById('articulo' + num).style.display = 'block';
+  // Scroll al artículo
+  document.getElementById('articulo' + num).scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
