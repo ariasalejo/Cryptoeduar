@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ariasalejo.github.io/Cryptoeduar/sitemap.xml
