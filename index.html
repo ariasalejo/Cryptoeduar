@@ -1,205 +1,91 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="CryptoEduar Security - Ciberseguridad cripto, dashboard y educación blockchain" />
-<title>CryptoEduar Security - Ciberseguridad & Educación Cripto</title>
-<link rel="icon" href="assets/images/logo.png" />
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CryptoEduar Security | Academia de Ciberseguridad Blockchain</title>
+<meta name="description" content="La primera plataforma en español de ciberseguridad blockchain. Aprende, protege tu patrimonio y accede a herramientas profesionales.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
-body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
-.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
-.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5);transition:all 0.3s}
-.logo:hover{transform:rotate(360deg) scale(1.1)}
-.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
-.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
-.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
-.hero{padding:100px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(0,255,245,0.1) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,0,170,0.1) 0%,transparent 50%);animation:bg-shift 15s ease-in-out infinite;pointer-events:none}
-@keyframes bg-shift{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.7;transform:scale(1.1)}}
-.hero h1{font-size:3.5em;margin-bottom:20px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase;position:relative;z-index:1;animation:title-glow 2s ease-in-out infinite}
-@keyframes title-glow{0%,100%{filter:drop-shadow(0 0 20px rgba(0,255,245,0.5))}50%{filter:drop-shadow(0 0 40px rgba(0,255,245,0.8))}}
-.hero p{font-size:1.3em;color:var(--text-secondary);max-width:800px;margin:0 auto 40px;position:relative;z-index:1}
-.hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-.btn-primary{background:var(--gradient-1);color:var(--dark);padding:18px 45px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1.1em;box-shadow:0 5px 25px rgba(0,255,245,0.4);transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
-.btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 40px rgba(0,255,245,0.6)}
-.btn-secondary{background:transparent;color:var(--primary);padding:18px 45px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1.1em;border:2px solid var(--primary);transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
-.btn-secondary:hover{background:var(--primary);color:var(--dark);transform:translateY(-3px);box-shadow:0 10px 40px rgba(0,255,245,0.4)}
-.section{padding:80px 20px;max-width:1400px;margin:0 auto}
-.section-title{text-align:center;font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:50px;font-size:1.1em}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-bottom:60px}
-.feature-card{background:var(--card-bg);border-radius:20px;padding:35px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px);transition:all 0.4s;text-align:center;text-decoration:none;color:var(--text-primary);display:block}
-.feature-card:hover{transform:translateY(-8px);border-color:var(--primary);box-shadow:0 15px 50px rgba(0,255,245,0.3)}
-.feature-icon{font-size:3em;margin-bottom:20px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.feature-card h3{font-size:1.5em;margin-bottom:15px;color:var(--primary)}
-.feature-card p{color:var(--text-secondary);margin-bottom:20px;font-size:1em}
-.feature-link{color:var(--primary);font-weight:700;text-transform:uppercase;font-size:0.9em;letter-spacing:1px}
-.stats-section{padding:60px 20px;background:linear-gradient(135deg,rgba(112,0,255,0.1) 0%,rgba(0,255,245,0.1) 100%)}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;max-width:1200px;margin:0 auto}
-.stat-card{text-align:center}
-.stat-value{font-size:3em;font-weight:900;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
-.stat-label{color:var(--text-secondary);font-size:1em}
-.testimonials-section{padding:80px 20px}
-.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto}
-.testimonial-card{background:var(--card-bg);border-radius:20px;padding:30px;border-left:4px solid var(--primary)}
-.testimonial-text{color:var(--text-secondary);font-style:italic;margin-bottom:15px;font-size:1.05em}
-.testimonial-author{color:var(--primary);font-weight:700}
-.cta-section{padding:80px 20px;text-align:center;background:radial-gradient(circle at center,rgba(0,255,245,0.15) 0%,transparent 70%)}
-.cta-section h2{font-size:2.5em;margin-bottom:20px;background:var(--gradient-2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.cta-section p{color:var(--text-secondary);font-size:1.2em;margin-bottom:30px;max-width:700px;margin-left:auto;margin-right:auto}
-.main-footer{background:var(--dark);padding:40px 20px;text-align:center;border-top:2px solid var(--primary)}
-.footer-content{max-width:1200px;margin:0 auto}
-.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.footer-links a{color:var(--primary);text-decoration:none;font-weight:600;transition:all 0.3s}
-.footer-links a:hover{text-shadow:0 0 10px rgba(0,255,245,0.5)}
-.footer-text{color:var(--text-secondary);font-size:0.9em;margin-bottom:10px}
-@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:2em}.hero p{font-size:1em}.features-grid{grid-template-columns:1fr}.section-title{font-size:1.8em}}
-</style>
-</head>
-<body>
-
-<header class="main-header">
-<img src="assets/images/logo.png" alt="Logo CryptoEduar" class="logo" />
-<nav class="nav-menu">
-<a href="index.html" class="active">🏠 Inicio</a>
-<a href="dashboard.html">📊 Dashboard</a>
-<a href="mercado.html">💹 Mercado</a>
-<a href="herramientas.html">🛡️ Herramientas</a>
-<a href="cursos.html">📚 Cursos</a>
-<a href="blog.html">📰 Blog</a>
-<a href="glosario.html">📖 Glosario</a>
-</nav>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
+</head><body>
+<header class="nav">
+  <a href="index.html" class="logo">CryptoEduar</a>
+  <nav>
+    <a href="index.html" class="active">Inicio</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="herramientas.html">Herramientas</a>
+    <a href="conspiraciones/index.html">Inteligencia</a>
+  </nav>
 </header>
 
-<section class="hero">
-<h1>🛡️ CryptoEduar Security</h1>
-<p>La primera plataforma en español de ciberseguridad blockchain. Protege tu patrimonio digital con herramientas profesionales, educación de calidad y datos en tiempo real.</p>
-<div class="hero-buttons">
-<a href="herramientas.html" class="btn-primary">🛡️ Arsenal de Seguridad</a>
-<a href="dashboard.html" class="btn-secondary">📊 Ver Dashboard</a>
-</div>
-</section>
+<main>
+  <!-- HERO -->
+  <section class="hero reveal">
+    <div class="container">
+      <h1>Domina la Ciberseguridad Blockchain</h1>
+      <p>Protege tu patrimonio digital, aprende de expertos y accede a las herramientas que usan los profesionales. Todo en una sola plataforma.</p>
+      <div class="hero-cta">
+        <a href="cursos.html" class="btn btn-primary">Explorar Cursos</a>
+        <a href="herramientas.html" class="btn btn-secondary">Ver Herramientas</a>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-<h2 class="section-title">🚀 Nuestras Plataformas</h2>
-<p class="section-subtitle">Todo lo que necesitas para dominar el mundo cripto con seguridad</p>
+  <!-- PILARES -->
+  <section class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Una Plataforma, Tres Pilares</h2>
+        <p>Todo lo que necesitas para operar de forma segura en el ecosistema cripto.</p>
+      </div>
+      <div class="grid-3">
+        <div class="glass course-card">
+          <span class="badge badge-cyan">01</span>
+          <h3>Educación de Élite</h3>
+          <p>Cursos estructurados desde fundamentos hasta seguridad avanzada, con contenido actualizado y certificados verificables.</p>
+          <div class="course-meta"><span>7 Módulos</span><span>85+ Lecciones</span></div>
+        </div>
+        <div class="glass course-card">
+          <span class="badge badge-purple">02</span>
+          <h3>Arsenal de Seguridad</h3>
+          <p>Detectores de honeypots, auditores de contratos y generadores de claves. Herramientas profesionales a un clic.</p>
+          <div class="course-meta"><span>6 Herramientas</span><span>100% Gratis</span></div>
+        </div>
+        <div class="glass course-card">
+          <span class="badge badge-green">03</span>
+          <h3>Inteligencia de Mercado</h3>
+          <p>Datos en tiempo real, análisis de amenazas y artículos de investigación profunda sobre el lado oculto de las criptomonedas.</p>
+          <div class="course-meta"><span>En Vivo</span><span>Fuentes Verificadas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="features-grid">
-<a href="dashboard.html" class="feature-card">
-<div class="feature-icon">📊</div>
-<h3>Dashboard de Precios</h3>
-<p>Visualiza precios en tiempo real, gráficos interactivos y estadísticas del mercado cripto con datos de múltiples APIs premium.</p>
-<span class="feature-link">Acceder al Dashboard →</span>
-</a>
+  <!-- STATS -->
+  <section class="reveal">
+    <div class="container">
+      <div class="grid-3">
+        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">12+</div><p style="color:var(--text-muted)">Criptomonedas Monitoreadas</p></div>
+        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">6</div><p style="color:var(--text-muted)">Herramientas de Seguridad</p></div>
+        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">100%</div><p style="color:var(--text-muted)">Acceso Gratuito</p></div>
+      </div>
+    </div>
+  </section>
 
-<a href="mercado.html" class="feature-card">
-<div class="feature-icon">💹</div>
-<h3>Mercado Completo</h3>
-<p>Tabla completa de criptomonedas, conversor, calculadora de ganancias, heatmap y análisis de Fear & Greed Index.</p>
-<span class="feature-link">Explorar Mercado →</span>
-</a>
+  <!-- CTA -->
+  <section class="reveal">
+    <div class="container" style="text-align:center">
+      <h2>¿Listo para proteger tu patrimonio?</h2>
+      <p style="max-width:600px;margin:1rem auto 2.5rem">Únete a la comunidad de personas que ya operan de forma segura en el mundo cripto.</p>
+      <a href="cursos.html" class="btn btn-primary">Empezar Ahora</a>
+    </div>
+  </section>
+</main>
 
-<a href="herramientas.html" class="feature-card">
-<div class="feature-icon">🛡️</div>
-<h3>Arsenal de Seguridad</h3>
-<p>Detectores de honeypots, phishing, auditor de wallets, generador de contraseñas seguras y calculadora de gas fees.</p>
-<span class="feature-link">Usar Herramientas →</span>
-</a>
-
-<a href="cursos.html" class="feature-card">
-<div class="feature-icon">📚</div>
-<h3>Cursos con Certificados</h3>
-<p>7 cursos estructurados de ciberseguridad cripto, blockchain y trading. Obtén certificados verificables al completar.</p>
-<span class="feature-link">Ver Cursos →</span>
-</a>
-
-<a href="blog.html" class="feature-card">
-<div class="feature-icon">📰</div>
-<h3>Blog de Amenazas</h3>
-<p>Noticias sobre nuevas estafas, vulnerabilidades, casos de hackeos y análisis de seguridad en el ecosistema cripto.</p>
-<span class="feature-link">Leer Blog →</span>
-</a>
-
-<a href="https://youtube.com/@criptoeduar" target="_blank" class="feature-card">
-<div class="feature-icon">🎥</div>
-<h3>Canal de YouTube</h3>
-<p>Videos educativos, tutoriales prácticos y análisis de seguridad. Suscríbete para no perderte ninguna actualización.</p>
-<span class="feature-link">Ver Canal →</span>
-</a>
-</div>
-</section>
-
-<section class="stats-section">
-<div class="stats-grid">
-<div class="stat-card">
-<div class="stat-value">12+</div>
-<div class="stat-label">Criptomonedas Monitoreadas</div>
-</div>
-<div class="stat-card">
-<div class="stat-value">6</div>
-<div class="stat-label">Herramientas de Seguridad</div>
-</div>
-<div class="stat-card">
-<div class="stat-value">7</div>
-<div class="stat-label">Cursos Completos</div>
-</div>
-<div class="stat-card">
-<div class="stat-value">100%</div>
-<div class="stat-label">Gratuito</div>
-</div>
-</div>
-</section>
-
-<section class="testimonials-section">
-<h2 class="section-title">💬 Lo que dicen nuestros usuarios</h2>
-<p class="section-subtitle">Miles de personas ya protegen su patrimonio con CryptoEduar</p>
-<div class="testimonials-grid">
-<div class="testimonial-card">
-<p class="testimonial-text">"Gracias al Arsenal de Seguridad evité invertir en un honeypot. Me salvó de perder $5000."</p>
-<p class="testimonial-author">- Carlos M., Trader</p>
-</div>
-<div class="testimonial-card">
-<p class="testimonial-text">"Los cursos de ciberseguridad son los mejores en español. Ahora audito contratos antes de invertir."</p>
-<p class="testimonial-author">- María L., Inversora</p>
-</div>
-<div class="testimonial-card">
-<p class="testimonial-text">"El dashboard en tiempo real me ayuda a tomar decisiones informadas. Excelente plataforma."</p>
-<p class="testimonial-author">- Juan P., Analista</p>
-</div>
-</div>
-</section>
-
-<section class="cta-section">
-<h2>🌐 Únete a la Comunidad</h2>
-<p>Conecta con miles de personas que protegen sus criptoactivos. Recibe alertas de nuevas estafas y vulnerabilidades.</p>
-<div class="hero-buttons">
-<a href="https://t.me/criptoeduar" target="_blank" class="btn-primary"><i class="fab fa-telegram"></i> Telegram</a>
-<a href="https://discord.gg/criptoeduar" target="_blank" class="btn-secondary"><i class="fab fa-discord"></i> Discord</a>
-</div>
-</section>
-
-<footer class="main-footer">
-<div class="footer-content">
-<div class="footer-links">
-<a href="index.html">Inicio</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="mercado.html">Mercado</a>
-<a href="herramientas.html">Herramientas</a>
-<a href="cursos.html">Cursos</a>
-<a href="blog.html">Blog</a>
-</div>
-<p class="footer-text">&copy; 2026 CryptoEduar Security. Protegiendo tu patrimonio digital.</p>
-<p class="footer-text">Datos por <a href="https://www.binance.com" target="_blank">Binance</a> · <a href="https://www.coingecko.com" target="_blank">CoinGecko</a> · <a href="https://www.coincap.io" target="_blank">CoinCap</a></p>
-<p class="footer-text" style="margin-top:15px;font-size:0.8em">⚠️ Plataforma educativa. No somos asesores financieros. Investiga antes de invertir.</p>
-</div>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 CryptoEduar Security. Protegiendo tu patrimonio digital.</p>
+    <p style="font-size:0.8rem;margin-top:1rem;color:var(--text-muted)">Plataforma educativa. No somos asesores financieros.</p>
+  </div>
 </footer>
-
-</body>
-</html>
+</body></html>
