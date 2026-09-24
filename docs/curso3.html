@@ -1,89 +1,135 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso 3: Altcoins y Memecoins | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
-<main class="container article">
-<span class="badge badge-primary">Módulo 3</span>
-<h1>Altcoins y Memecoins</h1>
-<p class="lead">Aprende a evaluar proyectos, detectar estafas y entender el fenómeno de las memecoins. El 90% de las altcoins fracasan. Aquí aprenderás a no ser parte de la estadística.</p>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.10) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.10) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .prose-lesson p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+  .prose-lesson ul { margin: 1rem 0 1.5rem 1.5rem; }
+  .prose-lesson li { color: rgba(255,255,255,0.65); margin-bottom: 0.6rem; line-height: 1.7; }
+  .prose-lesson strong { color: #fff; font-weight: 600; }
+  .prose-lesson code { background: rgba(0,212,255,0.08); color: #00d4ff; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+</style>
+</head>
+<title>Curso 3: Altcoins y Memecoins — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white">Herramientas</a>
+    </div>
+    <a href="cursos.html" class="text-sm px-4 py-2 rounded-lg border border-white/15 hover:bg-white/5">← Cursos</a>
+  </div>
+</nav>
+<header class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="cursos.html" class="text-xs font-mono text-white/40 hover:text-accent">CURSOS</a>
+      <span class="text-white/20">/</span>
+      <span class="text-xs font-mono text-accent">MÓDULO 03</span>
+    </div>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20 mb-6">Intermedio</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">Altcoins<br><span class="text-white/40">y Memecoins.</span></h1>
+    <p class="text-lg text-white/60 max-w-2xl">El 90% de las altcoins fracasan. Aquí aprenderás a no ser parte de la estadística.</p>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pb-20">
 
-<div class="disclaimer">⚠️ <strong>Aviso:</strong> Este curso es educativo. No constituye consejo financiero. Invertir en altcoins y memecoins conlleva riesgo de perder el 100% de tu capital.</div>
+  <a href="https://youtu.be/ve_e24cDxZM" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-4 block">
+    <div class="w-14 h-14 rounded-xl bg-warning/10 border border-warning/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-warning" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-mono text-white/40 mb-1">VIDEO 1</div>
+      <div class="font-display font-bold text-lg group-hover:text-accent transition">Memecoins: De Risas a Riquezas</div>
+      <div class="text-sm text-white/50 mt-1">El fenómeno que nadie esperaba.</div>
+    </div>
+  </a>
 
-<h2>🎬 Memecoins: De Risas a Riquezas</h2>
-<p>El fenómeno que nadie esperaba.</p>
-<a href="https://youtu.be/ve_e24cDxZM" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver video</a>
+  <a href="https://youtu.be/ptCR8zxm_I8" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-16 block">
+    <div class="w-14 h-14 rounded-xl bg-violet/10 border border-violet/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-violet" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-mono text-white/40 mb-1">VIDEO 2</div>
+      <div class="font-display font-bold text-lg group-hover:text-accent transition">Solana: Revolución y Caídas</div>
+      <div class="text-sm text-white/50 mt-1">Alto rendimiento con historial polémico.</div>
+    </div>
+  </a>
 
-<h2>🎬 Solana: Revolución y Caídas</h2>
-<p>Alto rendimiento con historial polémico.</p>
-<a href="https://youtu.be/ptCR8zxm_I8" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver video</a>
+  <div class="space-y-4">
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">3.1</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">¿Qué es una altcoin?</div><div class="text-xs text-white/40 font-mono mt-1">15 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p>Cualquier criptomoneda que no sea Bitcoin. Existen más de 20,000 altcoins registradas, pero solo unas pocas tienen utilidad real.</p><ul><li><strong>Plataformas:</strong> Ethereum, Solana, Polkadot — permiten crear aplicaciones.</li><li><strong>Oráculos:</strong> Chainlink — conectan datos del mundo real con blockchain.</li><li><strong>Privacidad:</strong> Monero, Zcash — transacciones anónimas.</li><li><strong>Memecoins:</strong> Dogecoin, Shiba Inu — sin utilidad, solo comunidad.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning"><div class="text-xs font-mono text-warning mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Las plataformas con más capitalización no siempre son las mejores técnicamente. Solana procesa 65,000 TPS pero ha sufrido caídas de red. Ethereum procesa 15 TPS pero es más descentralizado. La pregunta no es "¿cuál es más rápida?" sino "¿qué sacrifica para serlo?"</p></div></div>
+</details>
 
-<h2>📚 Lecciones</h2>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">3.2</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Análisis de proyectos</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Checklist antes de invertir:</strong></p><ul><li><strong>Tokenomics:</strong> ¿Cuántos tokens existen? ¿Cuántos en circulación? ¿Hay inflación?</li><li><strong>Equipo:</strong> ¿Están doxxeados? ¿Historial verificable?</li><li><strong>Roadmap:</strong> ¿Cumplen o cambian el roadmap cada mes?</li><li><strong>Comunidad:</strong> ¿Es orgánica o puros bots?</li><li><strong>Liquidez:</strong> ¿Está bloqueada? ¿Por cuánto tiempo?</li></ul></div>
+</details>
 
-<h3>3.1 ¿Qué es una altcoin?</h3>
-<p><strong>Definición:</strong> Cualquier criptomoneda que no sea Bitcoin. Existen más de 20,000 altcoins registradas. Solo unas pocas tienen utilidad real.</p>
-<p><strong>Categorías principales:</strong></p>
-<ul>
-<li><strong>Plataformas:</strong> Ethereum, Solana, Polkadot — permiten crear aplicaciones.</li>
-<li><strong>Oraculos:</strong> Chainlink — conectan datos del mundo real con blockchain.</li>
-<li><strong>Privacidad:</strong> Monero, Zcash — transacciones anónimas.</li>
-<li><strong>Memecoins:</strong> Dogecoin, Shiba Inu — sin utilidad, solo comunidad.</li>
-</ul>
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Las plataformas con más capitalización no siempre son las mejores técnicamente. Solana procesa 65,000 TPS pero ha sufrido varias caídas de red. Ethereum procesa 15 TPS pero es más descentralizado. La pregunta correcta no es "¿cuál es más rápida?" sino "¿qué sacrifica para serlo?"</div>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">3.3</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Riesgos de memecoins</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>El ciclo de una memecoin:</strong></p><ul><li><strong>Fase 1 — Lanzamiento:</strong> Creadores anónimos. Influencers pagados la promocionan.</li><li><strong>Fase 2 — Pump:</strong> FOMO colectivo. Sube 1000% en horas.</li><li><strong>Fase 3 — Dump:</strong> Creadores y ballenas venden. Cae 99%.</li><li><strong>Fase 4 — Abandono:</strong> El proyecto desaparece.</li></ul><p><strong>Caso real:</strong> Squid Game Token (2021). Subió 230,000% y en 5 minutos cayó a cero. Los creadores robaron $3.3 millones.</p></div>
+</details>
 
-<h3>3.2 Análisis de proyectos</h3>
-<p><strong>Checklist antes de invertir:</strong></p>
-<ul>
-<li>✅ <strong>Tokenomics:</strong> ¿Cuántos tokens existen? ¿Cuántos están en circulación? ¿Hay inflación?</li>
-<li>✅ <strong>Equipo:</strong> ¿Están doxxeados? ¿Tienen historial verificable?</li>
-<li>✅ <strong>Roadmap:</strong> ¿Han cumplido lo prometido o cambian el roadmap cada mes?</li>
-<li>✅ <strong>Comunidad:</strong> ¿Es orgánica o puros bots?</li>
-<li>✅ <strong>Liquidez:</strong> ¿Está bloqueada? ¿Por cuánto tiempo?</li>
-</ul>
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El 80% de los tokens que ves en CoinMarketCap con menos de $10M de capitalización son "utility tokens" que nunca tendrán utilidad real. La utilidad se demuestra con adopción, no con un white paper. Si nadie usa la red, el token no vale nada.</div>
-
-<h3>3.3 Riesgos de memecoins</h3>
-<p><strong>El ciclo de una memecoin:</strong></p>
-<ul>
-<li><strong>Fase 1 — Lanzamiento:</strong> Creadores anónimos lanzan el token. Influencers lo promocionan pagados.</li>
-<li><strong>Fase 2 — Pump:</strong> FOMO colectivo. El precio sube 1000% en horas.</li>
-<li><strong>Fase 3 — Dump:</strong> Los creadores y ballenas venden. El precio cae 99%.</li>
-<li><strong>Fase 4 — Abandono:</strong> El proyecto desaparece. Los inversores pierden todo.</li>
-</ul>
-<p><strong>Caso real:</strong> Squid Game Token (2021). Subió 230,000% y en 5 minutos cayó a cero. Los creadores robaron $3.3 millones.</p>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Si un token sube demasiado rápido y tiene liquidez baja (menos de $100,000), el creador puede vender todo y quedarse con el dinero en una sola transacción. Esto se llama "rug pull" y es legal en la mayoría de jurisdicciones porque no hay regulación de memecoins.</div>
-
-<h3>3.4 Detectando rug pulls</h3>
-<p><strong>Señales de alarma:</strong></p>
-<ul>
-<li>🚩 Equipo completamente anónimo sin historial.</li>
-<li>🚩 Liquidez no bloqueada o bloqueada por menos de 6 meses.</li>
-<li>🚩 Contrato con función <code>mint()</code> sin límite.</li>
-<li>🚩 Comunidad llena de bots (comentarios genéricos, perfiles sin foto).</li>
-<li>🚩 Roadmap vago: "ser el próximo Bitcoin" sin detalles.</li>
-</ul>
-<p><strong>Herramientas:</strong> Honeypot.is, TokenSniffer, RugCheck.xyz, GoPlus Security.</p>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El truco más efectivo para detectar un rug pull es revisar si el contrato tiene la función <code>setTaxFee</code> o <code>setMaxTxAmount</code> sin restricciones. Esto permite al creador cambiar las reglas del juego cuando quiera. Si el contrato no está verificado en Etherscan/BscScan, directamente no inviertas.</div>
-
-<h2>🎬 Más videos sobre altcoins</h2>
-<p>Estos videos complementan el análisis de proyectos. <em>(Nota: son placeholders temporales — se reemplazarán por videos específicos del curso.)</em></p>
-
-<h3>🧠 Quiz final</h3>
-<div class="disclaimer">
-<p><strong>1.</strong> ¿Cuál de estas señales indica un posible rug pull?</p>
-<p>a) Liquidez bloqueada 2 años · b) Contrato verificado · c) Equipo anónimo + liquidez no bloqueada · d) Auditoría de CertiK</p>
-<p><strong>2.</strong> ¿Qué es un honeypot?</p>
-<p>a) Una wallet fría · b) Un contrato que permite comprar pero no vender · c) Un tipo de NFT · d) Un exchange</p>
-<p><strong>3.</strong> ¿Por qué las memecoins son peligrosas?</p>
-<p>a) Tienen mucha utilidad · b) No tienen utilidad real y dependen del hype · c) Están reguladas · d) Son estables</p>
-<p><em>Respuestas: 1-c, 2-b, 3-b</em></p>
-</div>
-
-<h2>🎯 Resumen</h2>
-<p>Las altcoins pueden ser oportunidades reales, pero la mayoría son basura. Aprende a analizar antes de invertir. Las memecoins son entretenimiento, no inversión. El 90% de quienes ganan dinero con memecoins lo hacen por suerte, no por habilidad.</p>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">3.4</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Detectando rug pulls</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Señales de alarma:</strong></p><ul><li>Equipo completamente anónimo sin historial</li><li>Liquidez no bloqueada o por menos de 6 meses</li><li>Contrato con función mint() sin límite</li><li>Comunidad llena de bots</li><li>Roadmap vago: "ser el próximo Bitcoin"</li></ul><p><strong>Herramientas:</strong> Honeypot.is, TokenSniffer, RugCheck.xyz, GoPlus Security.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning"><div class="text-xs font-mono text-warning mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El truco más efectivo: revisa si el contrato tiene <code>setTaxFee</code> o <code>setMaxTxAmount</code> sin restricciones. Esto permite al creador cambiar las reglas cuando quiera. Si el contrato no está verificado en Etherscan/BscScan, no inviertas.</p></div></div>
+</details>
+  </div>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
 </body></html>

@@ -1,95 +1,133 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso 6: DeFi y Web3 | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
-<main class="container article">
-<span class="badge badge-primary">Módulo 6</span>
-<h1>DeFi y Web3 — NFTs, DAOs y el Futuro Descentralizado</h1>
-<p class="lead">Más allá del trading. Aprende cómo funciona el ecosistema que está redefiniendo finanzas, identidad y gobernanza.</p>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.10) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.10) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .prose-lesson p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+  .prose-lesson ul { margin: 1rem 0 1.5rem 1.5rem; }
+  .prose-lesson li { color: rgba(255,255,255,0.65); margin-bottom: 0.6rem; line-height: 1.7; }
+  .prose-lesson strong { color: #fff; font-weight: 600; }
+  .prose-lesson code { background: rgba(0,212,255,0.08); color: #00d4ff; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+</style>
+</head>
+<title>Curso 6: DeFi y Web3 — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white">Herramientas</a>
+    </div>
+    <a href="cursos.html" class="text-sm px-4 py-2 rounded-lg border border-white/15 hover:bg-white/5">← Cursos</a>
+  </div>
+</nav>
+<header class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="cursos.html" class="text-xs font-mono text-white/40 hover:text-accent">CURSOS</a>
+      <span class="text-white/20">/</span>
+      <span class="text-xs font-mono text-violet">MÓDULO 06</span>
+    </div>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-violet/10 text-violet border border-violet/20 mb-6">Experto</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">DeFi<br><span class="text-white/40">y Web3.</span></h1>
+    <p class="text-lg text-white/60 max-w-2xl">Más allá del trading. Finanzas, identidad y gobernanza descentralizadas.</p>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pb-20">
 
-<h2>🎬 Por qué las Memecoins Funcionan</h2>
-<p>Análisis del fenómeno memecoin en Web3.</p>
-<a href="https://youtu.be/reMlH_WSdmk" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver video</a>
+  <a href="https://youtu.be/reMlH_WSdmk" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-16 block">
+    <div class="w-14 h-14 rounded-xl bg-violet/10 border border-violet/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-violet" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-mono text-white/40 mb-1">VIDEO</div>
+      <div class="font-display font-bold text-lg group-hover:text-accent transition">Por qué las Memecoins Funcionan</div>
+      <div class="text-sm text-white/50 mt-1">Análisis del fenómeno memecoin en Web3.</div>
+    </div>
+  </a>
 
-<h2>📚 Lecciones</h2>
+  <div class="space-y-4">
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">6.1</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">¿Qué es DeFi?</div><div class="text-xs text-white/40 font-mono mt-1">30 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>DeFi (Finanzas Descentralizadas):</strong> servicios financieros sin intermediarios. En lugar de un banco, usas un contrato inteligente.</p><ul><li><strong>DEX:</strong> Uniswap, PancakeSwap — tú controlas tus fondos.</li><li><strong>Lending:</strong> Aave, Compound — prestar y pedir prestado.</li><li><strong>Stablecoins:</strong> USDT, USDC, DAI — ancladas al dólar.</li><li><strong>Yield farming:</strong> depositar en pools para ganar intereses.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">En DeFi tú eres tu propio banco. Si cometes un error, no hay soporte al que llamar. Enviaste a dirección equivocada? Perdidos. Firmaste contrato malicioso? Vacío. La responsabilidad es 100% tuya.</p></div></div>
+</details>
 
-<h3>6.1 ¿Qué es DeFi?</h3>
-<p><strong>DeFi (Finanzas Descentralizadas):</strong> Servicios financieros sin intermediarios. En lugar de un banco, usas un contrato inteligente.</p>
-<p><strong>Componentes clave:</strong></p>
-<ul>
-<li><strong>DEX:</strong> Exchange descentralizado (Uniswap, PancakeSwap). Tú controlas tus fondos.</li>
-<li><strong>Lending:</strong> Prestar y pedir prestado (Aave, Compound).</li>
-<li><strong>Stablecoins:</strong> USDT, USDC, DAI. Ancladas al dólar.</li>
-<li><strong>Yield farming:</strong> Depositar fondos en pools de liquidez para ganar intereses.</li>
-</ul>
-<p><strong>DEX vs CEX:</strong></p>
-<ul>
-<li>DEX: Sin KYC, sin custodia, más riesgo de contratos maliciosos.</li>
-<li>CEX: Con KYC, custodia tus fondos, más fácil de usar, riesgo de hackeo o congelamiento.</li>
-</ul>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">6.2</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">NFTs avanzado</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>ERC-721 vs ERC-1155:</strong></p><ul><li>ERC-721: cada token es único.</li><li>ERC-1155: múltiples copias del mismo token. Útil para colecciones o game items.</li></ul><p><strong>Más allá del arte:</strong> tickets de eventos, identidad digital (ENS, POAP), propiedad fraccionada, membresías.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El 99% de los NFTs de arte digital valen cero. El valor real está en NFTs con utilidad: acceso, eventos o activos del mundo real.</p></div></div>
+</details>
 
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> En DeFi, tú eres tu propio banco. Eso significa que si cometes un error, no hay soporte al que llamar. Enviaste fondos a la dirección equivocada? Perdidos. Firmaste un contrato malicioso? Vacío. La responsabilidad es 100% tuya.</div>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">6.3</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">DAOs</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>DAO (Organización Autónoma Descentralizada):</strong> organización gobernada por tokens, no por jerarquía.</p><ul><li>Holders de tokens proponen cambios.</li><li>Se vota on-chain.</li><li>La propuesta se ejecuta automáticamente si se aprueba.</li></ul><p><strong>Ejemplos:</strong> Uniswap DAO, MakerDAO, Arbitrum DAO.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Muchas DAOs son teatro. Los fundadores mantienen el control real. Revisa distribución: si el equipo tiene >30%, la DAO no es descentralizada.</p></div></div>
+</details>
 
-<h3>6.2 NFTs avanzado</h3>
-<p><strong>ERC-721 vs ERC-1155:</strong></p>
-<ul>
-<li>ERC-721: Cada token es único. Un NFT = un activo.</li>
-<li>ERC-1155: Múltiples copias del mismo token. Útil para colecciones o game items.</li>
-</ul>
-<p><strong>Más allá del arte digital:</strong></p>
-<ul>
-<li>Tickets de eventos (sin falsificaciones).</li>
-<li>Identidad digital (ENS, POAP).</li>
-<li>Propiedad fraccionada de activos reales.</li>
-<li>Membresías y acceso a comunidades.</li>
-</ul>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">6.4</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Identidad descentralizada</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>ENS (Ethereum Name Service):</strong> convierte direcciones complejas (0x1234...) en nombres legibles (tunombre.eth).</p><p><strong>DIDs:</strong> identidad verificable sin depender de una empresa. Tú controlas tus datos.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Un dominio ENS es más que un nombre: puede almacenar avatar, redes y actuar como identidad Web3. Dominios cortos se han vendido por cientos de miles.</p></div></div>
+</details>
 
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El 99% de los NFTs de arte digital valen cero. El valor real está en NFTs con utilidad: acceso a comunidades, eventos, o activos del mundo real. Si un NFT solo es una imagen bonita, probablemente no valga nada a largo plazo.</div>
-
-<h3>6.3 DAOs</h3>
-<p><strong>DAO (Organización Autónoma Descentralizada):</strong> Una organización gobernada por tokens, no por jerarquía.</p>
-<p><strong>Cómo funciona:</strong></p>
-<ul>
-<li>Los holders de tokens proponen cambios.</li>
-<li>Se vota on-chain.</li>
-<li>La propuesta se ejecuta automáticamente si se aprueba.</li>
-</ul>
-<p><strong>Ejemplos:</strong> Uniswap DAO, MakerDAO, Arbitrum DAO.</p>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Muchas DAOs son "teatro de gobernanza". Los fundadores mantienen el control real aunque el token esté distribuido. Revisa la distribución de tokens: si el equipo tiene más del 30%, la DAO no es realmente descentralizada.</div>
-
-<h3>6.4 Identidad descentralizada</h3>
-<p><strong>ENS (Ethereum Name Service):</strong> Convierte direcciones complejas (0x1234...) en nombres legibles (tunombre.eth).</p>
-<p><strong>DIDs (Identificadores Descentralizados):</strong> Identidad verificable sin depender de una empresa. Tú controlas tus datos.</p>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Un dominio ENS es más que un nombre. Puede almacenar tu avatar, tus redes sociales, y actuar como tu identidad Web3. Los dominios cortos y con significado se han vendido por cientos de miles de dólares.</div>
-
-<h3>6.5 Metaverso y Web3</h3>
-<p><strong>Casos de uso reales:</strong></p>
-<ul>
-<li>Tierras virtuales en Decentraland y Sandbox.</li>
-<li>Eventos virtuales con acceso tokenizado.</li>
-<li>Interoperabilidad de activos entre juegos.</li>
-</ul>
-<p><strong>Estado actual:</strong> El metaverso está en fase temprana. Muchos proyectos son experimentales y pueden fracasar.</p>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El metaverso que conocemos hoy es como internet en 1995. Nadie sabe cuál será el "Google" o el "Facebook" del metaverso. Invertir en tierras virtuales hoy es altamente especulativo.</div>
-
-<h3>🧠 Quiz final</h3>
-<div class="disclaimer">
-<p><strong>1.</strong> ¿Qué diferencia hay entre un NFT ERC-721 y un ERC-1155?</p>
-<p>a) Ninguna · b) ERC-721 es único, ERC-1155 permite múltiples copias · c) ERC-1155 es más caro · d) ERC-721 es más rápido</p>
-<p><strong>2.</strong> ¿Qué es una DAO?</p>
-<p>a) Un exchange · b) Una organización gobernada por tokens · c) Un NFT · d) Un tipo de wallet</p>
-<p><strong>3.</strong> ¿Qué es ENS?</p>
-<p>a) Un exchange · b) Un servicio de nombres para direcciones Ethereum · c) Una stablecoin · d) Un protocolo DeFi</p>
-<p><em>Respuestas: 1-b, 2-b, 3-b</em></p>
-</div>
-
-<h2>🎯 Resumen</h2>
-<p>DeFi y Web3 son más que trading. Son una nueva forma de organizar finanzas, identidad y gobernanza. Aprende cómo funcionan, pero ten cuidado: el 90% de los proyectos DeFi fracasan. Investiga siempre.</p>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">6.5</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Metaverso y futuro</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Casos reales:</strong> tierras virtuales en Decentraland y Sandbox, eventos con acceso tokenizado, interoperabilidad de activos.</p><p><strong>Estado actual:</strong> el metaverso está en fase temprana. Muchos proyectos pueden fracasar.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El metaverso hoy es como internet en 1995. Nadie sabe quién será el Google del metaverso. Invertir en tierras virtuales hoy es altamente especulativo.</p></div></div>
+</details>
+  </div>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
 </body></html>
