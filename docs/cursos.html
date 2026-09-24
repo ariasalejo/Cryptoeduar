@@ -1,291 +1,112 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Cursos de Ciberseguridad Cripto - Aprende blockchain, DeFi y seguridad desde cero" />
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cursos | CryptoEduar Security</title>
-<link rel="icon" href="assets/images/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#00fff5;--secondary:#7000ff;--accent:#ff00aa;--dark:#0a0a0f;--darker:#050508;--card-bg:rgba(255,255,255,0.03);--text-primary:#fff;--text-secondary:#a0a0b0;--success:#00ff88;--danger:#ff4757;--warning:#ffaa00;--gradient-1:linear-gradient(135deg,#00fff5 0%,#7000ff 100%);--gradient-2:linear-gradient(135deg,#ff00aa 0%,#7000ff 100%);--gradient-3:linear-gradient(135deg,#00fff5 0%,#00ff88 100%)}
-body{font-family:'Roboto',sans-serif;background:var(--darker);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Orbitron',sans-serif}
-.main-header{background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--primary);box-shadow:0 0 30px rgba(0,255,245,0.3);position:sticky;top:0;z-index:1000}
-.logo{width:50px;height:50px;border-radius:50%;border:2px solid var(--primary);box-shadow:0 0 15px rgba(0,255,245,0.5);transition:all 0.3s}
-.logo:hover{transform:rotate(360deg) scale(1.1)}
-.nav-menu{display:flex;gap:15px;flex-wrap:wrap}
-.nav-menu a{color:var(--text-primary);text-decoration:none;font-weight:600;padding:8px 15px;border-radius:20px;transition:all 0.3s;font-size:0.95em}
-.nav-menu a:hover,.nav-menu a.active{background:var(--primary);color:var(--dark);box-shadow:0 0 15px rgba(0,255,245,0.5)}
-.hero{padding:80px 20px;text-align:center;background:radial-gradient(circle at center,rgba(112,0,255,0.2) 0%,transparent 70%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(0,255,245,0.1) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,0,170,0.1) 0%,transparent 50%);animation:bg-shift 15s ease-in-out infinite;pointer-events:none}
-@keyframes bg-shift{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.7;transform:scale(1.1)}}
-.hero h1{font-size:3em;margin-bottom:20px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;text-transform:uppercase;position:relative;z-index:1;animation:title-glow 2s ease-in-out infinite}
-@keyframes title-glow{0%,100%{filter:drop-shadow(0 0 20px rgba(0,255,245,0.5))}50%{filter:drop-shadow(0 0 40px rgba(0,255,245,0.8))}}
-.hero p{font-size:1.2em;color:var(--text-secondary);max-width:800px;margin:0 auto 40px;position:relative;z-index:1}
-.stats-bar{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;position:relative;z-index:1}
-.stat-item{background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);border-radius:15px;padding:20px 30px;backdrop-filter:blur(10px)}
-.stat-value{font-size:2em;font-weight:900;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-label{color:var(--text-secondary);font-size:0.9em;margin-top:5px}
-.section{padding:60px 20px;max-width:1400px;margin:0 auto}
-.section-title{text-align:center;font-size:2.2em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.section-subtitle{text-align:center;color:var(--text-secondary);margin-bottom:50px;font-size:1em}
-.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-bottom:60px}
-.course-card{background:var(--card-bg);border-radius:20px;padding:35px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px);transition:all 0.4s;text-decoration:none;color:var(--text-primary);display:block;position:relative;overflow:hidden}
-.course-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gradient-1);opacity:0;transition:all 0.5s}
-.course-card:hover::before{left:0;opacity:0.05}
-.course-card:hover{transform:translateY(-8px);border-color:var(--primary);box-shadow:0 15px 50px rgba(0,255,245,0.3)}
-.course-card>*{position:relative;z-index:1}
-.course-icon{font-size:3em;margin-bottom:20px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.course-badge{display:inline-block;padding:5px 15px;border-radius:20px;font-size:0.8em;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:15px}
-.badge-principiante{background:rgba(0,255,136,0.1);color:var(--success);border:1px solid var(--success)}
-.badge-intermedio{background:rgba(255,170,0,0.1);color:var(--warning);border:1px solid var(--warning)}
-.badge-avanzado{background:rgba(255,71,87,0.1);color:var(--danger);border:1px solid var(--danger)}
-.badge-experto{background:rgba(255,0,170,0.1);color:var(--accent);border:1px solid var(--accent)}
-.course-card h3{font-size:1.5em;margin-bottom:15px;color:var(--primary)}
-.course-card p{color:var(--text-secondary);margin-bottom:20px;font-size:1em}
-.course-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;font-size:0.9em;color:var(--text-secondary)}
-.course-meta span{display:flex;align-items:center;gap:5px}
-.course-link{color:var(--primary);font-weight:700;text-transform:uppercase;font-size:0.9em;letter-spacing:1px;display:inline-block;margin-top:10px}
-.learning-path{background:var(--card-bg);border-radius:20px;padding:40px;border:1px solid rgba(255,255,255,0.1);margin-bottom:60px}
-.learning-path h3{color:var(--primary);margin-bottom:20px;font-size:1.8em;text-align:center}
-.path-steps{display:flex;flex-direction:column;gap:20px}
-.path-step{display:flex;align-items:center;gap:20px;padding:20px;background:rgba(0,0,0,0.3);border-radius:15px;border-left:4px solid var(--primary)}
-.step-number{width:50px;height:50px;border-radius:50%;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.5em;color:var(--dark);flex-shrink:0}
-.step-content h4{color:var(--primary);margin-bottom:5px}
-.step-content p{color:var(--text-secondary);font-size:0.95em}
-.benefits-section{padding:60px 20px;background:linear-gradient(135deg,rgba(112,0,255,0.1) 0%,rgba(0,255,245,0.1) 100%)}
-.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1200px;margin:0 auto}
-.benefit-card{text-align:center;padding:30px;background:var(--card-bg);border-radius:15px;border:1px solid rgba(255,255,255,0.1)}
-.benefit-icon{font-size:2.5em;margin-bottom:15px;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.benefit-card h4{color:var(--primary);margin-bottom:10px}
-.benefit-card p{color:var(--text-secondary);font-size:0.95em}
-.main-footer{background:var(--dark);padding:30px 20px;text-align:center;border-top:2px solid var(--primary)}
-.main-footer p{color:var(--text-secondary);font-size:0.9em;margin-bottom:8px}
-.main-footer a{color:var(--primary);text-decoration:none}
-@media(max-width:768px){.main-header{flex-direction:column;gap:10px;padding:15px}.nav-menu{justify-content:center}.hero h1{font-size:2em}.courses-grid{grid-template-columns:1fr}.stats-bar{gap:15px}.path-step{flex-direction:column;text-align:center}}
-</style>
-</head>
-<body>
-
-<header class="main-header">
-<img src="assets/images/logo.png" alt="Logo" class="logo" />
-<nav class="nav-menu">
-<a href="index.html">🏠 Inicio</a>
-<a href="dashboard.html">📊 Dashboard</a>
-<a href="mercado.html">💹 Mercado</a>
-<a href="herramientas.html">🛡️ Herramientas</a>
-<a href="cursos.html" class="active">📚 Cursos</a>
-<a href="blog.html">📰 Blog</a>
-<a href="glosario.html">📖 Glosario</a>
-</nav>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theme.css">
+</head><body>
+<header class="nav">
+  <a href="index.html" class="logo">CryptoEduar</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="cursos.html" class="active">Cursos</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="herramientas.html">Herramientas</a>
+    <a href="conspiraciones/index.html">Inteligencia</a>
+  </nav>
 </header>
 
-<section class="hero">
-<h1>📚 Academia CryptoEduar</h1>
-<p>De principiante a experto en ciberseguridad cripto. 7 cursos completos con certificados verificables y contenido profesional.</p>
-<div class="stats-bar">
-<div class="stat-item">
-<div class="stat-value">7</div>
-<div class="stat-label">Cursos Completos</div>
-</div>
-<div class="stat-item">
-<div class="stat-value">85+</div>
-<div class="stat-label">Lecciones</div>
-</div>
-<div class="stat-item">
-<div class="stat-value">100%</div>
-<div class="stat-label">Gratuito</div>
-</div>
-<div class="stat-item">
-<div class="stat-value">🏆</div>
-<div class="stat-label">Certificados</div>
-</div>
-</div>
-</section>
+<main>
+  <section class="hero reveal" style="padding-top: 10rem; padding-bottom: 4rem;">
+    <div class="container">
+      <h1>Academia CryptoEduar</h1>
+      <p>De principiante a experto. 7 módulos con contenido actualizado y enfoque 100% práctico en seguridad.</p>
+    </div>
+  </section>
 
-<section class="section">
-<h2 class="section-title">🎓 Todos los Cursos</h2>
-<p class="section-subtitle">Elige tu camino de aprendizaje en ciberseguridad blockchain</p>
+  <section class="reveal">
+    <div class="container">
+      <div class="grid-3">
+        <!-- Módulo 1 -->
+        <div class="glass course-card">
+          <span class="badge badge-cyan">Módulo 1</span>
+          <h3>Fundamentos de Cripto</h3>
+          <p>Aprende desde cero qué es el dinero digital, Bitcoin, blockchain y cómo funcionan las wallets.</p>
+          <div class="course-meta">
+            <span>12 Lecciones</span>
+            <a href="curso1.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 2 -->
+        <div class="glass course-card">
+          <span class="badge badge-purple">Módulo 2</span>
+          <h3>Tecnología Blockchain</h3>
+          <p>Profundiza en protocolos de consenso, smart contracts y los diferentes tipos de redes.</p>
+          <div class="course-meta">
+            <span>10 Lecciones</span>
+            <a href="curso2.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 3 -->
+        <div class="glass course-card">
+          <span class="badge badge-cyan">Módulo 3</span>
+          <h3>Altcoins y Memecoins</h3>
+          <p>Analiza el ecosistema, identifica proyectos legítimos y entiende los riesgos de las memecoins.</p>
+          <div class="course-meta">
+            <span>8 Lecciones</span>
+            <a href="curso3.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 4 -->
+        <div class="glass course-card">
+          <span class="badge badge-red">Módulo 4</span>
+          <h3>Ciberseguridad y Anti-Scam</h3>
+          <p>Detecta honeypots, rug pulls y phishing. Aprende a auditar contratos y proteger tu dinero.</p>
+          <div class="course-meta">
+            <span>15 Lecciones</span>
+            <a href="curso4.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 5 -->
+        <div class="glass course-card">
+          <span class="badge badge-green">Módulo 5</span>
+          <h3>Trading y Análisis Técnico</h3>
+          <p>Domina el análisis técnico, patrones de velas, indicadores y gestión de riesgo.</p>
+          <div class="course-meta">
+            <span>12 Lecciones</span>
+            <a href="curso5.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 6 -->
+        <div class="glass course-card">
+          <span class="badge badge-purple">Módulo 6</span>
+          <h3>DeFi y Web3</h3>
+          <p>Explora finanzas descentralizadas, DEX, yield farming, liquidity pools y el ecosistema NFT.</p>
+          <div class="course-meta">
+            <span>14 Lecciones</span>
+            <a href="curso6.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+        <!-- Módulo 7 -->
+        <div class="glass course-card">
+          <span class="badge badge-red">Módulo 7</span>
+          <h3>Hardware Wallets</h3>
+          <p>Configura Ledger y Trezor de forma segura. Protege tus fondos a largo plazo.</p>
+          <div class="course-meta">
+            <span>10 Lecciones</span>
+            <a href="curso7.html" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.9rem">Comenzar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-<div class="courses-grid">
-<a href="curso1.html" class="course-card">
-<div class="course-icon">🪙</div>
-<span class="course-badge badge-principiante">Principiante</span>
-<h3>Módulo 1: Fundamentos de Cripto</h3>
-<p>Aprende desde cero qué es el dinero digital, Bitcoin, blockchain y cómo funcionan las wallets. El punto de partida perfecto.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 4h 46min</span>
-<span><i class="fas fa-book"></i> 12 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso2.html" class="course-card">
-<div class="course-icon">🔗</div>
-<span class="course-badge badge-intermedio">Intermedio</span>
-<h3>Módulo 2: Tecnología Blockchain</h3>
-<p>Profundiza en cómo funciona blockchain, protocolos de consenso, smart contracts y los diferentes tipos de redes.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 5h 30min</span>
-<span><i class="fas fa-book"></i> 10 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso3.html" class="course-card">
-<div class="course-icon">🚀</div>
-<span class="course-badge badge-intermedio">Intermedio</span>
-<h3>Módulo 3: Altcoins y Memecoins</h3>
-<p>Analiza el ecosistema de altcoins, identifica proyectos legítimos y entiende los riesgos de las memecoins.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 4h 15min</span>
-<span><i class="fas fa-book"></i> 8 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso4.html" class="course-card">
-<div class="course-icon">🛡️</div>
-<span class="course-badge badge-avanzado">Avanzado</span>
-<h3>Módulo 4: Ciberseguridad y Anti-Scam</h3>
-<p>Detecta honeypots, rug pulls, phishing y aprende a auditar smart contracts. Protege tu dinero de estafas.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 6h 20min</span>
-<span><i class="fas fa-book"></i> 15 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso5.html" class="course-card">
-<div class="course-icon">📈</div>
-<span class="course-badge badge-avanzado">Avanzado</span>
-<h3>Módulo 5: Trading y Análisis Técnico</h3>
-<p>Domina el análisis técnico, patrones de velas, indicadores y gestión de riesgo para operar con confianza.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 5h 45min</span>
-<span><i class="fas fa-book"></i> 12 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso6.html" class="course-card">
-<div class="course-icon">🔗</div>
-<span class="course-badge badge-experto">Experto</span>
-<h3>Módulo 6: DeFi y Web3</h3>
-<p>Explora finanzas descentralizadas, DEX, yield farming, liquidity pools y el ecosistema NFT completo.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 6h 10min</span>
-<span><i class="fas fa-book"></i> 14 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-
-<a href="curso7.html" class="course-card">
-<div class="course-icon">🔐</div>
-<span class="course-badge badge-experto">Experto</span>
-<h3>Módulo 7: Hardware Wallets</h3>
-<p>Configura Ledger y Trezor de forma segura, aprende backup avanzado y protege tus fondos a largo plazo.</p>
-<div class="course-meta">
-<span><i class="fas fa-clock"></i> 4h 30min</span>
-<span><i class="fas fa-book"></i> 10 lecciones</span>
-<span><i class="fas fa-certificate"></i> Certificado</span>
-</div>
-<span class="course-link">Comenzar Curso →</span>
-</a>
-</div>
-</section>
-
-<section class="section">
-<div class="learning-path">
-<h3>🗺️ Ruta de Aprendizaje Recomendada</h3>
-<div class="path-steps">
-<div class="path-step">
-<div class="step-number">1</div>
-<div class="step-content">
-<h4>Fundamentos (Módulo 1)</h4>
-<p>Empieza aquí si eres principiante. Aprende los conceptos básicos de cripto y blockchain.</p>
-</div>
-</div>
-<div class="path-step">
-<div class="step-number">2</div>
-<div class="step-content">
-<h4>Blockchain Profundo (Módulo 2)</h4>
-<p>Entiende la tecnología detrás de las criptomonedas y cómo funciona realmente.</p>
-</div>
-</div>
-<div class="path-step">
-<div class="step-number">3</div>
-<div class="step-content">
-<h4>Seguridad Primero (Módulo 4)</h4>
-<p>Antes de invertir, aprende a proteger tu dinero de estafas y hackeos.</p>
-</div>
-</div>
-<div class="path-step">
-<div class="step-number">4</div>
-<div class="step-content">
-<h4>Trading Inteligente (Módulo 5)</h4>
-<p>Una vez que entiendes seguridad, aprende a analizar el mercado y operar.</p>
-</div>
-</div>
-<div class="path-step">
-<div class="step-number">5</div>
-<div class="step-content">
-<h4>DeFi y Web3 (Módulo 6)</h4>
-<p>Explora las finanzas descentralizadas y el futuro de internet.</p>
-</div>
-</div>
-<div class="path-step">
-<div class="step-number">6</div>
-<div class="step-content">
-<h4>Protección Avanzada (Módulo 7)</h4>
-<p>Configura hardware wallets para proteger tus inversiones a largo plazo.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="benefits-section">
-<h2 class="section-title">✨ Beneficios de Nuestros Cursos</h2>
-<p class="section-subtitle">Por qué elegir CryptoEduar para tu educación cripto</p>
-<div class="benefits-grid">
-<div class="benefit-card">
-<div class="benefit-icon">🎓</div>
-<h4>Certificados Verificables</h4>
-<p>Obtén certificados con código único que puedes compartir en LinkedIn o tu CV.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">💯</div>
-<h4>100% Gratuito</h4>
-<p>Todo el contenido es gratuito. No hay costos ocultos ni suscripciones.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">🔒</div>
-<h4>Enfoque en Seguridad</h4>
-<p>Cada curso incluye tips de seguridad para proteger tu patrimonio.</p>
-</div>
-<div class="benefit-card">
-<div class="benefit-icon">📱</div>
-<h4>Aprende Desde Cualquier Lugar</h4>
-<p>Accede desde tu celular, tablet o computadora. Sin límites.</p>
-</div>
-</div>
-</section>
-
-<footer class="main-footer">
-<p>&copy; 2026 CryptoEduar Security. Academia de ciberseguridad blockchain.</p>
-<p>⚠️ Este contenido es educativo. No somos asesores financieros. Investiga antes de invertir.</p>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 CryptoEduar Security. Academia de ciberseguridad blockchain.</p>
+    <p style="font-size:0.8rem;margin-top:1rem;color:var(--text-muted)">Contenido educativo. No somos asesores financieros.</p>
+  </div>
 </footer>
-
-</body>
-</html>
+</body></html>
