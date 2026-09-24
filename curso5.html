@@ -1,100 +1,112 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso 5: Trading y Análisis Técnico | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
-<main class="container article">
-<span class="badge badge-primary">Módulo 5</span>
-<h1>Trading y Análisis Técnico</h1>
-<p class="lead">Aprende a leer gráficos, identificar tendencias y gestionar riesgo. El trading no es apostar, es gestionar probabilidades.</p>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.10) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.10) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .prose-lesson p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+  .prose-lesson ul { margin: 1rem 0 1.5rem 1.5rem; }
+  .prose-lesson li { color: rgba(255,255,255,0.65); margin-bottom: 0.6rem; line-height: 1.7; }
+  .prose-lesson strong { color: #fff; font-weight: 600; }
+  .prose-lesson code { background: rgba(0,212,255,0.08); color: #00d4ff; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+</style>
+</head>
+<title>Curso 5: Trading y Análisis Técnico — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white">Herramientas</a>
+    </div>
+    <a href="cursos.html" class="text-sm px-4 py-2 rounded-lg border border-white/15 hover:bg-white/5">← Cursos</a>
+  </div>
+</nav>
+<header class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="cursos.html" class="text-xs font-mono text-white/40 hover:text-accent">CURSOS</a>
+      <span class="text-white/20">/</span>
+      <span class="text-xs font-mono text-success">MÓDULO 05</span>
+    </div>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20 mb-6">Avanzado</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">Trading y<br><span class="text-white/40">Análisis Técnico.</span></h1>
+    <p class="text-lg text-white/60 max-w-2xl">El 80% de los traders pierden dinero. Este curso te enseña a no ser parte de esa estadística.</p>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pb-20">
+  <div class="space-y-4">
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">5.1</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Velas japonesas</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Anatomía:</strong></p><ul><li><strong>Cuerpo:</strong> diferencia entre apertura y cierre.</li><li><strong>Mecha superior:</strong> precio máximo.</li><li><strong>Mecha inferior:</strong> precio mínimo.</li><li><strong>Color:</strong> verde = cierre > apertura. Rojo = cierre < apertura.</li></ul><p><strong>Patrones clave:</strong></p><ul><li><strong>Martillo:</strong> mecha inferior larga, señal de reversión alcista.</li><li><strong>Doji:</strong> cuerpo casi nulo, indecisión.</li><li><strong>Envolvente alcista:</strong> vela verde que envuelve la roja anterior.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning"><div class="text-xs font-mono text-warning mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Los patrones funcionan mejor en temporalidades altas (4h, diario) que en 1m o 5m. En temporalidades bajas hay demasiado ruido. Los profesionales rara vez operan en 1m.</p></div></div>
+</details>
 
-<div class="disclaimer">⚠️ <strong>Aviso:</strong> El 80% de los traders pierden dinero. Este curso te enseña a no ser parte de esa estadística, pero no garantiza ganancias. El trading conlleva riesgo.</div>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">5.2</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Soporte y resistencia</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Soporte:</strong> zona donde el precio rebota hacia arriba. <strong>Resistencia:</strong> zona donde rebota hacia abajo.</p><ul><li>Busca zonas donde el precio rebotó al menos 2-3 veces.</li><li>Cuanto más veces se respeta un nivel, más fuerte.</li><li>Cuando un soporte se rompe, se convierte en resistencia (y viceversa).</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning"><div class="text-xs font-mono text-warning mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El mercado no respeta líneas exactas, respeta zonas. No traces línea en $65,000 exactos — traza zona entre $64,800 y $65,200.</p></div></div>
+</details>
 
-<h2>📚 Lecciones</h2>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">5.3</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Indicadores técnicos</div><div class="text-xs text-white/40 font-mono mt-1">30 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>RSI:</strong> escala 0-100. >70 sobrecompra, <30 sobreventa.</p><p><strong>MACD:</strong> cruce de líneas da señal de compra/venta. Divergencias indican debilidad.</p><p><strong>Medias móviles:</strong> MA50 y MA200. Cruce dorado (MA50 > MA200) = alcista. Cruce de la muerte (MA50 < MA200) = bajista.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning"><div class="text-xs font-mono text-warning mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Ningún indicador funciona solo. Los traders rentables usan confluencia: RSI + soporte/resistencia + volumen + tendencia. Si 3 de 4 señalan lo mismo, la probabilidad es mayor.</p></div></div>
+</details>
 
-<h3>5.1 Velas japonesas</h3>
-<p><strong>Anatomía de una vela:</strong></p>
-<ul>
-<li><strong>Cuerpo:</strong> Diferencia entre precio de apertura y cierre.</li>
-<li><strong>Mecha superior:</strong> Precio máximo alcanzado.</li>
-<li><strong>Mecha inferior:</strong> Precio mínimo alcanzado.</li>
-<li><strong>Color:</strong> Verde = cierre > apertura. Rojo = cierre < apertura.</li>
-</ul>
-<p><strong>Patrones clave:</strong></p>
-<ul>
-<li><strong>Martillo:</strong> Mecha inferior larga, cuerpo pequeño. Señal de reversión alcista.</li>
-<li><strong>Doji:</strong> Cuerpo casi nulo. Indecisión del mercado.</li>
-<li><strong>Envolvente alcista:</strong> Vela verde que envuelve la roja anterior. Fuerte señal de compra.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Los patrones de velas funcionan mejor en temporalidades altas (4h, diario) que en 1m o 5m. En temporalidades bajas hay demasiado ruido y las señales falsas son constantes. Los traders profesionales rara vez operan en 1m.</div>
-
-<h3>5.2 Soporte y resistencia</h3>
-<p><strong>Soporte:</strong> Zona donde el precio tiende a rebotar hacia arriba porque hay más compradores que vendedores.</p>
-<p><strong>Resistencia:</strong> Zona donde el precio tiende a rebotar hacia abajo porque hay más vendedores que compradores.</p>
-<p><strong>Cómo trazarlos:</strong></p>
-<ul>
-<li>Busca zonas donde el precio rebotó al menos 2-3 veces.</li>
-<li>Cuanto más veces se respeta un nivel, más fuerte es.</li>
-<li>Cuando un soporte se rompe, se convierte en resistencia (y viceversa).</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El mercado no respeta líneas exactas, respeta zonas. No traces una línea en $65,000 exactos, traza una zona entre $64,800 y $65,200. Los traders novatos pierden porque buscan precisión donde solo hay probabilidad.</div>
-
-<h3>5.3 Indicadores técnicos</h3>
-<p><strong>RSI (Relative Strength Index):</strong></p>
-<ul>
-<li>Mide la fuerza del precio en una escala de 0 a 100.</li>
-<li>RSI > 70: sobrecompra (posible corrección).</li>
-<li>RSI < 30: sobreventa (posible rebote).</li>
-<li>En tendencias fuertes, el RSI puede estar sobrecomprado por semanas sin corregir.</li>
-</ul>
-<p><strong>MACD:</strong></p>
-<ul>
-<li>Cruce de líneas: señal de compra o venta.</li>
-<li>Divergencias: cuando el precio sube pero el MACD baja (señal de debilidad).</li>
-</ul>
-<p><strong>Medias móviles:</strong></p>
-<ul>
-<li>MA 50 y MA 200: las más usadas.</li>
-<li>Cruce dorado: MA 50 cruza arriba de MA 200 (señal alcista).</li>
-<li>Cruce de la muerte: MA 50 cruza abajo de MA 200 (señal bajista).</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Ningún indicador funciona solo. El error más común es operar basado en una sola señal. Los traders rentables usan confluencia: RSI + soporte/resistencia + volumen + tendencia. Si 3 de 4 señalan lo mismo, la probabilidad es mayor.</div>
-
-<h3>5.4 Gestión de riesgo</h3>
-<p><strong>La regla del 1%:</strong> Nunca arriesgues más del 1% de tu capital en una sola operación.</p>
-<p><strong>Cálculo de posición:</strong></p>
-<ul>
-<li>Capital: $1,000</li>
-<li>Riesgo por operación: 1% = $10</li>
-<li>Stop-loss: 5% debajo de la entrada</li>
-<li>Tamaño de posición: $10 / 0.05 = $200</li>
-</ul>
-<p><strong>Ratio Riesgo/Beneficio (R:B):</strong></p>
-<ul>
-<li>Si arriesgas $10 para ganar $30, tu R:B es 3:1.</li>
-<li>Con R:B de 3:1, puedes perder 2 de cada 3 operaciones y seguir siendo rentable.</li>
-<li>Nunca operes con R:B menor a 2:1.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El stop-loss no es opcional. El 90% de las cuentas liquidadas en futuros son de traders que "no usaban stop-loss porque iban a aguantar". El mercado no sabe que tu posición está abierta. No te va a perdonar. Usa stop-loss SIEMPRE, sin excepciones.</div>
-
-<h3>🧠 Quiz final</h3>
-<div class="disclaimer">
-<p><strong>1.</strong> Si tu stop-loss está a 5% y tu take-profit a 15%, ¿cuál es tu R:B?</p>
-<p>a) 1:1 · b) 2:1 · c) 3:1 · d) 5:1</p>
-<p><strong>2.</strong> ¿Qué indica un RSI de 75?</p>
-<p>a) Sobreventa · b) Sobrecompra · c) Tendencia lateral · d) Nada</p>
-<p><strong>3.</strong> ¿Qué es el "cruce de la muerte"?</p>
-<p>a) MA 50 cruza arriba de MA 200 · b) MA 50 cruza abajo de MA 200 · c) RSI > 70 · d) MACD cruza</p>
-<p><em>Respuestas: 1-c, 2-b, 3-b</em></p>
-</div>
-
-<h2>🎯 Resumen</h2>
-<p>El trading no es adivinar. Es gestionar probabilidades. Aprende a leer gráficos, usa stop-loss siempre, y nunca arriesgues más del 1% en una operación. Si haces esto, ya estás por encima del 80% de los traders.</p>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">5.4</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Gestión de riesgo</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>La regla del 1%:</strong> nunca arriesgues más del 1% de tu capital en una operación.</p><p><strong>Ejemplo:</strong> Capital $1,000. Riesgo 1% = $10. Stop-loss 5% → posición de $200.</p><p><strong>R:B:</strong> si arriesgas $10 para ganar $30, tu R:B es 3:1. Con R:B 3:1 puedes perder 2 de cada 3 operaciones y seguir rentable. Nunca operes con R:B menor a 2:1.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El stop-loss no es opcional. El 90% de las cuentas liquidadas en futuros son de traders que "no usaban stop-loss porque iban a aguantar". El mercado no te va a perdonar.</p></div></div>
+</details>
+  </div>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
 </body></html>

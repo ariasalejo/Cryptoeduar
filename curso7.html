@@ -1,96 +1,121 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso 7: Hardware Wallets | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
-<main class="container article">
-<span class="badge badge-danger">Módulo 7</span>
-<h1>Hardware Wallets — Custodia Profesional</h1>
-<p class="lead">Si tus cripto están en un exchange, no son tuyas. Aprende a guardarlas como un profesional con hardware wallets.</p>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.10) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.10) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .prose-lesson p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+  .prose-lesson ul { margin: 1rem 0 1.5rem 1.5rem; }
+  .prose-lesson li { color: rgba(255,255,255,0.65); margin-bottom: 0.6rem; line-height: 1.7; }
+  .prose-lesson strong { color: #fff; font-weight: 600; }
+  .prose-lesson code { background: rgba(0,212,255,0.08); color: #00d4ff; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+</style>
+</head>
+<title>Curso 7: Hardware Wallets — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white">Herramientas</a>
+    </div>
+    <a href="cursos.html" class="text-sm px-4 py-2 rounded-lg border border-white/15 hover:bg-white/5">← Cursos</a>
+  </div>
+</nav>
+<header class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="cursos.html" class="text-xs font-mono text-white/40 hover:text-accent">CURSOS</a>
+      <span class="text-white/20">/</span>
+      <span class="text-xs font-mono text-violet">MÓDULO 07</span>
+    </div>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-violet/10 text-violet border border-violet/20 mb-6">Experto</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">Hardware<br><span class="text-white/40">Wallets.</span></h1>
+    <p class="text-lg text-white/60 max-w-2xl">"Not your keys, not your coins". Si tus cripto están en un exchange, no son tuyas.</p>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pb-20">
+  <div class="space-y-4">
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">7.1</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Ledger vs Trezor</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><table class="w-full text-sm border-collapse"><thead><tr class="text-xs font-mono text-white/40 border-b border-white/10"><th class="text-left p-3">Característica</th><th class="text-left p-3">Ledger</th><th class="text-left p-3">Trezor</th></tr></thead><tbody><tr class="border-b border-white/5"><td class="p-3">Origen</td><td class="p-3">Francia</td><td class="p-3">República Checa</td></tr><tr class="border-b border-white/5"><td class="p-3">Precio</td><td class="p-3">$79 - $279</td><td class="p-3">$69 - $219</td></tr><tr class="border-b border-white/5"><td class="p-3">Código</td><td class="p-3">Parcialmente open source</td><td class="p-3">100% open source</td></tr><tr><td class="p-3">Monedas</td><td class="p-3">+5,500</td><td class="p-3">+1,500</td></tr></tbody></table><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">La elección es ideológica. Ledger tiene más monedas y mejor UX. Trezor es 100% open source. Privacidad y transparencia → Trezor. Variedad y comodidad → Ledger.</p></div></div>
+</details>
 
-<div class="disclaimer">⚠️ <strong>Aviso:</strong> "Not your keys, not your coins". Si no controlas las claves privadas, no controlas tus fondos. Este curso te enseña a hacerlo bien.</div>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">7.2</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Configuración segura</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><ul><li><strong>Compra directo del fabricante.</strong> Nunca Amazon o eBay.</li><li><strong>Verifica el firmware.</strong></li><li><strong>Configura PIN.</strong> 6-8 dígitos. Nunca 1234.</li><li><strong>Passphrase.</strong> Una palabra extra que crea una wallet oculta.</li><li><strong>Nunca escribas tu seed</strong> en el ordenador o teléfono.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">La passphrase es tu mejor defensa contra coacción física. Si alguien te obliga a desbloquear, abres wallet normal (vacía) y los fondos reales están en la oculta.</p></div></div>
+</details>
 
-<h2>📚 Lecciones</h2>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">7.3</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Backup de seed</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p>Tu seed phrase (12-24 palabras) es el acceso a TODOS tus fondos.</p><ul><li>NUNCA en foto, nube, email o notas.</li><li>En papel en lugar seguro.</li><li>Mejor en metal, resistente a fuego y agua.</li><li>Mejor aún: dividida en 2-3 partes.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El método más seguro es el Shamir Backup: divides la seed en 3 partes. Con 2 de 3 recuperas. Si alguien encuentra 1, no puede hacer nada.</p></div></div>
+</details>
 
-<h3>7.1 Ledger vs Trezor</h3>
-<p><strong>Comparativa:</strong></p>
-<table>
-<thead><tr><th>Característica</th><th>Ledger</th><th>Trezor</th></tr></thead>
-<tbody>
-<tr><td>Origen</td><td>Francia</td><td>República Checa</td></tr>
-<tr><td>Modelos</td><td>Nano S, Nano X, Flex, Stax</td><td>Model One, Model T, Safe 3, Safe 5</td></tr>
-<tr><td>Precio</td><td>$79 - $279</td><td>$69 - $219</td></tr>
-<tr><td>Código</td><td>Parcialmente open source</td><td>100% open source</td></tr>
-<tr><td>Conectividad</td><td>USB + Bluetooth (X)</td><td>USB + Bluetooth (Safe 5)</td></tr>
-<tr><td>Monedas</td><td>+5,500</td><td>+1,500</td></tr>
-</tbody>
-</table>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">7.4</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Firmas offline (air-gapped)</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>¿Qué es air-gapped?</strong> Dispositivo que nunca se conecta a internet.</p><ol style="margin-left:1.5rem"><li>Creas transacción en tu ordenador.</li><li>La pasas al hardware wallet.</li><li>El wallet firma offline.</li><li>Devuelves la firma al ordenador.</li><li>Transmites a la red.</li></ol><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Las hardware wallets nunca exponen tus claves a internet. Aunque tu ordenador tenga malware, no puede robar tus claves porque nunca salen del dispositivo.</p></div></div>
+</details>
 
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> La elección entre Ledger y Trezor es más ideológica que técnica. Ledger tiene más monedas y mejor UX. Trezor es 100% open source (puedes auditar el código). Si tu prioridad es privacidad y transparencia, Trezor. Si tu prioridad es variedad y comodidad, Ledger.</div>
-
-<h3>7.2 Configuración segura</h3>
-<p><strong>Pasos críticos:</strong></p>
-<ul>
-<li><strong>Compra directo del fabricante.</strong> Nunca en Amazon o eBay (riesgo de dispositivos manipulados).</li>
-<li><strong>Verifica el firmware.</strong> Al conectar por primera vez, verifica que el firmware sea legítimo.</li>
-<li><strong>Configura PIN.</strong> 6-8 dígitos. Nunca uses 1234 o tu fecha de nacimiento.</li>
-<li><strong>Passphrase (opcional pero recomendado).</strong> Una palabra extra que crea una wallet oculta. Si alguien roba tu dispositivo y conoce tu PIN, sin la passphrase no ve tus fondos.</li>
-<li><strong>Nunca escribas tu seed en el ordenador o teléfono.</strong> Solo en papel o metal.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> La passphrase es tu mejor defensa contra la coacción física. Si alguien te obliga a desbloquear tu wallet, abres la wallet con tu PIN normal (que está vacía) y guardas los fondos reales en la wallet oculta de la passphrase. Nadie sabrá que existe.</div>
-
-<h3>7.3 Backup de seed</h3>
-<p><strong>La regla de oro:</strong> Tu seed phrase (12-24 palabras) es el acceso a TODOS tus fondos. Si la pierdes, pierdes todo. Si alguien la encuentra, roba todo.</p>
-<p><strong>Cómo guardarla bien:</strong></p>
-<ul>
-<li>NUNCA en foto, nube, email, o notas del teléfono.</li>
-<li>En papel, guardado en un lugar seguro (caja fuerte, banco).</li>
-<li>Mejor: en metal (acero inoxidable), resistente a fuego y agua.</li>
-<li>Mejor aún: dividida en 2-3 partes, guardadas en lugares separados.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El método más seguro es la "seed dividida" (Shamir Backup). Divides la seed en 3 partes. Con 2 de 3 puedes recuperar la wallet. Si alguien encuentra 1 parte, no puede hacer nada. Si tu casa se quema, las otras 2 partes sobreviven. Esto lo soportan Trezor Safe 3 y Ledger Flex.</div>
-
-<h3>7.4 Firmas offline (air-gapped)</h3>
-<p><strong>¿Qué es air-gapped?</strong> Un dispositivo que nunca se conecta a internet. Las transacciones se firman en el dispositivo y se transmiten por QR o USB.</p>
-<p><strong>Flujo típico:</strong></p>
-<ol>
-<li>Creas la transacción en tu ordenador (sin claves privadas).</li>
-<li>La pasas al hardware wallet (por QR o USB).</li>
-<li>El hardware wallet firma la transacción offline.</li>
-<li>Devuelves la transacción firmada al ordenador.</li>
-<li>La transmites a la red.</li>
-</ol>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Las hardware wallets nunca exponen tus claves privadas a internet. Incluso si tu ordenador está infectado con malware, el malware no puede robar tus claves porque nunca salen del dispositivo. Esto es lo que hace a las hardware wallets tan seguras.</div>
-
-<h3>7.5 Herencia cripto</h3>
-<p><strong>El problema:</strong> Si mueres sin dejar instrucciones, tus fondos se pierden para siempre. La blockchain no tiene un botón de "recuperar cuenta".</p>
-<p><strong>Solución:</strong></p>
-<ul>
-<li>Deja una carta sellada con instrucciones para tus herederos.</li>
-<li>Explica cómo usar la seed phrase (sin revelarla directamente).</li>
-<li>Usa un servicio de herencia cripto (como Casa o Unchained).</li>
-<li>Considera un multisig (2 de 3) donde un abogado tenga una llave.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El multisig es la mejor solución para herencia. Configuras una wallet que requiere 2 de 3 firmas: tú, tu heredero, y un abogado. Si mueres, tu heredero y el abogado pueden recuperar los fondos. Mientras vives, solo tú controlas todo.</div>
-
-<h3>🧠 Quiz final</h3>
-<div class="disclaimer">
-<p><strong>1.</strong> ¿Por qué nunca debes guardar tu seed phrase en una foto o en la nube?</p>
-<p>a) Ocupa espacio · b) Puede ser hackeada o filtrada · c) Es ilegal · d) No funciona</p>
-<p><strong>2.</strong> ¿Qué es una passphrase?</p>
-<p>a) Tu PIN · b) Una palabra extra que crea una wallet oculta · c) Tu contraseña del exchange · d) Un tipo de seed</p>
-<p><strong>3.</strong> ¿Qué es un dispositivo air-gapped?</p>
-<p>a) Un dispositivo que nunca se conecta a internet · b) Un dispositivo viejo · c) Un dispositivo roto · d) Un dispositivo con Bluetooth</p>
-<p><em>Respuestas: 1-b, 2-b, 3-a</em></p>
-</div>
-
-<h2>🎯 Resumen</h2>
-<p>Si tienes más de $500 en cripto, necesitas una hardware wallet. No es negociable. "Not your keys, not your coins". Compra directo del fabricante, guarda tu seed en metal, configura una passphrase, y deja instrucciones para tus herederos.</p>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">7.5</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Herencia cripto</div><div class="text-xs text-white/40 font-mono mt-1">20 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p>Si mueres sin instrucciones, tus fondos se pierden para siempre.</p><ul><li>Carta sellada con instrucciones.</li><li>Explica cómo usar la seed (sin revelarla).</li><li>Servicio de herencia cripto (Casa, Unchained).</li><li>Multisig 2 de 3 con un abogado.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-violet"><div class="text-xs font-mono text-violet mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El multisig es la mejor solución. Wallet 2 de 3: tú, tu heredero, un abogado. Si mueres, heredero + abogado recuperan. Mientras vives, solo tú controlas.</p></div></div>
+</details>
+  </div>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
 </body></html>

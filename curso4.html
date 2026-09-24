@@ -1,106 +1,144 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso 4: Ciberseguridad y Anti-Scam | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
-<main class="container article">
-<span class="badge badge-danger">Módulo 4</span>
-<h1>Ciberseguridad y Anti-Scam</h1>
-<p class="lead">El curso más importante de todos. En cripto, la seguridad no es opcional. Aprende a proteger tus fondos y reconocer estafas antes de caer en ellas.</p>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.10) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.10) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .prose-lesson p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1rem; }
+  .prose-lesson ul { margin: 1rem 0 1.5rem 1.5rem; }
+  .prose-lesson li { color: rgba(255,255,255,0.65); margin-bottom: 0.6rem; line-height: 1.7; }
+  .prose-lesson strong { color: #fff; font-weight: 600; }
+  .prose-lesson code { background: rgba(0,212,255,0.08); color: #00d4ff; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+</style>
+</head>
+<title>Curso 4: Ciberseguridad y Anti-Scam — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white">Herramientas</a>
+    </div>
+    <a href="cursos.html" class="text-sm px-4 py-2 rounded-lg border border-white/15 hover:bg-white/5">← Cursos</a>
+  </div>
+</nav>
+<header class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="cursos.html" class="text-xs font-mono text-white/40 hover:text-accent">CURSOS</a>
+      <span class="text-white/20">/</span>
+      <span class="text-xs font-mono text-danger">MÓDULO 04</span>
+    </div>
+    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-danger/10 text-danger border border-danger/20 mb-6">Avanzado</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">Ciberseguridad<br><span class="text-white/40">y Anti-Scam.</span></h1>
+    <p class="text-lg text-white/60 max-w-2xl">El curso más importante. Cada año se roban más de ,000 millones en cripto. Aprende a no ser una víctima.</p>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pb-20">
 
-<div class="disclaimer">⚠️ <strong>Aviso:</strong> Cada año se roban más de $5,000 millones en cripto. La mayoría de las víctimas cayeron por errores básicos de seguridad. Este curso te enseña a no ser una de ellas.</div>
+  <a href="https://youtu.be/xQJKd9SXOVQ" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-4 block">
+    <div class="w-14 h-14 rounded-xl bg-danger/10 border border-danger/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-danger" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-mono text-white/40 mb-1">VIDEO 1</div>
+      <div class="font-display font-bold text-lg group-hover:text-accent transition">El Lado Oscuro de las Billeteras</div>
+      <div class="text-sm text-white/50 mt-1">Cómo perder tus fondos en segundos.</div>
+    </div>
+  </a>
 
-<h2>🎬 El Lado Oscuro de las Billeteras</h2>
-<p>Cómo perder tus fondos en segundos.</p>
-<a href="https://youtu.be/xQJKd9SXOVQ" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver video</a>
+  <a href="https://youtu.be/rZQ2bV-T-E8" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-16 block">
+    <div class="w-14 h-14 rounded-xl bg-danger/10 border border-danger/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-danger" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-mono text-white/40 mb-1">VIDEO 2</div>
+      <div class="font-display font-bold text-lg group-hover:text-accent transition">¡Cuidado! Lo que NADIE te dice</div>
+      <div class="text-sm text-white/50 mt-1">Estafas comunes y cómo evitarlas.</div>
+    </div>
+  </a>
 
-<h2>🎬 ¡Cuidado! Lo que NADIE te dice</h2>
-<p>Estafas comunes y cómo evitarlas.</p>
-<a href="https://youtu.be/rZQ2bV-T-E8" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver video</a>
+  <div class="space-y-4">
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">4.1</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Tipos de estafas</div><div class="text-xs text-white/40 font-mono mt-1">30 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Las 7 estafas más comunes:</strong></p><ul><li><strong>Phishing:</strong> Email falso que suplanta a tu exchange.</li><li><strong>Fake apps:</strong> Apps falsas en tiendas oficiales.</li><li><strong>Soporte falso:</strong> Alguien te contacta diciendo ser de Binance.</li><li><strong>Giveaway scams:</strong> "Envía 1 ETH y te devuelvo 2".</li><li><strong>Romance scams:</strong> Te enamoran para que inviertas.</li><li><strong>Pump & Dump:</strong> Grupos que inflan un token y venden.</li><li><strong>Drenadores:</strong> Firmas una transacción maliciosa y vacían tu wallet.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El 90% de los robos empiezan con un mensaje en Telegram o Discord. Si alguien te escribe primero — aunque diga ser tu exchange, un proyecto o "soporte" — asume que es estafa. Los proyectos legítimos NUNCA te escriben primero.</p></div></div>
+</details>
 
-<h2>📚 Lecciones</h2>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">4.2</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Honeypots</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>¿Qué es?</strong> Un contrato inteligente que permite comprar pero no vender. Te muestra ganancias pero cuando intentas vender, la transacción falla. Eres una "abeja atrapada en la miel".</p><p><strong>Cómo detectarlos:</strong></p><ul><li>Usa Honeypot.is antes de comprar.</li><li>Revisa si el contrato tiene <code>blacklist</code> o <code>setTaxFee</code> sin límite.</li><li>Prueba comprar y vender una cantidad mínima en wallet secundaria.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Los honeypots más avanzados permiten vender UNA vez para crear confianza, luego bloquean todas las ventas. Si un token te deja vender solo una vez, es trampa.</p></div></div>
+</details>
 
-<h3>4.1 Tipos de estafas</h3>
-<p><strong>Las 7 estafas más comunes:</strong></p>
-<ul>
-<li><strong>Phishing:</strong> Email falso que suplanta a tu exchange. Te piden "verificar" tu cuenta. Roban tus credenciales.</li>
-<li><strong>Fake apps:</strong> Apps falsas en tiendas oficiales. Roban tu seed phrase al instalarlas.</li>
-<li><strong>Soporte falso:</strong> Alguien te contacta por Telegram/Discord diciendo ser soporte de Binance. Te pide tu seed phrase.</li>
-<li><strong>Giveaway scams:</strong> "Envía 1 ETH y te devuelvo 2". Nunca funciona.</li>
-<li><strong>Romance scams:</strong> Te enamoran por meses para que inviertas en una plataforma falsa.</li>
-<li><strong>Pump & Dump:</strong> Grupos que inflan un token y luego venden, dejándote con tokens sin valor.</li>
-<li><strong>Drenadores de wallets:</strong> Firmas una transacción maliciosa y vacían tu wallet.</li>
-</ul>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">4.3</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Phishing en Web3</div><div class="text-xs text-white/40 font-mono mt-1">30 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>El ataque más común en 2024-2026:</strong></p><ol style="margin-left:1.5rem"><li>Recibes un NFT o token "gratis" en tu wallet.</li><li>Vas a la web del proyecto para reclamarlo.</li><li>Firmas una transacción que es un <code>approve</code> de todos tus tokens a una dirección maliciosa.</li><li>El drenador vacía tu wallet en segundos.</li></ol><p><strong>Cómo protegerte:</strong> nunca firmes transacciones que no entiendes. Usa Revoke.cash para revocar permisos antiguos.</p><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Un drenador vacía tu cuenta en una sola firma. No hay forma de revertirlo — la blockchain es irreversible. Si firmaste, tu dinero se fue.</p></div></div>
+</details>
 
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El 90% de los robos de cripto empiezan con un mensaje en Telegram o Discord. Si alguien te escribe primero (aunque diga ser de tu exchange, de un proyecto, o de "soporte"), asume que es una estafa. Los proyectos legítimos NUNCA te escriben primero.</div>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">4.4</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Auditoría de contratos</div><div class="text-xs text-white/40 font-mono mt-1">30 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Cómo revisar un contrato antes de invertir:</strong></p><ul><li>Ve a Etherscan/BscScan y busca el contrato.</li><li>Revisa si está verificado (código visible).</li><li>Busca funciones peligrosas: <code>mint</code>, <code>blacklist</code>, <code>setTaxFee</code>, <code>pause</code>.</li><li>Revisa si el ownership está renunciado.</li><li>Verifica si la liquidez está bloqueada.</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">Un contrato "renounced" no siempre es seguro. Algunos usan contratos proxy que permiten cambiar la lógica después. Busca <code>implementation</code> — si es proxy, el dueño puede cambiar reglas cuando quiera.</p></div></div>
+</details>
 
-<h3>4.2 Honeypots</h3>
-<p><strong>¿Qué es un honeypot?</strong> Un contrato inteligente que permite comprar el token pero no venderlo. Te muestra ganancias en tu wallet, pero cuando intentas vender, la transacción falla. Eres una "abeja atrapada en la miel".</p>
-<p><strong>Cómo detectarlos:</strong></p>
-<ul>
-<li>Usa Honeypot.is antes de comprar cualquier token.</li>
-<li>Revisa si el contrato tiene funciones de <code>blacklist</code> o <code>setTaxFee</code> sin límite.</li>
-<li>Prueba comprar y vender una cantidad mínima en una wallet secundaria.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Los honeypots más avanzados ahora permiten vender UNA vez para crear confianza, y luego bloquean todas las ventas. Si un token te deja vender solo una vez, es una trampa. Nunca vuelvas a comprar.</div>
-
-<h3>4.3 Phishing en Web3</h3>
-<p><strong>El ataque más común en 2024-2026:</strong></p>
-<ol>
-<li>Recibes un NFT o token "gratis" en tu wallet.</li>
-<li>Vas a la web del proyecto para reclamarlo.</li>
-<li>Firmas una transacción que en realidad es un <code>approve</code> de todos tus tokens a una dirección maliciosa.</li>
-<li>El drenador vacía tu wallet en segundos.</li>
-</ol>
-<p><strong>Cómo protegerte:</strong></p>
-<ul>
-<li>Nunca firmes transacciones que no entiendes.</li>
-<li>Revisa en Etherscan qué permisos estás firmando.</li>
-<li>Usa Revoke.cash para revocar permisos antiguos.</li>
-<li>Nunca hagas clic en enlaces de tokens que aparecen "gratis" en tu wallet.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Un drenador de wallets puede vaciar tu cuenta en una sola firma. No hay forma de revertirlo. La blockchain es irreversible. Si firmaste, tu dinero se fue. La única defensa es NO FIRMAR transacciones sospechosas. El 95% de los drenajes ocurren por firmar sin leer.</div>
-
-<h3>4.4 Auditoría de contratos</h3>
-<p><strong>Cómo revisar un contrato antes de invertir:</strong></p>
-<ul>
-<li>Ve a Etherscan/BscScan y busca el contrato.</li>
-<li>Revisa si está verificado (código visible).</li>
-<li>Busca funciones peligrosas: <code>mint</code>, <code>blacklist</code>, <code>setTaxFee</code>, <code>pause</code>.</li>
-<li>Revisa si el ownership está renunciado (renounced).</li>
-<li>Verifica si la liquidez está bloqueada y por cuánto tiempo.</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> Un contrato "renounced" no siempre es seguro. Algunos proyectos crean un contrato proxy que permite cambiar la lógica después. Revisa si el contrato es un proxy (busca <code>implementation</code> en el código). Si es proxy, el dueño puede cambiar las reglas en cualquier momento.</div>
-
-<h3>4.5 Seguridad en wallets</h3>
-<p><strong>Reglas de oro:</strong></p>
-<ul>
-<li><strong>Nunca compartas tu seed phrase.</strong> Ni con soporte, ni con tu madre, ni con nadie.</li>
-<li><strong>Usa wallets separadas:</strong> Una para interactuar con DApps, otra para guardar fondos a largo plazo.</li>
-<li><strong>Revoca permisos regularmente:</strong> Usa Revoke.cash.</li>
-<li><strong>Verifica direcciones:</strong> Siempre revisa los primeros y últimos 4 caracteres de una dirección antes de enviar.</li>
-<li><strong>Usa 2FA:</strong> En exchanges, siempre con app autenticadora (nunca SMS).</li>
-</ul>
-
-<div class="disclaimer">🔒 <strong>Información oculta:</strong> El mayor error de seguridad no es técnico, es psicológico. Los estafadores no hackean la blockchain, hackean tu confianza. Te llaman, te escriben, te enamoran, te asustan. La regla más importante: si alguien te pide tu seed phrase, es una estafa. Sin excepciones.</div>
-
-<h3>🧠 Quiz final</h3>
-<div class="disclaimer">
-<p><strong>1.</strong> ¿Qué haces si recibes un email de tu exchange pidiendo tu seed phrase?</p>
-<p>a) La envío · b) Llamo al soporte · c) Lo ignoro y reporto · d) La publico en Twitter</p>
-<p><strong>2.</strong> ¿Qué es un drenador de wallets?</p>
-<p>a) Un tipo de wallet · b) Una dApp que vacía tu wallet al firmar · c) Un exchange · d) Un NFT</p>
-<p><strong>3.</strong> ¿Dónde NUNCA debes guardar tu seed phrase?</p>
-<p>a) En papel · b) En metal · c) En una foto o en la nube · d) En tu memoria</p>
-<p><em>Respuestas: 1-c, 2-b, 3-c</em></p>
-</div>
-
-<h2>🎯 Resumen</h2>
-<p>La seguridad en cripto es 90% sentido común y 10% técnica. Nunca compartas tu seed. Nunca firmes sin leer. Nunca hagas clic en enlaces sospechosos. Si haces esto, ya estás más protegido que el 95% de los usuarios.</p>
+<details class="glass rounded-2xl overflow-hidden">
+  <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
+    <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 text-accent font-mono text-xs">4.5</div>
+    <div class="flex-1 min-w-0"><div class="font-display font-semibold text-base md:text-lg">Seguridad en wallets</div><div class="text-xs text-white/40 font-mono mt-1">25 MIN</div></div>
+    <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </summary>
+  <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6"><p><strong>Reglas de oro:</strong></p><ul><li><strong>Nunca compartas tu seed phrase.</strong> Ni con soporte, ni con tu madre.</li><li><strong>Usa wallets separadas:</strong> una para DApps, otra para fondos a largo plazo.</li><li><strong>Revoca permisos regularmente:</strong> Revoke.cash.</li><li><strong>Verifica direcciones:</strong> primeros y últimos 4 caracteres antes de enviar.</li><li><strong>Usa 2FA:</strong> siempre con app autenticadora (nunca SMS).</li></ul><div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger"><div class="text-xs font-mono text-danger mb-2">INFORMACIÓN OCULTA</div><p class="text-sm">El mayor error no es técnico, es psicológico. Los estafadores no hackean la blockchain, hackean tu confianza. Te llaman, escriben, enamoran, asustan. Si alguien pide tu seed phrase, es estafa. Sin excepciones.</p></div></div>
+</details>
+  </div>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
 </body></html>
