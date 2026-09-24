@@ -5,15 +5,92 @@
 </head><body>
 <header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
 <main class="container article">
-<span class="badge badge-primary">Módulo 7</span>
-<h1>Hardware Wallets</h1>
-<p class="lead">Contenido en construcción. Cada lección incluirá teoría, ejemplo práctico y quiz.</p>
+<span class="badge badge-danger">Módulo 7</span>
+<h1>Hardware Wallets — Custodia Profesional</h1>
+<p class="lead">Si tus cripto están en un exchange, no son tuyas. Aprende a guardarlas como un profesional con hardware wallets.</p>
+
+<div class="disclaimer">⚠️ <strong>Aviso:</strong> "Not your keys, not your coins". Si no controlas las claves privadas, no controlas tus fondos. Este curso te enseña a hacerlo bien.</div>
+
 <h2>📚 Lecciones</h2>
-<ul class="lecciones"><li>Ledger vs Trezor <span class="badge badge-green">✓</span></li>
-<li>Configuración segura <span class="badge badge-green">✓</span></li>
-<li>Backup de seed <span class="badge badge-green">✓</span></li>
-<li>Firmas offline <span class="badge badge-green">✓</span></li></ul>
-<div class="disclaimer">🚧 <strong>En desarrollo:</strong> Cada lección tendrá introducción, conceptos, ejemplo real, info oculta y quiz.</div>
+
+<h3>7.1 Ledger vs Trezor</h3>
+<p><strong>Comparativa:</strong></p>
+<table>
+<thead><tr><th>Característica</th><th>Ledger</th><th>Trezor</th></tr></thead>
+<tbody>
+<tr><td>Origen</td><td>Francia</td><td>República Checa</td></tr>
+<tr><td>Modelos</td><td>Nano S, Nano X, Flex, Stax</td><td>Model One, Model T, Safe 3, Safe 5</td></tr>
+<tr><td>Precio</td><td>$79 - $279</td><td>$69 - $219</td></tr>
+<tr><td>Código</td><td>Parcialmente open source</td><td>100% open source</td></tr>
+<tr><td>Conectividad</td><td>USB + Bluetooth (X)</td><td>USB + Bluetooth (Safe 5)</td></tr>
+<tr><td>Monedas</td><td>+5,500</td><td>+1,500</td></tr>
+</tbody>
+</table>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> La elección entre Ledger y Trezor es más ideológica que técnica. Ledger tiene más monedas y mejor UX. Trezor es 100% open source (puedes auditar el código). Si tu prioridad es privacidad y transparencia, Trezor. Si tu prioridad es variedad y comodidad, Ledger.</div>
+
+<h3>7.2 Configuración segura</h3>
+<p><strong>Pasos críticos:</strong></p>
+<ul>
+<li><strong>Compra directo del fabricante.</strong> Nunca en Amazon o eBay (riesgo de dispositivos manipulados).</li>
+<li><strong>Verifica el firmware.</strong> Al conectar por primera vez, verifica que el firmware sea legítimo.</li>
+<li><strong>Configura PIN.</strong> 6-8 dígitos. Nunca uses 1234 o tu fecha de nacimiento.</li>
+<li><strong>Passphrase (opcional pero recomendado).</strong> Una palabra extra que crea una wallet oculta. Si alguien roba tu dispositivo y conoce tu PIN, sin la passphrase no ve tus fondos.</li>
+<li><strong>Nunca escribas tu seed en el ordenador o teléfono.</strong> Solo en papel o metal.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> La passphrase es tu mejor defensa contra la coacción física. Si alguien te obliga a desbloquear tu wallet, abres la wallet con tu PIN normal (que está vacía) y guardas los fondos reales en la wallet oculta de la passphrase. Nadie sabrá que existe.</div>
+
+<h3>7.3 Backup de seed</h3>
+<p><strong>La regla de oro:</strong> Tu seed phrase (12-24 palabras) es el acceso a TODOS tus fondos. Si la pierdes, pierdes todo. Si alguien la encuentra, roba todo.</p>
+<p><strong>Cómo guardarla bien:</strong></p>
+<ul>
+<li>NUNCA en foto, nube, email, o notas del teléfono.</li>
+<li>En papel, guardado en un lugar seguro (caja fuerte, banco).</li>
+<li>Mejor: en metal (acero inoxidable), resistente a fuego y agua.</li>
+<li>Mejor aún: dividida en 2-3 partes, guardadas en lugares separados.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> El método más seguro es la "seed dividida" (Shamir Backup). Divides la seed en 3 partes. Con 2 de 3 puedes recuperar la wallet. Si alguien encuentra 1 parte, no puede hacer nada. Si tu casa se quema, las otras 2 partes sobreviven. Esto lo soportan Trezor Safe 3 y Ledger Flex.</div>
+
+<h3>7.4 Firmas offline (air-gapped)</h3>
+<p><strong>¿Qué es air-gapped?</strong> Un dispositivo que nunca se conecta a internet. Las transacciones se firman en el dispositivo y se transmiten por QR o USB.</p>
+<p><strong>Flujo típico:</strong></p>
+<ol>
+<li>Creas la transacción en tu ordenador (sin claves privadas).</li>
+<li>La pasas al hardware wallet (por QR o USB).</li>
+<li>El hardware wallet firma la transacción offline.</li>
+<li>Devuelves la transacción firmada al ordenador.</li>
+<li>La transmites a la red.</li>
+</ol>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> Las hardware wallets nunca exponen tus claves privadas a internet. Incluso si tu ordenador está infectado con malware, el malware no puede robar tus claves porque nunca salen del dispositivo. Esto es lo que hace a las hardware wallets tan seguras.</div>
+
+<h3>7.5 Herencia cripto</h3>
+<p><strong>El problema:</strong> Si mueres sin dejar instrucciones, tus fondos se pierden para siempre. La blockchain no tiene un botón de "recuperar cuenta".</p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Deja una carta sellada con instrucciones para tus herederos.</li>
+<li>Explica cómo usar la seed phrase (sin revelarla directamente).</li>
+<li>Usa un servicio de herencia cripto (como Casa o Unchained).</li>
+<li>Considera un multisig (2 de 3) donde un abogado tenga una llave.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> El multisig es la mejor solución para herencia. Configuras una wallet que requiere 2 de 3 firmas: tú, tu heredero, y un abogado. Si mueres, tu heredero y el abogado pueden recuperar los fondos. Mientras vives, solo tú controlas todo.</div>
+
+<h3>🧠 Quiz final</h3>
+<div class="disclaimer">
+<p><strong>1.</strong> ¿Por qué nunca debes guardar tu seed phrase en una foto o en la nube?</p>
+<p>a) Ocupa espacio · b) Puede ser hackeada o filtrada · c) Es ilegal · d) No funciona</p>
+<p><strong>2.</strong> ¿Qué es una passphrase?</p>
+<p>a) Tu PIN · b) Una palabra extra que crea una wallet oculta · c) Tu contraseña del exchange · d) Un tipo de seed</p>
+<p><strong>3.</strong> ¿Qué es un dispositivo air-gapped?</p>
+<p>a) Un dispositivo que nunca se conecta a internet · b) Un dispositivo viejo · c) Un dispositivo roto · d) Un dispositivo con Bluetooth</p>
+<p><em>Respuestas: 1-b, 2-b, 3-a</em></p>
+</div>
+
+<h2>🎯 Resumen</h2>
+<p>Si tienes más de $500 en cripto, necesitas una hardware wallet. No es negociable. "Not your keys, not your coins". Compra directo del fabricante, guarda tu seed en metal, configura una passphrase, y deja instrucciones para tus herederos.</p>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026</p></footer>
+<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
 </body></html>

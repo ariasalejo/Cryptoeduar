@@ -5,16 +5,97 @@
 </head><body>
 <header class="nav"><a href="index.html" class="logo">🚀 CryptoEduar</a><nav><a href="cursos.html">← Cursos</a></nav></header>
 <main class="container article">
-<span class="badge badge-primary">Módulo 4</span>
+<span class="badge badge-danger">Módulo 4</span>
 <h1>Ciberseguridad y Anti-Scam</h1>
-<p class="lead">Contenido en construcción. Cada lección incluirá teoría, ejemplo práctico y quiz.</p>
+<p class="lead">El curso más importante de todos. En cripto, la seguridad no es opcional. Aprende a proteger tus fondos y reconocer estafas antes de caer en ellas.</p>
+
+<div class="disclaimer">⚠️ <strong>Aviso:</strong> Cada año se roban más de $5,000 millones en cripto. La mayoría de las víctimas cayeron por errores básicos de seguridad. Este curso te enseña a no ser una de ellas.</div>
+
+<h2>🎬 Video introductorio</h2>
+<a href="https://youtu.be/xQJKd9SXOVQ" target="_blank" class="btn-primary" style="display:inline-block;margin:.5rem 0;text-decoration:none">▶️ Ver: El Lado Oscuro de las Billeteras — Cómo Perder tus Fondos en Segundos</a>
+
 <h2>📚 Lecciones</h2>
-<ul class="lecciones"><li>Tipos de estafas <span class="badge badge-green">✓</span></li>
-<li>Honeypots <span class="badge badge-green">✓</span></li>
-<li>Phishing <span class="badge badge-green">✓</span></li>
-<li>Auditoría de contratos <span class="badge badge-green">✓</span></li>
-<li>Seguridad en wallets <span class="badge badge-green">✓</span></li></ul>
-<div class="disclaimer">🚧 <strong>En desarrollo:</strong> Cada lección tendrá introducción, conceptos, ejemplo real, info oculta y quiz.</div>
+
+<h3>4.1 Tipos de estafas</h3>
+<p><strong>Las 7 estafas más comunes:</strong></p>
+<ul>
+<li><strong>Phishing:</strong> Email falso que suplanta a tu exchange. Te piden "verificar" tu cuenta. Roban tus credenciales.</li>
+<li><strong>Fake apps:</strong> Apps falsas en tiendas oficiales. Roban tu seed phrase al instalarlas.</li>
+<li><strong>Soporte falso:</strong> Alguien te contacta por Telegram/Discord diciendo ser soporte de Binance. Te pide tu seed phrase.</li>
+<li><strong>Giveaway scams:</strong> "Envía 1 ETH y te devuelvo 2". Nunca funciona.</li>
+<li><strong>Romance scams:</strong> Te enamoran por meses para que inviertas en una plataforma falsa.</li>
+<li><strong>Pump & Dump:</strong> Grupos que inflan un token y luego venden, dejándote con tokens sin valor.</li>
+<li><strong>Drenadores de wallets:</strong> Firmas una transacción maliciosa y vacían tu wallet.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> El 90% de los robos de cripto empiezan con un mensaje en Telegram o Discord. Si alguien te escribe primero (aunque diga ser de tu exchange, de un proyecto, o de "soporte"), asume que es una estafa. Los proyectos legítimos NUNCA te escriben primero.</div>
+
+<h3>4.2 Honeypots</h3>
+<p><strong>¿Qué es un honeypot?</strong> Un contrato inteligente que permite comprar el token pero no venderlo. Te muestra ganancias en tu wallet, pero cuando intentas vender, la transacción falla. Eres una "abeja atrapada en la miel".</p>
+<p><strong>Cómo detectarlos:</strong></p>
+<ul>
+<li>Usa Honeypot.is antes de comprar cualquier token.</li>
+<li>Revisa si el contrato tiene funciones de <code>blacklist</code> o <code>setTaxFee</code> sin límite.</li>
+<li>Prueba comprar y vender una cantidad mínima en una wallet secundaria.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> Los honeypots más avanzados ahora permiten vender UNA vez para crear confianza, y luego bloquean todas las ventas. Si un token te deja vender solo una vez, es una trampa. Nunca vuelvas a comprar.</div>
+
+<h3>4.3 Phishing en Web3</h3>
+<p><strong>El ataque más común en 2024-2026:</strong></p>
+<ol>
+<li>Recibes un NFT o token "gratis" en tu wallet.</li>
+<li>Vas a la web del proyecto para reclamarlo.</li>
+<li>Firmas una transacción que en realidad es un <code>approve</code> de todos tus tokens a una dirección maliciosa.</li>
+<li>El drenador vacía tu wallet en segundos.</li>
+</ol>
+<p><strong>Cómo protegerte:</strong></p>
+<ul>
+<li>Nunca firmes transacciones que no entiendes.</li>
+<li>Revisa en Etherscan qué permisos estás firmando.</li>
+<li>Usa Revoke.cash para revocar permisos antiguos.</li>
+<li>Nunca hagas clic en enlaces de tokens que aparecen "gratis" en tu wallet.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> Un drenador de wallets puede vaciar tu cuenta en una sola firma. No hay forma de revertirlo. La blockchain es irreversible. Si firmaste, tu dinero se fue. La única defensa es NO FIRMAR transacciones sospechosas. El 95% de los drenajes ocurren por firmar sin leer.</div>
+
+<h3>4.4 Auditoría de contratos</h3>
+<p><strong>Cómo revisar un contrato antes de invertir:</strong></p>
+<ul>
+<li>Ve a Etherscan/BscScan y busca el contrato.</li>
+<li>Revisa si está verificado (código visible).</li>
+<li>Busca funciones peligrosas: <code>mint</code>, <code>blacklist</code>, <code>setTaxFee</code>, <code>pause</code>.</li>
+<li>Revisa si el ownership está renunciado (renounced).</li>
+<li>Verifica si la liquidez está bloqueada y por cuánto tiempo.</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> Un contrato "renounced" no siempre es seguro. Algunos proyectos crean un contrato proxy que permite cambiar la lógica después. Revisa si el contrato es un proxy (busca <code>implementation</code> en el código). Si es proxy, el dueño puede cambiar las reglas en cualquier momento.</div>
+
+<h3>4.5 Seguridad en wallets</h3>
+<p><strong>Reglas de oro:</strong></p>
+<ul>
+<li><strong>Nunca compartas tu seed phrase.</strong> Ni con soporte, ni con tu madre, ni con nadie.</li>
+<li><strong>Usa wallets separadas:</strong> Una para interactuar con DApps, otra para guardar fondos a largo plazo.</li>
+<li><strong>Revoca permisos regularmente:</strong> Usa Revoke.cash.</li>
+<li><strong>Verifica direcciones:</strong> Siempre revisa los primeros y últimos 4 caracteres de una dirección antes de enviar.</li>
+<li><strong>Usa 2FA:</strong> En exchanges, siempre con app autenticadora (nunca SMS).</li>
+</ul>
+
+<div class="disclaimer">🔒 <strong>Información oculta:</strong> El mayor error de seguridad no es técnico, es psicológico. Los estafadores no hackean la blockchain, hackean tu confianza. Te llaman, te escriben, te enamoran, te asustan. La regla más importante: si alguien te pide tu seed phrase, es una estafa. Sin excepciones.</div>
+
+<h3>🧠 Quiz final</h3>
+<div class="disclaimer">
+<p><strong>1.</strong> ¿Qué haces si recibes un email de tu exchange pidiendo tu seed phrase?</p>
+<p>a) La envío · b) Llamo al soporte · c) Lo ignoro y reporto · d) La publico en Twitter</p>
+<p><strong>2.</strong> ¿Qué es un drenador de wallets?</p>
+<p>a) Un tipo de wallet · b) Una dApp que vacía tu wallet al firmar · c) Un exchange · d) Un NFT</p>
+<p><strong>3.</strong> ¿Dónde NUNCA debes guardar tu seed phrase?</p>
+<p>a) En papel · b) En metal · c) En una foto o en la nube · d) En tu memoria</p>
+<p><em>Respuestas: 1-c, 2-b, 3-c</em></p>
+</div>
+
+<h2>🎯 Resumen</h2>
+<p>La seguridad en cripto es 90% sentido común y 10% técnica. Nunca compartas tu seed. Nunca firmes sin leer. Nunca hagas clic en enlaces sospechosos. Si haces esto, ya estás más protegido que el 95% de los usuarios.</p>
 </main>
-<footer class="footer"><p>CryptoEduar © 2026</p></footer>
+<footer class="footer"><p>CryptoEduar © 2026 · Contenido educativo. No es consejo financiero.</p></footer>
 </body></html>
