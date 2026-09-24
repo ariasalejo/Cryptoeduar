@@ -1,91 +1,257 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CryptoEduar Security | Academia de Ciberseguridad Blockchain</title>
-<meta name="description" content="La primera plataforma en español de ciberseguridad blockchain. Aprende, protege tu patrimonio y accede a herramientas profesionales.">
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CryptoEduar — Ciberseguridad Blockchain de Clase Mundial</title>
+<meta name="description" content="La plataforma en español para dominar la ciberseguridad blockchain. Cursos, herramientas y datos en tiempo real.">
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav">
-  <a href="index.html" class="logo">CryptoEduar</a>
-  <nav>
-    <a href="index.html" class="active">Inicio</a>
-    <a href="cursos.html">Cursos</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="herramientas.html">Herramientas</a>
-    <a href="conspiraciones/index.html">Inteligencia</a>
-  </nav>
-</header>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        base: '#05050a',
+        surface: '#0c0c14',
+        elevated: '#12121c',
+        accent: { DEFAULT: '#00d4ff', glow: 'rgba(0,212,255,0.35)' },
+        violet: { DEFAULT: '#7c5cff' },
+        success: '#00ff9d',
+        danger: '#ff3d71',
+      },
+      animation: {
+        'gradient': 'gradient 8s ease infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 3s ease-in-out infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%,100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+        },
+        float: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        glow: {
+          '0%,100%': { 'box-shadow': '0 0 20px rgba(0,212,255,0.2)' },
+          '50%': { 'box-shadow': '0 0 40px rgba(0,212,255,0.5)' },
+        },
+      },
+    },
+  },
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #05050a; }
+  .gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #7c5cff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+  }
+  .mesh {
+    background:
+      radial-gradient(at 20% 20%, rgba(124,92,255,0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 30%, rgba(0,212,255,0.15) 0px, transparent 50%),
+      radial-gradient(at 40% 80%, rgba(0,255,157,0.08) 0px, transparent 50%);
+  }
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .glass:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(0,212,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,212,255,0.1), 0 0 0 1px rgba(0,212,255,0.1);
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #05050a; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#7c5cff,#00d4ff); border-radius: 3px; }
+  ::selection { background: rgba(0,212,255,0.3); color: #fff; }
+</style>
+</head>
+<body class="bg-base text-white font-sans antialiased overflow-x-hidden">
 
-<main>
-  <!-- HERO -->
-  <section class="hero reveal">
-    <div class="container">
-      <h1>Domina la Ciberseguridad Blockchain</h1>
-      <p>Protege tu patrimonio digital, aprende de expertos y accede a las herramientas que usan los profesionales. Todo en una sola plataforma.</p>
-      <div class="hero-cta">
-        <a href="cursos.html" class="btn btn-primary">Explorar Cursos</a>
-        <a href="herramientas.html" class="btn btn-secondary">Ver Herramientas</a>
-      </div>
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm shadow-[0_0_20px_rgba(124,92,255,0.5)]">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="cursos.html" class="hover:text-white transition">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white transition">Herramientas</a>
+      <a href="mercado.html" class="hover:text-white transition">Mercado</a>
+      <a href="videos.html" class="hover:text-white transition">Videos</a>
     </div>
-  </section>
+    <a href="cursos.html" class="text-sm font-medium px-4 py-2 rounded-lg bg-white text-black hover:bg-accent transition">Empezar</a>
+  </div>
+</nav>
 
-  <!-- PILARES -->
-  <section class="reveal">
-    <div class="container">
-      <div class="section-header">
-        <h2>Una Plataforma, Tres Pilares</h2>
-        <p>Todo lo que necesitas para operar de forma segura en el ecosistema cripto.</p>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="absolute inset-0 grid-lines opacity-40"></div>
+  <div class="absolute top-1/4 -left-40 w-96 h-96 bg-violet/20 rounded-full blur-[120px] animate-pulse"></div>
+  <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-20 w-full">
+    <div class="max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xs text-white/70 mb-8 backdrop-blur">
+        <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+        Plataforma activa · Actualizada 2026
       </div>
-      <div class="grid-3">
-        <div class="glass course-card">
-          <span class="badge badge-cyan">01</span>
-          <h3>Educación de Élite</h3>
-          <p>Cursos estructurados desde fundamentos hasta seguridad avanzada, con contenido actualizado y certificados verificables.</p>
-          <div class="course-meta"><span>7 Módulos</span><span>85+ Lecciones</span></div>
+
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
+        <span class="gradient-text">Domina la</span><br>
+        <span class="text-white">ciberseguridad</span><br>
+        <span class="text-white/40">blockchain.</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed">
+        La plataforma en español para proteger tu patrimonio digital. Cursos estructurados, herramientas profesionales y datos en tiempo real. Todo en un solo lugar.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mb-16">
+        <a href="cursos.html" class="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-semibold hover:bg-accent transition-all">
+          Explorar cursos
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="herramientas.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/5 hover:border-white/30 transition-all">
+          Ver herramientas
+        </a>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-4 gap-8 pt-12 border-t border-white/[0.06]">
+        <div>
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">7</div>
+          <div class="text-xs md:text-sm text-white/50 uppercase tracking-wider">Cursos</div>
         </div>
-        <div class="glass course-card">
-          <span class="badge badge-purple">02</span>
-          <h3>Arsenal de Seguridad</h3>
-          <p>Detectores de honeypots, auditores de contratos y generadores de claves. Herramientas profesionales a un clic.</p>
-          <div class="course-meta"><span>6 Herramientas</span><span>100% Gratis</span></div>
+        <div>
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">85+</div>
+          <div class="text-xs md:text-sm text-white/50 uppercase tracking-wider">Lecciones</div>
         </div>
-        <div class="glass course-card">
-          <span class="badge badge-green">03</span>
-          <h3>Inteligencia de Mercado</h3>
-          <p>Datos en tiempo real, análisis de amenazas y artículos de investigación profunda sobre el lado oculto de las criptomonedas.</p>
-          <div class="course-meta"><span>En Vivo</span><span>Fuentes Verificadas</span></div>
+        <div>
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-1">6</div>
+          <div class="text-xs md:text-sm text-white/50 uppercase tracking-wider">Herramientas</div>
+        </div>
+        <div class="hidden md:block">
+          <div class="font-display text-3xl md:text-4xl font-bold text-accent mb-1">100%</div>
+          <div class="text-xs md:text-sm text-white/50 uppercase tracking-wider">Gratis</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- STATS -->
-  <section class="reveal">
-    <div class="container">
-      <div class="grid-3">
-        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">12+</div><p style="color:var(--text-muted)">Criptomonedas Monitoreadas</p></div>
-        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">6</div><p style="color:var(--text-muted)">Herramientas de Seguridad</p></div>
-        <div class="glass" style="padding:2rem;text-align:center"><div style="font-size:3rem;font-family:var(--font-display);color:var(--accent-primary)">100%</div><p style="color:var(--text-muted)">Acceso Gratuito</p></div>
+<!-- FEATURES -->
+<section class="relative py-32 border-t border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-2xl mb-20">
+      <div class="text-xs font-mono text-accent mb-4 tracking-wider">// PILARES</div>
+      <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+        Todo lo que necesitas<br>
+        <span class="text-white/40">para operar con seguridad.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="glass rounded-2xl p-8 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="text-xs font-mono text-white/40 mb-2">01 / EDUCACIÓN</div>
+        <h3 class="font-display text-2xl font-bold mb-3">Cursos estructurados</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-6">7 módulos desde fundamentos hasta seguridad avanzada. Contenido actualizado con certificados verificables.</p>
+        <a href="cursos.html" class="inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all">
+          Ver cursos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass rounded-2xl p-8 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet/20 to-violet/5 border border-violet/20 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <div class="text-xs font-mono text-white/40 mb-2">02 / SEGURIDAD</div>
+        <h3 class="font-display text-2xl font-bold mb-3">Arsenal de herramientas</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-6">Detectores de honeypots, auditores de contratos, generadores de claves. Todo funciona en tu navegador.</p>
+        <a href="herramientas.html" class="inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all">
+          Usar herramientas
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass rounded-2xl p-8 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-success/20 to-success/5 border border-success/20 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        </div>
+        <div class="text-xs font-mono text-white/40 mb-2">03 / DATOS</div>
+        <h3 class="font-display text-2xl font-bold mb-3">Inteligencia de mercado</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-6">Precios en tiempo real, análisis de amenazas e investigación profunda sobre el ecosistema cripto.</p>
+        <a href="dashboard.html" class="inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all">
+          Ver dashboard
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="reveal">
-    <div class="container" style="text-align:center">
-      <h2>¿Listo para proteger tu patrimonio?</h2>
-      <p style="max-width:600px;margin:1rem auto 2.5rem">Únete a la comunidad de personas que ya operan de forma segura en el mundo cripto.</p>
-      <a href="cursos.html" class="btn btn-primary">Empezar Ahora</a>
+<!-- CTA FINAL -->
+<section class="relative py-32 border-t border-white/[0.06] overflow-hidden">
+  <div class="absolute inset-0 mesh opacity-60"></div>
+  <div class="relative max-w-4xl mx-auto px-6 text-center">
+    <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+      ¿Listo para proteger<br>
+      <span class="gradient-text">tu patrimonio digital?</span>
+    </h2>
+    <p class="text-white/60 text-lg mb-10 max-w-xl mx-auto">Únete a la comunidad de personas que operan con seguridad en el ecosistema cripto.</p>
+    <a href="cursos.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-semibold hover:bg-accent transition-all animate-glow">
+      Empezar ahora — gratis
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/[0.06] py-12">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
     </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>&copy; 2026 CryptoEduar Security. Protegiendo tu patrimonio digital.</p>
-    <p style="font-size:0.8rem;margin-top:1rem;color:var(--text-muted)">Plataforma educativa. No somos asesores financieros.</p>
+    <div>Plataforma educativa · No somos asesores financieros</div>
   </div>
 </footer>
-</body></html>
+
+</body>
+</html>

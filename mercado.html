@@ -1,53 +1,123 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mercado en Vivo | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav">
-  <a href="index.html" class="logo">🚀 CryptoEduar</a>
-  <nav><a href="index.html">Inicio</a><a href="cursos.html">Cursos</a><a href="glosario.html">Glosario</a><a href="herramientas.html">Herramientas</a><a href="videos.html">Videos</a><a href="mercado.html" class="active">Mercado</a><a href="conspiraciones/index.html">Conspiraciones</a></nav>
-</header>
-<main class="container">
-<h1>Mercado en Vivo</h1>
-<p class="lead">Precios actualizados cada 60 segundos desde CoinGecko. Datos informativos, no consejo financiero.</p>
-
-<div class="stats-grid">
-  <div class="stat"><div class="stat-value" id="stat-btc">—</div><div class="stat-label">Bitcoin</div></div>
-  <div class="stat"><div class="stat-value" id="stat-eth">—</div><div class="stat-label">Ethereum</div></div>
-  <div class="stat"><div class="stat-value" id="stat-fg">—</div><div class="stat-label">Fear & Greed</div></div>
-  <div class="stat"><div class="stat-value" id="stat-mcap">—</div><div class="stat-label">Market Cap Total</div></div>
-</div>
-
-<h2>📊 Top Criptomonedas</h2>
-<table><thead><tr><th>Moneda</th><th>Precio</th><th>24h</th><th>Market Cap</th></tr></thead>
-<tbody id="prices-body"><tr><td colspan="4" style="text-align:center">Cargando...</td></tr></tbody></table>
-
-<div class="disclaimer">📚 Fuente: <a href="https://www.coingecko.com" target="_blank">CoinGecko API</a> y <a href="https://alternative.me/crypto/fear-and-greed-index/" target="_blank">Alternative.me</a>. Este contenido es informativo.</div>
-</main>
-<footer class="footer"><p>CryptoEduar © 2026</p></footer>
-<script src="assets/js/dashboard.js"></script>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
+}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.12) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.12) 0px, transparent 50%), radial-gradient(at 40% 80%, rgba(0,255,157,0.06) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .4s cubic-bezier(.4,0,.2,1); }
+  .glass:hover { background:rgba(255,255,255,0.05); border-color:rgba(0,212,255,0.3); box-shadow:0 20px 60px rgba(0,212,255,0.1); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+  ::selection { background:rgba(0,212,255,0.3); color:#fff; }
+  input,select,textarea { background:#12121c; border:1px solid rgba(255,255,255,0.08); color:#fff; }
+  input:focus,select:focus,textarea:focus { outline:none; border-color:#00d4ff; box-shadow:0 0 0 3px rgba(0,212,255,0.15); }
+  input::placeholder { color:rgba(255,255,255,0.3); }
+</style>
+</head>
+<title>Mercado en Vivo — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased overflow-x-hidden">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm shadow-[0_0_20px_rgba(124,92,255,0.5)]">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="index.html" class="hover:text-white transition">Inicio</a>
+      <a href="cursos.html" class="hover:text-white transition">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white transition">Herramientas</a>
+      <a href="videos.html" class="hover:text-white transition">Videos</a>
+    </div>
+    <a href="index.html" class="text-sm font-medium px-4 py-2 rounded-lg bg-white text-black hover:bg-accent transition">Inicio</a>
+  </div>
+</nav>
+
+<section class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-xs font-mono text-accent mb-4 tracking-wider">// MERCADO EN VIVO</div>
+    <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6">Datos del mercado</h1>
+    <p class="text-lg text-white/60 max-w-2xl">Precios actualizados cada 60 segundos desde CoinGecko. Información educativa, no consejo financiero.</p>
+  </div>
+</section>
+
+<section class="relative pb-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">BITCOIN</div>
+        <div id="stat-btc" class="font-display text-2xl md:text-3xl font-bold">—</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">ETHEREUM</div>
+        <div id="stat-eth" class="font-display text-2xl md:text-3xl font-bold">—</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">FEAR & GREED</div>
+        <div id="stat-fg" class="font-display text-2xl md:text-3xl font-bold">—</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">MARKET CAP</div>
+        <div id="stat-mcap" class="font-display text-2xl md:text-3xl font-bold">—</div>
+      </div>
+    </div>
+
+    <h2 class="font-display text-3xl font-bold tracking-tight mb-6">Top Criptomonedas</h2>
+
+    <div class="glass rounded-2xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="border-b border-white/[0.06]">
+          <tr class="text-xs font-mono text-white/40 uppercase">
+            <th class="text-left p-4">Moneda</th>
+            <th class="text-right p-4">Precio</th>
+            <th class="text-right p-4">24h</th>
+            <th class="text-right p-4 hidden md:table-cell">Market Cap</th>
+          </tr>
+        </thead>
+        <tbody id="prices-body">
+          <tr><td colspan="4" class="text-center p-8 text-white/40">Cargando precios...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
+<script>
+const COINS = ["bitcoin","ethereum","binancecoin","solana","ripple","cardano","dogecoin","tron","polkadot","matic-network","litecoin","chainlink"];
+async function fetchPrices(){ try{ const u=`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COINS.join(",")}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`; const r=await fetch(u); if(!r.ok)throw 0; return await r.json(); }catch(e){ return null; } }
+function render(coins){ const t=document.getElementById("prices-body"); if(!t)return; t.innerHTML=coins.map(c=>{ const ch=c.price_change_percentage_24h||0; const cls=ch>=0?"text-success":"text-danger"; const a=ch>=0?"▲":"▼"; return `<tr class="border-b border-white/[0.04] hover:bg-white/[0.02] transition"><td class="p-4 font-medium">${c.name} <span class="text-white/40 font-mono text-xs">${c.symbol.toUpperCase()}</span></td><td class="p-4 text-right font-mono">$${c.current_price.toLocaleString()}</td><td class="p-4 text-right font-mono ${cls}">${a} ${Math.abs(ch).toFixed(2)}%</td><td class="p-4 text-right font-mono text-white/60 hidden md:table-cell">$${(c.market_cap/1e9).toFixed(2)}B</td></tr>`; }).join(""); }
+async function init(){ const c=await fetchPrices(); if(c)render(c); }
 async function loadStats(){
-  try{
-    const r = await fetch('https://api.coingecko.com/api/v3/global');
-    const d = await r.json();
-    document.getElementById('stat-mcap').textContent = '$' + (d.data.total_market_cap.usd/1e12).toFixed(2) + 'T';
-  }catch(e){}
-  try{
-    const f = await fetch('https://api.alternative.me/fng/');
-    const fd = await f.json();
-    document.getElementById('stat-fg').textContent = fd.data[0].value + ' (' + fd.data[0].value_classification + ')';
-  }catch(e){}
+  try{ const r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"); const d=await r.json(); document.getElementById("stat-btc").textContent="$"+d.bitcoin.usd.toLocaleString(); document.getElementById("stat-eth").textContent="$"+d.ethereum.usd.toLocaleString(); }catch(e){}
+  try{ const r=await fetch("https://api.coingecko.com/api/v3/global"); const d=await r.json(); document.getElementById("stat-mcap").textContent="$"+(d.data.total_market_cap.usd/1e12).toFixed(2)+"T"; }catch(e){}
+  try{ const r=await fetch("https://api.alternative.me/fng/"); const d=await r.json(); document.getElementById("stat-fg").textContent=d.data[0].value+" "+d.data[0].value_classification; }catch(e){}
 }
-async function loadBTCETH(){
-  try{
-    const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
-    const d = await r.json();
-    document.getElementById('stat-btc').textContent = '$' + d.bitcoin.usd.toLocaleString();
-    document.getElementById('stat-eth').textContent = '$' + d.ethereum.usd.toLocaleString();
-  }catch(e){}
-}
-loadStats(); loadBTCETH();
-setInterval(()=>{loadStats();loadBTCETH();}, 60000);
+document.addEventListener("DOMContentLoaded",()=>{ init(); loadStats(); });
+setInterval(()=>{ init(); loadStats(); }, 60000);
 </script>
 </body></html>
