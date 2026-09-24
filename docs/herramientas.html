@@ -1,130 +1,192 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Herramientas de Seguridad | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav">
-  <a href="index.html" class="logo">🚀 CryptoEduar</a>
-  <nav><a href="index.html">Inicio</a><a href="cursos.html">Cursos</a><a href="glosario.html">Glosario</a><a href="herramientas.html" class="active">Herramientas</a><a href="conspiraciones/index.html">Conspiraciones</a></nav>
-</header>
-<main class="container">
-<h1>Herramientas de Seguridad</h1>
-<p class="lead">Utilidades gratuitas para proteger tus cripto. Todo corre en tu navegador, nada se envía a servidores.</p>
-
-<div class="grid-cards">
-  <div class="card">
-    <span class="badge badge-primary">Hash</span>
-    <h3>Generador SHA-256</h3>
-    <p>Convierte cualquier texto a hash SHA-256.</p>
-    <input id="hash-input" placeholder="Escribe algo...">
-    <button class="btn-primary" onclick="generarHash()">Generar</button>
-    <div id="hash-result" class="result" style="display:none"></div>
-  </div>
-
-  <div class="card">
-    <span class="badge badge-green">Contraseñas</span>
-    <h3>Generador de Contraseñas</h3>
-    <p>Crea passwords seguras de 16 caracteres.</p>
-    <button class="btn-primary" onclick="genPassword()">Generar</button>
-    <div id="pass-result" class="result" style="display:none"></div>
-  </div>
-
-  <div class="card">
-    <span class="badge badge-yellow">Conversor</span>
-    <h3>Conversor de Divisas</h3>
-    <p>USD ↔ BTC/ETH en tiempo real.</p>
-    <input id="conv-amount" type="number" placeholder="Cantidad USD" value="100">
-    <select id="conv-coin">
-      <option value="bitcoin">Bitcoin (BTC)</option>
-      <option value="ethereum">Ethereum (ETH)</option>
-      <option value="binancecoin">BNB</option>
-    </select>
-    <button class="btn-primary" onclick="convertir()">Convertir</button>
-    <div id="conv-result" class="result" style="display:none"></div>
-  </div>
-
-  <div class="card">
-    <span class="badge badge-danger">Verificador</span>
-    <h3>Detector de URL sospechosa</h3>
-    <p>Analiza si un dominio tiene señales de phishing.</p>
-    <input id="url-input" placeholder="https://...">
-    <button class="btn-primary" onclick="checkUrl()">Analizar</button>
-    <div id="url-result" class="result" style="display:none"></div>
-  </div>
-
-  <div class="card">
-    <span class="badge badge-yellow">Base64</span>
-    <h3>Codificar / Decodificar</h3>
-    <p>Convierte texto a Base64 y viceversa.</p>
-    <input id="b64-input" placeholder="Texto...">
-    <button class="btn-primary" onclick="toBase64()">Codificar</button>
-    <button class="btn-primary" onclick="fromBase64()" style="margin-left:.5rem">Decodificar</button>
-    <div id="b64-result" class="result" style="display:none"></div>
-  </div>
-
-  <div class="card">
-    <span class="badge badge-primary">UUID</span>
-    <h3>Generador de UUID v4</h3>
-    <p>Identificadores únicos aleatorios.</p>
-    <button class="btn-primary" onclick="genUUID()">Generar</button>
-    <div id="uuid-result" class="result" style="display:none"></div>
-  </div>
-</div>
-</main>
-<footer class="footer"><p>CryptoEduar © 2026 · Herramientas locales. Nada se envía a servidores.</p></footer>
-
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-async function generarHash(){
-  const txt = document.getElementById('hash-input').value;
-  if(!txt) return;
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt));
-  const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  const el = document.getElementById('hash-result');
-  el.style.display='block'; el.textContent = 'SHA-256: ' + hash;
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
 }
-function genPassword(){
-  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=';
-  let pwd='';
-  const arr=new Uint32Array(16); crypto.getRandomValues(arr);
-  for(let i=0;i<16;i++) pwd += chars[arr[i]%chars.length];
-  const el=document.getElementById('pass-result'); el.style.display='block'; el.textContent=pwd;
-}
-async function convertir(){
-  const amt = parseFloat(document.getElementById('conv-amount').value)||0;
-  const coin = document.getElementById('conv-coin').value;
-  const el = document.getElementById('conv-result'); el.style.display='block'; el.textContent='Cargando...';
-  try{
-    const r = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`);
-    const d = await r.json();
-    const price = d[coin].usd;
-    const result = amt / price;
-    el.textContent = `$${amt} USD = ${result.toFixed(8)} ${coin.toUpperCase()}`;
-  }catch(e){ el.textContent='Error. Reintenta.'; }
-}
-function checkUrl(){
-  const url = document.getElementById('url-input').value;
-  const el = document.getElementById('url-result'); el.style.display='block';
-  const alertas = [];
-  if(url.includes('@')) alertas.push('Contiene @ (posible phishing)');
-  if(/\.(tk|ml|ga|cf|gq)$/.test(url)) alertas.push('TLD sospechoso (frecuente en estafas)');
-  if(/bit\.ly|tinyurl|t\.co/.test(url)) alertas.push('URL acortada — destino oculto');
-  if(url.split('.').length > 4) alertas.push('Subdominios excesivos');
-  if(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/.test(url)) alertas.push('IP directa en lugar de dominio');
-  el.innerHTML = alertas.length ? '⚠️ Alertas:<br>• ' + alertas.join('<br>• ') : '✅ Sin señales obvias. Pero verifica siempre con VirusTotal.';
-}
-function toBase64(){
-  const txt = document.getElementById('b64-input').value;
-  const el = document.getElementById('b64-result'); el.style.display='block';
-  try{ el.textContent = btoa(unescape(encodeURIComponent(txt))); }catch(e){ el.textContent='Error'; }
-}
-function fromBase64(){
-  const txt = document.getElementById('b64-input').value;
-  const el = document.getElementById('b64-result'); el.style.display='block';
-  try{ el.textContent = decodeURIComponent(escape(atob(txt))); }catch(e){ el.textContent='Error: no es Base64 válido'; }
-}
-function genUUID(){
-  const el = document.getElementById('uuid-result'); el.style.display='block';
-  el.textContent = crypto.randomUUID ? crypto.randomUUID() : 'Tu navegador no soporta UUID';
-}
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.12) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.12) 0px, transparent 50%), radial-gradient(at 40% 80%, rgba(0,255,157,0.06) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .4s cubic-bezier(.4,0,.2,1); }
+  .glass:hover { background:rgba(255,255,255,0.05); border-color:rgba(0,212,255,0.3); box-shadow:0 20px 60px rgba(0,212,255,0.1); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+  ::selection { background:rgba(0,212,255,0.3); color:#fff; }
+  input,select,textarea { background:#12121c; border:1px solid rgba(255,255,255,0.08); color:#fff; }
+  input:focus,select:focus,textarea:focus { outline:none; border-color:#00d4ff; box-shadow:0 0 0 3px rgba(0,212,255,0.15); }
+  input::placeholder { color:rgba(255,255,255,0.3); }
+</style>
+</head>
+<title>Herramientas de Seguridad — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased overflow-x-hidden">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm shadow-[0_0_20px_rgba(124,92,255,0.5)]">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="index.html" class="hover:text-white transition">Inicio</a>
+      <a href="cursos.html" class="hover:text-white transition">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white transition">Herramientas</a>
+      <a href="videos.html" class="hover:text-white transition">Videos</a>
+    </div>
+    <a href="index.html" class="text-sm font-medium px-4 py-2 rounded-lg bg-white text-black hover:bg-accent transition">Inicio</a>
+  </div>
+</nav>
+
+<section class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-xs font-mono text-accent mb-4 tracking-wider">// ARSENAL DE SEGURIDAD</div>
+    <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-3xl leading-[1.05]">
+      Herramientas<br><span class="text-white/40">profesionales.</span>
+    </h1>
+    <p class="text-lg text-white/60 max-w-2xl">Todas las herramientas corren en tu navegador. Nada se envía a servidores externos. Tu privacidad, garantizada.</p>
+  </div>
+</section>
+
+<section class="relative pb-32">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- SHA-256 -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">HASH</div>
+            <h3 class="font-display font-bold">SHA-256</h3>
+          </div>
+        </div>
+        <input id="hash-input" placeholder="Escribe algo..." class="w-full px-4 py-3 rounded-lg text-sm mb-3 font-mono">
+        <button onclick="generarHash()" class="w-full px-4 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-accent transition">Generar</button>
+        <div id="hash-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs font-mono break-all text-accent"></div>
+      </div>
+
+      <!-- Password -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">CONTRASEÑAS</div>
+            <h3 class="font-display font-bold">Generador</h3>
+          </div>
+        </div>
+        <p class="text-xs text-white/50 mb-4">16 caracteres criptográficamente seguros</p>
+        <button onclick="genPassword()" class="w-full px-4 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-success transition">Generar</button>
+        <div id="pass-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs font-mono break-all text-success"></div>
+      </div>
+
+      <!-- Conversor -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-warning/10 border border-warning/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">CONVERSOR</div>
+            <h3 class="font-display font-bold">USD → Cripto</h3>
+          </div>
+        </div>
+        <input id="conv-amount" type="number" placeholder="100" value="100" class="w-full px-4 py-3 rounded-lg text-sm mb-3 font-mono">
+        <select id="conv-coin" class="w-full px-4 py-3 rounded-lg text-sm mb-3">
+          <option value="bitcoin">Bitcoin (BTC)</option>
+          <option value="ethereum">Ethereum (ETH)</option>
+          <option value="binancecoin">BNB</option>
+        </select>
+        <button onclick="convertir()" class="w-full px-4 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-warning transition">Convertir</button>
+        <div id="conv-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs font-mono break-all text-warning"></div>
+      </div>
+
+      <!-- URL Checker -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-danger/10 border border-danger/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">VERIFICADOR</div>
+            <h3 class="font-display font-bold">URL Sospechosa</h3>
+          </div>
+        </div>
+        <input id="url-input" placeholder="https://..." class="w-full px-4 py-3 rounded-lg text-sm mb-3 font-mono">
+        <button onclick="checkUrl()" class="w-full px-4 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-danger transition">Analizar</button>
+        <div id="url-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs break-all"></div>
+      </div>
+
+      <!-- Base64 -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">CODIFICADOR</div>
+            <h3 class="font-display font-bold">Base64</h3>
+          </div>
+        </div>
+        <input id="b64-input" placeholder="Texto..." class="w-full px-4 py-3 rounded-lg text-sm mb-3 font-mono">
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="toBase64()" class="px-3 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-violet hover:text-white transition">Codificar</button>
+          <button onclick="fromBase64()" class="px-3 py-3 rounded-lg border border-white/15 text-sm font-semibold hover:bg-white/5 transition">Decodificar</button>
+        </div>
+        <div id="b64-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs font-mono break-all text-violet"></div>
+      </div>
+
+      <!-- UUID -->
+      <div class="glass rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-white/40">GENERADOR</div>
+            <h3 class="font-display font-bold">UUID v4</h3>
+          </div>
+        </div>
+        <p class="text-xs text-white/50 mb-4">Identificadores únicos aleatorios</p>
+        <button onclick="genUUID()" class="w-full px-4 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-accent transition">Generar</button>
+        <div id="uuid-result" class="hidden mt-4 p-3 rounded-lg bg-black/40 border border-white/10 text-xs font-mono break-all text-accent"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
+<script>
+async function generarHash(){ const t=document.getElementById("hash-input").value; if(!t)return; const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)); const h=Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join(""); const e=document.getElementById("hash-result"); e.classList.remove("hidden"); e.textContent=h; }
+function genPassword(){ const c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-="; let p=""; const a=new Uint32Array(16); crypto.getRandomValues(a); for(let i=0;i<16;i++)p+=c[a[i]%c.length]; const e=document.getElementById("pass-result"); e.classList.remove("hidden"); e.textContent=p; }
+async function convertir(){ const amt=parseFloat(document.getElementById("conv-amount").value)||0; const coin=document.getElementById("conv-coin").value; const e=document.getElementById("conv-result"); e.classList.remove("hidden"); e.textContent="Cargando..."; try{ const r=await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`); const d=await r.json(); const p=d[coin].usd; e.textContent=`$${amt} USD = ${(amt/p).toFixed(8)} ${coin.toUpperCase()}`; }catch(x){ e.textContent="Error. Reintenta."; } }
+function checkUrl(){ const u=document.getElementById("url-input").value; const e=document.getElementById("url-result"); e.classList.remove("hidden"); const a=[]; if(u.includes("@"))a.push("Contiene @ (posible phishing)"); if(/\.(tk|ml|ga|cf|gq)$/.test(u))a.push("TLD sospechoso"); if(/bit\.ly|tinyurl|t\.co/.test(u))a.push("URL acortada — destino oculto"); if(u.split(".").length>4)a.push("Subdominios excesivos"); if(/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/.test(u))a.push("IP directa"); e.innerHTML=a.length?`<div class="text-warning">⚠ Alertas:<br>• ${a.join("<br>• ")}</div>`:`<div class="text-success">✓ Sin señales obvias. Verifica siempre con VirusTotal.</div>`; }
+function toBase64(){ const t=document.getElementById("b64-input").value; const e=document.getElementById("b64-result"); e.classList.remove("hidden"); try{e.textContent=btoa(unescape(encodeURIComponent(t)));}catch(x){e.textContent="Error";} }
+function fromBase64(){ const t=document.getElementById("b64-input").value; const e=document.getElementById("b64-result"); e.classList.remove("hidden"); try{e.textContent=decodeURIComponent(escape(atob(t)));}catch(x){e.textContent="Error: no es Base64 válido";} }
+function genUUID(){ const e=document.getElementById("uuid-result"); e.classList.remove("hidden"); e.textContent=crypto.randomUUID?crypto.randomUUID():"No soportado"; }
 </script>
 </body></html>

@@ -1,49 +1,171 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Dashboard | CryptoEduar</title>
-<link rel="stylesheet" href="assets/css/theme.css">
-</head><body>
-<header class="nav">
-  <a href="index.html" class="logo">🚀 CryptoEduar</a>
-  <nav><a href="index.html">Inicio</a><a href="cursos.html">Cursos</a><a href="glosario.html">Glosario</a><a href="herramientas.html">Herramientas</a><a href="videos.html">Videos</a><a href="mercado.html">Mercado</a><a href="dashboard.html" class="active">Dashboard</a></nav>
-</header>
-<main class="container">
-<h1>Mi Dashboard</h1>
-<p class="lead">Tu progreso, logros y precios del mercado en un solo lugar.</p>
-
-<div class="stats-grid">
-  <div class="stat"><div class="stat-value" id="cursos-completados">0</div><div class="stat-label">Cursos completados</div></div>
-  <div class="stat"><div class="stat-value" id="lecciones-vistas">0</div><div class="stat-label">Lecciones vistas</div></div>
-  <div class="stat"><div class="stat-value" id="racha-dias">0</div><div class="stat-label">Días de racha</div></div>
-  <div class="stat"><div class="stat-value" id="logros">0</div><div class="stat-label">Logros</div></div>
-</div>
-
-<h2>📚 Mis cursos</h2>
-<div class="grid-cards">
-  <a href="curso1.html" class="card"><span class="badge badge-primary">Módulo 1</span><h3>Fundamentos Blockchain</h3><p>Progreso guardado localmente.</p></a>
-  <a href="curso2.html" class="card"><span class="badge badge-primary">Módulo 2</span><h3>Bitcoin en profundidad</h3><p>Progreso guardado localmente.</p></a>
-  <a href="curso3.html" class="card"><span class="badge badge-primary">Módulo 3</span><h3>Altcoins y Memecoins</h3><p>Contenido en construcción.</p></a>
-  <a href="curso4.html" class="card"><span class="badge badge-primary">Módulo 4</span><h3>Ciberseguridad y Anti-Scam</h3><p>Contenido en construcción.</p></a>
-  <a href="curso5.html" class="card"><span class="badge badge-primary">Módulo 5</span><h3>Trading y Análisis Técnico</h3><p>Contenido en construcción.</p></a>
-  <a href="curso6.html" class="card"><span class="badge badge-primary">Módulo 6</span><h3>DeFi y Web3</h3><p>Contenido en construcción.</p></a>
-  <a href="curso7.html" class="card"><span class="badge badge-primary">Módulo 7</span><h3>Hardware Wallets</h3><p>Contenido en construcción.</p></a>
-</div>
-
-<h2>📈 Mercado</h2>
-<table><thead><tr><th>Moneda</th><th>Precio</th><th>24h</th><th>Market Cap</th></tr></thead>
-<tbody id="prices-body"><tr><td colspan="4" style="text-align:center">Cargando...</td></tr></tbody></table>
-</main>
-<footer class="footer"><p>CryptoEduar © 2026</p></footer>
-<script src="assets/js/dashboard.js"></script>
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-// Progreso local (localStorage)
-function loadProgress(){
-  const p = JSON.parse(localStorage.getItem('cryptoeduar_progress')||'{}');
-  document.getElementById('cursos-completados').textContent = p.cursos || 0;
-  document.getElementById('lecciones-vistas').textContent = p.lecciones || 0;
-  document.getElementById('racha-dias').textContent = p.racha || 0;
-  document.getElementById('logros').textContent = p.logros || 0;
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    fontFamily: { sans:["Inter","sans-serif"], display:["Space Grotesk","sans-serif"], mono:["JetBrains Mono","monospace"] },
+    colors: { base:"#05050a", surface:"#0c0c14", elevated:"#12121c", accent:{DEFAULT:"#00d4ff"}, violet:{DEFAULT:"#7c5cff"}, success:"#00ff9d", danger:"#ff3d71", warning:"#ffb800" }
+  }}
 }
-loadProgress();
+</script>
+<style>
+  body { background:#05050a; }
+  .mesh { background: radial-gradient(at 20% 20%, rgba(124,92,255,0.12) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(0,212,255,0.12) 0px, transparent 50%), radial-gradient(at 40% 80%, rgba(0,255,157,0.06) 0px, transparent 50%); }
+  .glass { background:rgba(255,255,255,0.03); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.08); transition:all .4s cubic-bezier(.4,0,.2,1); }
+  .glass:hover { background:rgba(255,255,255,0.05); border-color:rgba(0,212,255,0.3); box-shadow:0 20px 60px rgba(0,212,255,0.1); }
+  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
+  ::selection { background:rgba(0,212,255,0.3); color:#fff; }
+  input,select,textarea { background:#12121c; border:1px solid rgba(255,255,255,0.08); color:#fff; }
+  input:focus,select:focus,textarea:focus { outline:none; border-color:#00d4ff; box-shadow:0 0 0 3px rgba(0,212,255,0.15); }
+  input::placeholder { color:rgba(255,255,255,0.3); }
+</style>
+</head>
+<title>Dashboard — CryptoEduar</title>
+</head>
+<body class="bg-base text-white font-sans antialiased overflow-x-hidden">
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm shadow-[0_0_20px_rgba(124,92,255,0.5)]">CE</div>
+      <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="index.html" class="hover:text-white transition">Inicio</a>
+      <a href="cursos.html" class="hover:text-white transition">Cursos</a>
+      <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
+      <a href="herramientas.html" class="hover:text-white transition">Herramientas</a>
+      <a href="videos.html" class="hover:text-white transition">Videos</a>
+    </div>
+    <a href="index.html" class="text-sm font-medium px-4 py-2 rounded-lg bg-white text-black hover:bg-accent transition">Inicio</a>
+  </div>
+</nav>
+
+<section class="relative pt-32 pb-16 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-xs font-mono text-accent mb-4 tracking-wider">// DASHBOARD</div>
+    <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6">Tu progreso</h1>
+    <p class="text-lg text-white/60 max-w-2xl">Estadísticas de aprendizaje y precios de mercado en tiempo real.</p>
+  </div>
+</section>
+
+<section class="relative pb-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">CURSOS</div>
+        <div id="cursos-completados" class="font-display text-4xl font-bold">0</div>
+        <div class="text-xs text-white/40 mt-1">completados</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">LECCIONES</div>
+        <div id="lecciones-vistas" class="font-display text-4xl font-bold">0</div>
+        <div class="text-xs text-white/40 mt-1">vistas</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">RACHA</div>
+        <div id="racha-dias" class="font-display text-4xl font-bold">0</div>
+        <div class="text-xs text-white/40 mt-1">días</div>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <div class="text-xs font-mono text-white/40 mb-2">LOGROS</div>
+        <div id="logros" class="font-display text-4xl font-bold text-accent">0</div>
+        <div class="text-xs text-white/40 mt-1">desbloqueados</div>
+      </div>
+    </div>
+
+    <div class="mb-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight mb-2">Mis cursos</h2>
+      <p class="text-white/50 text-sm">Progreso guardado localmente en tu navegador.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-20">
+      <a href="curso1.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 01</div><div class="font-display font-bold text-lg group-hover:text-accent transition">Fundamentos Blockchain</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="curso2.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 02</div><div class="font-display font-bold text-lg group-hover:text-accent transition">Bitcoin en profundidad</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="curso3.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 03</div><div class="font-display font-bold text-lg group-hover:text-accent transition">Altcoins y Memecoins</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="curso4.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 04</div><div class="font-display font-bold text-lg group-hover:text-accent transition">Ciberseguridad y Anti-Scam</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="curso5.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 05</div><div class="font-display font-bold text-lg group-hover:text-accent transition">Trading y Análisis Técnico</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a href="curso6.html" class="glass rounded-2xl p-6 group flex items-center justify-between">
+        <div><div class="text-xs font-mono text-white/40 mb-2">MÓDULO 06</div><div class="font-display font-bold text-lg group-hover:text-accent transition">DeFi y Web3</div></div>
+        <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="mb-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight mb-2">Mercado en vivo</h2>
+      <p class="text-white/50 text-sm">Actualizado cada 60 segundos desde CoinGecko.</p>
+    </div>
+
+    <div class="glass rounded-2xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="border-b border-white/[0.06]">
+          <tr class="text-xs font-mono text-white/40 uppercase">
+            <th class="text-left p-4">Moneda</th>
+            <th class="text-right p-4">Precio</th>
+            <th class="text-right p-4">24h</th>
+            <th class="text-right p-4 hidden md:table-cell">Market Cap</th>
+          </tr>
+        </thead>
+        <tbody id="prices-body">
+          <tr><td colspan="4" class="text-center p-8 text-white/40">Cargando precios...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/[0.06] py-12 mt-24">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-violet to-accent"></div>
+      <span>CryptoEduar © 2026</span>
+    </div>
+    <div>Contenido educativo · No somos asesores financieros</div>
+  </div>
+</footer>
+<script>
+const COINS = ["bitcoin","ethereum","binancecoin","solana","ripple","cardano","dogecoin","tron","polkadot","matic-network","litecoin","chainlink"];
+async function fetchPrices(){
+  try{
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COINS.join(",")}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`;
+    const r = await fetch(url); if(!r.ok) throw 0; return await r.json();
+  }catch(e){ return null; }
+}
+function render(coins){
+  const t = document.getElementById("prices-body"); if(!t) return;
+  t.innerHTML = coins.map(c=>{
+    const ch = c.price_change_percentage_24h||0;
+    const cls = ch>=0 ? "text-success" : "text-danger";
+    const arrow = ch>=0 ? "▲" : "▼";
+    return `<tr class="border-b border-white/[0.04] hover:bg-white/[0.02] transition"><td class="p-4 font-medium">${c.name} <span class="text-white/40 font-mono text-xs">${c.symbol.toUpperCase()}</span></td><td class="p-4 text-right font-mono">$${c.current_price.toLocaleString()}</td><td class="p-4 text-right font-mono ${cls}">${arrow} ${Math.abs(ch).toFixed(2)}%</td><td class="p-4 text-right font-mono text-white/60 hidden md:table-cell">$${(c.market_cap/1e9).toFixed(2)}B</td></tr>`;
+  }).join("");
+}
+async function init(){ const c = await fetchPrices(); if(c) render(c); }
+document.addEventListener("DOMContentLoaded", init);
+setInterval(init, 60000);
+(function(){ const p = JSON.parse(localStorage.getItem("cryptoeduar_progress")||"{}"); document.getElementById("cursos-completados").textContent=p.cursos||0; document.getElementById("lecciones-vistas").textContent=p.lecciones||0; document.getElementById("racha-dias").textContent=p.racha||0; document.getElementById("logros").textContent=p.logros||0; })();
 </script>
 </body></html>
