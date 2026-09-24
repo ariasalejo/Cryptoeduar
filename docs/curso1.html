@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso 1: Fundamentos de Cripto — CryptoEduar</title>
+<meta name="description" content="Aprende desde cero qué es el dinero digital, Bitcoin, blockchain y cómo funcionan las wallets.">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,19 +31,23 @@ tailwind.config = {
   details summary { cursor: pointer; list-style: none; }
   details summary::-webkit-details-marker { display: none; }
   details[open] .chevron { transform: rotate(180deg); }
-  details > div { animation: slideDown 0.3s ease; }
-  @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+  .lesson-image { width: 100%; max-width: 600px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.5); margin: 1.5rem 0; display: block; }
+  .slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; outline: none; margin: 1rem 0; }
+  .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #00d4ff; border-radius: 50%; cursor: pointer; box-shadow: 0 0 12px rgba(0,212,255,0.6); }
+  .slider::-moz-range-thumb { width: 20px; height: 20px; background: #00d4ff; border-radius: 50%; cursor: pointer; border: none; box-shadow: 0 0 12px rgba(0,212,255,0.6); }
+  .chart-container { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+  .chart-container canvas { max-height: 300px !important; }
+  video { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); }
   ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#05050a; } ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#7c5cff,#00d4ff); border-radius:3px; }
   ::selection { background:rgba(0,212,255,0.3); color:#fff; }
 </style>
 </head>
-<title>Curso 1: Fundamentos de Cripto — CryptoEduar</title>
-</head>
-<body class="bg-base text-white font-sans antialiased">
+<body class="bg-base text-white font-sans antialiased overflow-x-hidden">
+
 <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-base/70 backdrop-blur-xl">
   <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm shadow-[0_0_20px_rgba(124,92,255,0.5)]">CE</div>
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-accent flex items-center justify-center font-display font-bold text-sm">CE</div>
       <span class="font-display font-semibold tracking-tight">CryptoEduar</span>
     </a>
     <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
@@ -64,7 +71,7 @@ tailwind.config = {
     <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
       Fundamentos<br><span class="text-white/40">de Cripto.</span>
     </h1>
-    <p class="text-lg text-white/60 max-w-2xl mb-10">Aprende desde cero qué es el dinero digital, Bitcoin, blockchain y cómo funcionan las wallets. El punto de partida perfecto para dominar el ecosistema.</p>
+    <p class="text-lg text-white/60 max-w-2xl mb-10">Aprende desde cero qué es el dinero digital, Bitcoin, blockchain y cómo funcionan las wallets. Con gráficas en vivo y datos reales del mercado.</p>
     <div class="flex flex-wrap gap-6 pt-6 border-t border-white/[0.06]">
       <div><div class="font-display text-2xl font-bold">6</div><div class="text-xs text-white/40 uppercase tracking-wider mt-1">Lecciones</div></div>
       <div><div class="font-display text-2xl font-bold">4h 46min</div><div class="text-xs text-white/40 uppercase tracking-wider mt-1">Duración</div></div>
@@ -75,7 +82,7 @@ tailwind.config = {
 
 <main class="max-w-5xl mx-auto px-6 pb-20">
 
-  <!-- Video 1 -->
+  <!-- Videos introductorios -->
   <a href="https://youtu.be/0WHVVVDKgKo" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-4 block">
     <div class="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
       <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -88,7 +95,6 @@ tailwind.config = {
     <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
   </a>
 
-  <!-- Video 2 -->
   <a href="https://youtu.be/VsV-AIem8LA" target="_blank" class="glass rounded-2xl p-6 md:p-8 flex items-center gap-6 group mb-16 block">
     <div class="w-14 h-14 rounded-xl bg-violet/10 border border-violet/20 flex items-center justify-center flex-shrink-0">
       <svg class="w-6 h-6 text-violet" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -101,7 +107,7 @@ tailwind.config = {
     <svg class="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-1 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
   </a>
 
-  <!-- Sección 1 -->
+  <!-- SECCIÓN 1 -->
   <div class="mb-12">
     <div class="flex items-center gap-4 mb-8">
       <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center font-display font-bold text-accent">1</div>
@@ -109,8 +115,9 @@ tailwind.config = {
     </div>
 
     <div class="space-y-4">
-      <!-- L1.1 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+
+      <!-- 1.1 -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -122,14 +129,16 @@ tailwind.config = {
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico. No tiene representación física como billetes o monedas, y su valor se transfiere directamente entre cuentas digitales.</p>
-          <p>En el contexto de las criptomonedas, el dinero digital se basa en <strong>criptografía</strong> y <strong>blockchain</strong> para garantizar transacciones seguras, transparentes y sin intermediarios.</p>
-          <p>La diferencia fundamental con el dinero tradicional en bancos: aquí tú controlas las claves, no un banco.</p>
+          <p>El dinero digital es una forma de moneda que existe únicamente en formato electrónico. No tiene representación física y su valor se transfiere directamente entre cuentas digitales.</p>
+          <p>Utiliza tecnología <strong>blockchain</strong> para garantizar transacciones seguras y descentralizadas. Además de blockchain, existen otras plataformas como las fintech, bancos digitales y aplicaciones móviles que permiten realizar pagos, ahorrar y transferir fondos sin efectivo.</p>
+          <p>Una de las mayores ventajas del dinero digital es su capacidad para <strong>eliminar intermediarios</strong> y ofrecer acceso económico incluso a comunidades sin servicios bancarios tradicionales.</p>
+          <p>Desde criptomonedas como Bitcoin y Ethereum hasta stablecoins respaldadas por activos reales, el ecosistema del dinero digital está transformando el sistema financiero global.</p>
+          <img src="assets/images/introduccion-dinero-digital.jpg" alt="Introducción al Dinero Digital" class="lesson-image">
         </div>
       </details>
 
-      <!-- L1.2 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+      <!-- 1.2 -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -142,43 +151,58 @@ tailwind.config = {
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
           <ul>
-            <li><strong>Transacciones globales instantáneas</strong> — sin fronteras ni horarios bancarios</li>
-            <li><strong>Bajas comisiones</strong> — fracciones de centavo en muchas redes</li>
-            <li><strong>Inclusión financiera</strong> — acceso sin necesidad de banco tradicional</li>
-            <li><strong>Mayor seguridad y trazabilidad</strong> — cada transacción queda registrada</li>
-            <li><strong>Facilidad de uso</strong> — solo necesitas un teléfono con internet</li>
+            <li><strong>Transacciones globales instantáneas:</strong> envía y recibe dinero al instante, sin importar la ubicación geográfica, eliminando intermediarios y tiempos de espera.</li>
+            <li><strong>Bajas comisiones:</strong> costos de operación significativamente menores comparados con los sistemas bancarios tradicionales.</li>
+            <li><strong>Inclusión financiera:</strong> acceso a servicios financieros para millones de personas sin cuenta bancaria, especialmente en zonas rurales o países en desarrollo.</li>
+            <li><strong>Mayor seguridad y trazabilidad:</strong> blockchain hace las transacciones transparentes, seguras y difíciles de falsificar.</li>
+            <li><strong>Facilidad de uso:</strong> con solo un teléfono móvil e Internet, cualquier persona puede realizar pagos, ahorrar o invertir.</li>
           </ul>
+          <p>Además, el dinero digital facilita la integración con nuevos modelos de negocio como las finanzas descentralizadas (DeFi) y las aplicaciones de economía colaborativa. Las plataformas digitales ofrecen interfaces intuitivas y sistemas de notificación en tiempo real.</p>
+          <img src="assets/images/ventajas-dinero-digital.jpg" alt="Ventajas del Dinero Digital" class="lesson-image">
         </div>
       </details>
 
-      <!-- L1.3 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+      <!-- 1.3 con slider + 2 gráficas -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
           </div>
           <div class="flex-1 min-w-0">
             <div class="font-display font-semibold text-base md:text-lg">1.3 Desafíos actuales</div>
-            <div class="text-xs text-white/40 font-mono mt-1">25 MIN</div>
+            <div class="text-xs text-white/40 font-mono mt-1">25 MIN · CON GRÁFICAS</div>
           </div>
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>El dinero digital, a pesar de sus ventajas, enfrenta desafíos importantes en su camino hacia la adopción global:</p>
+          <p>El dinero digital, a pesar de sus ventajas, enfrenta importantes desafíos en su camino hacia la adopción global:</p>
           <ul>
-            <li><strong>Volatilidad</strong> — fluctuaciones bruscas de precio que generan incertidumbre</li>
-            <li><strong>Falta de regulación</strong> — marcos legales claros aún ausentes en varios países</li>
-            <li><strong>Adopción masiva</strong> — barreras tecnológicas, educativas y culturales</li>
+            <li><strong>Volatilidad:</strong> fluctuaciones bruscas de precio que generan incertidumbre para usuarios e inversores.</li>
+            <li><strong>Falta de regulación:</strong> ausencia de marcos legales claros en varios países que dificulta su integración al sistema financiero tradicional.</li>
+            <li><strong>Adopción masiva:</strong> barreras tecnológicas, educativas y culturales que impiden su uso generalizado.</li>
           </ul>
-          <div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning">
-            <div class="text-xs font-mono text-warning mb-2">DATO EN VIVO</div>
-            <div id="volatilidad" class="text-sm text-white/70">Cargando volatilidad de BTC...</div>
+
+          <div class="chart-container mt-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="text-xs font-mono text-warning">VOLATILIDAD SIMULADA</div>
+              <div id="volatilityValue" class="font-display font-bold text-warning">50%</div>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volatilitySlider" oninput="updateVolatilityChart(this.value)">
+            <canvas id="volatilityChart" height="160"></canvas>
           </div>
+
+          <div class="chart-container">
+            <div class="text-xs font-mono text-accent mb-4">VOLATILIDAD REAL DE BITCOIN (24H) · DATO EN VIVO</div>
+            <canvas id="volatilityDonut" height="200"></canvas>
+            <p class="text-xs text-white/40 mt-4">La gráfica muestra el cambio porcentual de Bitcoin en las últimas 24h desde CoinGecko.</p>
+          </div>
+
+          <img src="assets/images/volatilidad.jpg" alt="Desafíos del Dinero Digital" class="lesson-image">
         </div>
       </details>
 
-      <!-- L1.4 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+      <!-- 1.4 Video local -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -189,37 +213,46 @@ tailwind.config = {
           </div>
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>Para comprender mejor los conceptos relacionados con Bitcoin y el dinero digital, te invitamos a ver este video explicativo.</p>
-          <a href="https://youtu.be/0WHVVVDKgKo" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-black font-semibold text-sm hover:bg-accent transition">
-            ▶ Ver video explicativo
-          </a>
+        <div class="px-6 pb-6 border-t border-white/[0.06] pt-6">
+          <p class="text-white/65 mb-4">Para comprender mejor los conceptos relacionados con Bitcoin y el dinero digital, mira este video explicativo.</p>
+          <video controls id="bitcoinVideo">
+            <source src="assets/videos/bitcoin.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+          <button onclick="document.getElementById('bitcoinVideo').play()" class="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-black text-sm font-semibold hover:bg-accent transition">
+            ▶ Reproducir
+          </button>
         </div>
       </details>
 
-      <!-- L1.5 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+      <!-- 1.5 Futuro con Chart.js -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
           </div>
           <div class="flex-1 min-w-0">
             <div class="font-display font-semibold text-base md:text-lg">1.5 Futuro del dinero digital</div>
-            <div class="text-xs text-white/40 font-mono mt-1">18 MIN</div>
+            <div class="text-xs text-white/40 font-mono mt-1">18 MIN · PROYECCIÓN</div>
           </div>
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>El mercado de criptomonedas muestra una adopción creciente de CBDCs en 130 países. La tecnología blockchain permite transacciones 24/7 con costes hasta 90% menores que sistemas tradicionales.</p>
-          <div class="glass rounded-xl p-5 mt-4 border-l-2 border-accent">
-            <div class="text-xs font-mono text-accent mb-2">DATO EN VIVO</div>
-            <div id="mcap-live" class="text-sm text-white/70">Cargando capitalización del mercado...</div>
+          <p>El futuro del dinero digital se perfila como un escenario de crecimiento acelerado. Con la adopción cada vez mayor por parte de comercios, gobiernos y consumidores, el dinero digital transformará la forma en que realizamos transacciones.</p>
+          <p>Se espera que más países adopten políticas de regulación que favorezcan la integración de criptomonedas en los sistemas financieros tradicionales.</p>
+
+          <div class="chart-container">
+            <div class="text-xs font-mono text-accent mb-4">PROYECCIÓN DE ADOPCIÓN 2023-2030 · MODELO DINÁMICO</div>
+            <canvas id="futureChart" height="200"></canvas>
+            <p class="text-xs text-white/40 mt-4">El modelo usa la tasa de cambio 24h de Bitcoin (CoinGecko) para ajustar la proyección. Es ilustrativo, no una predicción real.</p>
           </div>
+
+          <img src="assets/images/futuro-dinero.jpg" alt="Futuro del Dinero Digital" class="lesson-image">
         </div>
       </details>
 
-      <!-- L1.6 -->
-      <details class="glass rounded-2xl overflow-hidden group">
+      <!-- 1.6 FAQ -->
+      <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-success/10 border border-success/20 flex items-center justify-center flex-shrink-0">
             <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -231,16 +264,18 @@ tailwind.config = {
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 border-t border-white/[0.06] pt-6 space-y-3">
-          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🔒 ¿Es realmente seguro el dinero digital?</summary><div class="px-4 pb-4 text-sm text-white/60">Sí, si sigues buenas prácticas de seguridad: usar wallets hardware, nunca compartir tu seed phrase y verificar contratos. La blockchain en sí es segura; los errores suelen ser humanos.</div></details>
-          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🔄 ¿Cómo recuperar fondos si pierdo acceso?</summary><div class="px-4 pb-4 text-sm text-white/60">Todo depende de tu seed phrase (12-24 palabras). Si la tienes, puedes recuperar acceso en cualquier wallet. Si no la tienes, los fondos se pierden para siempre.</div></details>
-          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🏆 ¿Qué criptomonedas lideran actualmente?</summary><div class="px-4 pb-4 text-sm text-white/60">Bitcoin y Ethereum siguen dominando por capitalización. Consulta la página de Mercado para datos en vivo.</div></details>
+          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🔒 ¿Es realmente seguro el dinero digital?</summary><div class="px-4 pb-4 text-sm text-white/60">Sí, si sigues buenas prácticas: usar wallets hardware, nunca compartir tu seed phrase y verificar contratos. La blockchain en sí es segura; los errores suelen ser humanos.</div></details>
+          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🔄 ¿Cómo recuperar fondos si pierdo acceso?</summary><div class="px-4 pb-4 text-sm text-white/60">Todo depende de tu seed phrase (12-24 palabras). Si la tienes, recuperas acceso en cualquier wallet. Si no la tienes, los fondos se pierden para siempre.</div></details>
+          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🏆 ¿Qué criptomonedas lideran actualmente?</summary><div class="px-4 pb-4 text-sm text-white/60">Bitcoin y Ethereum siguen dominando por capitalización. Consulta la página de <a href="mercado.html" class="text-accent">Mercado</a> para datos en vivo.</div></details>
           <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">💸 ¿Cómo funcionan las transacciones?</summary><div class="px-4 pb-4 text-sm text-white/60">Se firman con tu clave privada, se difunden a la red y se validan en bloques por mineros/validadores. Tarda segundos a minutos según la red.</div></details>
+          <details class="border border-white/[0.06] rounded-lg"><summary class="p-4 font-medium text-sm hover:bg-white/[0.02]">🚀 ¿Ventajas vs dinero tradicional?</summary><div class="px-4 pb-4 text-sm text-white/60">Sin intermediarios, transacciones 24/7, comisiones menores, y control total sobre tus fondos. La contra: mayor responsabilidad personal.</div></details>
         </div>
       </details>
+
     </div>
   </div>
 
-  <!-- Sección 2 -->
+  <!-- SECCIÓN 2 -->
   <div class="mb-12">
     <div class="flex items-center gap-4 mb-8">
       <div class="w-10 h-10 rounded-lg bg-violet/10 border border-violet/20 flex items-center justify-center font-display font-bold text-violet">2</div>
@@ -248,6 +283,7 @@ tailwind.config = {
     </div>
 
     <div class="space-y-4">
+
       <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
           <div class="w-8 h-8 rounded-lg bg-violet/10 border border-violet/20 flex items-center justify-center flex-shrink-0 text-violet font-mono text-xs">02</div>
@@ -259,14 +295,21 @@ tailwind.config = {
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
           <p>El Whitepaper de Bitcoin no solo describe una criptomoneda, sino un sistema de resistencia contra la censura financiera. Lo que pocos saben:</p>
+
           <div class="glass rounded-xl p-5 mt-4 border-l-2 border-danger">
-            <div class="text-xs font-mono text-danger mb-3">DATOS CLASIFICADOS</div>
-            <ul class="space-y-2 text-sm">
-              <li><strong>¿Por qué 2008?</strong> Crisis financiera global, quiebra de Lehman Brothers.</li>
-              <li><strong>Emails perdidos:</strong> Satoshi dejó de comunicarse en 2010 sin explicación.</li>
-              <li><strong>Grupo Cypherpunks:</strong> Posiblemente un equipo (Hal Finney, Nick Szabo, Wei Dai).</li>
-              <li><strong>Conexión NSA:</strong> El algoritmo SHA-256 fue creado por la NSA en 2001.</li>
+            <div class="text-xs font-mono text-danger mb-3">🔐 DATOS CLASIFICADOS</div>
+            <ul class="space-y-3 text-sm">
+              <li><strong class="text-white">¿Por qué 2008?</strong> Crisis financiera global, quiebra de Lehman Brothers.</li>
+              <li><strong class="text-white">Emails perdidos de Satoshi:</strong> dejó de comunicarse en 2010 sin explicación.</li>
+              <li><strong class="text-white">Grupo Cypherpunks:</strong> posiblemente un equipo (Hal Finney, Nick Szabo, Wei Dai).</li>
+              <li><strong class="text-white">Conexión NSA:</strong> el algoritmo SHA-256 fue creado por la NSA en 2001.</li>
+              <li><strong class="text-white">Patente CIA #20100042841:</strong> sistema similar descrito en 2008.</li>
             </ul>
+          </div>
+
+          <div class="glass rounded-xl p-5 mt-4 border-l-2 border-warning">
+            <div class="text-xs font-mono text-warning mb-3">📜 CÓDIGO CENSURADO (v0.1)</div>
+            <code class="block">// Comentario oculto:<br>"Bitcoin es confiscation-proof."</code>
           </div>
         </div>
       </details>
@@ -281,8 +324,9 @@ tailwind.config = {
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>En enero de 2009, Satoshi Nakamoto minó el primer bloque de Bitcoin, conocido como el <strong>bloque génesis</strong>. Este bloque contenía un mensaje oculto: <code>"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"</code> — un comentario directo sobre la crisis financiera global.</p>
-          <p>El primer bloque generó 50 BTC como recompensa, y estos bitcoins fueron enviados a la dirección de Satoshi.</p>
+          <p>En enero de 2009, Satoshi Nakamoto minó el primer bloque de Bitcoin, conocido como el <strong>bloque génesis</strong>. Este bloque contenía un mensaje oculto:</p>
+          <code>The Times 03/Jan/2009 Chancellor on brink of second bailout for banks</code>
+          <p class="mt-4">Un comentario directo sobre la crisis financiera global. El primer bloque generó 50 BTC como recompensa, enviados a la dirección de Satoshi.</p>
         </div>
       </details>
 
@@ -296,7 +340,7 @@ tailwind.config = {
           <svg class="w-5 h-5 text-white/30 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
-          <p>El 22 de mayo de 2010, el programador Laszlo Hanyecz hizo historia al comprar 2 pizzas de Papa John's por <strong>10,000 BTC</strong> (equivalente a ~1 entonces). Hoy valdrían más de <strong>00 millones</strong>.</p>
+          <p>El 22 de mayo de 2010, el programador Laszlo Hanyecz compró 2 pizzas de Papa John's por <strong>10,000 BTC</strong> (~$41 entonces). Hoy valdrían más de <strong>$600 millones</strong>.</p>
           <p>Este evento se celebra cada 22 de mayo como el <em>Bitcoin Pizza Day</em>.</p>
         </div>
       </details>
@@ -333,7 +377,7 @@ tailwind.config = {
 
       <details class="glass rounded-2xl overflow-hidden">
         <summary class="p-6 flex items-center gap-4 hover:bg-white/[0.02] transition">
-          <div class="w-8 h-8 rounded-lg bg-danger/10 border border-danger/20 flex items-center justify-center flex-shrink-0 text-danger font-mono text-xs">🔒</div>
+          <div class="w-8 h-8 rounded-lg bg-danger/10 border border-danger/20 flex items-center justify-center flex-shrink-0 text-danger">🔒</div>
           <div class="flex-1 min-w-0">
             <div class="font-display font-semibold text-base md:text-lg">2.6 Información clasificada</div>
             <div class="text-xs text-white/40 font-mono mt-1">28 MIN</div>
@@ -342,12 +386,13 @@ tailwind.config = {
         </summary>
         <div class="px-6 pb-6 prose-lesson border-t border-white/[0.06] pt-6">
           <p>Datos que circulan en círculos de investigación pero rara vez aparecen en cursos oficiales.</p>
-          <p>La conexión entre el algoritmo SHA-256 (NSA, 2001), los correos de los Cypherpunks de los 90 y las teorías sobre la identidad de Satoshi forman un ecosistema fascinante que exploraremos en el curso de Conspiraciones.</p>
+          <p>La conexión entre el algoritmo SHA-256 (NSA, 2001), los correos de los Cypherpunks de los 90 y las teorías sobre la identidad de Satoshi forman un ecosistema fascinante.</p>
           <a href="conspiraciones/index.html" class="inline-flex items-center gap-2 text-accent text-sm font-medium mt-4">
             Ir a la sección de Conspiraciones →
           </a>
         </div>
       </details>
+
     </div>
   </div>
 
@@ -385,26 +430,145 @@ tailwind.config = {
 </footer>
 
 <script>
-async function loadLiveData(){
-  try{
-    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true");
-    const d = await r.json();
-    const vol = Math.abs(d.bitcoin.usd_24h_change).toFixed(2);
-    document.getElementById("volatilidad").innerHTML = `<strong class="text-white">${vol}%</strong> — volatilidad de Bitcoin en las últimas 24h (dato real)`;
-  }catch(e){ document.getElementById("volatilidad").textContent = "No disponible"; }
-  try{
-    const r = await fetch("https://api.coingecko.com/api/v3/global");
-    const d = await r.json();
-    const cap = (d.data.total_market_cap.usd/1e12).toFixed(2);
-    document.getElementById("mcap-live").innerHTML = `Capitalización global: <strong class="text-white">$${cap} billones USD</strong>`;
-  }catch(e){}
-}
-loadLiveData();
-setInterval(loadLiveData, 60000);
+// Chart.js dark defaults
+Chart.defaults.color = 'rgba(255,255,255,0.5)';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+Chart.defaults.font.family = 'Inter, sans-serif';
 
-document.querySelectorAll("details").forEach(d => {
-  d.addEventListener("toggle", updateProgress);
+// Slider volatilidad simulada
+function updateVolatilityChart(value) {
+  document.getElementById('volatilityValue').innerText = value + '%';
+  if (window.volatilityBarChart) {
+    window.volatilityBarChart.data.datasets[0].data = [value];
+    window.volatilityBarChart.update();
+  }
+}
+
+const ctxBar = document.getElementById('volatilityChart').getContext('2d');
+window.volatilityBarChart = new Chart(ctxBar, {
+  type: 'bar',
+  data: {
+    labels: ['Volatilidad simulada'],
+    datasets: [{
+      label: 'Volatilidad (%)',
+      data: [50],
+      backgroundColor: 'rgba(255,184,0,0.7)',
+      borderRadius: 8,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+      x: { grid: { display: false } }
+    }
+  }
 });
+
+// CoinGecko - volatilidad real
+async function fetchVolatilityData() {
+  try {
+    const r = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin");
+    const d = await r.json();
+    return Math.abs(d.market_data.price_change_percentage_24h) || 0;
+  } catch (e) { return 0; }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const volatilityReal = await fetchVolatilityData();
+  const ctxDonut = document.getElementById('volatilityDonut').getContext('2d');
+  new Chart(ctxDonut, {
+    type: 'doughnut',
+    data: {
+      labels: ['Cambio 24h', 'Resto hasta 100%'],
+      datasets: [{
+        data: [volatilityReal, Math.max(0, 100 - volatilityReal)],
+        backgroundColor: ['#00d4ff', 'rgba(255,255,255,0.06)'],
+        borderColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '70%',
+      plugins: {
+        tooltip: {
+          backgroundColor: 'rgba(12,12,20,0.95)',
+          borderColor: 'rgba(0,212,255,0.3)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: (ctx) => ctx.label === 'Cambio 24h'
+              ? `Volatilidad real: ${volatilityReal.toFixed(2)}%`
+              : `Resto: ${(100 - volatilityReal).toFixed(2)}%`
+          }
+        },
+        legend: { position: 'bottom', labels: { padding: 16, font: { size: 11 } } }
+      }
+    }
+  });
+});
+
+// CoinGecko - proyección
+async function fetchGrowthRate() {
+  try {
+    const r = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin");
+    const d = await r.json();
+    return d.market_data.price_change_percentage_24h || 0;
+  } catch (e) { return 0; }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const rate = await fetchGrowthRate();
+  let baseAdoption = 15;
+  const years = ['2023','2024','2025','2026','2027','2028','2029','2030'];
+  const projectionData = [];
+  for (let i = 0; i < years.length; i++) {
+    if (i === 0) projectionData.push(baseAdoption.toFixed(2));
+    else {
+      baseAdoption = baseAdoption * (1 + rate / 100);
+      if (baseAdoption > 100) baseAdoption = 100;
+      projectionData.push(baseAdoption.toFixed(2));
+    }
+  }
+  const ctxFuture = document.getElementById('futureChart').getContext('2d');
+  new Chart(ctxFuture, {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: [{
+        label: 'Proyección de adopción (%)',
+        data: projectionData,
+        fill: true,
+        borderColor: '#00d4ff',
+        backgroundColor: 'rgba(0,212,255,0.15)',
+        tension: 0.4,
+        pointBackgroundColor: '#00d4ff',
+        pointBorderColor: '#05050a',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, position: 'top', labels: { padding: 12, font: { size: 11 } } },
+        tooltip: { backgroundColor: 'rgba(12,12,20,0.95)', borderColor: 'rgba(0,212,255,0.3)', borderWidth: 1, padding: 12 }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { callback: v => v + '%' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+});
+
+// Progreso + certificado
+document.querySelectorAll("details.glass").forEach(d => d.addEventListener("toggle", updateProgress));
 function updateProgress(){
   const all = document.querySelectorAll("details.glass");
   const open = document.querySelectorAll("details.glass[open]");
@@ -415,7 +579,8 @@ function updateProgress(){
 function generarCertificado(){
   const pct = document.getElementById("progress-bar").style.width;
   if(parseInt(pct) < 100){ alert("Completa todas las lecciones primero. Llevas " + pct); return; }
-  alert("🎓 ¡Felicidades! Certificado generado. (Próximamente se emitirá como NFT verificable on-chain.)");
+  alert("🎓 ¡Felicidades! Certificado generado. (Próximamente NFT verificable on-chain.)");
 }
 </script>
-</body></html>
+</body>
+</html>
